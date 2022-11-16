@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    
-    [SerializeField] GameObject _Panel, Archive1, Archive2, Archive3, Archive4, KeyBottom, GamePadBottom, _reviewer, _driver, _jorge, _luna, _centurion, _prayer;
+
+    [SerializeField] GameObject _Panel, Inventario, Notas, Fotos, Controles, KeyBottom, GamePadBottom;
+    [SerializeField]Image _reviewer, _driver, _jorge, _luna, _centurion, _prayer;
+    [SerializeField]Button _reviewerButton, _driverButton, _jorgeButton, _lunaButton, _centurionButton, _prayerButton;
 
     private void Start()
     {
@@ -16,16 +18,45 @@ public class Inventory : MonoBehaviour
         _Panel.SetActive(false);
     }
     
+
+    private void PlayerSpokeTo()
+    {
+        if(EventManager._youKnowCenturion)
+        {
+            _centurionButton.enabled = true;
+        }
+        if (EventManager._youKnowDriver)
+        {
+            _driverButton.enabled = true;
+        }
+        if (EventManager._youKnowJorge)
+        {
+            _jorgeButton.enabled = true;
+        }
+        if (EventManager._youKnowLuna)
+        {
+            _lunaButton.enabled = true;
+        }
+        if (EventManager._youKnowPrayer)
+        {
+            _prayerButton.enabled = true;
+        }
+        if (EventManager._youKnowReviewer)
+        {
+            _reviewerButton.enabled = true;
+        }
+    }
+
     private void OpenWindow()
     {
         _Panel.SetActive(true);
-        Archive1.SetActive(true);
-        _reviewer.SetActive(false);
-        _driver.SetActive(false);
-        _jorge.SetActive(false);
-        _luna.SetActive(false);
-        _prayer.SetActive(false);
-        _centurion.SetActive(false);
+        Inventario.SetActive(true);
+        _reviewer.enabled = false;
+        _driver.enabled = false;
+        _jorge.enabled = false; 
+        _luna.enabled = false; 
+        _centurion.enabled = false;
+        _prayer.enabled = false;
     }
 
     private void CloseWindow()
@@ -37,39 +68,40 @@ public class Inventory : MonoBehaviour
     public void ChangeArchive1()
     {
 
-        Archive1.SetActive(true);
-        Archive2.SetActive(false);
-        Archive3.SetActive(false);
-        Archive4.SetActive(false);
+        Inventario.SetActive(true);
+        Notas.SetActive(false);
+        Fotos.SetActive(false);
+        Controles.SetActive(false);
     }
 
     public void ChangeArchive2()
     {
 
-        Archive1.SetActive(false);
-        Archive2.SetActive(true);
-        Archive3.SetActive(false);
-        Archive4.SetActive(false);
+        Inventario.SetActive(false);
+        Notas.SetActive(true);
+        PlayerSpokeTo();
+        Fotos.SetActive(false);
+        Controles.SetActive(false);
 
     }
 
     public void ChangeArchive3()
     {
 
-        Archive1.SetActive(false);
-        Archive2.SetActive(false);
-        Archive3.SetActive(true);
-        Archive4.SetActive(false);
+        Inventario.SetActive(false);
+        Notas.SetActive(false);
+        Fotos.SetActive(true);
+        Controles.SetActive(false);
 
     }
 
     public void ChangeArchive4()
     {
 
-        Archive1.SetActive(false);
-        Archive2.SetActive(false);
-        Archive3.SetActive(false);
-        Archive4.SetActive(true);
+        Inventario.SetActive(false);
+        Notas.SetActive(false);
+        Fotos.SetActive(false);
+        Controles.SetActive(true);
         KeyBottom.SetActive(true);
 
     }
@@ -94,60 +126,60 @@ public class Inventory : MonoBehaviour
 
     public void Reviewer()
     {
-        _reviewer.SetActive(true);
-        _driver.SetActive(false);
-        _jorge.SetActive(false);
-        _luna.SetActive(false);
-        _prayer.SetActive(false);
-        _centurion.SetActive(false);
+        _reviewer.enabled = true;
+        _driver.enabled = false;
+        _jorge.enabled = false;
+        _luna.enabled = false;
+        _centurion.enabled = false;
+        _prayer.enabled = false;
     }
-    public void Driver()
-    {
-        _reviewer.SetActive(false);
-        _driver.SetActive(true);
-        _jorge.SetActive(false);
-        _luna.SetActive(false);
-        _prayer.SetActive(false);
-        _centurion.SetActive(false);
-    }
+    //public void Driver()
+    //{
+    //    _reviewer.enabled = false;
+    //_driver.enabled = false;
+    //    _jorge.enabled = false; 
+    //    _luna.enabled = false; 
+    //    _centurion.enabled = false;
+    //    _prayer.enabled = false;
+    ////}
     public void Jorge()
     {
 
-        _reviewer.SetActive(false);
-        _driver.SetActive(false);
-        _jorge.SetActive(true);
-        _luna.SetActive(false);
-        _prayer.SetActive(false);
-        _centurion.SetActive(false);
+        _reviewer.enabled = false;
+        _driver.enabled = false;
+        _jorge.enabled = true;
+        _luna.enabled = false;
+        _centurion.enabled = false;
+        _prayer.enabled = false;
     }
     public void Luna()
     {
-        _reviewer.SetActive(false);
-        _driver.SetActive(false);
-        _jorge.SetActive(false);
-        _luna.SetActive(true); 
-        _prayer.SetActive(false);
-        _centurion.SetActive(false);
+        _reviewer.enabled = false;
+        _driver.enabled = false;
+        _jorge.enabled = false;
+        _luna.enabled = true;
+        _centurion.enabled = false;
+        _prayer.enabled = false;
     }
 
     public void Prayer()
     {
-        _reviewer.SetActive(false);
-        _driver.SetActive(false);
-        _jorge.SetActive(false);
-        _luna.SetActive(false);
-        _prayer.SetActive(true);
-        _centurion.SetActive(false);
+        _reviewer.enabled = false;
+        _driver.enabled = false;
+        _jorge.enabled = false;
+        _luna.enabled = false;
+        _centurion.enabled = false;
+        _prayer.enabled = true;
     }
 
     public void Centurion()
     {
-        _reviewer.SetActive(false);
-        _driver.SetActive(false);
-        _jorge.SetActive(false);
-        _luna.SetActive(false);
-        _prayer.SetActive(false);
-        _centurion.SetActive(true);
+        _reviewer.enabled = false;
+        _driver.enabled = false;
+        _jorge.enabled = false;
+        _luna.enabled = false;
+        _centurion.enabled = true;
+        _prayer.enabled = false;
     }
 
 }

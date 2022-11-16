@@ -15,6 +15,7 @@ public class StartConvo : MonoBehaviour
 
         EventManager._Talk.AddListener(CheckConve);
 
+        print("StartConvo");
         _dialogueBox.SetActive(false);
 
     }
@@ -63,6 +64,10 @@ public class StartConvo : MonoBehaviour
         {
             if (GlobalBools._isjorgeTalking)
             {
+                if (!EventManager._youKnowJorge)
+                {
+                    EventManager._youKnowJorge = true;
+                }
                 if (GlobalBools._stage1)
                 {
 
