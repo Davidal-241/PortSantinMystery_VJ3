@@ -22,10 +22,5 @@ public static class EventManager
     //public static UnityEvent _StopFeedback = new UnityEvent();
 
 
-    public static bool _youKnowJorge = false;
-    public static bool _youKnowLuna = false;
-    public static bool _youKnowCenturion = false;
-    public static bool _youKnowPrayer = false;
-    public static bool _youKnowDriver= false;
-    public static bool _youKnowReviewer = false;
+    
 }

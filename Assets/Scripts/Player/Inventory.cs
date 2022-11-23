@@ -21,27 +21,27 @@ public class Inventory : MonoBehaviour
 
     private void PlayerSpokeTo()
     {
-        if(EventManager._youKnowCenturion)
+        if(GlobalBools._youKnowCenturion)
         {
             _centurionButton.enabled = true;
         }
-        if (EventManager._youKnowDriver)
+        if (GlobalBools._youKnowDriver)
         {
             _driverButton.enabled = true;
         }
-        if (EventManager._youKnowJorge)
+        if (GlobalBools._youKnowJorge)
         {
             _jorgeButton.enabled = true;
         }
-        if (EventManager._youKnowLuna)
+        if (GlobalBools._youKnowLuna)
         {
             _lunaButton.enabled = true;
         }
-        if (EventManager._youKnowPrayer)
+        if (GlobalBools._youKnowPrayer)
         {
             _prayerButton.enabled = true;
         }
-        if (EventManager._youKnowReviewer)
+        if (GlobalBools._youKnowReviewer)
         {
             _reviewerButton.enabled = true;
         }

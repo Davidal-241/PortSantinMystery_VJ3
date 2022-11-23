@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody myRB;
 
     //Detecte if more or less distance
-    bool isActiveZoom, isActiveFar;
+
     bool pressedDown;
     
 
@@ -65,8 +65,7 @@ public class PlayerMovement : MonoBehaviour
         myRB = GetComponent<Rigidbody>();
 
         //Set value
-        isActiveFar = false;
-        isActiveZoom = true;
+
     }
 
     // Update is called once per frame
