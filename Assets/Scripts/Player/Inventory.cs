@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
+
 using UnityEngine.UI; 
 
 public class Inventory : MonoBehaviour
@@ -10,6 +12,38 @@ public class Inventory : MonoBehaviour
     [SerializeField] GameObject _Panel, Inventario, Notas, Fotos, Controles, KeyBottom, GamePadBottom;
     [SerializeField]Image _reviewer, _driver, _jorge, _luna, _centurion, _prayer;
     [SerializeField]Button _reviewerButton, _driverButton, _jorgeButton, _lunaButton, _centurionButton, _prayerButton;
+
+    [SerializeField] UserActions _controls;
+    
+    private InputAction Submit;
+
+    private void Awake()
+    {
+        _controls = new UserActions();
+    }
+    public void OnEnable()
+    {
+        Submit = _controls.UI.Submit;
+        Submit.Enable();
+        Submit.performed += EnterInNotes;
+
+    }
+
+    public void OnDisable()
+    {
+        Submit.Disable();
+
+    }
+
+
+    public void EnterInNotes(InputAction.CallbackContext context)
+    {
+        if(Notas.activeSelf == true)
+        {
+            EventManager._checkNotes.Invoke();
+        }
+      
+    }
 
     private void Start()
     {
@@ -21,27 +55,27 @@ public class Inventory : MonoBehaviour
 
     private void PlayerSpokeTo()
     {
-        if(GlobalBools._youKnowCenturion)
+        if(GlobalBools._isknowCenturion)
         {
             _centurionButton.enabled = true;
         }
-        if (GlobalBools._youKnowDriver)
+        if (GlobalBools._isknowDriver)
         {
             _driverButton.enabled = true;
         }
-        if (GlobalBools._youKnowJorge)
+        if (GlobalBools._isknowJorge)
         {
             _jorgeButton.enabled = true;
         }
-        if (GlobalBools._youKnowLuna)
+        if (GlobalBools._isknowLuna)
         {
             _lunaButton.enabled = true;
         }
-        if (GlobalBools._youKnowPrayer)
+        if (GlobalBools._isknowPrayer)
         {
             _prayerButton.enabled = true;
         }
-        if (GlobalBools._youKnowReviewer)
+        if (GlobalBools._isknowReviewer)
         {
             _reviewerButton.enabled = true;
         }

@@ -7,15 +7,16 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] UserActions _controls;
- private InputAction OpenClose;
+    private InputAction OpenClose;
+    private InputAction Inventory;
 
     [SerializeField]private GameObject _menuPauseCanvas;
-
+    bool _isMenuPauseActive = false;
 
     private void Awake()
     {
         _controls = new UserActions();
-        _menuPauseCanvas = GameObject.Find("MenuPauseCanvas");
+        _menuPauseCanvas = GameObject.Find("BasePausemenu");
     }
 
     private void Start()
@@ -29,21 +30,42 @@ public class GameManager : MonoBehaviour
         OpenClose = _controls.MenuPause.OpenClose;
         OpenClose.Enable();
         OpenClose.performed += UseMenu;
+        Inventory = _controls.Player.Inventory;
+        Inventory.Enable();
+        Inventory.performed += CloseMenu;
 
-       
     }
 
     public void OnDisable()
     {
         OpenClose.Disable();
-       
+        Inventory.Disable();
     }
 
     private void UseMenu(InputAction.CallbackContext context)
     {
         print("Entra");
-        _menuPauseCanvas.SetActive(true);
+        if (!_isMenuPauseActive)
+        {
 
+
+            _menuPauseCanvas.SetActive(true);
+            _isMenuPauseActive = true;
+        }
+        else
+        {
+            _menuPauseCanvas.SetActive(false);
+            _isMenuPauseActive = false;
+        }
+    }
+
+    private void CloseMenu(InputAction.CallbackContext context)
+    {
+        if(_isMenuPauseActive)
+        {
+            _menuPauseCanvas.SetActive( false);
+            _isMenuPauseActive = false;
+        }
     }
 
     public void GoMenuPrincipalMain()

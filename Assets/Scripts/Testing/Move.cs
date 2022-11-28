@@ -6,13 +6,13 @@ public class Move : MonoBehaviour
 {
 
     [SerializeField] float _speed;
-    bool isActiveZoom, isActiveFar;
+
 
     private void Start()
     {
 
-        isActiveFar = false;
-        isActiveZoom = true;
+        //isActiveFar = false;
+        //isActiveZoom = true;
 
     }
 

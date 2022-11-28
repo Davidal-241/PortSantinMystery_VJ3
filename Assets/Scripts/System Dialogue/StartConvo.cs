@@ -64,9 +64,9 @@ public class StartConvo : MonoBehaviour
         {
             if (GlobalBools._isjorgeTalking)
             {
-                if (!GlobalBools._youKnowJorge)
+                if (!GlobalBools._isknowJorge)
                 {
-                    GlobalBools._youKnowJorge = true;
+                    GlobalBools._isknowJorge = true;
                 }
                 if (GlobalBools._stage1)
                 {
