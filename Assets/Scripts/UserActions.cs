@@ -207,6 +207,22 @@ public class @UserActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""EnterInSubPanel"",
+                    ""type"": ""Button"",
+                    ""id"": ""3ca6de08-d39d-4372-92cf-a40287917810"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ExitInSubPanel"",
+                    ""type"": ""Button"",
+                    ""id"": ""2ad1fb1e-7bc0-4f5f-a57e-54f997724d1d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Submit"",
                     ""type"": ""Button"",
                     ""id"": ""85faec96-3ad8-4a79-9f3f-b696c3868aaa"",
@@ -391,6 +407,94 @@ public class @UserActions : IInputActionCollection, IDisposable
                     ""action"": ""Submit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""KeyBoard"",
+                    ""id"": ""d3753777-cb14-4d3c-83e8-ad85ca2b90e2"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EnterInSubPanel"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""ce03e7b3-7f89-447b-821c-e0954372bf91"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard and Mouse"",
+                    ""action"": ""EnterInSubPanel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Gamepad"",
+                    ""id"": ""dc0a8156-87dc-4023-a971-57d7376bdf80"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EnterInSubPanel"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""fb359c6e-74ba-43e8-9a79-75aeb0f4e60b"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""EnterInSubPanel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""KeyBoard"",
+                    ""id"": ""e6818892-7e0c-4b6e-8b07-4580c36e8cc6"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitInSubPanel"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""4301f646-57a9-4d75-9ee0-275215f3ae69"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard and Mouse"",
+                    ""action"": ""ExitInSubPanel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Gamepad"",
+                    ""id"": ""f0223141-0400-49cc-8100-04e3c33043d8"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitInSubPanel"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""b5e00dd6-3f43-4ce3-ac6b-9fc042270e06"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ExitInSubPanel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -473,6 +577,8 @@ public class @UserActions : IInputActionCollection, IDisposable
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_NextLine = m_UI.FindAction("NextLine", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
+        m_UI_EnterInSubPanel = m_UI.FindAction("EnterInSubPanel", throwIfNotFound: true);
+        m_UI_ExitInSubPanel = m_UI.FindAction("ExitInSubPanel", throwIfNotFound: true);
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
         // Menu Pause
         m_MenuPause = asset.FindActionMap("Menu Pause", throwIfNotFound: true);
@@ -585,6 +691,8 @@ public class @UserActions : IInputActionCollection, IDisposable
     private IUIActions m_UIActionsCallbackInterface;
     private readonly InputAction m_UI_NextLine;
     private readonly InputAction m_UI_Navigate;
+    private readonly InputAction m_UI_EnterInSubPanel;
+    private readonly InputAction m_UI_ExitInSubPanel;
     private readonly InputAction m_UI_Submit;
     public struct UIActions
     {
@@ -592,6 +700,8 @@ public class @UserActions : IInputActionCollection, IDisposable
         public UIActions(@UserActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @NextLine => m_Wrapper.m_UI_NextLine;
         public InputAction @Navigate => m_Wrapper.m_UI_Navigate;
+        public InputAction @EnterInSubPanel => m_Wrapper.m_UI_EnterInSubPanel;
+        public InputAction @ExitInSubPanel => m_Wrapper.m_UI_ExitInSubPanel;
         public InputAction @Submit => m_Wrapper.m_UI_Submit;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
@@ -608,6 +718,12 @@ public class @UserActions : IInputActionCollection, IDisposable
                 @Navigate.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
                 @Navigate.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
                 @Navigate.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
+                @EnterInSubPanel.started -= m_Wrapper.m_UIActionsCallbackInterface.OnEnterInSubPanel;
+                @EnterInSubPanel.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnEnterInSubPanel;
+                @EnterInSubPanel.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnEnterInSubPanel;
+                @ExitInSubPanel.started -= m_Wrapper.m_UIActionsCallbackInterface.OnExitInSubPanel;
+                @ExitInSubPanel.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnExitInSubPanel;
+                @ExitInSubPanel.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnExitInSubPanel;
                 @Submit.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSubmit;
                 @Submit.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSubmit;
                 @Submit.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSubmit;
@@ -621,6 +737,12 @@ public class @UserActions : IInputActionCollection, IDisposable
                 @Navigate.started += instance.OnNavigate;
                 @Navigate.performed += instance.OnNavigate;
                 @Navigate.canceled += instance.OnNavigate;
+                @EnterInSubPanel.started += instance.OnEnterInSubPanel;
+                @EnterInSubPanel.performed += instance.OnEnterInSubPanel;
+                @EnterInSubPanel.canceled += instance.OnEnterInSubPanel;
+                @ExitInSubPanel.started += instance.OnExitInSubPanel;
+                @ExitInSubPanel.performed += instance.OnExitInSubPanel;
+                @ExitInSubPanel.canceled += instance.OnExitInSubPanel;
                 @Submit.started += instance.OnSubmit;
                 @Submit.performed += instance.OnSubmit;
                 @Submit.canceled += instance.OnSubmit;
@@ -690,6 +812,8 @@ public class @UserActions : IInputActionCollection, IDisposable
     {
         void OnNextLine(InputAction.CallbackContext context);
         void OnNavigate(InputAction.CallbackContext context);
+        void OnEnterInSubPanel(InputAction.CallbackContext context);
+        void OnExitInSubPanel(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
     }
     public interface IMenuPauseActions

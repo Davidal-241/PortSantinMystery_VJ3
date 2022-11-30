@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _menuPauseCanvas.SetActive(false);
+        if (_menuPauseCanvas != null)
+            _menuPauseCanvas.SetActive(false);
     }
 
     public void OnEnable()
@@ -47,9 +48,12 @@ public class GameManager : MonoBehaviour
         print("Entra");
         if (!_isMenuPauseActive)
         {
-
+            Time.timeScale = 0f;
 
             _menuPauseCanvas.SetActive(true);
+            EventManager._CloseInventory.Invoke();
+            GlobalBools._canOpenInventory = false;
+            GlobalBools._isInventoryActive = false;
             _isMenuPauseActive = true;
         }
         else

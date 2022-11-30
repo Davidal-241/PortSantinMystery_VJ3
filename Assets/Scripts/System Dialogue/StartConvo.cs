@@ -16,13 +16,15 @@ public class StartConvo : MonoBehaviour
         EventManager._Talk.AddListener(CheckConve);
 
         print("StartConvo");
-        _dialogueBox.SetActive(false);
+        if (_dialogueBox != null)
+            _dialogueBox.SetActive(false);
 
     }
 
     public void StartConve()
     {
         GlobalBools._nextLineActive = true;
+        GlobalBools._isTalk= true;
         DialogueManager.StartConversation(convo);
       
     }

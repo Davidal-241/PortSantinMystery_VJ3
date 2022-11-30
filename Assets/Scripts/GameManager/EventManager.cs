@@ -18,7 +18,13 @@ public static class EventManager
 
     public static UnityEvent _changeScene = new UnityEvent();
 
+
     public static UnityEvent _checkNotes = new UnityEvent();
+    public static UnityEvent _changePageInventory = new UnityEvent();
+    public static UnityEvent _changePageNotes = new UnityEvent();
+    public static UnityEvent _changePagePhotos = new UnityEvent();
+    public static UnityEvent _changePageControlls = new UnityEvent();
+    
 
     //public static UnityEvent _StartFeedback = new UnityEvent();
     //public static UnityEvent _StopFeedback = new UnityEvent();

@@ -21,11 +21,15 @@ public class ToInteract : MonoBehaviour
 
     private void Update()
     {
-        if(GlobalBools._nextLineActive)
+        if (GlobalBools._isTalk)
         {
+            if (GlobalBools._nextLineActive)
+            {
 
-            dialogueManager = FindObjectOfType<DialogueManager>();
+                dialogueManager = FindObjectOfType<DialogueManager>();
 
+
+            }
         }
     }
 
@@ -70,6 +74,7 @@ public class ToInteract : MonoBehaviour
         {
 
             GlobalBools._canOpenInventory = false;
+            GlobalBools._isInventoryActive = false;
             EventManager._CloseInventory.Invoke();
 
 
@@ -100,16 +105,20 @@ public class ToInteract : MonoBehaviour
     }
 
     public void NextLineText(InputAction.CallbackContext context)
-    {
-        if (!GlobalBools._isEndLineDialogue)
+    {if (GlobalBools._isTalk)
         {
-            dialogueManager.ReadNext();
-            return;
-        }
-        else
-        {
-            dialogueManager.EndDialogue();
-            return;
+
+
+            if (!GlobalBools._isEndLineDialogue)
+            {
+                dialogueManager.ReadNext();
+                return;
+            }
+            else
+            {
+                dialogueManager.EndDialogue();
+                return;
+            }
         }
     }
 }

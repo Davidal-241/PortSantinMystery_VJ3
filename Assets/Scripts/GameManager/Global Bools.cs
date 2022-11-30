@@ -9,6 +9,7 @@ public static class GlobalBools
 
     //Si esta en el rango del jugador un NPC este se activara. Permitiendo que el jugador pueda interactuar con el npc//
     public static bool _canTalk = false;
+    public static bool _isTalk = false;
 
     //Maneja el flujo de las conversaciones
     public static bool _nextLineActive = false;
@@ -53,4 +54,10 @@ public static class GlobalBools
     public static bool _isRunning = false;
 
     //public static bool _DevicePreIsKeyBoard = true;
+
+
+    //Bool manejo UINavigateLogic
+
+    public static bool _isInNotesPanel = false;
+    public static bool _isInventoryActive = false;
 }
