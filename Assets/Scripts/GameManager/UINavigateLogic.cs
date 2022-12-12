@@ -18,6 +18,8 @@ public class UINavigateLogic : MonoBehaviour
     private InputAction _navegateExitSubPanel;
     private InputAction Submit;
 
+    bool _isFullScreen = false;
+
     private void Awake()
     {
         _controls = new UserActions();
@@ -49,10 +51,11 @@ public class UINavigateLogic : MonoBehaviour
     private void Start()
     {
         EventManager._OpenInventory.AddListener(InventoryNavegate);
-        EventManager._changePageInventory.AddListener(InventoryNavegate);
-        EventManager._changePageNotes.AddListener(NotesIsSelect);
-        EventManager._changePagePhotos.AddListener(PhotosIsSelect);
-        EventManager._changePageControlls.AddListener(ControlsIsSelect);
+        EventManager._ChangePageInventory.AddListener(InventoryNavegate);
+        EventManager._OpenMenuPause.AddListener(NavigateMenuPause);
+        EventManager._ChangePageNotes.AddListener(NotesIsSelect);
+        EventManager._ChangePagePhotos.AddListener(PhotosIsSelect);
+        EventManager._ChangePageControlls.AddListener(ControlsIsSelect);
     }
 
 
@@ -113,18 +116,64 @@ public class UINavigateLogic : MonoBehaviour
 
     public void NavigateMenuPause()
     {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(_firstObjectToSelect[5]);
+    }
 
+    public void NavigateOptions()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(_firstObjectToSelect[6]);
+    }
+    public void NavigateMusic()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(_firstObjectToSelect[7]);
     }
 
 
 
     public void UseOnClick(InputAction.CallbackContext context)
     {
-        if (GlobalBools._isInventoryActive)
+        
+        GameObject selectObject;
+        selectObject = EventSystem.current.currentSelectedGameObject;
+        Button _bu = selectObject.GetComponent<Button>();
+
+       if(_bu != null)
         {
-            GameObject selectObject;
-            selectObject = EventSystem.current.currentSelectedGameObject;
             selectObject.GetComponent<Button>().onClick.Invoke();
+        }
+        else
+        {
+            if (!_isFullScreen)
+            {
+                selectObject.GetComponent<Toggle>().isOn = true;
+                print("p");
+                _isFullScreen = true;
+            }
+            else
+            {
+                selectObject.GetComponent<Toggle>().isOn = false;
+                _isFullScreen = false;
+            }
+        }
+    }
+
+    public void NavigateElevator()
+    {
+        if(GlobalBools._isInReception)
+        {
+
+        }
+
+        if (GlobalBools._isInFirstFloor)
+        {
+
+        }
+        if (GlobalBools._isInReception)
+        {
+
         }
     }
 

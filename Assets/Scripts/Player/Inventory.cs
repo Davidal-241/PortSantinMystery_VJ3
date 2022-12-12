@@ -40,7 +40,7 @@ public class Inventory : MonoBehaviour
     {
         if(Notas.activeSelf == true)
         {
-            EventManager._checkNotes.Invoke();
+            EventManager._CheckNotes.Invoke();
         }
       
     }
@@ -104,7 +104,7 @@ public class Inventory : MonoBehaviour
     {
 
         Inventario.SetActive(true);
-        EventManager._changePageInventory.Invoke();
+        EventManager._ChangePageInventory.Invoke();
         Notas.SetActive(false);
         Fotos.SetActive(false);
         Controles.SetActive(false);
@@ -112,7 +112,7 @@ public class Inventory : MonoBehaviour
 
     public void ChangeArchive2()
     {
-        EventManager._changePageNotes.Invoke();
+        EventManager._ChangePageNotes.Invoke();
 
         Inventario.SetActive(false);
         Notas.SetActive(true);
@@ -124,7 +124,7 @@ public class Inventory : MonoBehaviour
 
     public void ChangeArchive3()
     {
-        EventManager._changePagePhotos.Invoke();
+        EventManager._ChangePagePhotos.Invoke();
 
         Inventario.SetActive(false);
         Notas.SetActive(false);
@@ -135,7 +135,7 @@ public class Inventory : MonoBehaviour
 
     public void ChangeArchive4()
     {
-        EventManager._changePageControlls.Invoke();
+        EventManager._ChangePageControlls.Invoke();
 
         Inventario.SetActive(false);
         Notas.SetActive(false);

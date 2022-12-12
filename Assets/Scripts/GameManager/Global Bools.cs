@@ -49,12 +49,16 @@ public static class GlobalBools
     public static bool _canOpenDoor = false;
     //Bool manejo inventario
     public static bool _canOpenInventory = false;
-
     //Bool manejo sprint
     public static bool _isRunning = false;
 
     //public static bool _DevicePreIsKeyBoard = true;
 
+    //Bool manejo Elevador
+    public static bool _isCloseToElevator = false;
+    public static bool _isInReception = false;
+    public static bool _isInFirstFloor = false;
+    public static bool _isInSecond = false;
 
     //Bool manejo UINavigateLogic
 

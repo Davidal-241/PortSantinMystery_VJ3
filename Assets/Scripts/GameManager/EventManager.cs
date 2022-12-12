@@ -13,17 +13,20 @@ public static class EventManager
 
     public static UnityEvent _Talk = new UnityEvent();
 
+    public static UnityEvent _EnterInElevator = new UnityEvent();
+
     public static UnityEvent _OpenInventory = new UnityEvent();
     public static UnityEvent _CloseInventory = new UnityEvent();
+    public static UnityEvent _OpenMenuPause = new UnityEvent();
 
     public static UnityEvent _changeScene = new UnityEvent();
 
 
-    public static UnityEvent _checkNotes = new UnityEvent();
-    public static UnityEvent _changePageInventory = new UnityEvent();
-    public static UnityEvent _changePageNotes = new UnityEvent();
-    public static UnityEvent _changePagePhotos = new UnityEvent();
-    public static UnityEvent _changePageControlls = new UnityEvent();
+    public static UnityEvent _CheckNotes = new UnityEvent();
+    public static UnityEvent _ChangePageInventory = new UnityEvent();
+    public static UnityEvent _ChangePageNotes = new UnityEvent();
+    public static UnityEvent _ChangePagePhotos = new UnityEvent();
+    public static UnityEvent _ChangePageControlls = new UnityEvent();
     
 
     //public static UnityEvent _StartFeedback = new UnityEvent();

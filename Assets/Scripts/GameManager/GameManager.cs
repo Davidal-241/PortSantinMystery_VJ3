@@ -45,21 +45,22 @@ public class GameManager : MonoBehaviour
 
     private void UseMenu(InputAction.CallbackContext context)
     {
-        print("Entra");
         if (!_isMenuPauseActive)
         {
-            Time.timeScale = 0f;
 
             _menuPauseCanvas.SetActive(true);
             EventManager._CloseInventory.Invoke();
+            EventManager._OpenMenuPause.Invoke();
             GlobalBools._canOpenInventory = false;
             GlobalBools._isInventoryActive = false;
             _isMenuPauseActive = true;
+
         }
         else
         {
             _menuPauseCanvas.SetActive(false);
             _isMenuPauseActive = false;
+
         }
     }
 
@@ -69,6 +70,7 @@ public class GameManager : MonoBehaviour
         {
             _menuPauseCanvas.SetActive( false);
             _isMenuPauseActive = false;
+
         }
     }
 

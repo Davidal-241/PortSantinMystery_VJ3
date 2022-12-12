@@ -83,24 +83,26 @@ public class ToInteract : MonoBehaviour
 
     private void StartInteract(InputAction.CallbackContext context)
     {
-        if (!GlobalBools._isWaitingForInteractue)
-        {
+        
             if (GlobalBools._canTalk)
             {
                 EventManager._Talk.Invoke();
                 GlobalBools._isWaitingForInteractue = true;
 
             }
-        }
+        
 
-        if(!GlobalBools._isWaitingForInteractue)
-        {
             if (GlobalBools._canOpenDoor)
             {
                 EventManager._changeScene.Invoke();
                 GlobalBools._isWaitingForInteractue = true;
             }
-        }
+
+            if(GlobalBools._isCloseToElevator)
+            {
+                EventManager._EnterInElevator.Invoke();
+            }
+        
         
     }
 
