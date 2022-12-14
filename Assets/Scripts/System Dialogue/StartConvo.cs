@@ -73,7 +73,7 @@ public class StartConvo : MonoBehaviour
                 if (GlobalBools._stage1)
                 {
 
-                    convo = Resources.Load<Conversation>("Jorge/First_Conversation");
+                    convo = Resources.Load<Conversation>("Jorge/N_Dialogues/Jorge_N_Dialogue_01");
                     _dialogueBox.SetActive(true);
                     GlobalBools._canMoreTalk = true;
                     StartConve();

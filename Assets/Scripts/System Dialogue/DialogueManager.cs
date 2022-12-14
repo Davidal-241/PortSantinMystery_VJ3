@@ -16,6 +16,8 @@ public class DialogueManager : MonoBehaviour
     private static DialogueManager instance;
     private Coroutine typing;
 
+    [SerializeField] float _betweenLettersWaitTime;
+
     [SerializeField] GameObject _dialogueBox;
 
     private void Awake()
@@ -109,9 +111,10 @@ public class DialogueManager : MonoBehaviour
 
         while(!complete)
         {
-            dialogue.text += text[index];
+            if (text[index] != '/')
+                dialogue.text += text[index];
             index++;
-            yield return new WaitForSeconds(0.06f);
+            yield return new WaitForSeconds(_betweenLettersWaitTime);
 
             if(index == text.Length)
             {

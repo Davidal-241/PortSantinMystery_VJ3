@@ -16,32 +16,40 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
     _SpritePortrains2: {fileID: 21300000, guid: 725954c817709d64abeef1a993a60bea, type: 3}
+    UItextBox: {fileID: 0}
     dialogue: "Buenas, ten\xEDa una reserva."
   - speaker: {fileID: 11400000, guid: d55b92445c7e45a4482d621145176d24, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
     _SpritePortrains2: {fileID: 21300000, guid: 18d1f2ec3b5e2f44a831afa15df8317e, type: 3}
-    dialogue: "C\xE9sar\u2026"
+    UItextBox: {fileID: 0}
+    dialogue: "C\xE9sar\xF1\xF1\xF1.\xF1\xF1\xF1.\xF1\xF1\xF1.. \n\n"
   - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
     _SpritePortrains2: {fileID: 21300000, guid: 18d1f2ec3b5e2f44a831afa15df8317e, type: 3}
+    UItextBox: {fileID: 0}
     dialogue: "C\xE9sar Merino."
   - speaker: {fileID: 11400000, guid: d55b92445c7e45a4482d621145176d24, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
     _SpritePortrains2: {fileID: 21300000, guid: 725954c817709d64abeef1a993a60bea, type: 3}
+    UItextBox: {fileID: 0}
     dialogue: "Ya\u2026 Tenga las llaves. Es la primera planta, habitaci\xF3n 4."
   - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: ff7a915a520b9e944956eff682df3251, type: 3}
     _SpritePortrains2: {fileID: 21300000, guid: 725954c817709d64abeef1a993a60bea, type: 3}
+    UItextBox: {fileID: 0}
     dialogue: "Gracias. \xBFSe encuentra aqu\xED, Diego?"
   - speaker: {fileID: 11400000, guid: d55b92445c7e45a4482d621145176d24, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: ff7a915a520b9e944956eff682df3251, type: 3}
     _SpritePortrains2: {fileID: 21300000, guid: 725954c817709d64abeef1a993a60bea, type: 3}
+    UItextBox: {fileID: 0}
     dialogue: "Oh\u2026s\xED mmm\u2026Respecto a eso..."
   - speaker: {fileID: 11400000, guid: d55b92445c7e45a4482d621145176d24, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
     _SpritePortrains2: {fileID: 21300000, guid: 725954c817709d64abeef1a993a60bea, type: 3}
+    UItextBox: {fileID: 0}
     dialogue: "Mejor hable con mi padre, tiene un despacho en el \xE1tico."
   - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
     _SpritePortrains2: {fileID: 21300000, guid: 725954c817709d64abeef1a993a60bea, type: 3}
+    UItextBox: {fileID: 0}
     dialogue: "De acuerdo,  creo que me instalar\xE9 primero. Gracias."

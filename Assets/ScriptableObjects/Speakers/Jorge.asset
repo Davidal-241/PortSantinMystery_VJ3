@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 980b9d180fb81dc41b8401c20694c9b3, type: 3}
   m_Name: Jorge
   m_EditorClassIdentifier: 
-  speakerName: 
+  speakerName: Jorge
