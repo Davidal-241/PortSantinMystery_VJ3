@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d951118513507334c810989fc15aff16, type: 3}
+  m_Name: Centurion_N_Dialogues_01
+  m_EditorClassIdentifier: 
+  allLines:
+  - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 5fef39847b9b09f4795a304bb2fdf2f5, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    dialogue: "Buenas se\xF1or soy\u2026"
+  - speaker: {fileID: 11400000, guid: 1f33787dd4362934a8e9f522917056ac, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 5fef39847b9b09f4795a304bb2fdf2f5, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    dialogue: "C\xE9sar Merino, el detective."
+  - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 3bff47d08f1f9d94eb67ca36f1770c57, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    dialogue: Entiendo que me esperaba.
+  - speaker: {fileID: 11400000, guid: 1f33787dd4362934a8e9f522917056ac, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    dialogue: "Claro. Diego me habl\xF3 de usted."
+  - speaker: {fileID: 0}
+    _SpritePortrains1: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    dialogue: "Ya veo. Deduzco que usted es el due\xF1o del hotel."
+  - speaker: {fileID: 11400000, guid: 1f33787dd4362934a8e9f522917056ac, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 0e3d5ad7437956140ab223fde62e82c0, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
+    dialogue: "Una deducci\xF3n muy acertada C\xE9sar, Aunque \r\nbueno, trat\xE1ndose
+      de un detective cabe esperarlo."
+  - speaker: {fileID: 11400000, guid: 1f33787dd4362934a8e9f522917056ac, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 0e3d5ad7437956140ab223fde62e82c0, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
+    dialogue: "Yo rijo el Hotel Sant\xEDn desde que mi mujer falleci\xF3. \r\nMi
+      nombre es Centuri\xF3n Dur\xE1n."
+  - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 5fef39847b9b09f4795a304bb2fdf2f5, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 0e3d5ad7437956140ab223fde62e82c0, type: 3}
+    dialogue: "Un placer se\xF1or."
+  - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    dialogue: "Ver\xE1 Centuri\xF3n, acabo de llegar y me gustar\xEDa\r\nencontrarme
+      con mi compa\xF1ero, Diego."
+  - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    dialogue: "El chico de recepci\xF3n me coment\xF3 que usted sabr\xEDa donde \r\npodr\xEDa
+      estar."
+  - speaker: {fileID: 11400000, guid: 1f33787dd4362934a8e9f522917056ac, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 8296d3229eee28b4ebc1fdffff1f0403, type: 3}
+    dialogue: "Bueno C\xE9sar, no pretendo alterarlo pero Diego sali\xF3\r\nanoche
+      a explorar. Y a\xFAn no ha regresado al\r\nhotel."
+  - speaker: {fileID: 0}
+    _SpritePortrains1: {fileID: 0}
+    _SpritePortrains2: {fileID: 0}
+    dialogue: 
+  - speaker: {fileID: 0}
+    _SpritePortrains1: {fileID: 0}
+    _SpritePortrains2: {fileID: 0}
+    dialogue: 
+  - speaker: {fileID: 0}
+    _SpritePortrains1: {fileID: 0}
+    _SpritePortrains2: {fileID: 0}
+    dialogue: 
+  - speaker: {fileID: 0}
+    _SpritePortrains1: {fileID: 0}
+    _SpritePortrains2: {fileID: 0}
+    dialogue: 
+  - speaker: {fileID: 0}
+    _SpritePortrains1: {fileID: 0}
+    _SpritePortrains2: {fileID: 0}
+    dialogue: 
+  - speaker: {fileID: 0}
+    _SpritePortrains1: {fileID: 0}
+    _SpritePortrains2: {fileID: 0}
+    dialogue: 

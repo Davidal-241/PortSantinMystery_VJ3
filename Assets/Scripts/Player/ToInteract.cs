@@ -67,6 +67,7 @@ public class ToInteract : MonoBehaviour
 
             
             GlobalBools._canOpenInventory = true;
+            GlobalBools._canSubmit = true;
             EventManager._OpenInventory.Invoke();
 
         }
@@ -75,6 +76,7 @@ public class ToInteract : MonoBehaviour
 
             GlobalBools._canOpenInventory = false;
             GlobalBools._isInventoryActive = false;
+            GlobalBools._canSubmit = false;
             EventManager._CloseInventory.Invoke();
 
 
@@ -101,9 +103,12 @@ public class ToInteract : MonoBehaviour
             if(GlobalBools._isCloseToElevator)
             {
                 EventManager._EnterInElevator.Invoke();
-            }
-        
-        
+                GlobalBools._canSubmit = true;
+
+        }
+     
+
+
     }
 
     public void NextLineText(InputAction.CallbackContext context)
