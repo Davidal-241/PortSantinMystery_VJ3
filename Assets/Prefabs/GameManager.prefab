@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 645496}
   - component: {fileID: 6428781403994385826}
   - component: {fileID: 5293498076684588267}
+  - component: {fileID: 1639005990}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _menuPauseCanvas: {fileID: 0}
+  _elevatorUI: {fileID: 0}
 --- !u!114 &645496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,3 +105,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _event: {fileID: 0}
+--- !u!114 &1639005990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7356275779321167284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de469315f50706141b44be2412e8561c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _receptionHotel: OutsideHotelScene
+  _firstFloorHotel: MaiMenuScene
+  _secondFloorHotel: ChurchScene

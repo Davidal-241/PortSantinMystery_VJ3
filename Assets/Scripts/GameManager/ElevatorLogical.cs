@@ -28,14 +28,14 @@ public class ElevatorLogical : MonoBehaviour
         {
             GlobalBools._isInReception = true;
             GlobalBools._isInFirstFloor = false;
-            GlobalBools._isInSecond = false;
+            GlobalBools._isInSecondFloor = false;
         }
 
         if (_currentScene.name == _firstFloorHotel)
         {
             GlobalBools._isInReception = false;
             GlobalBools._isInFirstFloor = true;
-            GlobalBools._isInSecond = false;
+            GlobalBools._isInSecondFloor = false;
 
         }
 
@@ -43,7 +43,7 @@ public class ElevatorLogical : MonoBehaviour
         {
             GlobalBools._isInReception = false;
             GlobalBools._isInFirstFloor = false;
-            GlobalBools._isInSecond = true;
+            GlobalBools._isInSecondFloor = true;
         }
     }
 

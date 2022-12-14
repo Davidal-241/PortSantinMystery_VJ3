@@ -64,7 +64,7 @@ public class UINavigateLogic : MonoBehaviour
 
     public void InventoryNavegate()
     {
-
+        GlobalBools._canSubmit = true;
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(_firstObjectToSelect[0]);
         GlobalBools._isInventoryActive = true;
@@ -138,27 +138,29 @@ public class UINavigateLogic : MonoBehaviour
 
     public void UseOnClick(InputAction.CallbackContext context)
     {
-        
-        GameObject selectObject;
-        selectObject = EventSystem.current.currentSelectedGameObject;
-        Button _bu = selectObject.GetComponent<Button>();
+        if (GlobalBools._canSubmit)
+        {
+            GameObject selectObject;
+            selectObject = EventSystem.current.currentSelectedGameObject;
+            Button _bu = selectObject.GetComponent<Button>();
 
-       if(_bu != null)
-        {
-            selectObject.GetComponent<Button>().onClick.Invoke();
-        }
-        else
-        {
-            if (!_isFullScreen)
+            if (_bu != null)
             {
-                selectObject.GetComponent<Toggle>().isOn = true;
-                print("p");
-                _isFullScreen = true;
+                selectObject.GetComponent<Button>().onClick.Invoke();
             }
             else
             {
-                selectObject.GetComponent<Toggle>().isOn = false;
-                _isFullScreen = false;
+                if (!_isFullScreen)
+                {
+                    selectObject.GetComponent<Toggle>().isOn = true;
+                    print("p");
+                    _isFullScreen = true;
+                }
+                else
+                {
+                    selectObject.GetComponent<Toggle>().isOn = false;
+                    _isFullScreen = false;
+                }
             }
         }
     }
@@ -168,6 +170,19 @@ public class UINavigateLogic : MonoBehaviour
         if(GlobalBools._isInReception)
         {
             _buttonElevator[0].interactable = false;
+
+            var colorsbuton = _buttonElevator[0].GetComponent<Button>().colors;
+            var restoreColorButton1 = _buttonElevator[1].GetComponent<Button>().colors;
+            var restoreColorButton2 = _buttonElevator[2].GetComponent<Button>().colors;
+
+            colorsbuton.normalColor = Color.gray;
+            restoreColorButton1.normalColor = Color.white;
+            restoreColorButton2.normalColor = Color.white;
+
+            _buttonElevator[0].GetComponent<Button>().colors = colorsbuton;
+            _buttonElevator[1].GetComponent<Button>().colors = restoreColorButton1;
+            _buttonElevator[2].GetComponent<Button>().colors = restoreColorButton2;
+
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(_firstObjectToSelect[8]);
 
@@ -176,17 +191,39 @@ public class UINavigateLogic : MonoBehaviour
         if (GlobalBools._isInFirstFloor)
         {
             _buttonElevator[1].interactable = false;
+
+            var colorsbuton = _buttonElevator[1].GetComponent<Button>().colors;
+            var restoreColorButton1 = _buttonElevator[0].GetComponent<Button>().colors;
+            var restoreColorButton2 = _buttonElevator[2].GetComponent<Button>().colors;
+
+            colorsbuton.normalColor = Color.gray;
+            restoreColorButton1.normalColor = Color.white;
+            restoreColorButton2.normalColor = Color.white;
+            _buttonElevator[1].GetComponent<Button>().colors = colorsbuton;
+            _buttonElevator[0].GetComponent<Button>().colors = restoreColorButton1;
+            _buttonElevator[2].GetComponent<Button>().colors = restoreColorButton2;
+
+
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(_firstObjectToSelect[9]);
 
         }
-        if (GlobalBools._isInReception)
+        if (GlobalBools._isInSecondFloor)
         {
             _buttonElevator[2].interactable = false;
+
             var colorsbuton =_buttonElevator[2].GetComponent<Button>().colors;
+            var restoreColorButton1 = _buttonElevator[0].GetComponent<Button>().colors;
+            var restoreColorButton2 = _buttonElevator[1].GetComponent<Button>().colors;
             colorsbuton.normalColor = Color.gray;
-            //_buttonElevator[2].GetComponent<Button>
-            //EventSystem.current.SetSelectedGameObject(null);
+            restoreColorButton1.normalColor = Color.white;
+            restoreColorButton2.normalColor = Color.white;
+
+            _buttonElevator[2].GetComponent<Button>().colors = colorsbuton;
+            _buttonElevator[0].GetComponent<Button>().colors = restoreColorButton1;
+            _buttonElevator[1].GetComponent<Button>().colors = restoreColorButton2;
+            
+            EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(_firstObjectToSelect[10]);
 
         }

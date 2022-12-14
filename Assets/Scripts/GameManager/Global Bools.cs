@@ -58,10 +58,11 @@ public static class GlobalBools
     public static bool _isCloseToElevator = false;
     public static bool _isInReception = false;
     public static bool _isInFirstFloor = false;
-    public static bool _isInSecond = false;
+    public static bool _isInSecondFloor = false;
 
     //Bool manejo UINavigateLogic
 
     public static bool _isInNotesPanel = false;
     public static bool _isInventoryActive = false;
+    public static bool _canSubmit = false;
 }
