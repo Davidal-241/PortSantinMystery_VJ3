@@ -9,7 +9,7 @@ using UnityEngine.InputSystem.UI;
 
 public class ElevatorLogical : MonoBehaviour
 {
-    [SerializeField] string _receptionHotel, _firstFloorHotel, _secondFloorHotel;
+    public string _receptionHotel, _firstFloorHotel, _secondFloorHotel;
 
 
     void Start()
@@ -46,5 +46,20 @@ public class ElevatorLogical : MonoBehaviour
             GlobalBools._isInSecond = true;
         }
     }
-    
+
+    public void GoReception()
+    {
+        SceneManager.LoadScene(_receptionHotel);
+    }
+    public void GoFirstFloor()
+    {
+        SceneManager.LoadScene(_firstFloorHotel);
+
+    }
+    public void GoSecondFloor()
+    {
+        SceneManager.LoadScene(_secondFloorHotel);
+
+    }
+
 }

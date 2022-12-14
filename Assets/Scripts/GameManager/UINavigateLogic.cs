@@ -10,6 +10,7 @@ public class UINavigateLogic : MonoBehaviour
 {
 
     [SerializeField] GameObject[] _firstObjectToSelect;
+    [SerializeField] Button[] _buttonElevator;
     [SerializeField] EventSystem _event;
 
     UserActions _controls;
@@ -56,6 +57,8 @@ public class UINavigateLogic : MonoBehaviour
         EventManager._ChangePageNotes.AddListener(NotesIsSelect);
         EventManager._ChangePagePhotos.AddListener(PhotosIsSelect);
         EventManager._ChangePageControlls.AddListener(ControlsIsSelect);
+        EventManager._EnterInElevator.AddListener(NavigateElevator);
+
     }
 
 
@@ -164,15 +167,24 @@ public class UINavigateLogic : MonoBehaviour
     {
         if(GlobalBools._isInReception)
         {
+            _buttonElevator[0].interactable = false;
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(_firstObjectToSelect[8]);
 
         }
 
         if (GlobalBools._isInFirstFloor)
         {
+            _buttonElevator[1].interactable = false;
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(_firstObjectToSelect[9]);
 
         }
         if (GlobalBools._isInReception)
         {
+            _buttonElevator[2].interactable = false;
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(_firstObjectToSelect[10]);
 
         }
     }
