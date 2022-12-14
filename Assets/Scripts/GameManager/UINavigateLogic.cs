@@ -183,7 +183,10 @@ public class UINavigateLogic : MonoBehaviour
         if (GlobalBools._isInReception)
         {
             _buttonElevator[2].interactable = false;
-            EventSystem.current.SetSelectedGameObject(null);
+            var colorsbuton =_buttonElevator[2].GetComponent<Button>().colors;
+            colorsbuton.normalColor = Color.gray;
+            //_buttonElevator[2].GetComponent<Button>
+            //EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(_firstObjectToSelect[10]);
 
         }
