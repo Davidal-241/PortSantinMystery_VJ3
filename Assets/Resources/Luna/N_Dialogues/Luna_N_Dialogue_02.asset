@@ -12,4 +12,117 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d951118513507334c810989fc15aff16, type: 3}
   m_Name: Luna_N_Dialogue_02
   m_EditorClassIdentifier: 
-  allLines: []
+  allLines:
+  - speaker: {fileID: 11400000, guid: 405bef5ad588c70418c775b41661886b, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 68efec3e979dd3b4c905d00896795dfa, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "\xBFVas a salir?"
+  - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 68efec3e979dd3b4c905d00896795dfa, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "De hecho s\xED, voy a ver si\u2026 Voy a dar una vuelta por la ciudad."
+  - speaker: {fileID: 11400000, guid: 405bef5ad588c70418c775b41661886b, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 1dbf620756c5a1c40935a97050613362, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "\xBFVas a buscar a tu compa\xF1ero, verdad?"
+  - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 1dbf620756c5a1c40935a97050613362, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "Oh no, solo iba a ver la ciudad y\u2026"
+  - speaker: {fileID: 11400000, guid: 405bef5ad588c70418c775b41661886b, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 1dbf620756c5a1c40935a97050613362, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "C\xE9sar, s\xE9 lo de Diego. Mi padre me lo cont\xF3."
+  - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 3bff47d08f1f9d94eb67ca36f1770c57, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 68efec3e979dd3b4c905d00896795dfa, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "\xBFTu padre es Centuri\xF3n?"
+  - speaker: {fileID: 11400000, guid: 405bef5ad588c70418c775b41661886b, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 8483182017f2f7f4493ced029b9ccc4e, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "\xA1Se nota que eres detective!"
+  - speaker: {fileID: 11400000, guid: 405bef5ad588c70418c775b41661886b, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 68efec3e979dd3b4c905d00896795dfa, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "En fin, entiendo que no conf\xEDes en m\xED, ni siquiera espero\r\nque
+      lo hagas."
+  - speaker: {fileID: 11400000, guid: 405bef5ad588c70418c775b41661886b, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 68efec3e979dd3b4c905d00896795dfa, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "Pero Puerto Santin no es una ciudad por la que darse paseitos, C\xE9sar."
+  - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 68efec3e979dd3b4c905d00896795dfa, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "\xBFEntonces t\xFA tambi\xE9n esperas que me quede aqu\xED sin hacer
+      nada?"
+  - speaker: {fileID: 11400000, guid: 405bef5ad588c70418c775b41661886b, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 8483182017f2f7f4493ced029b9ccc4e, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: No/./././ Me estoy ofreciendo a guiarte por la ciudad.
+  - speaker: {fileID: 11400000, guid: 405bef5ad588c70418c775b41661886b, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 68efec3e979dd3b4c905d00896795dfa, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "Yo nac\xED aqu\xED y la conozco perfectamente, adem\xE1s, s\xE9 las
+      localizaciones donde \r\nse realizaron los cr\xEDmenes."
+  - speaker: {fileID: 11400000, guid: 405bef5ad588c70418c775b41661886b, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 8483182017f2f7f4493ced029b9ccc4e, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "Conf\xEDes en m\xED o no, soy la \xFAnica que puede ayudarte."
+  - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: ff7a915a520b9e944956eff682df3251, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 68efec3e979dd3b4c905d00896795dfa, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "\xBFPor qu\xE9 haces esto?"
+  - speaker: {fileID: 11400000, guid: 405bef5ad588c70418c775b41661886b, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: ff7a915a520b9e944956eff682df3251, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 68efec3e979dd3b4c905d00896795dfa, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: Bueno./././
+  - speaker: {fileID: 11400000, guid: 405bef5ad588c70418c775b41661886b, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: ff7a915a520b9e944956eff682df3251, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 1dbf620756c5a1c40935a97050613362, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: Digamos que no quiero pasarme en este hotel toda mi vida.
+  - speaker: {fileID: 11400000, guid: 405bef5ad588c70418c775b41661886b, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: ff7a915a520b9e944956eff682df3251, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 68efec3e979dd3b4c905d00896795dfa, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "Y tengo mis propios intereses sobre este asunto\u2026"
+  - speaker: {fileID: 11400000, guid: 405bef5ad588c70418c775b41661886b, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: ff7a915a520b9e944956eff682df3251, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 68efec3e979dd3b4c905d00896795dfa, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "Y tengo mis propios intereses sobre este asunto\u2026"
+  - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 68efec3e979dd3b4c905d00896795dfa, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: Mmm/././
+  - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 68efec3e979dd3b4c905d00896795dfa, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "Est\xE1 bien.\r Pero no te quitar\xE9 el ojo de encima."
+  - speaker: {fileID: 11400000, guid: 405bef5ad588c70418c775b41661886b, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 8483182017f2f7f4493ced029b9ccc4e, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "\xA1Genial!"
+  - speaker: {fileID: 11400000, guid: 405bef5ad588c70418c775b41661886b, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 8483182017f2f7f4493ced029b9ccc4e, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "Ahora dejemos nuestra verborrea y d\xE9monos prisa."
