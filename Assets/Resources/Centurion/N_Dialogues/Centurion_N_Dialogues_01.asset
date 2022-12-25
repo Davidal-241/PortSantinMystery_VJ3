@@ -16,73 +16,115 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: 5fef39847b9b09f4795a304bb2fdf2f5, type: 3}
     _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
-    dialogue: "Buenas se\xF1or soy\u2026"
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "Buenas se\xF1or soy-"
   - speaker: {fileID: 11400000, guid: 1f33787dd4362934a8e9f522917056ac, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: 5fef39847b9b09f4795a304bb2fdf2f5, type: 3}
     _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     dialogue: "C\xE9sar Merino, el detective."
   - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: 3bff47d08f1f9d94eb67ca36f1770c57, type: 3}
     _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     dialogue: Entiendo que me esperaba.
   - speaker: {fileID: 11400000, guid: 1f33787dd4362934a8e9f522917056ac, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
     _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     dialogue: "Claro. Diego me habl\xF3 de usted."
   - speaker: {fileID: 0}
     _SpritePortrains1: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
     _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     dialogue: "Ya veo. Deduzco que usted es el due\xF1o del hotel."
   - speaker: {fileID: 11400000, guid: 1f33787dd4362934a8e9f522917056ac, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: 0e3d5ad7437956140ab223fde62e82c0, type: 3}
     _SpritePortrains2: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     dialogue: "Una deducci\xF3n muy acertada C\xE9sar, Aunque \r\nbueno, trat\xE1ndose
       de un detective cabe esperarlo."
   - speaker: {fileID: 11400000, guid: 1f33787dd4362934a8e9f522917056ac, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: 0e3d5ad7437956140ab223fde62e82c0, type: 3}
     _SpritePortrains2: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     dialogue: "Yo rijo el Hotel Sant\xEDn desde que mi mujer falleci\xF3. \r\nMi
       nombre es Centuri\xF3n Dur\xE1n."
   - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: 5fef39847b9b09f4795a304bb2fdf2f5, type: 3}
     _SpritePortrains2: {fileID: 21300000, guid: 0e3d5ad7437956140ab223fde62e82c0, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     dialogue: "Un placer se\xF1or."
   - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
     _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     dialogue: "Ver\xE1 Centuri\xF3n, acabo de llegar y me gustar\xEDa\r\nencontrarme
       con mi compa\xF1ero, Diego."
   - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
     _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     dialogue: "El chico de recepci\xF3n me coment\xF3 que usted sabr\xEDa donde \r\npodr\xEDa
       estar."
   - speaker: {fileID: 11400000, guid: 1f33787dd4362934a8e9f522917056ac, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
     _SpritePortrains2: {fileID: 21300000, guid: 8296d3229eee28b4ebc1fdffff1f0403, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     dialogue: "Bueno C\xE9sar, no pretendo alterarlo pero Diego sali\xF3\r\nanoche
       a explorar. Y a\xFAn no ha regresado al\r\nhotel."
-  - speaker: {fileID: 0}
-    _SpritePortrains1: {fileID: 0}
-    _SpritePortrains2: {fileID: 0}
-    dialogue: 
-  - speaker: {fileID: 0}
-    _SpritePortrains1: {fileID: 0}
-    _SpritePortrains2: {fileID: 0}
-    dialogue: 
-  - speaker: {fileID: 0}
-    _SpritePortrains1: {fileID: 0}
-    _SpritePortrains2: {fileID: 0}
-    dialogue: 
-  - speaker: {fileID: 0}
-    _SpritePortrains1: {fileID: 0}
-    _SpritePortrains2: {fileID: 0}
-    dialogue: 
-  - speaker: {fileID: 0}
-    _SpritePortrains1: {fileID: 0}
-    _SpritePortrains2: {fileID: 0}
-    dialogue: 
-  - speaker: {fileID: 0}
-    _SpritePortrains1: {fileID: 0}
-    _SpritePortrains2: {fileID: 0}
-    dialogue: 
+  - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: c7433c9db7f97a24c8c3b229baf20e81, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "\xBFCu\xE1ndo fu\xE9 la \xFAltima vez que lo vieron?"
+  - speaker: {fileID: 11400000, guid: 1f33787dd4362934a8e9f522917056ac, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "Cen\xF3 en su habitaci\xF3n, y a las nueve decidi\xF3 \r\nmarcharse.
+      Obviamente mi recomendaci\xF3n\r\nhacia \xE9l fue que no lo hiciera. Pero Diego
+      insisti\xF3."
+  - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: c7433c9db7f97a24c8c3b229baf20e81, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "Pero/././/  \xBFPor qu\xE9 har\xEDa eso?"
+  - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "Se\xF1or, espero que entienda que tendr\xE9\r\nque interrogarlo m\xE1s
+      a fondo sobre este asunto."
+  - speaker: {fileID: 11400000, guid: 1f33787dd4362934a8e9f522917056ac, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "Oh, por supuesto C\xE9sar, lo tendremos pendiente."
+  - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "Creo que voy a investigar un poco por la ciudad. No me alejar\xE9
+      mucho."
+  - speaker: {fileID: 11400000, guid: 1f33787dd4362934a8e9f522917056ac, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 8296d3229eee28b4ebc1fdffff1f0403, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "No creo que sea buena idea\u2026 con todos esos\r\nasesinatos que
+      han ocurrido, C\xE9sar."
+  - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: c7433c9db7f97a24c8c3b229baf20e81, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 8296d3229eee28b4ebc1fdffff1f0403, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "No pretender\xE1 que investigue desde el hotel, se\xF1or."
+  - speaker: {fileID: 11400000, guid: 1f33787dd4362934a8e9f522917056ac, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 8296d3229eee28b4ebc1fdffff1f0403, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "Entonces\u2026 ande con cuidado,hijo."
+  - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
+    _SpritePortrains1: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
+    _SpritePortrains2: {fileID: 21300000, guid: 463d1c6b6fd74c04f9265cf5be1a08a8, type: 3}
+    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    dialogue: "Descuide, un placer se\xF1or Dur\xE1n."

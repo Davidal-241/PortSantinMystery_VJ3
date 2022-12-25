@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d951118513507334c810989fc15aff16, type: 3}
-  m_Name: Centurion_GF_Dialogue_01
+  m_Name: Cesar_GF_Dialogue_07
   m_EditorClassIdentifier: 
   allLines:
-  - speaker: {fileID: 11400000, guid: 1f33787dd4362934a8e9f522917056ac, type: 2}
+  - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
-    _SpritePortrains2: {fileID: 21300000, guid: 8296d3229eee28b4ebc1fdffff1f0403, type: 3}
+    _SpritePortrains2: {fileID: 0}
     UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-    dialogue: "Esta ciudad ya no es lo que era\u2026 Es una pena"
+    dialogue: "Todav\xEDa tengo cosas que hacer aqu\xED."
