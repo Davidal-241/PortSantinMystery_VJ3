@@ -14,6 +14,7 @@ public class StartConvo : MonoBehaviour
 
 
         EventManager._Talk.AddListener(CheckConve);
+        EventManager._DoorDialogue.AddListener(DoorConversation);
         EventManager._CesarDialoguesEvent.AddListener(CesarDialogues);
 
         print("StartConvo");
@@ -41,7 +42,7 @@ public class StartConvo : MonoBehaviour
                 convo = Resources.Load<Conversation>("Luna/N_Dialogues/Luna_N_Dialogue_02");
                 _dialogueBox.SetActive(true);
                 StartConve();
-
+                ProgressCheck._canYouExit = true;
             }
         }
 

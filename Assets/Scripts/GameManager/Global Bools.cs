@@ -63,4 +63,11 @@ public static class GlobalBools
     public static bool _isInNotesPanel = false;
     public static bool _isInventoryActive = false;
     public static bool _canSubmit = false;
+
+    //Objetos que son interactuables
+
+    public static bool _isCloseToBed = false;
+    public static bool _isCloseToGlasses = false;
+
+
 }

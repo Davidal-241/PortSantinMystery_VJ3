@@ -20,30 +20,42 @@ public class ElevatorLogical : MonoBehaviour
     public void UseElevator()
     {
         Scene _currentScene;
-      
+
+        ProgressCheck._youTryUseElevator = true;
 
         _currentScene = SceneManager.GetActiveScene();
-
-        if(_currentScene.name == _receptionHotel)
+        if (ProgressCheck._canUseElevator)
         {
-            GlobalBools._isInReception = true;
-            GlobalBools._isInFirstFloor = false;
-            GlobalBools._isInSecondFloor = false;
-        }
 
-        if (_currentScene.name == _firstFloorHotel)
-        {
-            GlobalBools._isInReception = false;
-            GlobalBools._isInFirstFloor = true;
-            GlobalBools._isInSecondFloor = false;
+            if (_currentScene.name == _receptionHotel)
+            {
+                GlobalBools._isInReception = true;
+                GlobalBools._isInFirstFloor = false;
+                GlobalBools._isInSecondFloor = false;
+            }
 
-        }
+            if (_currentScene.name == _firstFloorHotel)
+            {
+                GlobalBools._isInReception = false;
+                GlobalBools._isInFirstFloor = true;
+                GlobalBools._isInSecondFloor = false;
 
-        if (_currentScene.name == _secondFloorHotel)
-        {
-            GlobalBools._isInReception = false;
-            GlobalBools._isInFirstFloor = false;
-            GlobalBools._isInSecondFloor = true;
+            }
+
+            if (ProgressCheck._canUseElevatorToGoDown)
+            {
+                if (_currentScene.name == _secondFloorHotel)
+
+                {
+                    GlobalBools._isInReception = false;
+                    GlobalBools._isInFirstFloor = false;
+                    GlobalBools._isInSecondFloor = true;
+                }
+            }
+            else
+            {
+                ProgressCheck._youTryUseElevatorDown = true;
+            }
         }
     }
 

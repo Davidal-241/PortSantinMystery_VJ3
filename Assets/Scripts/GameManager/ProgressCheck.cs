@@ -29,10 +29,15 @@ public class ProgressCheck : MonoBehaviour
     public static bool _canWalkForTheScene;
     public static bool _areWeInTheHotel;
     public static bool _areWeOutsideTheWeRoom;
+    public static bool _areWeOutsideTheCenturionRoom;
+    public static bool _areWeInReception;
 
     public static bool _youTryGoOutside;
+    public static bool _youTryUseElevator;
+    public static bool _youTryUseElevatorDown;
 
     public static bool _isLunaInTheScene;
+    public static bool _spawnLuna;
 
     public string[] _sceneName;
 
@@ -48,6 +53,26 @@ public class ProgressCheck : MonoBehaviour
 
     public void GameFlow()
     {
+        Scene _currentScene = SceneManager.GetActiveScene();
+
+
+        if (_currentScene.name != _sceneName[1])
+        {
+            _areWeOutsideTheCenturionRoom = false;
+        }
+       if(_currentScene.name == _sceneName[1])
+        {
+            _areWeOutsideTheCenturionRoom = true;
+        }
+
+       if(_currentScene.name == _sceneName[3])
+        {
+            _areWeInReception = true;
+        }
+        else
+        {
+            _areWeInReception = false;
+        }
 
         if (_areWeInTheSecondPart)
         {
@@ -68,7 +93,16 @@ public class ProgressCheck : MonoBehaviour
                 if (!GlobalBools._isknowJorge)
                 {
                     _canUseElevator = false;
-                    EventManager._CesarDialoguesEvent.Invoke();
+                    if (_youTryGoOutside)
+                    {
+                        EventManager._CesarDialoguesEvent.Invoke();
+                        _youTryGoOutside = false;
+                    }
+                    if (_youTryUseElevator)
+                    {
+                        EventManager._CesarDialoguesEvent.Invoke();
+                        _youTryUseElevator = false;
+                    }
                 }
                 else
                 {
@@ -76,19 +110,44 @@ public class ProgressCheck : MonoBehaviour
                     _canUseElevatorToGoDown = false;
                 }
 
-                if (!_canUseElevatorToGoDown)
+                if (_youTryGoOutside)
                 {
                     EventManager._CesarDialoguesEvent.Invoke();
+                    _youTryGoOutside = false;
+                }
+
+                if (!_canUseElevatorToGoDown)
+                {
+                    if (_youTryUseElevatorDown)
+                    {
+                        EventManager._CesarDialoguesEvent.Invoke();
+                        _youTryUseElevatorDown = false;
+                    }
 
                 }
-                //En el elevador definir el cambio
+                
 
                 if (_areWeInTheStage3)
                 {
-                    if (!_didYouLeaveTheSuitcase)
+                    if (_currentScene.name == _sceneName[0])
                     {
-                        _canUseElevator = false;
-                        EventManager._CesarDialoguesEvent.Invoke();
+                        _areWeOutsideTheWeRoom = true;
+                    }
+                    else
+                    {
+                        _areWeOutsideTheWeRoom = false;
+                    }
+
+                    _canUseElevator = false;
+
+                    if (_youTryUseElevator)
+                    {
+
+                        if (!_didYouLeaveTheSuitcase)
+                        {
+                           
+                            EventManager._CesarDialoguesEvent.Invoke();
+                        }
                     }
                     if (_canYouInteractWithYourDoor)
                     {
@@ -116,9 +175,11 @@ public class ProgressCheck : MonoBehaviour
                     }
                 }
 
+              
+
                 if (_areWeInTheStage5)
                 {
-                    Scene _currentScene = SceneManager.GetActiveScene();
+                   
 
                     if(_currentScene.name == _sceneName[0])
                     {
@@ -135,12 +196,21 @@ public class ProgressCheck : MonoBehaviour
                         if (_areWeOutsideTheWeRoom)
                         {
                             EventManager._LunaPositionEvent.Invoke();
+                            _spawnLuna = true;
                         }
+                    }
+                    else
+                    {
+                        _spawnLuna = false;
                     }
 
                     if (!GlobalBools._isknowLuna)
                     {
-                        EventManager._CesarDialoguesEvent.Invoke();
+                        if (_youTryUseElevator)
+                        {
+
+                            EventManager._CesarDialoguesEvent.Invoke();
+                        }
                     }
                     else
                     {
@@ -150,7 +220,10 @@ public class ProgressCheck : MonoBehaviour
 
                     if (!_canYouExit)
                     {
-                        EventManager._CesarDialoguesEvent.Invoke();
+                        if (_youTryGoOutside)
+                        {
+                            EventManager._CesarDialoguesEvent.Invoke();
+                        }
                     }
 
                     if (!GlobalBools._isknowCenturion)
@@ -160,19 +233,50 @@ public class ProgressCheck : MonoBehaviour
                             _canUseElevator = false;
                             _areWeInTheStage5 = false;
                             _areWeInTheStage6 = true;
+                            _areWeOutsideTheCenturionRoom = true;
                         }
                     }
-                    else
+                }
+
+                if (_areWeInTheStage6)
+                {
+                    if (!GlobalBools._isknowCenturion)
+                    {
+                        if (_youTryUseElevator)
+                        {
+                            EventManager._CesarDialoguesEvent.Invoke();
+                        }
+                    }
+                    if (GlobalBools._isknowCenturion)
                     {
                         _canUseElevator = true;
                     }
 
-                    if (_youTryGoOutside)
+                    
+                    if (!_isLunaInTheScene)
                     {
-                        _canYouExit = true;
+
+                        if (_currentScene.name == _sceneName[2])
+                        {
+                            EventManager._LunaPositionEvent.Invoke();
+                            
+                        }
                     }
 
+                    if (_isLunaInTheScene)
+                    {
+                        if (!_canYouExit)
+                        {
 
+                            if (_youTryGoOutside)
+                            {
+                                EventManager._DoorDialogue.Invoke();
+                                _areWeInTheThirdPart = true;
+                            }
+                        }
+                    }
+
+                    
                 }
             }
         }

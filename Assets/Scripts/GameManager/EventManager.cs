@@ -16,6 +16,9 @@ public static class EventManager
     public static UnityEvent _EnterInElevator = new UnityEvent();
     public static UnityEvent _CloseElevator = new UnityEvent();
 
+    //public static UnityEvent _InteractueGlasses = new UnityEvent();
+    //public static UnityEvent _InteractueBed = new UnityEvent();
+
     public static UnityEvent _OpenInventory = new UnityEvent();
     public static UnityEvent _CloseInventory = new UnityEvent();
     public static UnityEvent _OpenMenuPause = new UnityEvent();
@@ -33,6 +36,7 @@ public static class EventManager
 
     public static UnityEvent _LunaPositionEvent = new UnityEvent();
 
+    public static UnityEvent _DoorDialogue = new UnityEvent();
     
 
     //public static UnityEvent _StartFeedback = new UnityEvent();
