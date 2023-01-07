@@ -28,6 +28,11 @@ public static class EventManager
     public static UnityEvent _ChangePageNotes = new UnityEvent();
     public static UnityEvent _ChangePagePhotos = new UnityEvent();
     public static UnityEvent _ChangePageControlls = new UnityEvent();
+
+    public static UnityEvent _CesarDialoguesEvent = new UnityEvent();
+
+    public static UnityEvent _LunaPositionEvent = new UnityEvent();
+
     
 
     //public static UnityEvent _StartFeedback = new UnityEvent();

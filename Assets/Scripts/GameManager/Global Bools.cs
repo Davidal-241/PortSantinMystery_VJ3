@@ -30,20 +30,18 @@ public static class GlobalBools
     public static bool _iscenturionTalking = false;
     public static bool _isjorgeTalking = false;
     public static bool _isprayerTalking = false;
+
+    public static bool _cantTalkLuna;
         //Tienen mas conversación?
-    public static bool _canJorgeTalkMore = true;
+    public static bool _canJorgeTalkMore = false;
+    public static bool _canCenturionTalkMore = false;
+    public static bool _canLunaTalkMore = false;
 
 
-    public static bool _canMoreTalk = false;
 
 
     public static bool _isWaitingForInteractue = false;
-    //Permitira saber el progreso del juego//
-    public static bool _stage1 = true;
-
-
-
-
+    
 
     //Bool manejo Puerta
     public static bool _canOpenDoor = false;
