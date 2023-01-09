@@ -137,11 +137,7 @@ public class StartConvo : MonoBehaviour
     private void Update()
     {
 
-        if (GlobalBools._isDialoguesLastLine)
-        {
-            GlobalBools._canJorgeTalkMore = true;
-            
-        }
+     
 
         //if (GlobalBools._isTalking)
         //{
@@ -259,9 +255,10 @@ public class StartConvo : MonoBehaviour
                         print(convo);
                         print(_dialogueBox);
                         StartConve();
-                        //GlobalBools._canJorgeTalkMore = true;
-
+                        ProgressCheck._finishMainDialogueJorge = true;
                     }
+
+                
 
                     if (GlobalBools._canJorgeTalkMore)
                     {
