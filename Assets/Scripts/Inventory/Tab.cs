@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Tap : MonoBehaviour
+public class Tab : MonoBehaviour
 {
     public GameObject _item;
     public int _ID;
@@ -14,6 +14,7 @@ public class Tap : MonoBehaviour
     public Sprite _icon;
 
     public Transform _slotIconGameObject;
+    public GameObject _view;
 
     private void Start()
     {
@@ -24,10 +25,4 @@ public class Tap : MonoBehaviour
     {
         _slotIconGameObject.GetComponent<Image>().sprite = _icon;
     }
-
-    public void UseItem()
-    {
-
-    }
-
 }

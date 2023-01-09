@@ -39,6 +39,8 @@ public class ProgressCheck : MonoBehaviour
     public static bool _isLunaInTheScene = false;
     public static bool _spawnLuna = false;
 
+    public static bool _finishMainDialogueJorge = false;
+
     public string[] _sceneName;
 
     private void Start()
@@ -49,6 +51,11 @@ public class ProgressCheck : MonoBehaviour
     private void Update()
     {
         GameFlow();
+
+        if (_finishMainDialogueJorge)
+        {
+            GlobalBools._canJorgeTalkMore = true;
+        }
     }
 
     public void GameFlow()

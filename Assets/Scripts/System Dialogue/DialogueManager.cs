@@ -35,10 +35,7 @@ public class DialogueManager : MonoBehaviour
     {
 
         _dialogueBox = GameObject.Find("DialogueBox");
-        EventManager.DialogueEnded.AddListener(EndBoolTest);
-
-        
-        
+     
     }
 
     public static void StartConversation(Conversation convo)
@@ -59,10 +56,9 @@ public class DialogueManager : MonoBehaviour
     public void ReadNext()
     {
         
-        if(currentIndex >= currentConvo.GetLength())
+        if(currentIndex == currentConvo.GetLength())
         {
-            
-            //EventManager.DialogueEnded.Invoke();
+            EndDialogue();
             return;
         }
 
@@ -86,31 +82,10 @@ public class DialogueManager : MonoBehaviour
 
         print("current convo step: " + (currentIndex + 1) + " / " + currentConvo.GetLength());
 
-
-        if(currentIndex == currentConvo.GetLength() - 1)
-        {
-            
-            print("setting _isDialoguesLastLine to true");
-
-            EventManager.DialogueEnded.Invoke();
-            //navButtonText.text = "x";
-        }
-
         currentIndex++;
     }
 
-    private void EndBoolTest()
-    {
-        if (!GlobalBools._isDialoguesLastLine)
-        {
-
-            GlobalBools._isDialoguesLastLine = true;
-        }
-        else
-        {
-            GlobalBools._isDialoguesLastLine = false;
-        }
-    }
+ 
     public void EndDialogue()
     {
         _dialogueBox.SetActive(false);
@@ -118,8 +93,6 @@ public class DialogueManager : MonoBehaviour
         currentIndex = 0;
         GlobalBools._isWaitingForInteractue = false;
         GlobalBools._isTalking = false;
-
-        currentIndex = 0;
     }
 
     private IEnumerator TypeText(string text)

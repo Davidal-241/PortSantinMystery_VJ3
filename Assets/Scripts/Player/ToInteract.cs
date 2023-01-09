@@ -151,18 +151,8 @@ public class ToInteract : MonoBehaviour
         {
             print("GlobalBools._isDialoguesLastLine: " + GlobalBools._isDialoguesLastLine);
 
-            if (!GlobalBools._isDialoguesLastLine)
-            {
                 dialogueManager.ReadNext();
-                return;
-            }
-            else
-            {
-                EventManager.DialogueEnded.Invoke();
-                dialogueManager.EndDialogue();
-                print("ending dialogue");
-                return;
-            }
+          
         }
     }
 }
