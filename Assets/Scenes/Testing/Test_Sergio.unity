@@ -1434,9 +1434,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventory: {fileID: 7570090892686742755}
-  _slotTap: {fileID: 0}
-  _selector: {fileID: 7570090893671932377}
-  _slotTapViews: {fileID: 0}
+  _slotTab: {fileID: 7570090893582106166}
+  _tabSelector: {fileID: 7570090893671932377}
+  _slotTapViews: {fileID: 1279580579}
+  _options:
+  - {fileID: 777872404}
+  - {fileID: 1855615300}
+  - {fileID: 788254215}
+  - {fileID: 1861662554}
 --- !u!1 &608120419
 GameObject:
   m_ObjectHideFlags: 0
@@ -1697,7 +1702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &777872405
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1769,7 +1774,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &788254216
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5839,7 +5844,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1855615301
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5911,7 +5916,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1861662555
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6934,12 +6939,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 0}
-  _ID: 0
+  _ID: 1
   _type: 
   _description: 
   _empty: 0
   _icon: {fileID: 0}
   _slotIconGameObject: {fileID: 0}
+  _view: {fileID: 0}
 --- !u!1 &7570090893208782538
 GameObject:
   m_ObjectHideFlags: 0
@@ -7257,12 +7263,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 0}
-  _ID: 0
+  _ID: 3
   _type: 
   _description: 
   _empty: 0
   _icon: {fileID: 0}
   _slotIconGameObject: {fileID: 0}
+  _view: {fileID: 0}
 --- !u!114 &7570090893426220528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7528,7 +7535,7 @@ GameObject:
   - component: {fileID: 7570090893582106161}
   - component: {fileID: 7570090893582106160}
   m_Layer: 5
-  m_Name: Slot_Halder
+  m_Name: Slot_Tab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7599,8 +7606,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -24.939964, y: 24.939991}
-  m_SizeDelta: {x: 58, y: 58}
+  m_AnchoredPosition: {x: -93.341, y: 24.939991}
+  m_SizeDelta: {x: 229.839, y: 58}
   m_Pivot: {x: 0.07, y: 0.93}
 --- !u!114 &7570090893671932379
 MonoBehaviour:
@@ -7783,6 +7790,7 @@ MonoBehaviour:
   _empty: 0
   _icon: {fileID: 0}
   _slotIconGameObject: {fileID: 0}
+  _view: {fileID: 0}
 --- !u!114 &7570090894174025256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7931,9 +7939,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 0}
-  _ID: 0
+  _ID: 2
   _type: 
   _description: 
   _empty: 0
   _icon: {fileID: 0}
   _slotIconGameObject: {fileID: 0}
+  _view: {fileID: 0}
