@@ -10,6 +10,7 @@ public class StartConvo : MonoBehaviour
 
     private void Start()
     {
+        print("StartConvo está como componente de " + name);
         _dialogueBox = GameObject.Find("DialogueBox");
 
 
@@ -17,16 +18,17 @@ public class StartConvo : MonoBehaviour
         EventManager._DoorDialogue.AddListener(DoorConversation);
         EventManager._CesarDialoguesEvent.AddListener(CesarDialogues);
 
-        print("StartConvo");
         if (_dialogueBox != null)
             _dialogueBox.SetActive(false);
+        print(_dialogueBox);
 
     }
 
     public void StartConve()
     {
+        GlobalBools._isDialoguesLastLine = false;
         GlobalBools._nextLineActive = true;
-        GlobalBools._isTalk= true;
+        GlobalBools._isTalking= true;
         DialogueManager.StartConversation(convo);
       
     }
@@ -132,6 +134,25 @@ public class StartConvo : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+
+        if (GlobalBools._isDialoguesLastLine)
+        {
+            GlobalBools._canJorgeTalkMore = true;
+            
+        }
+
+        //if (GlobalBools._isTalking)
+        //{
+        //    if (_dialogueBox == null)
+        //    {
+        //        _dialogueBox = GameObject.Find("DialogueBox");
+        //        _dialogueBox.SetActive(true);
+        //    }
+        //}
+    }
+
     public void CheckConve()
     {
         //if(GlobalBools._isdriverTalking)
@@ -149,7 +170,7 @@ public class StartConvo : MonoBehaviour
 
         //    }
         //}
-
+        
         if (GlobalBools._islunaTalking)
         {
             if (ProgressCheck._areWeInTheSecondPart)
@@ -190,9 +211,6 @@ public class StartConvo : MonoBehaviour
                         }
                     }
                 }
-
-
-
             }
         }
 
@@ -219,10 +237,10 @@ public class StartConvo : MonoBehaviour
                         StartConve();
                     }
                 }
-
-                
             }
         }
+
+
 
         if (GlobalBools._isjorgeTalking)
         {
@@ -237,8 +255,12 @@ public class StartConvo : MonoBehaviour
                     {
                         convo = Resources.Load<Conversation>("Jorge/N_Dialogues/Jorge_N_Dialogue_01");
                         _dialogueBox.SetActive(true);
-                        GlobalBools._canJorgeTalkMore = true;
+                        print("1: " + _dialogueBox.activeInHierarchy);
+                        print(convo);
+                        print(_dialogueBox);
                         StartConve();
+                        //GlobalBools._canJorgeTalkMore = true;
+
                     }
 
                     if (GlobalBools._canJorgeTalkMore)
@@ -251,19 +273,27 @@ public class StartConvo : MonoBehaviour
                             if (_randomConversationIndex == 0)
                             {
                                 convo = Resources.Load<Conversation>("Jorge/GF_Dialogues/Jorge_GF_Dialogue_01");
+                                _dialogueBox.SetActive(true);
+                                print("2: " + _dialogueBox.activeInHierarchy);
+                                print(convo);
+                                print(_dialogueBox);
+                                StartConve();
                             }
                             if (_randomConversationIndex == 1)
                             {
                                 convo = Resources.Load<Conversation>("Jorge/GF_Dialogues/Jorge_GF_Dialogue_02");
+                                _dialogueBox.SetActive(true);
+                                StartConve();
                             }
                         }
                         if (ProgressCheck._areWeInTheStage5)
                         {
                             convo = Resources.Load<Conversation>("Jorge/GF_Dialogues/Jorge_GF_Dialogue_02");
+                            _dialogueBox.SetActive(true);
+                            StartConve();
                         }
 
-                        _dialogueBox.SetActive(true);
-                        StartConve();
+                        
                     }
                 }
 

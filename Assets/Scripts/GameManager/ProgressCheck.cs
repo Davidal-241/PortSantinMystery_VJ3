@@ -5,39 +5,39 @@ using UnityEngine.SceneManagement;
 
 public class ProgressCheck : MonoBehaviour
 {
-    public static bool _areWeInTheIntro;
-    public static bool _areWeInTheSecondPart;
-    public static bool _areWeInTheThirdPart;
+    public static bool _areWeInTheIntro = false;
+    public static bool _areWeInTheSecondPart = true;
+    public static bool _areWeInTheThirdPart = false;
 
-    public static bool _canUseElevator;
-    public static bool _canUseElevatorToGoDown;
-    public static bool _didYouLeaveTheSuitcase;
-    public static bool _didYouExitTheRoom;
-    public static bool _canYouInteractWithYourDoor;
-    public static bool _canYouInteractWithYourBed;
+    public static bool _canUseElevator = false;
+    public static bool _canUseElevatorToGoDown = false;
+    public static bool _didYouLeaveTheSuitcase = false;
+    public static bool _didYouExitTheRoom = false;
+    public static bool _canYouInteractWithYourDoor = false;
+    public static bool _canYouInteractWithYourBed = false;
 
-    public static bool _didYouInteractWithTheGlasses;
+    public static bool _didYouInteractWithTheGlasses = false;
     public static bool _canYouExit = false;
 
-    public static bool _areWeInTheStage1;
-    public static bool _areWeInTheStage2;
-    public static bool _areWeInTheStage3;
-    public static bool _areWeInTheStage4;
-    public static bool _areWeInTheStage5;
-    public static bool _areWeInTheStage6;
+    public static bool _areWeInTheStage1 = false;
+    public static bool _areWeInTheStage2 = true;
+    public static bool _areWeInTheStage3 = false;
+    public static bool _areWeInTheStage4 = false;
+    public static bool _areWeInTheStage5 = false;
+    public static bool _areWeInTheStage6 = false;
 
-    public static bool _canWalkForTheScene;
-    public static bool _areWeInTheHotel;
-    public static bool _areWeOutsideTheWeRoom;
-    public static bool _areWeOutsideTheCenturionRoom;
-    public static bool _areWeInReception;
+    public static bool _canWalkForTheScene = false;
+    public static bool _areWeInTheHotel = false;
+    public static bool _areWeOutsideTheWeRoom = false;
+    public static bool _areWeOutsideTheCenturionRoom = false;
+    public static bool _areWeInReception = true;
 
-    public static bool _youTryGoOutside;
-    public static bool _youTryUseElevator;
-    public static bool _youTryUseElevatorDown;
+    public static bool _youTryGoOutside = false;
+    public static bool _youTryUseElevator = false;
+    public static bool _youTryUseElevatorDown = false;
 
-    public static bool _isLunaInTheScene;
-    public static bool _spawnLuna;
+    public static bool _isLunaInTheScene = false;
+    public static bool _spawnLuna = false;
 
     public string[] _sceneName;
 
@@ -82,7 +82,7 @@ public class ProgressCheck : MonoBehaviour
                 _didYouLeaveTheSuitcase = false;
             }
 
-            if (_areWeInTheHotel)
+            if (_areWeInReception)
             {
                 _areWeInTheStage1 = false;
                 _areWeInTheStage2 = true;
@@ -158,8 +158,7 @@ public class ProgressCheck : MonoBehaviour
 
                 if (_areWeInTheStage4)
                 {
-                    // hacer script cama y gafas
-
+                    
                     if (_didYouLeaveTheSuitcase)
                     {
                         _canYouInteractWithYourBed = false;
@@ -276,7 +275,6 @@ public class ProgressCheck : MonoBehaviour
                         }
                     }
 
-                    
                 }
             }
         }

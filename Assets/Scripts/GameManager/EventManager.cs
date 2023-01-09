@@ -37,11 +37,12 @@ public static class EventManager
     public static UnityEvent _LunaPositionEvent = new UnityEvent();
 
     public static UnityEvent _DoorDialogue = new UnityEvent();
-    
+
+    public static UnityEvent DialogueEnded = new UnityEvent();
 
     //public static UnityEvent _StartFeedback = new UnityEvent();
     //public static UnityEvent _StopFeedback = new UnityEvent();
 
 
-    
+
 }

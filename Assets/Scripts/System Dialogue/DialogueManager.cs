@@ -35,6 +35,7 @@ public class DialogueManager : MonoBehaviour
     {
 
         _dialogueBox = GameObject.Find("DialogueBox");
+        EventManager.DialogueEnded.AddListener(EndBoolTest);
 
         
         
@@ -58,11 +59,11 @@ public class DialogueManager : MonoBehaviour
     public void ReadNext()
     {
         
-        if(currentIndex > currentConvo.GetLength())
+        if(currentIndex >= currentConvo.GetLength())
         {
-
+            
+            //EventManager.DialogueEnded.Invoke();
             return;
-
         }
 
         speakerName.text = currentConvo.GetLineByIndex(currentIndex).speaker.GetName();
@@ -82,22 +83,41 @@ public class DialogueManager : MonoBehaviour
         speakerSprite2.sprite = currentConvo.GetLineByIndex(currentIndex)._SpritePortrains2;
         
        
-        currentIndex++;
+
+        print("current convo step: " + (currentIndex + 1) + " / " + currentConvo.GetLength());
 
 
-        if(currentIndex == currentConvo.GetLength())
+        if(currentIndex == currentConvo.GetLength() - 1)
         {
-            GlobalBools._isEndLineDialogue = true;
+            
+            print("setting _isDialoguesLastLine to true");
 
+            EventManager.DialogueEnded.Invoke();
             //navButtonText.text = "x";
         }
+
+        currentIndex++;
     }
 
+    private void EndBoolTest()
+    {
+        if (!GlobalBools._isDialoguesLastLine)
+        {
+
+            GlobalBools._isDialoguesLastLine = true;
+        }
+        else
+        {
+            GlobalBools._isDialoguesLastLine = false;
+        }
+    }
     public void EndDialogue()
     {
         _dialogueBox.SetActive(false);
-
+        print("dialog box set to not active");
+        currentIndex = 0;
         GlobalBools._isWaitingForInteractue = false;
+        GlobalBools._isTalking = false;
 
         currentIndex = 0;
     }
