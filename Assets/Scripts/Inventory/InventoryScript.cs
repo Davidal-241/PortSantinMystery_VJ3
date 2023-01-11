@@ -6,26 +6,18 @@ public class InventoryScript : MonoBehaviour
 {
     private bool _inventoryEnabled;
 
-    public GameObject _inventory;
+    [SerializeField] private GameObject _inventory;
 
     private int _allTab;
 
-    private int _enabledSlots; // borrar
+    [SerializeField] private GameObject[] _tab;
 
-    private GameObject[] _tab;
-
-    public GameObject _slotTab;
+    [SerializeField] private GameObject _slotTab;
 
     [SerializeField] private GameObject _tabSelector;
-    private int _currentTabIndex;
+    [SerializeField] private int _currentTabIndex;
 
-    
-    
-    private GameObject[] _tapViews;
-    private int _allTapViews;
-    public GameObject _slotTapViews;
-
-    [SerializeField] private GameObject[] _options;
+    [SerializeField] private GameObject[] _tabOptions;
     
     void Start()
     {
@@ -36,11 +28,6 @@ public class InventoryScript : MonoBehaviour
         for (int i = 0; i < _allTab; i++)
         {
             _tab[i] = _slotTab.transform.GetChild(i).gameObject;
-
-            if (_tab[i].GetComponent<Tab>()._item == null)
-            {
-                _tab[i].GetComponent<Tab>()._empty = true;
-            }
         }
 
         //navegar por los paneles
@@ -59,7 +46,7 @@ public class InventoryScript : MonoBehaviour
 
     void Update()
     {
-        
+        _tabOptions[_currentTabIndex].SetActive(false);
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -69,7 +56,7 @@ public class InventoryScript : MonoBehaviour
         if (_inventoryEnabled)
         {
             _inventory.SetActive(true); 
-            //poner un if con una booleana que indique que se ha seleccionado una tab
+            //poner un if con una booleana que indique que se ha seleccionado una tab //o no, no lo se la verdad
             Browse();
         }
         else
@@ -80,28 +67,22 @@ public class InventoryScript : MonoBehaviour
 
     public void Browse() //Moverse por el inventario
     {
-        if (Input.GetKeyDown(KeyCode.D)) //Hacia la derecha
+        if (Input.GetKeyDown(KeyCode.E)) //Hacia la derecha
         {
             _currentTabIndex = (_currentTabIndex + 1) % _tab.Length;
+            
         }
 
-        if (Input.GetKeyDown(KeyCode.A)) //Hacia la izquierda
+        if (Input.GetKeyDown(KeyCode.Q)) //Hacia la izquierda
         {
             _currentTabIndex = (_currentTabIndex - 1 + _tab.Length) % _tab.Length;
+            
         }
 
-        
+
 
         _tabSelector.transform.position = _tab[_currentTabIndex].transform.position;
 
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            _options[_currentTabIndex].SetActive(true);
-        }
-
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            _options[_currentTabIndex].SetActive(false);
-        }
+        _tabOptions[_currentTabIndex].SetActive(true);
     }
 }
