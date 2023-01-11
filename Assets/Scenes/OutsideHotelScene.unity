@@ -2304,7 +2304,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1639005990, guid: cf3057d381fc74c428855ef705fed7e6, type: 3}
   m_PrefabInstance: {fileID: 6429758716697052976}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1690144859}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de469315f50706141b44be2412e8561c, type: 3}
@@ -2705,6 +2705,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3463c889c651a4fb98be6c698acd34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1690144859 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7356275779321167284, guid: cf3057d381fc74c428855ef705fed7e6, type: 3}
+  m_PrefabInstance: {fileID: 6429758716697052976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1690144864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690144859}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e6224cd5a80a3241ba95250a9dfead4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lunaPrefab: {fileID: 0}
+  _LunaSpawnPoint: {fileID: 0}
+--- !u!114 &1690144865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690144859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e32565e4454a2cb48b618b18cf9eed27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneName:
+  - Hall
+  - Room
+  - Pipo
+  - op
 --- !u!1 &1730288516
 GameObject:
   m_ObjectHideFlags: 0
@@ -3589,7 +3625,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6428781403994385826, guid: cf3057d381fc74c428855ef705fed7e6, type: 3}
   m_PrefabInstance: {fileID: 6429758716697052976}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1690144859}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f826c30f90a31543996bc5ca43c0a66, type: 3}

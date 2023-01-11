@@ -11,7 +11,7 @@ public static class EventManager
     //public static UnityEvent _cameraFarHotel = new UnityEvent();
     //public static UnityEvent _cameraZoomHotel = new UnityEvent();
 
-    public static UnityEvent _Talk = new UnityEvent();
+    public static UnityEvent _ConversationStarts = new UnityEvent();
 
     public static UnityEvent _EnterInElevator = new UnityEvent();
     public static UnityEvent _CloseElevator = new UnityEvent();

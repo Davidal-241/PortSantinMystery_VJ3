@@ -14,7 +14,7 @@ public class StartConvo : MonoBehaviour
         _dialogueBox = GameObject.Find("DialogueBox");
 
 
-        EventManager._Talk.AddListener(CheckConve);
+        EventManager._ConversationStarts.AddListener(CheckConve);
         EventManager._DoorDialogue.AddListener(DoorConversation);
         EventManager._CesarDialoguesEvent.AddListener(CesarDialogues);
 
@@ -35,6 +35,7 @@ public class StartConvo : MonoBehaviour
 
     public void DoorConversation()
     {
+        convo = null;
 
         if (ProgressCheck._areWeInTheSecondPart)
         {
@@ -52,6 +53,7 @@ public class StartConvo : MonoBehaviour
 
     public void LunaWalkingDialogues()
     {
+
         if (ProgressCheck._areWeInTheThirdPart)
         {
 
@@ -66,6 +68,7 @@ public class StartConvo : MonoBehaviour
 
     public void CesarDialogues()
     {
+
         if (ProgressCheck._areWeInTheSecondPart)
         {
             if (ProgressCheck._areWeInTheStage2)
@@ -74,6 +77,7 @@ public class StartConvo : MonoBehaviour
                 {
                     convo = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_01");
                     _dialogueBox.SetActive(true);
+                    print(_dialogueBox.activeInHierarchy);
                     StartConve();
                 }
 
@@ -151,22 +155,8 @@ public class StartConvo : MonoBehaviour
 
     public void CheckConve()
     {
-        //if(GlobalBools._isdriverTalking)
-        //{
-        //    if(GlobalBools._stage1)
-        //    {
+       
 
-        //    }
-        //}
-
-        //if (GlobalBools._isreviewerTalking)
-        //{
-        //    if (GlobalBools._stage1)
-        //    {
-
-        //    }
-        //}
-        
         if (GlobalBools._islunaTalking)
         {
             if (ProgressCheck._areWeInTheSecondPart)
@@ -251,29 +241,25 @@ public class StartConvo : MonoBehaviour
                     {
                         convo = Resources.Load<Conversation>("Jorge/N_Dialogues/Jorge_N_Dialogue_01");
                         _dialogueBox.SetActive(true);
-                        print("1: " + _dialogueBox.activeInHierarchy);
-                        print(convo);
-                        print(_dialogueBox);
-                        StartConve();
                         ProgressCheck._finishMainDialogueJorge = true;
+
+                        StartConve();
                     }
 
-                
+
 
                     if (GlobalBools._canJorgeTalkMore)
                     {
                         if (ProgressCheck._areWeInTheStage2)
                         {
-
-                            int _randomConversationIndex = Random.Range(0, 1);
+                            print("Va");
+                            int _randomConversationIndex = Random.Range(0, 2);
 
                             if (_randomConversationIndex == 0)
                             {
                                 convo = Resources.Load<Conversation>("Jorge/GF_Dialogues/Jorge_GF_Dialogue_01");
                                 _dialogueBox.SetActive(true);
-                                print("2: " + _dialogueBox.activeInHierarchy);
-                                print(convo);
-                                print(_dialogueBox);
+
                                 StartConve();
                             }
                             if (_randomConversationIndex == 1)
@@ -282,15 +268,17 @@ public class StartConvo : MonoBehaviour
                                 _dialogueBox.SetActive(true);
                                 StartConve();
                             }
+                            print(_dialogueBox.activeInHierarchy);
                         }
+
+
+
                         if (ProgressCheck._areWeInTheStage5)
                         {
                             convo = Resources.Load<Conversation>("Jorge/GF_Dialogues/Jorge_GF_Dialogue_02");
                             _dialogueBox.SetActive(true);
                             StartConve();
                         }
-
-                        
                     }
                 }
 

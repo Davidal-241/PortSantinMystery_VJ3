@@ -54,6 +54,7 @@ public class ProgressCheck : MonoBehaviour
 
         if (_finishMainDialogueJorge)
         {
+ 
             GlobalBools._canJorgeTalkMore = true;
         }
     }

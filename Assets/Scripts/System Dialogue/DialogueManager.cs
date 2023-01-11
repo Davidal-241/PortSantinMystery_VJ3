@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class DialogueManager : MonoBehaviour
     private Conversation currentConvo;
     private static DialogueManager instance;
     private Coroutine typing;
+
+    bool _isEndTyping = true;
 
     [SerializeField] float _betweenLettersWaitTime;
 
@@ -47,7 +50,7 @@ public class DialogueManager : MonoBehaviour
         instance.dialogue.text = "";
         instance.navButtonText.text = ">";
 
-        instance.ReadNext();
+        //instance.ReadNext();
 
 
     }
@@ -55,6 +58,7 @@ public class DialogueManager : MonoBehaviour
 
     public void ReadNext()
     {
+        print("current index: " + currentIndex);
         
         if(currentIndex == currentConvo.GetLength())
         {
@@ -64,34 +68,60 @@ public class DialogueManager : MonoBehaviour
 
         speakerName.text = currentConvo.GetLineByIndex(currentIndex).speaker.GetName();
 
-        if(typing == null)
+        if (_isEndTyping)
         {
-            typing = instance.StartCoroutine(TypeText(currentConvo.GetLineByIndex(currentIndex).dialogue));
+
+            if (typing == null)
+            {
+                typing = instance.StartCoroutine(TypeText(currentConvo.GetLineByIndex(currentIndex).dialogue));
+            }
+            else
+            {
+                instance.StopCoroutine(typing);
+                typing = null;
+                typing = instance.StartCoroutine(TypeText(currentConvo.GetLineByIndex(currentIndex).dialogue));
+            }
         }
         else
         {
             instance.StopCoroutine(typing);
             typing = null;
-            typing = instance.StartCoroutine(TypeText(currentConvo.GetLineByIndex(currentIndex).dialogue));
+            dialogue.text = currentConvo.GetLineByIndex(currentIndex).dialogue;
+
+            // Remove all / characters
+
+            int slashIndex = dialogue.text.IndexOf('/');
+            while (slashIndex != -1)
+            {
+                dialogue.text = dialogue.text.Remove(slashIndex, 1);
+                slashIndex = dialogue.text.IndexOf('/');
+            }
+
+
+            //dialogue.text = dialogue.text.Trim(new char[] { '/' });
+
+            _isEndTyping = true;
         }
-       
+
         speakerSprite1.sprite = currentConvo.GetLineByIndex(currentIndex)._SpritePortrains1;
         speakerSprite2.sprite = currentConvo.GetLineByIndex(currentIndex)._SpritePortrains2;
-        
+
+
+
+
+        if (_isEndTyping)
+        {
+
+            currentIndex++;
+        }
        
-
-        print("current convo step: " + (currentIndex + 1) + " / " + currentConvo.GetLength());
-
-        currentIndex++;
     }
 
  
     public void EndDialogue()
     {
         _dialogueBox.SetActive(false);
-        print("dialog box set to not active");
         currentIndex = 0;
-        GlobalBools._isWaitingForInteractue = false;
         GlobalBools._isTalking = false;
     }
 
@@ -101,12 +131,14 @@ public class DialogueManager : MonoBehaviour
         dialogue.text = "";
         bool complete = false;
         int index = 0;
+        _isEndTyping = false;
 
-        while(!complete)
+        while (!complete)
         {
             if (text[index] != '/')
                 dialogue.text += text[index];
             index++;
+            
             yield return new WaitForSeconds(_betweenLettersWaitTime);
 
             if(index == text.Length)
@@ -115,6 +147,7 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
+        _isEndTyping = true;
         typing = null;
     }
 }

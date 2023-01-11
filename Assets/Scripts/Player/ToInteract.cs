@@ -17,21 +17,10 @@ public class ToInteract : MonoBehaviour
     private void Awake()
     {
         _controls = new UserActions();
+
+        dialogueManager = FindObjectOfType<DialogueManager>();
     }
 
-    private void Update()
-    {
-        if (GlobalBools._isTalking)
-        {
-            if (GlobalBools._nextLineActive)
-            {
-
-                dialogueManager = FindObjectOfType<DialogueManager>();
-
-
-            }
-        }
-    }
 
     public void OnEnable()
     {
@@ -90,7 +79,7 @@ public class ToInteract : MonoBehaviour
 
             if (GlobalBools._canTalk)
             {
-                EventManager._Talk.Invoke();
+                EventManager._ConversationStarts.Invoke();
                 GlobalBools._isWaitingForInteractue = true;
 
             }
@@ -149,10 +138,7 @@ public class ToInteract : MonoBehaviour
     {
         if (GlobalBools._isTalking)
         {
-            print("GlobalBools._isDialoguesLastLine: " + GlobalBools._isDialoguesLastLine);
-
-                dialogueManager.ReadNext();
-          
+            dialogueManager.ReadNext();
         }
     }
 }
