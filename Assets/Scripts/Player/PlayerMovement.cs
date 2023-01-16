@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Type of movement")]
     [SerializeField] MoveType moveType;
-
+    
 
     //The speed at the player moves
     [SerializeField] float WalkingSpeed;
@@ -22,9 +22,11 @@ public class PlayerMovement : MonoBehaviour
    [SerializeField] float ActualSpeed;
     //The vector that holds the direction of movement
     Vector3 direction;
-
+    [SerializeField] Animator _ani;
     //The rigidbody of the player
     Rigidbody myRB;
+
+   
 
     //Detecte if more or less distance
 
@@ -71,27 +73,50 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(transform.forward);
+
         //We ge the direction from the input horizontal (a / d)
         // direction = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
         
         //direction = move.ReadValue<Vector2>();
         direction = move.ReadValue<Vector2>();
+
+        if (direction.x > 0)
+        {
+            //if(direction.x > 0 && direction.x < 0.1)
+            transform.rotation = Quaternion.Euler(0, 90, 0);
+            _ani.SetBool("Walking", true);
+        }
+        else if (direction.x < 0)
+        {
+            
+            transform.rotation = Quaternion.Euler(0, -90, 0);
+            _ani.SetBool("Walking", true);
+        }
+        else
+        {
+
+            _ani.SetBool("Walking", false);
+        }
     }
 
     void FixedUpdate()
     {
-        //After selecting the move type we can test any of them thanks to this switch case 
-        switch (moveType)
+        if (!GlobalBools._isBlockTheMovement)
         {
-            case MoveType.addingForce:
-                AddingForceMovement();
-                break;
-            case MoveType.velocityMove:
-                VelocityMovement();
-                break;
-            case MoveType.movePositionMove:
-                MovePositionMovement();
-                break;
+            //After selecting the move type we can test any of them thanks to this switch case 
+            switch (moveType)
+            {
+                case MoveType.addingForce:
+                    AddingForceMovement();
+                    break;
+                case MoveType.velocityMove:
+                    VelocityMovement();
+                    break;
+                case MoveType.movePositionMove:
+                    MovePositionMovement();
+                    break;
+            }
         }
 
     }
