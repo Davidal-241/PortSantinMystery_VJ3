@@ -23,7 +23,8 @@ public static class GlobalBools
     public static bool _isknowCenturion = false;
     public static bool _isknowJorge = false;
     public static bool _isknowPrayer = false;
-        //Hablando con el npc
+    //Hablando con el npc
+    public static bool _isBlockTheMovement = false;
     public static bool _isdriverTalking = false;
     public static bool _isreviewerTalking = false;
     public static bool _islunaTalking = false;

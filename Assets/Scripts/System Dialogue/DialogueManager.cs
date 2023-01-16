@@ -23,6 +23,8 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] GameObject _dialogueBox;
 
+    int dialogueIndex;
+
     private void Awake()
     {
         if(instance == null)
@@ -49,7 +51,7 @@ public class DialogueManager : MonoBehaviour
         instance.speakerName.text = "";
         instance.dialogue.text = "";
         instance.navButtonText.text = ">";
-
+        GlobalBools._isBlockTheMovement = true;
         //instance.ReadNext();
 
 
@@ -86,7 +88,7 @@ public class DialogueManager : MonoBehaviour
         {
             instance.StopCoroutine(typing);
             typing = null;
-            dialogue.text = currentConvo.GetLineByIndex(currentIndex).dialogue;
+            dialogue.text += currentConvo.GetLineByIndex(currentIndex).dialogue.Substring(dialogueIndex);
 
             // Remove all / characters
 
@@ -103,11 +105,10 @@ public class DialogueManager : MonoBehaviour
             _isEndTyping = true;
         }
 
+
+
         speakerSprite1.sprite = currentConvo.GetLineByIndex(currentIndex)._SpritePortrains1;
         speakerSprite2.sprite = currentConvo.GetLineByIndex(currentIndex)._SpritePortrains2;
-
-
-
 
         if (_isEndTyping)
         {
@@ -120,6 +121,7 @@ public class DialogueManager : MonoBehaviour
  
     public void EndDialogue()
     {
+        GlobalBools._isBlockTheMovement = false;
         _dialogueBox.SetActive(false);
         currentIndex = 0;
         GlobalBools._isTalking = false;
@@ -130,18 +132,18 @@ public class DialogueManager : MonoBehaviour
 
         dialogue.text = "";
         bool complete = false;
-        int index = 0;
+        dialogueIndex = 0;
         _isEndTyping = false;
 
         while (!complete)
         {
-            if (text[index] != '/')
-                dialogue.text += text[index];
-            index++;
+            if (text[dialogueIndex] != '/')
+                dialogue.text += text[dialogueIndex];
+            dialogueIndex++;
             
             yield return new WaitForSeconds(_betweenLettersWaitTime);
 
-            if(index == text.Length)
+            if(dialogueIndex == text.Length)
             {
                 complete = true;
             }
