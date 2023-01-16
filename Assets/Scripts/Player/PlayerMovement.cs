@@ -75,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
         // direction = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
         
         //direction = move.ReadValue<Vector2>();
+        direction = move.ReadValue<Vector2>();
     }
 
     void FixedUpdate()
@@ -93,7 +94,6 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
 
-        direction = move.ReadValue<Vector2>();
     }
 
 
