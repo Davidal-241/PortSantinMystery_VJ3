@@ -47,7 +47,7 @@ public static class GlobalBools
     //Bool manejo Puerta
     public static bool _canOpenDoor = false;
     //Bool manejo inventario
-    public static bool _canOpenInventory = false;
+    public static bool _isOpenInventory = false;
     //Bool manejo sprint
     public static bool _isRunning = false;
 
@@ -64,6 +64,7 @@ public static class GlobalBools
     public static bool _isInNotesPanel = false;
     public static bool _isInventoryActive = false;
     public static bool _canSubmit = false;
+    public static bool _isMenuPauseActive = false;
 
     //Objetos que son interactuables
 

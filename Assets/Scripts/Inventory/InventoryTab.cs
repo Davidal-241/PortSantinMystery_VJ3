@@ -25,7 +25,7 @@ public class InventoryTab : MonoBehaviour
     private void Update()
     {
         BrowsePag();
-        print(name + " update");
+        //print(name + " update");
         
     }
 

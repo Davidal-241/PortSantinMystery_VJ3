@@ -130,7 +130,7 @@
                 {
                     "name": "",
                     "id": "9d7a12f2-6c43-4ded-b402-31045519f26f",
-                    "path": "<Keyboard>/i",
+                    "path": "<Keyboard>/tab",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "KeyBoard and Mouse",
@@ -194,25 +194,25 @@
                     "interactions": ""
                 },
                 {
-                    "name": "EnterInSubPanel",
-                    "type": "Button",
-                    "id": "3ca6de08-d39d-4372-92cf-a40287917810",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "ExitInSubPanel",
-                    "type": "Button",
-                    "id": "2ad1fb1e-7bc0-4f5f-a57e-54f997724d1d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Submit",
                     "type": "Button",
                     "id": "85faec96-3ad8-4a79-9f3f-b696c3868aaa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "PreviousTab",
+                    "type": "Button",
+                    "id": "987e88fc-c5b5-4a0e-8a5c-4c839cc9ce1c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "NextTab",
+                    "type": "Button",
+                    "id": "66b6a83d-7048-40ed-8c8f-8963041933e7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -396,92 +396,26 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "KeyBoard",
-                    "id": "d3753777-cb14-4d3c-83e8-ad85ca2b90e2",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "EnterInSubPanel",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "left",
-                    "id": "ce03e7b3-7f89-447b-821c-e0954372bf91",
-                    "path": "<Keyboard>/leftArrow",
+                    "name": "",
+                    "id": "919dcec0-70a8-42d4-8f82-9bb65ac2c236",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoard and Mouse",
-                    "action": "EnterInSubPanel",
+                    "action": "PreviousTab",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Gamepad",
-                    "id": "dc0a8156-87dc-4023-a971-57d7376bdf80",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "EnterInSubPanel",
-                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "left",
-                    "id": "fb359c6e-74ba-43e8-9a79-75aeb0f4e60b",
-                    "path": "<Gamepad>/rightStick/left",
+                    "name": "",
+                    "id": "28449e9d-6134-464e-bc36-789fd239d16b",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
-                    "action": "EnterInSubPanel",
+                    "groups": "KeyBoard and Mouse;Gamepad",
+                    "action": "NextTab",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "KeyBoard",
-                    "id": "e6818892-7e0c-4b6e-8b07-4580c36e8cc6",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ExitInSubPanel",
-                    "isComposite": true,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "right",
-                    "id": "4301f646-57a9-4d75-9ee0-275215f3ae69",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard and Mouse",
-                    "action": "ExitInSubPanel",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Gamepad",
-                    "id": "f0223141-0400-49cc-8100-04e3c33043d8",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ExitInSubPanel",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "right",
-                    "id": "b5e00dd6-3f43-4ce3-ac6b-9fc042270e06",
-                    "path": "<Gamepad>/rightStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "ExitInSubPanel",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 }
             ]
         },

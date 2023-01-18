@@ -17,9 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     //The speed at the player moves
     [SerializeField] float WalkingSpeed;
-    [SerializeField] float RunningSpeed;
 
-   [SerializeField] float ActualSpeed;
+
     //The vector that holds the direction of movement
     Vector3 direction;
     [SerializeField] Animator _ani;
@@ -78,23 +77,26 @@ public class PlayerMovement : MonoBehaviour
         
         //direction = move.ReadValue<Vector2>();
         direction = move.ReadValue<Vector2>();
-
-        if (direction.x > 0)
-        {
-            //if(direction.x > 0 && direction.x < 0.1)
-            transform.rotation = Quaternion.Euler(0, 90, 0);
-            _ani.SetBool("Walking", true);
-        }
-        else if (direction.x < 0)
-        {
-            
-            transform.rotation = Quaternion.Euler(0, -90, 0);
-            _ani.SetBool("Walking", true);
-        }
-        else
+        if (!GlobalBools._isBlockTheMovement)
         {
 
-            _ani.SetBool("Walking", false);
+            if (direction.x > 0)
+            {
+                //if(direction.x > 0 && direction.x < 0.1)
+                transform.rotation = Quaternion.Euler(0, 90, 0);
+                _ani.SetBool("Walking", true);
+            }
+            else if (direction.x < 0)
+            {
+
+                transform.rotation = Quaternion.Euler(0, -90, 0);
+                _ani.SetBool("Walking", true);
+            }
+            else
+            {
+
+                _ani.SetBool("Walking", false);
+            }
         }
     }
 
@@ -123,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
     {
       
         //Adds a force that pushes the player
-        myRB.AddForce(direction * ActualSpeed);
+        myRB.AddForce(direction * WalkingSpeed);
         
     }
 
@@ -131,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
     {
        
         //Stablished the velocity of the rigidbody
-        myRB.velocity = direction * ActualSpeed;
+        myRB.velocity = direction * WalkingSpeed;
        
     }
 
@@ -139,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
     {
        
         //Moves the player in a direction
-        myRB.MovePosition(transform.position + (direction * ActualSpeed * Time.fixedDeltaTime));
+        myRB.MovePosition(transform.position + (direction * WalkingSpeed * Time.fixedDeltaTime));
         
     }
 

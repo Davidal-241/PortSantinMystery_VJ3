@@ -9,7 +9,7 @@ public class ToInteract : MonoBehaviour
     DialogueManager dialogueManager;
     [SerializeField] UserActions _controls;
     private InputAction Interact;
-    private InputAction Inventory;
+
     private InputAction NextLine;
 
    
@@ -29,9 +29,7 @@ public class ToInteract : MonoBehaviour
         Interact.Enable();
         Interact.performed += StartInteract;
        
-        Inventory = _controls.Player.Inventory;
-        Inventory.Enable();
-        Inventory.performed += OpenInventory;
+      
 
         NextLine = _controls.UI.NextLine;
 
@@ -43,34 +41,10 @@ public class ToInteract : MonoBehaviour
     public void OnDisable()
     {
         Interact.Disable();
-        Inventory.Disable();
         NextLine.Disable();
     }
 
 
-    private void OpenInventory(InputAction.CallbackContext context)
-    {
-        
-        if (!GlobalBools._canOpenInventory)
-        {
-
-            
-            GlobalBools._canOpenInventory = true;
-            GlobalBools._canSubmit = true;
-            EventManager._OpenInventory.Invoke();
-
-        }
-        else
-        {
-
-            GlobalBools._canOpenInventory = false;
-            GlobalBools._isInventoryActive = false;
-            GlobalBools._canSubmit = false;
-            EventManager._CloseInventory.Invoke();
-
-
-        }
-    }
 
     private void StartInteract(InputAction.CallbackContext context)
     {

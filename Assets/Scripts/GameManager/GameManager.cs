@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]private GameObject _menuPauseCanvas;
     [SerializeField]private GameObject _elevatorUI;
-    bool _isMenuPauseActive = false;
     bool _isElevatorUiActive = false;
 
     private void Awake()
@@ -52,15 +51,13 @@ public class GameManager : MonoBehaviour
 
     private void UseMenu(InputAction.CallbackContext context)
     {
-        if (!_isMenuPauseActive)
+        if (!GlobalBools._isMenuPauseActive)
         {
 
             _menuPauseCanvas.SetActive(true);
-            EventManager._CloseInventory.Invoke();
             EventManager._OpenMenuPause.Invoke();
-            GlobalBools._canOpenInventory = false;
             GlobalBools._isInventoryActive = false;
-            _isMenuPauseActive = true;
+            GlobalBools._isMenuPauseActive = true;
             GlobalBools._canSubmit = true;
 
 
@@ -68,7 +65,7 @@ public class GameManager : MonoBehaviour
         else
         {
             _menuPauseCanvas.SetActive(false);
-            _isMenuPauseActive = false;
+            GlobalBools._isMenuPauseActive = false;
             GlobalBools._canSubmit = false;
 
 
@@ -77,10 +74,10 @@ public class GameManager : MonoBehaviour
 
     private void CloseMenu(InputAction.CallbackContext context)
     {
-        if(_isMenuPauseActive)
+        if(GlobalBools._isMenuPauseActive)
         {
             _menuPauseCanvas.SetActive( false);
-            _isMenuPauseActive = false;
+            GlobalBools._isMenuPauseActive = false;
             GlobalBools._canSubmit = false;
 
         }

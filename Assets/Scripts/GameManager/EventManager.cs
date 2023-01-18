@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public static class EventManager 
 {
@@ -20,7 +21,7 @@ public static class EventManager
     //public static UnityEvent _InteractueBed = new UnityEvent();
 
     public static UnityEvent _OpenInventory = new UnityEvent();
-    public static UnityEvent _CloseInventory = new UnityEvent();
+    public static UnityEvent<InputAction.CallbackContext> _CloseInventory = new UnityEvent<InputAction.CallbackContext>();
     public static UnityEvent _OpenMenuPause = new UnityEvent();
 
     public static UnityEvent _changeScene = new UnityEvent();

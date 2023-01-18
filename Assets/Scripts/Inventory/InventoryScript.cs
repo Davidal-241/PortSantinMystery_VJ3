@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class InventoryScript : MonoBehaviour
 {
@@ -18,9 +20,52 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] private int _currentTabIndex;
 
     [SerializeField] private GameObject[] _tabOptions;
+
     
+    [SerializeField] UserActions _controls;
+ 
+    private InputAction Inventory;
+    private InputAction NavegateInventoryQ;
+    private InputAction NavegateInventoryE;
+   
+
+    private void Awake()
+    {
+        _controls = new UserActions();
+
+    }
+
+
+    public void OnEnable()
+    {
+
+      
+        Inventory = _controls.Player.Inventory;
+        Inventory.Enable();
+        Inventory.performed += OpenInventory;
+
+        NavegateInventoryQ = _controls.UI.PreviousTab;
+        NavegateInventoryQ.Enable();
+        NavegateInventoryQ.performed += PruebaQ;
+
+        NavegateInventoryE = _controls.UI.NextTab;
+        NavegateInventoryE.Enable();
+        NavegateInventoryE.performed += PruebaE;
+
+
+    }
+
+    public void OnDisable()
+    {
+        
+        Inventory.Disable();
+        NavegateInventoryQ.Disable();
+        NavegateInventoryE.Disable();
+       
+    }
     void Start()
     {
+        _inventory.SetActive(false);
         _allTab = _slotTab.transform.childCount;
 
         _tab = new GameObject[_allTab];
@@ -31,6 +76,11 @@ public class InventoryScript : MonoBehaviour
             _tabOptions[i].SetActive(false);
 
         }
+
+
+        
+
+        
 
         //navegar por los paneles
 
@@ -47,42 +97,52 @@ public class InventoryScript : MonoBehaviour
         
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            _inventoryEnabled =! _inventoryEnabled; 
-
-            if (_inventoryEnabled)
-            {
-                _currentTabIndex = 0;
-                _tabOptions[_currentTabIndex].SetActive(true);
-            }
-            else
-            {
-                _tabOptions[_currentTabIndex].SetActive(false);
-            }
-        }
-
-        if (_inventoryEnabled)
-        {
-            _inventory.SetActive(true); 
-            //poner un if con una booleana que indique que se ha seleccionado una tab //o no, no lo se la verdad
-            Browse();            
-        }
-        else
+        if (GlobalBools._isMenuPauseActive)
         {
             _inventory.SetActive(false);
         }
 
-        
-        
+       
     }
+    public void OpenInventory(InputAction.CallbackContext context)
+    {
+        GlobalBools._isInventoryActive = !GlobalBools._isInventoryActive;
 
+        if (GlobalBools._isInventoryActive)
+        {
+            GlobalBools._canSubmit = false;
+            GlobalBools._isBlockTheMovement = true;
+            _currentTabIndex = 0;
+            _tabOptions[_currentTabIndex].SetActive(true);
+        }
+        else
+        {
+            _tabOptions[_currentTabIndex].SetActive(false);
+            GlobalBools._isBlockTheMovement = false;
+            GlobalBools._canSubmit = true;
+        }
+
+
+        if (GlobalBools._isInventoryActive)
+            {
+                _inventory.SetActive(true);
+                //poner un if con una booleana que indique que se ha seleccionado una tab //o no, no lo se la verdad
+
+               
+            }
+            else
+            {
+                _inventory.SetActive(false);
+            }
+    }
     public void Browse() //Moverse por el inventario
     {
+        
         if (Input.GetKeyDown(KeyCode.E)) //Hacia la derecha
         {
+            print("Pipo");
             _tabOptions[_currentTabIndex].SetActive(false);
             _currentTabIndex = (_currentTabIndex + 1) % _tab.Length;
             _tabOptions[_currentTabIndex].SetActive(true);
@@ -100,5 +160,43 @@ public class InventoryScript : MonoBehaviour
         _tabSelector.transform.position = _tab[_currentTabIndex].transform.position;
 
         _tabOptions[_currentTabIndex].SetActive(true);
+    }
+
+    void PruebaQ(InputAction.CallbackContext context)
+    {
+        if (GlobalBools._isOpenInventory)
+        {
+            if (Input.GetKeyDown(KeyCode.Q)) //Hacia la izquierda
+            {
+                _tabOptions[_currentTabIndex].SetActive(false);
+                _currentTabIndex = (_currentTabIndex - 1 + _tab.Length) % _tab.Length;
+                _tabOptions[_currentTabIndex].SetActive(true);
+            }
+
+
+
+            _tabSelector.transform.position = _tab[_currentTabIndex].transform.position;
+
+            _tabOptions[_currentTabIndex].SetActive(true);
+        }
+    }
+
+    void PruebaE(InputAction.CallbackContext context)
+    {
+         if (GlobalBools._isOpenInventory)
+        {
+            if (Input.GetKeyDown(KeyCode.E)) //Hacia la derecha
+            {
+                print("Pipo");
+                _tabOptions[_currentTabIndex].SetActive(false);
+                _currentTabIndex = (_currentTabIndex + 1) % _tab.Length;
+                _tabOptions[_currentTabIndex].SetActive(true);
+            }
+
+
+            _tabSelector.transform.position = _tab[_currentTabIndex].transform.position;
+
+        _tabOptions[_currentTabIndex].SetActive(true);
+        }
     }
 }
