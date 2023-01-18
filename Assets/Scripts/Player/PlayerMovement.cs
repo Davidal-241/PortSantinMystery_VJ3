@@ -30,13 +30,13 @@ public class PlayerMovement : MonoBehaviour
 
     //Detecte if more or less distance
 
-    bool pressedDown;
+  
     
 
 
     [SerializeField] UserActions _controls;
     private InputAction move;
-    private InputAction sprint;
+ 
 
 
     private void Awake()
@@ -50,15 +50,13 @@ public class PlayerMovement : MonoBehaviour
         move = _controls.Player.Movement;
         move.Enable();
 
-        sprint = _controls.Player.Sprint;
-        sprint.Enable();
-        sprint.performed += MoreSpeed;
+
     }
 
     public void OnDisable()
     {
         move.Disable();
-        sprint.Disable();
+       
     }
 
     void Start()
@@ -121,35 +119,9 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-
-    public void MoreSpeed(InputAction.CallbackContext context)
-    {
-
-        pressedDown = context.ReadValueAsButton();
-
-        if (pressedDown)
-        {
-            GlobalBools._isRunning = true;
-            
-        }
-        else
-        {
-            GlobalBools._isRunning = false;
-            
-        }
-        
-    }
-
     private void AddingForceMovement()
     {
-        if (GlobalBools._isRunning)
-        {
-            ActualSpeed = RunningSpeed;
-        }
-        else
-        {
-            ActualSpeed = WalkingSpeed;
-        }
+      
         //Adds a force that pushes the player
         myRB.AddForce(direction * ActualSpeed);
         
@@ -157,14 +129,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void VelocityMovement()
     {
-        if (GlobalBools._isRunning)
-        {
-            ActualSpeed = RunningSpeed;
-        }
-        else
-        {
-            ActualSpeed = WalkingSpeed;
-        }
+       
         //Stablished the velocity of the rigidbody
         myRB.velocity = direction * ActualSpeed;
        
@@ -172,14 +137,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePositionMovement()
     {
-        if (GlobalBools._isRunning)
-        {
-            ActualSpeed = RunningSpeed;
-        }
-        else
-        {
-            ActualSpeed = WalkingSpeed;
-        }
+       
         //Moves the player in a direction
         myRB.MovePosition(transform.position + (direction * ActualSpeed * Time.fixedDeltaTime));
         
