@@ -28,6 +28,8 @@ public class InventoryScript : MonoBehaviour
         for (int i = 0; i < _allTab; i++)
         {
             _tab[i] = _slotTab.transform.GetChild(i).gameObject;
+            _tabOptions[i].SetActive(false);
+
         }
 
         //navegar por los paneles
@@ -41,45 +43,59 @@ public class InventoryScript : MonoBehaviour
         //        _tapViews[i].GetComponent<TapView>()._empty = true;
         //    }
         //}
-    }
 
+        
+    }
 
     void Update()
     {
-        _tabOptions[_currentTabIndex].SetActive(false);
-
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             _inventoryEnabled =! _inventoryEnabled; 
+
+            if (_inventoryEnabled)
+            {
+                _currentTabIndex = 0;
+                _tabOptions[_currentTabIndex].SetActive(true);
+            }
+            else
+            {
+                _tabOptions[_currentTabIndex].SetActive(false);
+            }
         }
 
         if (_inventoryEnabled)
         {
             _inventory.SetActive(true); 
             //poner un if con una booleana que indique que se ha seleccionado una tab //o no, no lo se la verdad
-            Browse();
+            Browse();            
         }
         else
         {
             _inventory.SetActive(false);
         }
+
+        
+        
     }
 
     public void Browse() //Moverse por el inventario
     {
         if (Input.GetKeyDown(KeyCode.E)) //Hacia la derecha
         {
+            _tabOptions[_currentTabIndex].SetActive(false);
             _currentTabIndex = (_currentTabIndex + 1) % _tab.Length;
-            
+            _tabOptions[_currentTabIndex].SetActive(true);
         }
 
         if (Input.GetKeyDown(KeyCode.Q)) //Hacia la izquierda
         {
+            _tabOptions[_currentTabIndex].SetActive(false);
             _currentTabIndex = (_currentTabIndex - 1 + _tab.Length) % _tab.Length;
-            
+            _tabOptions[_currentTabIndex].SetActive(true);
         }
 
-
+        
 
         _tabSelector.transform.position = _tab[_currentTabIndex].transform.position;
 
