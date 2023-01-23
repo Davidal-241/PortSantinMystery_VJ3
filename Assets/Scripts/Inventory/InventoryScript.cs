@@ -103,6 +103,9 @@ public class InventoryScript : MonoBehaviour
         {
             _inventory.SetActive(false);
         }
+         _tabSelector.transform.position = _tab[_currentTabIndex].transform.position;
+
+            _tabOptions[_currentTabIndex].SetActive(true);
 
        
     }
@@ -112,30 +115,22 @@ public class InventoryScript : MonoBehaviour
 
         if (GlobalBools._isInventoryActive)
         {
+            _inventory.SetActive(true);
             GlobalBools._canSubmit = false;
             GlobalBools._isBlockTheMovement = true;
             _currentTabIndex = 0;
             _tabOptions[_currentTabIndex].SetActive(true);
+            GlobalBools._isOpenInventory = true;
         }
         else
         {
+            _inventory.SetActive(false);
             _tabOptions[_currentTabIndex].SetActive(false);
             GlobalBools._isBlockTheMovement = false;
             GlobalBools._canSubmit = true;
+            GlobalBools._isOpenInventory = true;
         }
 
-
-        if (GlobalBools._isInventoryActive)
-            {
-                _inventory.SetActive(true);
-                //poner un if con una booleana que indique que se ha seleccionado una tab //o no, no lo se la verdad
-
-               
-            }
-            else
-            {
-                _inventory.SetActive(false);
-            }
     }
     public void Browse() //Moverse por el inventario
     {
@@ -164,39 +159,31 @@ public class InventoryScript : MonoBehaviour
 
     void PruebaQ(InputAction.CallbackContext context)
     {
+        print("Pipo");
         if (GlobalBools._isOpenInventory)
         {
-            if (Input.GetKeyDown(KeyCode.Q)) //Hacia la izquierda
-            {
-                _tabOptions[_currentTabIndex].SetActive(false);
-                _currentTabIndex = (_currentTabIndex - 1 + _tab.Length) % _tab.Length;
-                _tabOptions[_currentTabIndex].SetActive(true);
-            }
 
-
-
-            _tabSelector.transform.position = _tab[_currentTabIndex].transform.position;
-
+            _tabOptions[_currentTabIndex].SetActive(false);
+            _currentTabIndex = (_currentTabIndex - 1 + _tab.Length) % _tab.Length;
             _tabOptions[_currentTabIndex].SetActive(true);
+
+           
         }
     }
 
     void PruebaE(InputAction.CallbackContext context)
     {
+            print("Pipo");
          if (GlobalBools._isOpenInventory)
         {
-            if (Input.GetKeyDown(KeyCode.E)) //Hacia la derecha
-            {
-                print("Pipo");
-                _tabOptions[_currentTabIndex].SetActive(false);
-                _currentTabIndex = (_currentTabIndex + 1) % _tab.Length;
-                _tabOptions[_currentTabIndex].SetActive(true);
-            }
+
+            _tabOptions[_currentTabIndex].SetActive(false);
+            _currentTabIndex = (_currentTabIndex + 1) % _tab.Length;
+            _tabOptions[_currentTabIndex].SetActive(true);
 
 
-            _tabSelector.transform.position = _tab[_currentTabIndex].transform.position;
 
-        _tabOptions[_currentTabIndex].SetActive(true);
+            
         }
     }
 }
