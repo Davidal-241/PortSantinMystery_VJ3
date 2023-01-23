@@ -79,9 +79,9 @@ public class UINavigateLogic : MonoBehaviour
             {
                 GameObject selectObject;
                 selectObject = EventSystem.current.currentSelectedGameObject;
-                Button _bu = selectObject.GetComponent<Button>();
+                Button _button = selectObject.GetComponent<Button>();
 
-                if (_bu != null)
+                if (_button != null)
                 {
                     selectObject.GetComponent<Button>().onClick.Invoke();
                 }
@@ -108,6 +108,7 @@ public class UINavigateLogic : MonoBehaviour
         if(GlobalBools._isInReception)
         {
             _buttonElevator[0].interactable = false;
+
 
             var colorsbuton = _buttonElevator[0].GetComponent<Button>().colors;
             var restoreColorButton1 = _buttonElevator[1].GetComponent<Button>().colors;

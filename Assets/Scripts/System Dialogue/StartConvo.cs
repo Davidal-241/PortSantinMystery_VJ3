@@ -28,7 +28,7 @@ public class StartConvo : MonoBehaviour
     {
         GlobalBools._isDialoguesLastLine = false;
         GlobalBools._nextLineActive = true;
-        GlobalBools._isTalking= true;
+        GlobalBools._isTalking = true;
         DialogueManager.StartConversation(convo);
       
     }
@@ -68,74 +68,76 @@ public class StartConvo : MonoBehaviour
 
     public void CesarDialogues()
     {
-
-        if (ProgressCheck._areWeInTheSecondPart)
-        {
-            if (ProgressCheck._areWeInTheStage2)
+        
+            if (ProgressCheck._areWeInTheSecondPart)
             {
-                if (!GlobalBools._isknowJorge)
+                if (ProgressCheck._areWeInTheStage2)
                 {
-                    convo = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_01");
-                    _dialogueBox.SetActive(true);
-                    print(_dialogueBox.activeInHierarchy);
-                    StartConve();
+                    if (!GlobalBools._hasAlreadyTalkedToJorge)
+                    {
+                    print("Va");
+                        convo = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_01");
+                        _dialogueBox.SetActive(true);
+                        print(_dialogueBox.activeInHierarchy);
+                        StartConve();
+                    }
+
+                    if (!ProgressCheck._canUseElevatorToGoDown && GlobalBools._hasAlreadyTalkedToJorge)
+                    {
+                        convo = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_02");
+                        _dialogueBox.SetActive(true);
+                        StartConve();
+                    }
                 }
 
-                if (!ProgressCheck._canUseElevatorToGoDown)
+                if (ProgressCheck._areWeInTheStage3)
                 {
-                    convo = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_02");
-                    _dialogueBox.SetActive(true);
-                    StartConve();
+                    if (!ProgressCheck._didYouLeaveTheSuitcase)
+                    {
+                        convo = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_03");
+                        _dialogueBox.SetActive(true);
+                        StartConve();
+                    }
+                }
+
+                if (ProgressCheck._areWeInTheStage4)
+                {
+                    if (ProgressCheck._didYouInteractWithTheGlasses)
+                    {
+                        convo = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_04");
+                        _dialogueBox.SetActive(true);
+                        StartConve();
+                    }
+                }
+
+                if (ProgressCheck._areWeInTheStage5)
+                {
+                    if (!GlobalBools._isknowLuna)
+                    {
+                        convo = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_05");
+                        _dialogueBox.SetActive(true);
+                        StartConve();
+                    }
+
+                    if (!GlobalBools._isknowCenturion)
+                    {
+                        convo = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_06");
+                        _dialogueBox.SetActive(true);
+                        StartConve();
+                    }
+                }
+
+                if (ProgressCheck._areWeInTheStage6)
+                {
+                    if (!GlobalBools._isknowCenturion)
+                    {
+                        convo = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_07");
+                        _dialogueBox.SetActive(true);
+                        StartConve();
+                    }
                 }
             }
-
-            if (ProgressCheck._areWeInTheStage3)
-            {
-                if (!ProgressCheck._didYouLeaveTheSuitcase)
-                {
-                    convo = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_03");
-                    _dialogueBox.SetActive(true);
-                    StartConve();
-                }
-            }
-
-            if (ProgressCheck._areWeInTheStage4)
-            {
-                if (ProgressCheck._didYouInteractWithTheGlasses)
-                {
-                    convo = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_04");
-                    _dialogueBox.SetActive(true);
-                    StartConve();
-                }
-            }
-
-            if (ProgressCheck._areWeInTheStage5)
-            {
-                if (!GlobalBools._isknowLuna)
-                {
-                    convo = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_05");
-                    _dialogueBox.SetActive(true);
-                    StartConve();
-                }
-
-                if (!GlobalBools._isknowCenturion)
-                {
-                    convo = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_06");
-                    _dialogueBox.SetActive(true);
-                    StartConve();
-                }
-            }
-
-            if (ProgressCheck._areWeInTheStage6)
-            {
-                if (!GlobalBools._isknowCenturion)
-                {
-                    convo = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_07");
-                    _dialogueBox.SetActive(true);
-                    StartConve();
-                }
-            }
-        }
+        
     }
 
     private void Update()
@@ -230,7 +232,7 @@ public class StartConvo : MonoBehaviour
 
         if (GlobalBools._isjorgeTalking)
         {
-            GlobalBools._isknowJorge = true;
+            GlobalBools._hasAlreadyTalkedToJorge = true;
 
             if (ProgressCheck._areWeInTheSecondPart)
             {

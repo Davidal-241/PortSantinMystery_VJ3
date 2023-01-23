@@ -21,7 +21,7 @@ public static class GlobalBools
     public static bool _isknowReviewer = false;
     public static bool _isknowLuna = false;
     public static bool _isknowCenturion = false;
-    public static bool _isknowJorge = false;
+    public static bool _hasAlreadyTalkedToJorge = false;
     public static bool _isknowPrayer = false;
     //Hablando con el npc
     public static bool _isBlockTheMovement = false;
@@ -55,7 +55,7 @@ public static class GlobalBools
 
     //Bool manejo Elevador
     public static bool _isCloseToElevator = false;
-    public static bool _isInReception = false;
+    public static bool _isInReception = true;
     public static bool _isInFirstFloor = false;
     public static bool _isInSecondFloor = false;
 

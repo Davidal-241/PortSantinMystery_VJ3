@@ -70,7 +70,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(transform.forward);
 
         //We ge the direction from the input horizontal (a / d)
         // direction = new Vector3(Input.GetAxis("Horizontal"), 0, 0);

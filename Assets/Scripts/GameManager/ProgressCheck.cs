@@ -98,7 +98,7 @@ public class ProgressCheck : MonoBehaviour
 
             if (_areWeInTheStage2)
             {
-                if (!GlobalBools._isknowJorge)
+                if (!GlobalBools._hasAlreadyTalkedToJorge)
                 {
                     _canUseElevator = false;
                     if (_youTryGoOutside)

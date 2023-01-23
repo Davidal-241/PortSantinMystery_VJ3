@@ -24,6 +24,7 @@ public class ElevatorLogical : MonoBehaviour
         ProgressCheck._youTryUseElevator = true;
 
         _currentScene = SceneManager.GetActiveScene();
+
         if (ProgressCheck._canUseElevator)
         {
 
@@ -60,7 +61,7 @@ public class ElevatorLogical : MonoBehaviour
     }
 
     public void GoReception()
-    {
+    {if(!GlobalBools._isInReception)
         SceneManager.LoadScene(_receptionHotel);
     }
     public void GoFirstFloor()

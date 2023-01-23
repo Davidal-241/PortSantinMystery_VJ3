@@ -52,6 +52,8 @@ public class DialogueManager : MonoBehaviour
         instance.dialogue.text = "";
         instance.navButtonText.text = ">";
         GlobalBools._isBlockTheMovement = true;
+
+        print("start convo. " + instance.currentIndex);
         //instance.ReadNext();
 
 
