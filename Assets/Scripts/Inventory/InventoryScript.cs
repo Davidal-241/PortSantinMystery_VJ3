@@ -117,7 +117,7 @@ public class InventoryScript : MonoBehaviour
         {
             _inventory.SetActive(true);
             GlobalBools._canSubmit = false;
-            GlobalBools._isBlockTheMovement = true;
+            GlobalBools._playerCanMove = true;
             _currentTabIndex = 0;
             _tabOptions[_currentTabIndex].SetActive(true);
             GlobalBools._isOpenInventory = true;
@@ -126,7 +126,7 @@ public class InventoryScript : MonoBehaviour
         {
             _inventory.SetActive(false);
             _tabOptions[_currentTabIndex].SetActive(false);
-            GlobalBools._isBlockTheMovement = false;
+            GlobalBools._playerCanMove = false;
             GlobalBools._canSubmit = true;
             GlobalBools._isOpenInventory = true;
         }
@@ -159,7 +159,7 @@ public class InventoryScript : MonoBehaviour
 
     void PruebaQ(InputAction.CallbackContext context)
     {
-        print("Pipo");
+        
         if (GlobalBools._isOpenInventory)
         {
 
@@ -173,7 +173,6 @@ public class InventoryScript : MonoBehaviour
 
     void PruebaE(InputAction.CallbackContext context)
     {
-            print("Pipo");
          if (GlobalBools._isOpenInventory)
         {
 
