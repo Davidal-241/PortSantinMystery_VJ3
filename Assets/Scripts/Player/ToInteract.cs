@@ -54,7 +54,6 @@ public class ToInteract : MonoBehaviour
             if (GlobalBools._canTalk)
             {
                 EventManager._ConversationStarts.Invoke();
-                GlobalBools._isWaitingForInteractue = true;
 
             }
 

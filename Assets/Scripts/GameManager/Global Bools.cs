@@ -24,12 +24,12 @@ public static class GlobalBools
     public static bool _hasAlreadyTalkedToJorge = false;
     public static bool _isknowPrayer = false;
     //Hablando con el npc
-    public static bool _isBlockTheMovement = false;
+    public static bool _playerCanMove = false;
     public static bool _isdriverTalking = false;
     public static bool _isreviewerTalking = false;
-    public static bool _islunaTalking = false;
-    public static bool _iscenturionTalking = false;
-    public static bool _isjorgeTalking = false;
+    public static bool _isCloseToLuna = false;
+    public static bool _isCloseToCenturion = false;
+    public static bool _isCloseToJorge = false;
     public static bool _isprayerTalking = false;
 
     public static bool _cantTalkLuna;
