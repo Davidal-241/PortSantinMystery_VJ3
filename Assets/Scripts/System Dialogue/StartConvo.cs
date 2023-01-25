@@ -10,7 +10,6 @@ public class StartConvo : MonoBehaviour
 
     private void Start()
     {
-        print("StartConvo está como componente de " + name);
         _dialogueBox = GameObject.Find("DialogueBox");
 
 
@@ -20,7 +19,6 @@ public class StartConvo : MonoBehaviour
 
         if (_dialogueBox != null)
             _dialogueBox.SetActive(false);
-        print(_dialogueBox);
 
     }
 
@@ -75,7 +73,8 @@ public class StartConvo : MonoBehaviour
                 {
                     if (!GlobalBools._hasAlreadyTalkedToJorge)
                     {
-                    print("Va");
+                    // currentConvoJorge = Elevator.string
+
                         convo = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_01");
                         _dialogueBox.SetActive(true);
                         print(_dialogueBox.activeInHierarchy);
@@ -159,7 +158,7 @@ public class StartConvo : MonoBehaviour
     {
        
 
-        if (GlobalBools._islunaTalking)
+        if (GlobalBools._isCloseToLuna)
         {
             if (ProgressCheck._areWeInTheSecondPart)
             {
@@ -202,7 +201,7 @@ public class StartConvo : MonoBehaviour
             }
         }
 
-        if (GlobalBools._iscenturionTalking)
+        if (GlobalBools._isCloseToCenturion)
         {
             GlobalBools._isknowCenturion = true;
             if (ProgressCheck._areWeInTheSecondPart)
@@ -230,7 +229,7 @@ public class StartConvo : MonoBehaviour
 
 
 
-        if (GlobalBools._isjorgeTalking)
+        if (GlobalBools._isCloseToJorge)
         {
             GlobalBools._hasAlreadyTalkedToJorge = true;
 

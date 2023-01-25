@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         
         //direction = move.ReadValue<Vector2>();
         direction = move.ReadValue<Vector2>();
-        if (!GlobalBools._isBlockTheMovement)
+        if (!GlobalBools._playerCanMove)
         {
 
             if (direction.x > 0)
@@ -101,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!GlobalBools._isBlockTheMovement)
+        if (!GlobalBools._playerCanMove)
         {
             //After selecting the move type we can test any of them thanks to this switch case 
             switch (moveType)
@@ -174,21 +174,21 @@ public class PlayerMovement : MonoBehaviour
         {
             //EventManager._StartFeedback.Invoke();
             GlobalBools._canTalk = true;
-            GlobalBools._islunaTalking = true;
+            GlobalBools._isCloseToLuna = true;
         }
 
         if (other.gameObject.CompareTag("Centurion"))
         {
             //EventManager._StartFeedback.Invoke();
             GlobalBools._canTalk = true;
-            GlobalBools._iscenturionTalking = true;
+            GlobalBools._isCloseToCenturion = true;
         }
 
         if (other.gameObject.CompareTag("Jorge"))
         {
             //EventManager._StartFeedback.Invoke();
             GlobalBools._canTalk = true;
-            GlobalBools._isjorgeTalking = true;
+            GlobalBools._isCloseToJorge = true;
         }
 
     }
@@ -226,21 +226,21 @@ public class PlayerMovement : MonoBehaviour
         {
             //EventManager._StopFeedback.Invoke();
             GlobalBools._canTalk = false;
-            GlobalBools._islunaTalking = false;
+            GlobalBools._isCloseToLuna = false;
         }
 
         if (other.gameObject.CompareTag("Centurion"))
         {
             //EventManager._StopFeedback.Invoke();
             GlobalBools._canTalk = false;
-            GlobalBools._iscenturionTalking = false;
+            GlobalBools._isCloseToCenturion = false;
         }
 
         if (other.gameObject.CompareTag("Jorge"))
         {
             //EventManager._StopFeedback.Invoke();
             GlobalBools._canTalk = false;
-            GlobalBools._isjorgeTalking = false;
+            GlobalBools._isCloseToJorge = false;
         }
 
     }

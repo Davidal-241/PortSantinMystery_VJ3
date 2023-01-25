@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
 using System;
+using System.Diagnostics;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -15,9 +16,10 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]private int currentIndex;
     private Conversation currentConvo;
     private static DialogueManager instance;
-    private Coroutine typing;
+    private Coroutine typingCoroutine;
 
-    bool _isEndTyping = true;
+    bool _typingHasStarted = false;
+    bool _lineFinishedTyping = false;
 
     [SerializeField] float _betweenLettersWaitTime;
 
@@ -45,15 +47,16 @@ public class DialogueManager : MonoBehaviour
 
     public static void StartConversation(Conversation convo)
     {
-       
+        print("StartConversation");
+
         instance.currentIndex = 0;
         instance.currentConvo = convo;
         instance.speakerName.text = "";
         instance.dialogue.text = "";
         instance.navButtonText.text = ">";
-        GlobalBools._isBlockTheMovement = true;
+        GlobalBools._playerCanMove = true;
 
-        print("start convo. " + instance.currentIndex);
+        //print("Call from " + new StackTrace().GetFrame(0).GetMethod().Name + ". start convo. " + instance.currentIndex);
         //instance.ReadNext();
 
 
@@ -62,35 +65,56 @@ public class DialogueManager : MonoBehaviour
 
     public void ReadNext()
     {
-        print("current index: " + currentIndex);
-        
-        if(currentIndex == currentConvo.GetLength())
+        print(currentIndex + " / " + currentConvo.GetLength());
+
+        // End conversation
+        if (currentIndex == currentConvo.GetLength() && typingCoroutine == null)
         {
+            print("end conversation on line " + currentIndex);
+
             EndDialogue();
+
             return;
         }
 
-        speakerName.text = currentConvo.GetLineByIndex(currentIndex).speaker.GetName();
-
-        if (_isEndTyping)
+        // Start conversation line
+        else if (!_typingHasStarted)
         {
+            print("start conversation line " + currentIndex);
 
-            if (typing == null)
-            {
-                typing = instance.StartCoroutine(TypeText(currentConvo.GetLineByIndex(currentIndex).dialogue));
-            }
-            else
-            {
-                instance.StopCoroutine(typing);
-                typing = null;
-                typing = instance.StartCoroutine(TypeText(currentConvo.GetLineByIndex(currentIndex).dialogue));
-            }
+            if (typingCoroutine != null)
+                instance.StopCoroutine(typingCoroutine);
+
+            StartNewLine();
+            _typingHasStarted = true;
         }
+
+        // End conversation line
+        else if (typingCoroutine == null)
+        {
+            print("end conversation line " + currentIndex);
+
+            StartNewLine();
+
+
+            //if (typing == null)
+            //{
+            //    typing = instance.StartCoroutine(TypeText(currentConvo.GetLineByIndex(currentIndex).dialogue));
+            //}
+            //else
+            //{
+            //    instance.StopCoroutine(typing);
+            //    typing = instance.StartCoroutine(TypeText(currentConvo.GetLineByIndex(currentIndex).dialogue));
+            //}
+        }
+
+        // Insta complete conversation line
         else
         {
-            instance.StopCoroutine(typing);
-            typing = null;
-            dialogue.text += currentConvo.GetLineByIndex(currentIndex).dialogue.Substring(dialogueIndex);
+            print("insta complete line " + (currentIndex-1));
+            instance.StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
+            dialogue.text += currentConvo.GetLineByIndex(currentIndex-1).dialogue.Substring(dialogueIndex);
 
             // Remove all / characters
 
@@ -104,28 +128,38 @@ public class DialogueManager : MonoBehaviour
 
             //dialogue.text = dialogue.text.Trim(new char[] { '/' });
 
-            _isEndTyping = true;
+            //_lineFinishedTyping = true;
+            //currentIndex++;
         }
 
 
-
+        // Display the current conversartion line images
         speakerSprite1.sprite = currentConvo.GetLineByIndex(currentIndex)._SpritePortrains1;
         speakerSprite2.sprite = currentConvo.GetLineByIndex(currentIndex)._SpritePortrains2;
 
-        if (_isEndTyping)
-        {
+        
+    }
 
-            currentIndex++;
-        }
-       
+    void StartNewLine()
+    {
+        typingCoroutine = instance.StartCoroutine(TypeText(currentConvo.GetLineByIndex(currentIndex).dialogue));
+        speakerName.text = currentConvo.GetLineByIndex(currentIndex).speaker.GetName();
+
+        speakerSprite1.sprite = currentConvo.GetLineByIndex(currentIndex)._SpritePortrains1;
+        speakerSprite2.sprite = currentConvo.GetLineByIndex(currentIndex)._SpritePortrains2;
+        
+        currentIndex++;
     }
 
  
     public void EndDialogue()
     {
-        GlobalBools._isBlockTheMovement = false;
+        GlobalBools._playerCanMove = false;
         _dialogueBox.SetActive(false);
         currentIndex = 0;
+        _typingHasStarted = false;
+        speakerSprite1.sprite = null;
+        speakerSprite2.sprite = null;
         GlobalBools._isTalking = false;
     }
 
@@ -135,7 +169,7 @@ public class DialogueManager : MonoBehaviour
         dialogue.text = "";
         bool complete = false;
         dialogueIndex = 0;
-        _isEndTyping = false;
+        //_lineFinishedTyping = false;
 
         while (!complete)
         {
@@ -151,7 +185,7 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
-        _isEndTyping = true;
-        typing = null;
+        //_lineFinishedTyping = true;
+        typingCoroutine = null;
     }
 }
