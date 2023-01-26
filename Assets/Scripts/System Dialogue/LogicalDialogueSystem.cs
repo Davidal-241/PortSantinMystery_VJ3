@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 using System;
 using System.Diagnostics;
 
-public class DialogueManager : MonoBehaviour
+public class LogicalDialogueSystem : MonoBehaviour
 {
     public TextMeshProUGUI speakerName, dialogue, navButtonText;
     public Image speakerSprite1;
@@ -15,7 +15,7 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField]private int currentIndex;
     private Conversation currentConvo;
-    private static DialogueManager instance;
+    private static LogicalDialogueSystem instance;
     private Coroutine typingCoroutine;
 
     bool _typingHasStarted = false;

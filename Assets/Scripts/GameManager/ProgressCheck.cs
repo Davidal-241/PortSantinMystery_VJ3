@@ -17,7 +17,7 @@ public class ProgressCheck : MonoBehaviour
     public static bool _canYouInteractWithYourBed = false;
 
     public static bool _didYouInteractWithTheGlasses = false;
-    public static bool _canYouExit = false;
+    public static bool cantYouLeaveThehotel = false;
 
     public static bool _areWeInTheStage1 = false;
     public static bool _areWeInTheStage2 = true;
@@ -55,7 +55,7 @@ public class ProgressCheck : MonoBehaviour
         if (_finishMainDialogueJorge)
         {
  
-            GlobalBools._canJorgeTalkMore = true;
+            GlobalBools._isItJorgesMainDialogue = true;
         }
     }
 
@@ -211,7 +211,7 @@ public class ProgressCheck : MonoBehaviour
                         _spawnLuna = false;
                     }
 
-                    if (!GlobalBools._isknowLuna)
+                    if (!GlobalBools._hasAlreadyTalkedToLuna)
                     {
                         if (_youTryUseElevator)
                         {
@@ -225,7 +225,7 @@ public class ProgressCheck : MonoBehaviour
                         _canUseElevatorToGoDown = true;
                     }
 
-                    if (!_canYouExit)
+                    if (!cantYouLeaveThehotel)
                     {
                         if (_youTryGoOutside)
                         {
@@ -272,7 +272,7 @@ public class ProgressCheck : MonoBehaviour
 
                     if (_isLunaInTheScene)
                     {
-                        if (!_canYouExit)
+                        if (!cantYouLeaveThehotel)
                         {
 
                             if (_youTryGoOutside)

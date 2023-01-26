@@ -19,7 +19,7 @@ public static class GlobalBools
         // Conocer a un npc
     public static bool _isknowDriver = false;
     public static bool _isknowReviewer = false;
-    public static bool _isknowLuna = false;
+    public static bool _hasAlreadyTalkedToLuna = false;
     public static bool _isknowCenturion = false;
     public static bool _hasAlreadyTalkedToJorge = false;
     public static bool _isknowPrayer = false;
@@ -32,11 +32,11 @@ public static class GlobalBools
     public static bool _isCloseToJorge = false;
     public static bool _isprayerTalking = false;
 
-    public static bool _cantTalkLuna;
+    public static bool _lunaDoesntWantToTalk;
         //Tienen mas conversación?
-    public static bool _canJorgeTalkMore = false;
+    public static bool _isItJorgesMainDialogue = false;
     public static bool _canCenturionTalkMore = false;
-    public static bool _canLunaTalkMore = false;
+    public static bool _isItLunaMainDialogue = false;
 
 
 

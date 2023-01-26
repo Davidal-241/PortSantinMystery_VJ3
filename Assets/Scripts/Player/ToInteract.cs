@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class ToInteract : MonoBehaviour
 {
 
-    DialogueManager dialogueManager;
+    LogicalDialogueSystem logicalDialogueManager;
     [SerializeField] UserActions _controls;
     private InputAction Interact;
 
@@ -18,7 +18,7 @@ public class ToInteract : MonoBehaviour
     {
         _controls = new UserActions();
 
-        dialogueManager = FindObjectOfType<DialogueManager>();
+        logicalDialogueManager = FindObjectOfType<LogicalDialogueSystem>();
     }
 
 
@@ -50,19 +50,13 @@ public class ToInteract : MonoBehaviour
     {
         if (!GlobalBools._isTalking)
         {
-
-            if (GlobalBools._canTalk)
-            {
-                EventManager._ConversationStarts.Invoke();
-
-            }
-
+            EventManager._InteractionStart.Invoke();
 
             if (GlobalBools._canOpenDoor)
             {
                 if (!ProgressCheck._areWeOutsideTheWeRoom)
                 {
-                    if (ProgressCheck._canYouExit)
+                    if (ProgressCheck.cantYouLeaveThehotel)
                     {
                         EventManager._changeScene.Invoke();
                     }
@@ -111,7 +105,7 @@ public class ToInteract : MonoBehaviour
     {
         if (GlobalBools._isTalking)
         {
-            dialogueManager.ReadNext();
+            logicalDialogueManager.ReadNext();
         }
     }
 }

@@ -2047,14 +2047,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2944707666141612968, guid: 94ca3a8e0588dd34e8ced49d8ba5323f, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2944707666141612968, guid: 94ca3a8e0588dd34e8ced49d8ba5323f, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3485212608262712454, guid: 94ca3a8e0588dd34e8ced49d8ba5323f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2102,14 +2094,6 @@ PrefabInstance:
     - target: {fileID: 4257633147833185852, guid: 94ca3a8e0588dd34e8ced49d8ba5323f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6069068834429040107, guid: 94ca3a8e0588dd34e8ced49d8ba5323f, type: 3}
-      propertyPath: moveType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6069068834429040107, guid: 94ca3a8e0588dd34e8ced49d8ba5323f, type: 3}
-      propertyPath: WalkingSpeed
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94ca3a8e0588dd34e8ced49d8ba5323f, type: 3}
