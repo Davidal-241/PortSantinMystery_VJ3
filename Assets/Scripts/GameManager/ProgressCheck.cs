@@ -93,25 +93,12 @@ public class ProgressCheck : MonoBehaviour
 
             if (_areWeInTheStage2)
             {
-                if (!GlobalBools._hasAlreadyTalkedToJorge)
-                {
-                    _canUseElevator = false;
-                    if (_youTryGoOutside)
-                    {
-                        EventManager._CesarDialoguesEvent.Invoke();
-                        _youTryGoOutside = false;
-                    }
-                    if (_youTryUseElevator)
-                    {
-                        EventManager._CesarDialoguesEvent.Invoke();
-                        _youTryUseElevator = false;
-                    }
-                }
-                else
+                if (GlobalBools._hasAlreadyTalkedToJorge)
                 {
                     _canUseElevator = true;
                     _canUseElevatorToGoDown = false;
                 }
+                
 
                 if (_youTryGoOutside)
                 {
@@ -143,15 +130,6 @@ public class ProgressCheck : MonoBehaviour
 
                     _canUseElevator = false;
 
-                    if (_youTryUseElevator)
-                    {
-
-                        if (!_didYouLeaveTheSuitcase)
-                        {
-                           
-                            EventManager._CesarDialoguesEvent.Invoke();
-                        }
-                    }
                     if (_canYouInteractWithYourDoor)
                     {
                         _areWeInTheStage3 = false;

@@ -51,25 +51,6 @@ public class ToInteract : MonoBehaviour
         if (!GlobalBools._isTalking)
         {
             EventManager._InteractionStart.Invoke();
-
-            if (GlobalBools._isCloseToElevator)
-            {
-                GlobalBools._canSubmit = true;
-
-            }
-
-            if (GlobalBools._isCloseToBed)
-            {
-                if (ProgressCheck._canYouInteractWithYourBed)
-                {
-                    ProgressCheck._didYouLeaveTheSuitcase = true;
-                }
-            }
-
-            if (GlobalBools._isCloseToGlasses)
-            {
-                ProgressCheck._didYouInteractWithTheGlasses = true;
-            }
         }
 
     }

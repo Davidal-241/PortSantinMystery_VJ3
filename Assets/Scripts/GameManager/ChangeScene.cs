@@ -8,7 +8,7 @@ public class ChangeScene : MonoBehaviour
     [SerializeField] int _indexScene;
     private void Start()
     {
-        EventManager._changeScene.AddListener(NextScene);
+        EventManager._ChangeScene.AddListener(NextScene);
     }
 
 
