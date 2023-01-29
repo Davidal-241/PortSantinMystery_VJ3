@@ -147,7 +147,7 @@ public class UINavigateLogic : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(_firstObjectToSelect[4]);
 
         }
-        if (GlobalBools._isInSecondFloor)
+        if (GlobalBools._isInBasement)
         {
             _buttonElevator[2].interactable = false;
 

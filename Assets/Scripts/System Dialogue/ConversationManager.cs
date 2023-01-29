@@ -43,7 +43,7 @@ public class ConversationManager : MonoBehaviour
                 _conversation = Resources.Load<Conversation>("Luna/N_Dialogues/Luna_N_Dialogue_02");
                 _dialogueBox.SetActive(true);
                 StartConversation();
-                ProgressCheck.cantYouLeaveThehotel = true;
+                ProgressCheck.canYouLeaveThehotel = true;
             }
         }
 
@@ -104,7 +104,7 @@ public class ConversationManager : MonoBehaviour
                         StartConversation();
                     }
 
-                    if (!GlobalBools._isknowCenturion)
+                    if (!GlobalBools._hasAlreadyTalkedToCenturion)
                     {
                         _conversation = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_06");
                         _dialogueBox.SetActive(true);
@@ -114,7 +114,7 @@ public class ConversationManager : MonoBehaviour
 
                 if (ProgressCheck._areWeInTheStage6)
                 {
-                    if (!GlobalBools._isknowCenturion)
+                    if (!GlobalBools._hasAlreadyTalkedToCenturion)
                     {
                         _conversation = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_07");
                         _dialogueBox.SetActive(true);
@@ -147,7 +147,7 @@ public class ConversationManager : MonoBehaviour
     //private void Update()
     //{
 
-     
+
 
     //    //if (GlobalBools._isTalking)
     //    //{
@@ -164,33 +164,5 @@ public class ConversationManager : MonoBehaviour
         _conversation = _npcConversation;
         _dialogueBox.SetActive(true);
         StartConversation();
-
-
-        if (GlobalBools._isCloseToCenturion)
-        {
-            GlobalBools._isknowCenturion = true;
-            if (ProgressCheck._areWeInTheSecondPart)
-            {
-                if (ProgressCheck._areWeInTheStage6)
-                {
-                    if (!GlobalBools._canCenturionTalkMore)
-                    {
-
-                        _conversation = Resources.Load<Conversation>("Centurion/N_Dialogues/Centurion_N_Dialogue_01");
-                        GlobalBools._canCenturionTalkMore = true;
-                        _dialogueBox.SetActive(true);
-                        StartConversation();
-                    }
-
-                    if (GlobalBools._canCenturionTalkMore)
-                    {
-                        _conversation = Resources.Load<Conversation>("Centurion/GF_Dialogues/Centurion_GF_Dialogue_01");
-                        _dialogueBox.SetActive(true);
-                        StartConversation();
-                    }
-                }
-            }
-        }
-
     }
 }

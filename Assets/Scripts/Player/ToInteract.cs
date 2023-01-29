@@ -52,35 +52,8 @@ public class ToInteract : MonoBehaviour
         {
             EventManager._InteractionStart.Invoke();
 
-            if (GlobalBools._canOpenDoor)
-            {
-                if (!ProgressCheck._areWeOutsideTheWeRoom)
-                {
-                    if (ProgressCheck.cantYouLeaveThehotel)
-                    {
-                        EventManager._changeScene.Invoke();
-                    }
-                    else
-                    {
-                        ProgressCheck._youTryGoOutside = true;
-                    }
-
-                }
-
-                if (ProgressCheck._areWeOutsideTheCenturionRoom)
-                {
-                    EventManager._changeScene.Invoke();
-                }
-
-                if (ProgressCheck._areWeOutsideTheWeRoom)
-                {
-                    ProgressCheck._canYouInteractWithYourDoor = true;
-                }
-            }
-
             if (GlobalBools._isCloseToElevator)
             {
-                EventManager._EnterInElevator.Invoke();
                 GlobalBools._canSubmit = true;
 
             }

@@ -149,99 +149,13 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.gameObject.CompareTag("Puerta"))
-        {
-            //EventManager._StartFeedback.Invoke();
-            GlobalBools._canOpenDoor = true;
-            print("Puedes abrir");
-        }
-
-        //if(other.gameObject.CompareTag("Driver"))
-        //{
-        //    EventManager._StartFeedback.Invoke();
-        //    GlobalBools._canTalk = true;
-        //    GlobalBools._driverTalking = true;
-        //}
-
-        //if(other.gameObject.CompareTag("Reviewer"))
-        //{
-        //    EventManager._StartFeedback.Invoke();
-        //    GlobalBools._canTalk = true;
-        //    GlobalBools._reviewerTalking = true;
-        //}
-
-        if (other.gameObject.CompareTag("Luna"))
-        {
-            //EventManager._StartFeedback.Invoke();
-            GlobalBools._canTalk = true;
-            GlobalBools._isCloseToLuna = true;
-        }
-
-        if (other.gameObject.CompareTag("Centurion"))
-        {
-            //EventManager._StartFeedback.Invoke();
-            GlobalBools._canTalk = true;
-            GlobalBools._isCloseToCenturion = true;
-        }
-
-        if (other.gameObject.CompareTag("Jorge"))
-        {
-            //EventManager._StartFeedback.Invoke();
-            GlobalBools._canTalk = true;
-            GlobalBools._isCloseToJorge = true;
-        }
+      
 
     }
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Puerta"))
-        {
-            //EventManager._StopFeedback.Invoke();
-            GlobalBools._canOpenDoor = false;
-        }
-
-        //if (other.gameObject.CompareTag("Driver"))
-        //{
-        //    //EventManager._StopFeedback.Invoke();
-        //    GlobalBools._canTalk = false;
-        //    GlobalBools._isdriverTalking = false;
-        //}
-
-        //if (other.gameObject.CompareTag("Reviewer"))
-        //{
-        //    //EventManager._StopFeedback.Invoke();
-        //    GlobalBools._canTalk = false;
-        //    GlobalBools._isreviewerTalking = false;
-        //}
-
-        //if (other.gameObject.CompareTag("Prayer"))
-        //{
-        //    //EventManager._StopFeedback.Invoke();
-        //    GlobalBools._canTalk = false;
-        //    GlobalBools._isreviewerTalking = false;
-        //}
-
-        if (other.gameObject.CompareTag("Luna"))
-        {
-            //EventManager._StopFeedback.Invoke();
-            GlobalBools._canTalk = false;
-            GlobalBools._isCloseToLuna = false;
-        }
-
-        if (other.gameObject.CompareTag("Centurion"))
-        {
-            //EventManager._StopFeedback.Invoke();
-            GlobalBools._canTalk = false;
-            GlobalBools._isCloseToCenturion = false;
-        }
-
-        if (other.gameObject.CompareTag("Jorge"))
-        {
-            //EventManager._StopFeedback.Invoke();
-            GlobalBools._canTalk = false;
-            GlobalBools._isCloseToJorge = false;
-        }
+  
 
     }
 }

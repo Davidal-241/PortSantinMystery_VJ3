@@ -17,31 +17,21 @@ public static class GlobalBools
 
     //NPCS
         // Conocer a un npc
-    public static bool _isknowDriver = false;
-    public static bool _isknowReviewer = false;
     public static bool _hasAlreadyTalkedToLuna = false;
-    public static bool _isknowCenturion = false;
+    public static bool _hasAlreadyTalkedToCenturion = false;
     public static bool _hasAlreadyTalkedToJorge = false;
-    public static bool _isknowPrayer = false;
     //Hablando con el npc
     public static bool _playerCanMove = false;
-    public static bool _isdriverTalking = false;
-    public static bool _isreviewerTalking = false;
-    public static bool _isCloseToLuna = false;
-    public static bool _isCloseToCenturion = false;
-    public static bool _isCloseToJorge = false;
-    public static bool _isprayerTalking = false;
-
     public static bool _lunaDoesntWantToTalk;
+
         //Tienen mas conversación?
     public static bool _isItJorgesMainDialogue = false;
-    public static bool _canCenturionTalkMore = false;
+    public static bool _isItCenturionsMainDialogue = false;
     public static bool _isItLunaMainDialogue = false;
 
 
 
 
-    public static bool _isWaitingForInteractue = false;
     
 
     //Bool manejo Puerta
@@ -57,7 +47,7 @@ public static class GlobalBools
     public static bool _isCloseToElevator = false;
     public static bool _isInReception = true;
     public static bool _isInFirstFloor = false;
-    public static bool _isInSecondFloor = false;
+    public static bool _isInBasement = false;
 
     //Bool manejo UINavigateLogic
 

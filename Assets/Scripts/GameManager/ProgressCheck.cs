@@ -17,7 +17,7 @@ public class ProgressCheck : MonoBehaviour
     public static bool _canYouInteractWithYourBed = false;
 
     public static bool _didYouInteractWithTheGlasses = false;
-    public static bool cantYouLeaveThehotel = false;
+    public static bool canYouLeaveThehotel = false;
 
     public static bool _areWeInTheStage1 = false;
     public static bool _areWeInTheStage2 = true;
@@ -29,6 +29,7 @@ public class ProgressCheck : MonoBehaviour
     public static bool _canWalkForTheScene = false;
     public static bool _areWeInTheHotel = false;
     public static bool _areWeOutsideTheWeRoom = false;
+    public static bool _areWeOutsideTheHotel = false;
     public static bool _areWeOutsideTheCenturionRoom = false;
     public static bool _areWeInReception = true;
 
@@ -51,12 +52,6 @@ public class ProgressCheck : MonoBehaviour
     private void Update()
     {
         GameFlow();
-
-        if (_finishMainDialogueJorge)
-        {
- 
-            GlobalBools._isItJorgesMainDialogue = true;
-        }
     }
 
     public void GameFlow()
@@ -225,7 +220,7 @@ public class ProgressCheck : MonoBehaviour
                         _canUseElevatorToGoDown = true;
                     }
 
-                    if (!cantYouLeaveThehotel)
+                    if (!canYouLeaveThehotel)
                     {
                         if (_youTryGoOutside)
                         {
@@ -233,7 +228,7 @@ public class ProgressCheck : MonoBehaviour
                         }
                     }
 
-                    if (!GlobalBools._isknowCenturion)
+                    if (!GlobalBools._hasAlreadyTalkedToCenturion)
                     {
                         if(_currentScene.name == _sceneName[1])
                         {
@@ -247,14 +242,14 @@ public class ProgressCheck : MonoBehaviour
 
                 if (_areWeInTheStage6)
                 {
-                    if (!GlobalBools._isknowCenturion)
+                    if (!GlobalBools._hasAlreadyTalkedToCenturion)
                     {
                         if (_youTryUseElevator)
                         {
                             EventManager._CesarDialoguesEvent.Invoke();
                         }
                     }
-                    if (GlobalBools._isknowCenturion)
+                    if (GlobalBools._hasAlreadyTalkedToCenturion)
                     {
                         _canUseElevator = true;
                     }
@@ -272,7 +267,7 @@ public class ProgressCheck : MonoBehaviour
 
                     if (_isLunaInTheScene)
                     {
-                        if (!cantYouLeaveThehotel)
+                        if (!canYouLeaveThehotel)
                         {
 
                             if (_youTryGoOutside)

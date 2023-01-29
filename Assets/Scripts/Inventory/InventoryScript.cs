@@ -166,8 +166,9 @@ public class InventoryScript : MonoBehaviour
             _tabOptions[_currentTabIndex].SetActive(false);
             _currentTabIndex = (_currentTabIndex - 1 + _tab.Length) % _tab.Length;
             _tabOptions[_currentTabIndex].SetActive(true);
+            _tabSelector.transform.position = _tab[_currentTabIndex].transform.position;
 
-           
+
         }
     }
 
@@ -180,9 +181,11 @@ public class InventoryScript : MonoBehaviour
             _currentTabIndex = (_currentTabIndex + 1) % _tab.Length;
             _tabOptions[_currentTabIndex].SetActive(true);
 
+            _tabSelector.transform.position = _tab[_currentTabIndex].transform.position;
 
 
-            
+
+
         }
     }
 }

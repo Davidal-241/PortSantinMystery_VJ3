@@ -3,76 +3,117 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem.UI;
 
-public class ElevatorLogical : MonoBehaviour
+
+public class ElevatorLogical : MonoBehaviour, IInteractable
 {
-    public string _receptionHotel, _firstFloorHotel, _secondFloorHotel;
+    [SerializeField] string[] _nameScene;
+    [SerializeField] GameObject _elevatorUI;
+    bool _isElevatorUIActive = false;
 
 
-    void Start()
+    [SerializeField] GameObject _buttonsSelector;
+
+    [SerializeField] GameObject[] _buttons;
+
+    private int _currentButtonsIndex;
+
+    [SerializeField] Color _colorOn;
+    [SerializeField] Color _colorOff;
+
+
+    private void Awake()
     {
-        EventManager._EnterInElevator.AddListener(UseElevator);
+        _elevatorUI = GameObject.Find("ElevatorCanvas");
     }
 
-    public void UseElevator()
+    private void Start()
+    {
+        if (_elevatorUI != null)
+        {
+            _elevatorUI.SetActive(false);
+        }
+    }
+
+    public void Interact()
+    {
+        UseElevator();
+        UIElevator();
+    }
+
+    private void UseElevator()
     {
         Scene _currentScene;
 
-        ProgressCheck._youTryUseElevator = true;
+        GlobalBools._isInReception = false;
+        GlobalBools._isInFirstFloor = false;
+        GlobalBools._isInBasement = false;
 
+
+        ProgressCheck._youTryUseElevator = true;
         _currentScene = SceneManager.GetActiveScene();
 
         if (ProgressCheck._canUseElevator)
         {
-
-            if (_currentScene.name == _receptionHotel)
+            if (_currentScene.name == _nameScene[0])
             {
                 GlobalBools._isInReception = true;
-                GlobalBools._isInFirstFloor = false;
-                GlobalBools._isInSecondFloor = false;
+                _currentButtonsIndex = 0;
+
             }
 
-            if (_currentScene.name == _firstFloorHotel)
+            if (_currentScene.name == _nameScene[1])
             {
-                GlobalBools._isInReception = false;
                 GlobalBools._isInFirstFloor = true;
-                GlobalBools._isInSecondFloor = false;
-
+                _currentButtonsIndex = 1;
             }
 
-            if (ProgressCheck._canUseElevatorToGoDown)
+            if (_currentScene.name == _nameScene[2])
             {
-                if (_currentScene.name == _secondFloorHotel)
+                GlobalBools._isInBasement = true;
+                _currentButtonsIndex = 2;
+            }
+        }
 
-                {
-                    GlobalBools._isInReception = false;
-                    GlobalBools._isInFirstFloor = false;
-                    GlobalBools._isInSecondFloor = true;
-                }
-            }
-            else
-            {
-                ProgressCheck._youTryUseElevatorDown = true;
-            }
+    }
+
+
+    private void UIElevator()
+    {
+        if (!_elevatorUI.activeSelf)
+        {
+            _elevatorUI.SetActive(true);
+            _isElevatorUIActive = true;
+        }
+        else
+        {
+            _elevatorUI.SetActive(false);
+            _isElevatorUIActive = false;
         }
     }
 
-    public void GoReception()
-    {if(!GlobalBools._isInReception)
-        SceneManager.LoadScene(_receptionHotel);
-    }
-    public void GoFirstFloor()
+    private void ScrollUpByInterface()
     {
-        SceneManager.LoadScene(_firstFloorHotel);
+        if (_isElevatorUIActive)
+        {
 
+        }
     }
-    public void GoSecondFloor()
+    private void ScrollDownByInterface()
     {
-        SceneManager.LoadScene(_secondFloorHotel);
+        if (_isElevatorUIActive)
+        {
 
+        }
     }
+    private void UseTheButton()
+    {
+        if (_isElevatorUIActive)
+        {
+
+        }
+    }
+
 
 }
+

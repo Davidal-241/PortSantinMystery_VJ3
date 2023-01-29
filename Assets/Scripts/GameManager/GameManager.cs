@@ -11,24 +11,17 @@ public class GameManager : MonoBehaviour
     private InputAction Inventory;
 
     [SerializeField]private GameObject _menuPauseCanvas;
-    [SerializeField]private GameObject _elevatorUI;
-    bool _isElevatorUiActive = false;
 
     private void Awake()
     {
         _controls = new UserActions();
         _menuPauseCanvas = GameObject.Find("BasePausemenu");
-        _elevatorUI = GameObject.Find("ElevatorCanvas");
     }
 
     private void Start()
     {
-        EventManager._EnterInElevator.AddListener(ActiveElevatorUI);
-        EventManager._CloseElevator.AddListener(FalseUIElevator);
         if (_menuPauseCanvas != null)
             _menuPauseCanvas.SetActive(false);
-        if (_elevatorUI != null)
-            _elevatorUI.SetActive(false);
     }
 
     public void OnEnable()
@@ -83,18 +76,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ActiveElevatorUI()
-    {
-        _elevatorUI.SetActive(true);
-        _isElevatorUiActive = true;
-    }
-    public void FalseUIElevator()
-    {
-        _elevatorUI.SetActive(false);
-        _isElevatorUiActive = false;
-        GlobalBools._canSubmit = false;
-
-    }
     public void GoMenuPrincipalMain()
     {
         GlobalBools._canSubmit = false;

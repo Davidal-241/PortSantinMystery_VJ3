@@ -36,16 +36,18 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
                 {
                     GlobalBools._isItLunaMainDialogue = true;
 
-                    if (ProgressCheck.cantYouLeaveThehotel)
+                    if (ProgressCheck.canYouLeaveThehotel)
                     {
                         _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/N_Dialogues/Luna_N_Dialogue_02");
-                        ProgressCheck.cantYouLeaveThehotel = true;
+                        ProgressCheck.canYouLeaveThehotel = true;
                     }
 
                 }
 
             }
         }
+        EventManager._ConversationStarts.Invoke(_lunasCurrentDialogue);
+
     }
 
 }
