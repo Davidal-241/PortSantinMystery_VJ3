@@ -27,7 +27,7 @@ public class ProgressCheck : MonoBehaviour
     public static bool _areWeInTheStage6 = false;
 
     public static bool _canWalkForTheScene = false;
-    public static bool _areWeInTheHotel = false;
+    public static bool _areWeInTheHotel = true;
     public static bool _areWeOutsideTheWeRoom = false;
     public static bool _areWeOutsideTheHotel = false;
     public static bool _areWeOutsideTheCenturionRoom = false;
