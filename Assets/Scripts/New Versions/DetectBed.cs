@@ -6,7 +6,7 @@ public class DetectBed : MonoBehaviour,IInteractable
 {
     public void Interact()
     {
-
+        LeaveTheBag();
     }
 
     private void LeaveTheBag()

@@ -10,6 +10,7 @@ public class LogicaFullScree : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EventManager._FullScreen.AddListener(ActiveFullScreen);
         if(Screen.fullScreen)
         {
             _toggle.isOn = true;

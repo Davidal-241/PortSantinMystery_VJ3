@@ -13,6 +13,7 @@ public class LogicVolumen : MonoBehaviour
 
     private void Start()
     {
+        EventManager._VolumenValue.AddListener(ChangeSlider);
         _sliderGeneral.value = PlayerPrefs.GetFloat("volumenGeneral", 0.5f);
         //_sliderMusic.value = PlayerPrefs.GetFloat("volumenMusic", 0.5f);
         //_sliderAmbient.value = PlayerPrefs.GetFloat("volumenAmbient", 0.5f);

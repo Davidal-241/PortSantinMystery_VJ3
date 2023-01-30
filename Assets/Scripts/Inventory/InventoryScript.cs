@@ -116,8 +116,6 @@ public class InventoryScript : MonoBehaviour
         if (GlobalBools._isInventoryActive)
         {
             _inventory.SetActive(true);
-            GlobalBools._canSubmit = false;
-            GlobalBools._playerCanMove = true;
             _currentTabIndex = 0;
             _tabOptions[_currentTabIndex].SetActive(true);
             GlobalBools._isOpenInventory = true;
@@ -127,7 +125,6 @@ public class InventoryScript : MonoBehaviour
             _inventory.SetActive(false);
             _tabOptions[_currentTabIndex].SetActive(false);
             GlobalBools._playerCanMove = false;
-            GlobalBools._canSubmit = true;
             GlobalBools._isOpenInventory = true;
         }
 

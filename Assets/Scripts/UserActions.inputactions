@@ -186,9 +186,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Navigate",
+                    "name": "NavigateUp",
                     "type": "Button",
                     "id": "848289ea-8c4c-41b8-bd4e-150d9b37d213",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "NavigateDown",
+                    "type": "Button",
+                    "id": "6d904d58-6736-4a7f-80e6-d17b5a6b7273",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -216,6 +224,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "9929aa74-5d70-470d-ba9e-0e648890fe45",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -237,7 +253,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Navigate",
+                    "action": "NavigateUp",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -248,40 +264,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyBoard and Mouse",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "218046c9-4161-43f7-af94-f2f02ef37ea4",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard and Mouse",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "ac4e87c9-72e9-4a7d-9312-a8c7a0a71ef1",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard and Mouse",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "4b3cdcf9-fba2-4f9f-95fe-08073777322d",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard and Mouse",
-                    "action": "Navigate",
+                    "action": "NavigateUp",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -292,7 +275,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Navigate",
+                    "action": "NavigateUp",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -303,40 +286,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "691a2099-de4d-47bd-ae3e-86b88cd15eb4",
-                    "path": "<Gamepad>/rightStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "bcc8d12a-f2ee-41fa-bb5c-892c7f4c670d",
-                    "path": "<Gamepad>/rightStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "945260ac-aa75-485f-821c-e0090f94fd79",
-                    "path": "<Gamepad>/rightStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Navigate",
+                    "action": "NavigateUp",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -414,6 +364,61 @@
                     "processors": "",
                     "groups": "KeyBoard and Mouse;Gamepad",
                     "action": "NextTab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "KeyBoard",
+                    "id": "2d7eca00-94cc-4b21-86df-5f33ce2beaf2",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateDown",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "down",
+                    "id": "f3d553ce-bcd5-4e8e-907c-aa6fef2363b5",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard and Mouse",
+                    "action": "NavigateDown",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Gamepad",
+                    "id": "f81fcd68-08ce-40a0-a4ad-dab45f2a32d5",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateDown",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "down",
+                    "id": "40f0f52f-6e3e-418f-a308-deb57b259d8c",
+                    "path": "<Gamepad>/rightStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "NavigateDown",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "1f302cfa-5070-4054-b109-ff97570044a3",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

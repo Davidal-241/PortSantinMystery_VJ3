@@ -24,9 +24,35 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
 
     [SerializeField] int[] _indexScene;
 
+    UserActions _controls;
+    InputAction _upScroll, _downScroll, _useButton;
+
     private void Awake()
     {
         _elevatorUI = GameObject.Find("ElevatorCanvas");
+        _controls = new UserActions();
+    }
+
+    private void OnEnable()
+    {
+        _upScroll = _controls.UI.NavigateUp;
+        _upScroll.Enable();
+        _upScroll.performed += ScrollUpByInterface;
+
+        _downScroll = _controls.UI.NavigateDown;
+        _downScroll.Enable();
+        _downScroll.performed += ScrollDownByInterface;
+
+        _useButton = _controls.UI.Submit;
+        _useButton.Enable();
+        _useButton.performed += UseTheButton;
+    }
+
+    private void OnDisable()
+    {
+        _upScroll.Disable();
+        _downScroll.Disable();
+        _useButton.Disable();
     }
 
     private void Start()
@@ -36,6 +62,7 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
             _elevatorUI.SetActive(false);
         }
     }
+
 
     public void Interact()
     {
@@ -107,7 +134,7 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
         }
     }
 
-    private void ScrollUpByInterface()
+    private void ScrollUpByInterface(InputAction.CallbackContext context)
     {
         if (_isElevatorUIActive)
         {
@@ -115,7 +142,7 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
             _buttonsSelector.transform.position = _buttons[_currentButtonsIndex].transform.position;
         }
     }
-    private void ScrollDownByInterface()
+    private void ScrollDownByInterface(InputAction.CallbackContext context)
     {
         if (_isElevatorUIActive)
         {
@@ -123,7 +150,7 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
             _buttonsSelector.transform.position = _buttons[_currentButtonsIndex].transform.position;
         }
     }
-    private void UseTheButton()
+    private void UseTheButton(InputAction.CallbackContext context)
     {
         if (_isElevatorUIActive)
         {

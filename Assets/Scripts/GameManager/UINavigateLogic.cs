@@ -46,7 +46,6 @@ public class UINavigateLogic : MonoBehaviour
     {
         
         EventManager._OpenMenuPause.AddListener(NavigateMenuPause);
-        EventManager._EnterInElevator.AddListener(NavigateElevator);
 
     }
 

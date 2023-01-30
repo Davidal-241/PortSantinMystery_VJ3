@@ -199,9 +199,17 @@ public class @UserActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Navigate"",
+                    ""name"": ""NavigateUp"",
                     ""type"": ""Button"",
                     ""id"": ""848289ea-8c4c-41b8-bd4e-150d9b37d213"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""NavigateDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""6d904d58-6736-4a7f-80e6-d17b5a6b7273"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -229,6 +237,14 @@ public class @UserActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""9929aa74-5d70-470d-ba9e-0e648890fe45"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -250,7 +266,7 @@ public class @UserActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""NavigateUp"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -261,40 +277,7 @@ public class @UserActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyBoard and Mouse"",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""218046c9-4161-43f7-af94-f2f02ef37ea4"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyBoard and Mouse"",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""ac4e87c9-72e9-4a7d-9312-a8c7a0a71ef1"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyBoard and Mouse"",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""4b3cdcf9-fba2-4f9f-95fe-08073777322d"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyBoard and Mouse"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""NavigateUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -305,7 +288,7 @@ public class @UserActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""NavigateUp"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -316,40 +299,7 @@ public class @UserActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""691a2099-de4d-47bd-ae3e-86b88cd15eb4"",
-                    ""path"": ""<Gamepad>/rightStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""bcc8d12a-f2ee-41fa-bb5c-892c7f4c670d"",
-                    ""path"": ""<Gamepad>/rightStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""945260ac-aa75-485f-821c-e0090f94fd79"",
-                    ""path"": ""<Gamepad>/rightStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Navigate"",
+                    ""action"": ""NavigateUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -427,6 +377,61 @@ public class @UserActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""KeyBoard and Mouse;Gamepad"",
                     ""action"": ""NextTab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""KeyBoard"",
+                    ""id"": ""2d7eca00-94cc-4b21-86df-5f33ce2beaf2"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NavigateDown"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""f3d553ce-bcd5-4e8e-907c-aa6fef2363b5"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard and Mouse"",
+                    ""action"": ""NavigateDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Gamepad"",
+                    ""id"": ""f81fcd68-08ce-40a0-a4ad-dab45f2a32d5"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NavigateDown"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""40f0f52f-6e3e-418f-a308-deb57b259d8c"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""NavigateDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f302cfa-5070-4054-b109-ff97570044a3"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -510,10 +515,12 @@ public class @UserActions : IInputActionCollection, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_NextLine = m_UI.FindAction("NextLine", throwIfNotFound: true);
-        m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
+        m_UI_NavigateUp = m_UI.FindAction("NavigateUp", throwIfNotFound: true);
+        m_UI_NavigateDown = m_UI.FindAction("NavigateDown", throwIfNotFound: true);
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
         m_UI_PreviousTab = m_UI.FindAction("PreviousTab", throwIfNotFound: true);
         m_UI_NextTab = m_UI.FindAction("NextTab", throwIfNotFound: true);
+        m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
         // Menu Pause
         m_MenuPause = asset.FindActionMap("Menu Pause", throwIfNotFound: true);
         m_MenuPause_OpenClose = m_MenuPause.FindAction("Open/Close", throwIfNotFound: true);
@@ -624,19 +631,23 @@ public class @UserActions : IInputActionCollection, IDisposable
     private readonly InputActionMap m_UI;
     private IUIActions m_UIActionsCallbackInterface;
     private readonly InputAction m_UI_NextLine;
-    private readonly InputAction m_UI_Navigate;
+    private readonly InputAction m_UI_NavigateUp;
+    private readonly InputAction m_UI_NavigateDown;
     private readonly InputAction m_UI_Submit;
     private readonly InputAction m_UI_PreviousTab;
     private readonly InputAction m_UI_NextTab;
+    private readonly InputAction m_UI_Newaction;
     public struct UIActions
     {
         private @UserActions m_Wrapper;
         public UIActions(@UserActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @NextLine => m_Wrapper.m_UI_NextLine;
-        public InputAction @Navigate => m_Wrapper.m_UI_Navigate;
+        public InputAction @NavigateUp => m_Wrapper.m_UI_NavigateUp;
+        public InputAction @NavigateDown => m_Wrapper.m_UI_NavigateDown;
         public InputAction @Submit => m_Wrapper.m_UI_Submit;
         public InputAction @PreviousTab => m_Wrapper.m_UI_PreviousTab;
         public InputAction @NextTab => m_Wrapper.m_UI_NextTab;
+        public InputAction @Newaction => m_Wrapper.m_UI_Newaction;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -649,9 +660,12 @@ public class @UserActions : IInputActionCollection, IDisposable
                 @NextLine.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNextLine;
                 @NextLine.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNextLine;
                 @NextLine.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNextLine;
-                @Navigate.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
-                @Navigate.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
-                @Navigate.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
+                @NavigateUp.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigateUp;
+                @NavigateUp.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigateUp;
+                @NavigateUp.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigateUp;
+                @NavigateDown.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigateDown;
+                @NavigateDown.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigateDown;
+                @NavigateDown.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigateDown;
                 @Submit.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSubmit;
                 @Submit.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSubmit;
                 @Submit.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSubmit;
@@ -661,6 +675,9 @@ public class @UserActions : IInputActionCollection, IDisposable
                 @NextTab.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNextTab;
                 @NextTab.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNextTab;
                 @NextTab.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNextTab;
+                @Newaction.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNewaction;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -668,9 +685,12 @@ public class @UserActions : IInputActionCollection, IDisposable
                 @NextLine.started += instance.OnNextLine;
                 @NextLine.performed += instance.OnNextLine;
                 @NextLine.canceled += instance.OnNextLine;
-                @Navigate.started += instance.OnNavigate;
-                @Navigate.performed += instance.OnNavigate;
-                @Navigate.canceled += instance.OnNavigate;
+                @NavigateUp.started += instance.OnNavigateUp;
+                @NavigateUp.performed += instance.OnNavigateUp;
+                @NavigateUp.canceled += instance.OnNavigateUp;
+                @NavigateDown.started += instance.OnNavigateDown;
+                @NavigateDown.performed += instance.OnNavigateDown;
+                @NavigateDown.canceled += instance.OnNavigateDown;
                 @Submit.started += instance.OnSubmit;
                 @Submit.performed += instance.OnSubmit;
                 @Submit.canceled += instance.OnSubmit;
@@ -680,6 +700,9 @@ public class @UserActions : IInputActionCollection, IDisposable
                 @NextTab.started += instance.OnNextTab;
                 @NextTab.performed += instance.OnNextTab;
                 @NextTab.canceled += instance.OnNextTab;
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
             }
         }
     }
@@ -745,10 +768,12 @@ public class @UserActions : IInputActionCollection, IDisposable
     public interface IUIActions
     {
         void OnNextLine(InputAction.CallbackContext context);
-        void OnNavigate(InputAction.CallbackContext context);
+        void OnNavigateUp(InputAction.CallbackContext context);
+        void OnNavigateDown(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
         void OnPreviousTab(InputAction.CallbackContext context);
         void OnNextTab(InputAction.CallbackContext context);
+        void OnNewaction(InputAction.CallbackContext context);
     }
     public interface IMenuPauseActions
     {
