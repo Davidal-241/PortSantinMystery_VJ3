@@ -12,7 +12,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        _currentClip = _clip._sounds[_index];
+        //_currentClip = _clip._sounds[_index];
         _audioSource.GetComponent<AudioSource>();
     }
 

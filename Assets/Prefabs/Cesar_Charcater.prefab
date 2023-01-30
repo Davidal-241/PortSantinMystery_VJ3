@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d7b55cc29029c43b5eb4fc32f2e44c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  convo: {fileID: 0}
+  _conversation: {fileID: 0}
   _dialogueBox: {fileID: 0}
 --- !u!114 &6069068834429040107
 MonoBehaviour:
@@ -167,7 +167,7 @@ MonoBehaviour:
   _radius: 1
   _interactableLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!1001 &3907417017664596806
 PrefabInstance:
   m_ObjectHideFlags: 0

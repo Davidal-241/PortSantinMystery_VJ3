@@ -24,6 +24,7 @@ public class ConversationManager : MonoBehaviour
     {
         GlobalBools._isDialoguesLastLine = false;
         GlobalBools._nextLineActive = true;
+        print("Va");
         GlobalBools._isTalking = true;
         LogicalDialogueSystem.StartConversation(_conversation);
       

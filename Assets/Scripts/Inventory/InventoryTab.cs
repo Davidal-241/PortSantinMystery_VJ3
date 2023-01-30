@@ -31,22 +31,22 @@ public class InventoryTab : MonoBehaviour
 
     void BrowsePag() //Moverse por las paginas
     {
-        if (Input.GetKeyDown(KeyCode.D) && _currentPagIndex < 3) //Hacia la derecha
-        {
-            _tabViews[_currentPagIndex].SetActive(false);
-            _currentPagIndex++;
-            _tabViews[_currentPagIndex].SetActive(true);
+        //if (Input.GetKeyDown(KeyCode.D) && _currentPagIndex < 3) //Hacia la derecha
+        //{
+        //    _tabViews[_currentPagIndex].SetActive(false);
+        //    _currentPagIndex++;
+        //    _tabViews[_currentPagIndex].SetActive(true);
 
-        }
+        //}
 
-        if (Input.GetKeyDown(KeyCode.A) && _currentPagIndex > 0) //Hacia la izquierda
-        {
-            _tabViews[_currentPagIndex].SetActive(false);
-            _currentPagIndex--;
-            _tabViews[_currentPagIndex].SetActive(true);
-        }
+        //if (Input.GetKeyDown(KeyCode.A) && _currentPagIndex > 0) //Hacia la izquierda
+        //{
+        //    _tabViews[_currentPagIndex].SetActive(false);
+        //    _currentPagIndex--;
+        //    _tabViews[_currentPagIndex].SetActive(true);
+        //}
 
-        _tabViews[_currentPagIndex].SetActive(true);
+        //_tabViews[_currentPagIndex].SetActive(true);
     }
 
 

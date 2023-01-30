@@ -24,9 +24,9 @@ public static class GlobalBools
     public static bool _lunaDoesntWantToTalk;
 
        //Tienen mas conversación?
-    public static bool _isItJorgesMainDialogue = false;
-    public static bool _isItCenturionsMainDialogue = false;
-    public static bool _isItLunaMainDialogue = false;
+    public static bool _isItJorgesMainDialogue = true;
+    public static bool _isItCenturionsMainDialogue = true;
+    public static bool _isItLunaMainDialogue = true;
 
     //
 
