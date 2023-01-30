@@ -298,8 +298,8 @@ Camera:
   m_GameObject: {fileID: 99765781}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.09803922, g: 0.0627451, b: 0.06666667, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -589,7 +589,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 9d8b822152cd6514185ec111d5c973cf, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0073b51f3394e0c43a8395a1c10607fe, type: 2}
+      objectReference: {fileID: 2100000, guid: 1a0e3aee9c091fe40b6769f07db22d3b, type: 2}
     - target: {fileID: 919132149155446097, guid: 9d8b822152cd6514185ec111d5c973cf, type: 3}
       propertyPath: m_Name
       value: Cuadro_03
@@ -798,6 +798,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 55bc4dff71364b646b18fccb040b8d41, type: 3}
   m_PrefabInstance: {fileID: 462715937}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &475439720 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 562cad07576c0d8448a40b8437d8a7a3, type: 3}
+  m_PrefabInstance: {fileID: 820169013}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &475439721
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475439720}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3085976, y: 3.9648204, z: 2.4150853}
+  m_Center: {x: 9.104441, y: 1.9739392, z: -1.4797366}
 --- !u!1001 &556740380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1314,7 +1332,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 9d8b822152cd6514185ec111d5c973cf, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0073b51f3394e0c43a8395a1c10607fe, type: 2}
+      objectReference: {fileID: 2100000, guid: 61629928bdcd9a44398d617860e4e43d, type: 2}
     - target: {fileID: 919132149155446097, guid: 9d8b822152cd6514185ec111d5c973cf, type: 3}
       propertyPath: m_Name
       value: Cuadro_01
@@ -1885,7 +1903,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 9d8b822152cd6514185ec111d5c973cf, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0073b51f3394e0c43a8395a1c10607fe, type: 2}
+      objectReference: {fileID: 2100000, guid: 8b4a215904f4cfb4296fbed572d3fd6c, type: 2}
     - target: {fileID: 919132149155446097, guid: 9d8b822152cd6514185ec111d5c973cf, type: 3}
       propertyPath: m_Name
       value: Cuadro_02
@@ -2681,8 +2699,8 @@ Camera:
   m_GameObject: {fileID: 1841551195}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.09803922, g: 0.0627451, b: 0.06666667, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
