@@ -94,16 +94,11 @@ public class MenuOptionsMovement : MonoBehaviour
         _viewManager.SetActive(false);
     }
 
-    private void Update()
-    {
-       
 
-        //print(_menuSelector.transform.position);
-    }
 
     private void UseMenu(InputAction.CallbackContext context)
     {
-        if (!GlobalBools._isMenuPauseActive)
+        if (!GlobalBools._isMenuPauseActive && !GlobalBools._isTalking)
         {
             _viewManager.SetActive(true);
             GlobalBools._isInventoryActive = false;
@@ -117,7 +112,7 @@ public class MenuOptionsMovement : MonoBehaviour
             _menus[_currentMenuIndex].SetActive(true);
             UpdateSelectorPosition();
         }
-        else
+        else if(GlobalBools._isMenuPauseActive && !GlobalBools._isTalking)
         {
             _viewManager.SetActive(false);
             GlobalBools._isMenuPauseActive = false;
@@ -238,9 +233,13 @@ public class MenuOptionsMovement : MonoBehaviour
 
     private void UpdateSelectorPosition()
     {
+        if (GlobalBools._isMenuPauseActive)
+        {
+
         print(_currentMenuIndex + " " + _currentButtonIndex);
 
         _menuSelector.transform.parent = _buttonsInMenu[_currentMenuIndex][_currentButtonIndex].transform;
         _menuSelector.transform.localPosition = Vector3.zero;
+        }
     }
 }

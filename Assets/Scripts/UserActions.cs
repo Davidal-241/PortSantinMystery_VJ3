@@ -253,14 +253,6 @@ public class @UserActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""9929aa74-5d70-470d-ba9e-0e648890fe45"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -485,17 +477,6 @@ public class @UserActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""1f302cfa-5070-4054-b109-ff97570044a3"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": ""KeyBoard"",
                     ""id"": ""5282763e-6246-4de1-bd85-31bfced7afe6"",
                     ""path"": ""2DVector"",
@@ -714,7 +695,6 @@ public class @UserActions : IInputActionCollection, IDisposable
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
         m_UI_PreviousTab = m_UI.FindAction("PreviousTab", throwIfNotFound: true);
         m_UI_NextTab = m_UI.FindAction("NextTab", throwIfNotFound: true);
-        m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
         // Menu Pause
         m_MenuPause = asset.FindActionMap("Menu Pause", throwIfNotFound: true);
         m_MenuPause_OpenClose = m_MenuPause.FindAction("Open/Close", throwIfNotFound: true);
@@ -832,7 +812,6 @@ public class @UserActions : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_Submit;
     private readonly InputAction m_UI_PreviousTab;
     private readonly InputAction m_UI_NextTab;
-    private readonly InputAction m_UI_Newaction;
     public struct UIActions
     {
         private @UserActions m_Wrapper;
@@ -845,7 +824,6 @@ public class @UserActions : IInputActionCollection, IDisposable
         public InputAction @Submit => m_Wrapper.m_UI_Submit;
         public InputAction @PreviousTab => m_Wrapper.m_UI_PreviousTab;
         public InputAction @NextTab => m_Wrapper.m_UI_NextTab;
-        public InputAction @Newaction => m_Wrapper.m_UI_Newaction;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -879,9 +857,6 @@ public class @UserActions : IInputActionCollection, IDisposable
                 @NextTab.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNextTab;
                 @NextTab.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNextTab;
                 @NextTab.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNextTab;
-                @Newaction.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNewaction;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -910,9 +885,6 @@ public class @UserActions : IInputActionCollection, IDisposable
                 @NextTab.started += instance.OnNextTab;
                 @NextTab.performed += instance.OnNextTab;
                 @NextTab.canceled += instance.OnNextTab;
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
             }
         }
     }
@@ -985,7 +957,6 @@ public class @UserActions : IInputActionCollection, IDisposable
         void OnSubmit(InputAction.CallbackContext context);
         void OnPreviousTab(InputAction.CallbackContext context);
         void OnNextTab(InputAction.CallbackContext context);
-        void OnNewaction(InputAction.CallbackContext context);
     }
     public interface IMenuPauseActions
     {

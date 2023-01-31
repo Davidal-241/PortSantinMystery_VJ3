@@ -156,8 +156,11 @@ public class LogicalDialogueSystem : MonoBehaviour
     {
         GlobalBools._playerCanMove = false;
         _dialogueBox.SetActive(false);
+        print("EndDialogue/ Is DialogueBox in False?: " + _dialogueBox.activeSelf);
+
         currentIndex = 0;
         _typingHasStarted = false;
+
         speakerSprite1.sprite = null;
         speakerSprite2.sprite = null;
         GlobalBools._isTalking = false;

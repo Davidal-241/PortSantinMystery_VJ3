@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class ToInteract : MonoBehaviour
 {
 
-    LogicalDialogueSystem logicalDialogueManager;
+    [SerializeField]LogicalDialogueSystem logicalDialogueManager;
     [SerializeField] UserActions _controls;
     private InputAction Interact;
 
@@ -48,7 +48,7 @@ public class ToInteract : MonoBehaviour
 
     private void StartInteract(InputAction.CallbackContext context)
     {
-        if (!GlobalBools._isTalking)
+        if (!GlobalBools._isTalking || !GlobalBools._isMenuPauseActive)
         {
             EventManager._InteractionStart.Invoke();
         }
@@ -57,8 +57,9 @@ public class ToInteract : MonoBehaviour
 
     public void NextLineText(InputAction.CallbackContext context)
     {
-        if (GlobalBools._isTalking)
+        if (GlobalBools._isTalking && !GlobalBools._isMenuPauseActive)
         {
+            print("Esta entrando cuando no debe");
             logicalDialogueManager.ReadNext();
         }
     }

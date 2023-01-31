@@ -143,19 +143,4 @@ public class PlayerMovement : MonoBehaviour
         myRB.MovePosition(transform.position + (direction * WalkingSpeed * Time.fixedDeltaTime));
         
     }
-
-
-    //This detect the triggers in the scene, change the cam fields of view
-    private void OnTriggerEnter(Collider other)
-    {
-
-      
-
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-  
-
-    }
 }

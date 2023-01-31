@@ -111,19 +111,19 @@ public class InventoryScript : MonoBehaviour
     }
     public void OpenInventory(InputAction.CallbackContext context)
     {
-        GlobalBools._isInventoryActive = !GlobalBools._isInventoryActive;
 
         if (GlobalBools._isInventoryActive)
+        {
+            _inventory.SetActive(false);
+            _tabOptions[_currentTabIndex].SetActive(false);
+            GlobalBools._playerCanMove = true;
+            GlobalBools._isOpenInventory = false;
+        }
+        else
         {
             _inventory.SetActive(true);
             _currentTabIndex = 0;
             _tabOptions[_currentTabIndex].SetActive(true);
-            GlobalBools._isOpenInventory = true;
-        }
-        else
-        {
-            _inventory.SetActive(false);
-            _tabOptions[_currentTabIndex].SetActive(false);
             GlobalBools._playerCanMove = false;
             GlobalBools._isOpenInventory = true;
         }
@@ -179,9 +179,6 @@ public class InventoryScript : MonoBehaviour
             _tabOptions[_currentTabIndex].SetActive(true);
 
             _tabSelector.transform.position = _tab[_currentTabIndex].transform.position;
-
-
-
 
         }
     }

@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 
 public class ElevatorLogical : MonoBehaviour, IInteractable
 {
-    [SerializeField] int[] _nameScene;
+    [SerializeField] int[] _indexScene;
     [SerializeField] GameObject _elevatorUI;
     bool _isElevatorUIActive = false;
 
@@ -21,15 +21,12 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
     private int _currentButtonsIndex;
 
     public Conversation _cesarsCurrentDialogue;
-
-    [SerializeField] int[] _indexScene;
-
     UserActions _controls;
     InputAction _upScroll, _downScroll, _useButton;
 
     private void Awake()
     {
-        _elevatorUI = GameObject.Find("ElevatorCanvas");
+        _elevatorUI = GameObject.Find(" ElevatorPanel");
         _controls = new UserActions();
     }
 
@@ -57,17 +54,14 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
 
     private void Start()
     {
-        if (_elevatorUI != null)
-        {
-            _elevatorUI.SetActive(false);
-        }
+       
+    _elevatorUI.SetActive(false);
     }
 
 
     public void Interact()
     {
-        UseElevator();
-        UIElevator();
+        CheckIfYouCanUseTheElevator();
     }
 
     private void UseElevator()
@@ -88,7 +82,7 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
 
         if (ProgressCheck._canUseElevator)
         {
-            if (_currentScene.buildIndex == _nameScene[0])
+            if (_currentScene.buildIndex == _indexScene[0])
             {
                 GlobalBools._isInReception = true;
                 _offImage[0].SetActive(true);
@@ -97,7 +91,7 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
 
             }
 
-            if (_currentScene.buildIndex == _nameScene[1])
+            if (_currentScene.buildIndex == _indexScene[1])
             {
                 GlobalBools._isInFirstFloor = true;
                 _offImage[1].SetActive(true);
@@ -160,8 +154,8 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
     {
         if (_isElevatorUIActive)
         {
-           
-            CheckIfYouCanUseTheElevator();
+
+            ChangeScene();
 
         }
     }
@@ -179,23 +173,11 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
                 }
                 else
                 {
-
-                    ChangeScene();
+                    UIElevator();
+                    UseElevator();
 
                 }
 
-                if (_buttons[_currentButtonsIndex] = _buttons[2])
-                {
-                    if (!ProgressCheck._canUseElevatorToGoDown && GlobalBools._hasAlreadyTalkedToJorge)
-                    {
-                        _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_02");
-                        EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-                    }
-                    else
-                    {
-                        ChangeScene();
-                    }
-                }
             }
 
             if (ProgressCheck._areWeInTheStage3)
@@ -207,7 +189,8 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
                 }
                 else
                 {
-                    ChangeScene();
+                    UIElevator();
+                    UseElevator();
                 }
             }
 
@@ -222,7 +205,8 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
                     }
                     else
                     {
-                        ChangeScene();
+                        UIElevator();
+                        UseElevator();
                     }
                 }
 

@@ -11,10 +11,6 @@ GameObject:
   - component: {fileID: 4931328153183301053}
   - component: {fileID: 3095159539469987076}
   - component: {fileID: 645496}
-  - component: {fileID: 6428781403994385826}
-  - component: {fileID: 5293498076684588267}
-  - component: {fileID: 1639005990}
-  - component: {fileID: 1690144860}
   - component: {fileID: 1690144864}
   - component: {fileID: 1690144865}
   m_Layer: 0
@@ -50,8 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 844adb84b4d3aba4b9a95f0161b9b0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _menuPauseCanvas: {fileID: 0}
-  _elevatorUI: {fileID: 0}
 --- !u!114 &645496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,78 +60,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sliderGeneral: {fileID: 0}
   _sliderValue: 0
---- !u!114 &6428781403994385826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7356275779321167284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f826c30f90a31543996bc5ca43c0a66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _toggle: {fileID: 0}
---- !u!114 &5293498076684588267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7356275779321167284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cfb23163526f9347b7be10c1c678952, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _firstObjectToSelect:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _buttonElevator:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _event: {fileID: 0}
---- !u!114 &1639005990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7356275779321167284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de469315f50706141b44be2412e8561c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _receptionHotel: OutsideHotelScene
-  _firstFloorHotel: MaiMenuScene
-  _secondFloorHotel: ChurchScene
---- !u!114 &1690144860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7356275779321167284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab2055c195f601244922a46808799647, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _clip: {fileID: 11400000, guid: dd048ca639a1ba04a9cdbce8bef07dd5, type: 2}
-  _index: 0
-  _isntPlayForUse: 0
 --- !u!114 &1690144864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +67,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7356275779321167284}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e6224cd5a80a3241ba95250a9dfead4, type: 3}
   m_Name: 
@@ -168,4 +90,4 @@ MonoBehaviour:
   - Hall
   - Room
   - Pipo
-  - op
+  - OutsideHotelScene
