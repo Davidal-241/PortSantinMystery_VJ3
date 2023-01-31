@@ -23,6 +23,8 @@ public class MenuOptionsMovement : MonoBehaviour
     private InputAction _Up;
     private InputAction _Down;
     private InputAction _Use;
+    private InputAction _Left;
+    private InputAction _Right;
     [SerializeField] UserActions _controls;
 
     bool _canChangeSliderValue = false;
@@ -51,12 +53,22 @@ public class MenuOptionsMovement : MonoBehaviour
         _Down = _controls.UI.NavigateDown;
         _Down.Enable();
         _Down.performed += ScrollDownMenuPause;
+
+        _Left = _controls.UI.NavigateLeft;
+        _Left.Enable();
+        _Left.performed += SliderVolumenLess;
+
+        _Right = _controls.UI.NavigateLeft;
+        _Right.Enable();
+        _Right.performed += SliderVolumenMore;
     }
     private void OnDisable()
     {
         OpenClose.Disable();
         _Down.Disable();
         _Up.Disable();
+        _Right.Disable();
+        _Left.Disable();
     }
 
     private void Start()

@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 
 public class ElevatorLogical : MonoBehaviour, IInteractable
 {
-    [SerializeField] string[] _nameScene;
+    [SerializeField] int[] _nameScene;
     [SerializeField] GameObject _elevatorUI;
     bool _isElevatorUIActive = false;
 
@@ -88,7 +88,7 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
 
         if (ProgressCheck._canUseElevator)
         {
-            if (_currentScene.name == _nameScene[0])
+            if (_currentScene.buildIndex == _nameScene[0])
             {
                 GlobalBools._isInReception = true;
                 _offImage[0].SetActive(true);
@@ -97,7 +97,7 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
 
             }
 
-            if (_currentScene.name == _nameScene[1])
+            if (_currentScene.buildIndex == _nameScene[1])
             {
                 GlobalBools._isInFirstFloor = true;
                 _offImage[1].SetActive(true);
@@ -105,20 +105,26 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
                 _currentButtonsIndex = 1;
             }
 
-            if (_currentScene.name == _nameScene[2])
-            {
-                GlobalBools._isInBasement = true;
-                _offImage[2].SetActive(true);
-                _buttons[2].SetActive(false);
-                _currentButtonsIndex = 2;
-            }
+            //if (_currentScene.buildIndex == _nameScene[2])
+            //{
+            //    GlobalBools._isInBasement = true;
+            //    _offImage[2].SetActive(true);
+            //    _buttons[2].SetActive(false);
+            //    _currentButtonsIndex = 2;
+            //}
         }
 
-        _buttonsSelector.transform.position = _buttons[_currentButtonsIndex].transform.position;
+        UpdateSelectorPosition();
 
-        
+
     }
 
+
+    private void UpdateSelectorPosition()
+    {
+        _buttonsSelector.transform.parent = _buttons[_currentButtonsIndex].transform;
+        _buttonsSelector.transform.localPosition = Vector3.zero;
+    }
 
     private void UIElevator()
     {
@@ -139,7 +145,7 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
         if (_isElevatorUIActive)
         {
             _currentButtonsIndex = (_currentButtonsIndex + 1 + _buttons.Length) % _buttons.Length;
-            _buttonsSelector.transform.position = _buttons[_currentButtonsIndex].transform.position;
+            UpdateSelectorPosition();
         }
     }
     private void ScrollDownByInterface(InputAction.CallbackContext context)
@@ -147,7 +153,7 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
         if (_isElevatorUIActive)
         {
             _currentButtonsIndex = (_currentButtonsIndex - 1 + _buttons.Length) % _buttons.Length;
-            _buttonsSelector.transform.position = _buttons[_currentButtonsIndex].transform.position;
+            UpdateSelectorPosition();
         }
     }
     private void UseTheButton(InputAction.CallbackContext context)
@@ -220,33 +226,6 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
                     }
                 }
 
-
-                if (GlobalBools._isInReception)
-                {
-                    if (!GlobalBools._hasAlreadyTalkedToCenturion)
-                    {
-                        _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_06");
-                        EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-                    }
-                    else
-                    {
-                        ChangeScene();
-                    }
-                }
-
-            }
-
-            if (ProgressCheck._areWeInTheStage6)
-            {
-                if (!GlobalBools._hasAlreadyTalkedToCenturion)
-                {
-                    _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_07");
-                    EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-                }
-                else
-                {
-                    ChangeScene();
-                }
             }
         }
 
