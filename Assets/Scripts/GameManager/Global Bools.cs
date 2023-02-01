@@ -11,8 +11,6 @@ public static class GlobalBools
     public static bool _nextLineActive = false;
     public static bool _isDialoguesLastLine = false;
 
-
-
     //NPCS
         // Conocer a un npc
     public static bool _hasAlreadyTalkedToLuna = false;
@@ -32,8 +30,10 @@ public static class GlobalBools
 
     //Bool manejo inventario
     public static bool _isOpenInventory = false;
-    
+
     //Bool manejo Elevador
+
+    public static bool _isElevatorUIActive = false;
     public static bool _isInReception = false;
     public static bool _isInFirstFloor = false;
     public static bool _isInBasement = false;
@@ -41,7 +41,6 @@ public static class GlobalBools
     //Bool manejo UINavigateLogic
 
     public static bool _isInventoryActive = false;
-    public static bool _canSubmit = false;
     public static bool _isMenuPauseActive = false;
 
     //Objetos que son interactuables

@@ -21,7 +21,9 @@ public class LogicalDialogueSystem : MonoBehaviour
     bool _typingHasStarted = false;
     bool _lineFinishedTyping = false;
 
+    bool instaCompleting = false;
     [SerializeField] float _betweenLettersWaitTime;
+    float _instaCompleteTime = 0;
 
     [SerializeField] GameObject _dialogueBox;
 
@@ -180,13 +182,15 @@ public class LogicalDialogueSystem : MonoBehaviour
                 dialogue.text += text[dialogueIndex];
             dialogueIndex++;
             
-            yield return new WaitForSeconds(_betweenLettersWaitTime);
+            yield return new WaitForSeconds(instaCompleting ? _instaCompleteTime : _betweenLettersWaitTime);
 
             if(dialogueIndex == text.Length)
             {
                 complete = true;
             }
         }
+
+        instaCompleting = false;
 
         //_lineFinishedTyping = true;
         typingCoroutine = null;

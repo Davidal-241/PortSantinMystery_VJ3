@@ -191,14 +191,6 @@ public class @UserActions : IInputActionCollection, IDisposable
             ""id"": ""6c962096-761c-4801-aa7f-d6948b5e5bba"",
             ""actions"": [
                 {
-                    ""name"": ""NextLine"",
-                    ""type"": ""Button"",
-                    ""id"": ""67199a24-d82d-43bc-bc3c-9704b7a91d6e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""NavigateUp"",
                     ""type"": ""Button"",
                     ""id"": ""848289ea-8c4c-41b8-bd4e-150d9b37d213"",
@@ -256,17 +248,6 @@ public class @UserActions : IInputActionCollection, IDisposable
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""d5a6f7c0-d576-4e31-bd81-4da5e6aeb6ef"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": ""KeyBoard and Mouse"",
-                    ""action"": ""NextLine"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": ""KeyBoard"",
                     ""id"": ""9f703a6b-b014-42e3-ab18-8feb496f6ba8"",
@@ -352,17 +333,6 @@ public class @UserActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Interactue"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3a2ed115-3835-49cd-8b74-6a0d1cd09258"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""NextLine"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -611,7 +581,7 @@ public class @UserActions : IInputActionCollection, IDisposable
             ]
         },
         {
-            ""name"": ""Menu Pause"",
+            ""name"": ""UserMenu"",
             ""id"": ""283f74c9-afb8-4043-949b-3396169f1f4e"",
             ""actions"": [
                 {
@@ -643,6 +613,82 @@ public class @UserActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Open/Close"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Conversation"",
+            ""id"": ""600f17ee-d507-487f-9cba-131aa805d43b"",
+            ""actions"": [
+                {
+                    ""name"": ""NextLine"",
+                    ""type"": ""Button"",
+                    ""id"": ""516bf608-e63d-48df-834d-8ddcf72c683c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""87972fb6-6552-47b5-904c-af2e20c78f5b"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard and Mouse"",
+                    ""action"": ""NextLine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5b405c5f-3270-461b-a4ae-be90507eadc0"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""NextLine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Elevator"",
+            ""id"": ""e8d03140-9218-49c8-a17d-f788afd52ff9"",
+            ""actions"": [
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""8af6dff0-026f-4536-823f-2756dfa52530"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""9a913cc8-4e24-47ef-8c98-fc428f7bc4d6"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard and Mouse"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f3fc74af-3d19-4832-bce5-bf9f6e6e8120"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -687,7 +733,6 @@ public class @UserActions : IInputActionCollection, IDisposable
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_NextLine = m_UI.FindAction("NextLine", throwIfNotFound: true);
         m_UI_NavigateUp = m_UI.FindAction("NavigateUp", throwIfNotFound: true);
         m_UI_NavigateDown = m_UI.FindAction("NavigateDown", throwIfNotFound: true);
         m_UI_NavigateLeft = m_UI.FindAction("NavigateLeft", throwIfNotFound: true);
@@ -695,9 +740,15 @@ public class @UserActions : IInputActionCollection, IDisposable
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
         m_UI_PreviousTab = m_UI.FindAction("PreviousTab", throwIfNotFound: true);
         m_UI_NextTab = m_UI.FindAction("NextTab", throwIfNotFound: true);
-        // Menu Pause
-        m_MenuPause = asset.FindActionMap("Menu Pause", throwIfNotFound: true);
-        m_MenuPause_OpenClose = m_MenuPause.FindAction("Open/Close", throwIfNotFound: true);
+        // UserMenu
+        m_UserMenu = asset.FindActionMap("UserMenu", throwIfNotFound: true);
+        m_UserMenu_OpenClose = m_UserMenu.FindAction("Open/Close", throwIfNotFound: true);
+        // Conversation
+        m_Conversation = asset.FindActionMap("Conversation", throwIfNotFound: true);
+        m_Conversation_NextLine = m_Conversation.FindAction("NextLine", throwIfNotFound: true);
+        // Elevator
+        m_Elevator = asset.FindActionMap("Elevator", throwIfNotFound: true);
+        m_Elevator_Cancel = m_Elevator.FindAction("Cancel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -804,7 +855,6 @@ public class @UserActions : IInputActionCollection, IDisposable
     // UI
     private readonly InputActionMap m_UI;
     private IUIActions m_UIActionsCallbackInterface;
-    private readonly InputAction m_UI_NextLine;
     private readonly InputAction m_UI_NavigateUp;
     private readonly InputAction m_UI_NavigateDown;
     private readonly InputAction m_UI_NavigateLeft;
@@ -816,7 +866,6 @@ public class @UserActions : IInputActionCollection, IDisposable
     {
         private @UserActions m_Wrapper;
         public UIActions(@UserActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @NextLine => m_Wrapper.m_UI_NextLine;
         public InputAction @NavigateUp => m_Wrapper.m_UI_NavigateUp;
         public InputAction @NavigateDown => m_Wrapper.m_UI_NavigateDown;
         public InputAction @NavigateLeft => m_Wrapper.m_UI_NavigateLeft;
@@ -833,9 +882,6 @@ public class @UserActions : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_UIActionsCallbackInterface != null)
             {
-                @NextLine.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNextLine;
-                @NextLine.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNextLine;
-                @NextLine.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNextLine;
                 @NavigateUp.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigateUp;
                 @NavigateUp.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigateUp;
                 @NavigateUp.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigateUp;
@@ -861,9 +907,6 @@ public class @UserActions : IInputActionCollection, IDisposable
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @NextLine.started += instance.OnNextLine;
-                @NextLine.performed += instance.OnNextLine;
-                @NextLine.canceled += instance.OnNextLine;
                 @NavigateUp.started += instance.OnNavigateUp;
                 @NavigateUp.performed += instance.OnNavigateUp;
                 @NavigateUp.canceled += instance.OnNavigateUp;
@@ -890,29 +933,29 @@ public class @UserActions : IInputActionCollection, IDisposable
     }
     public UIActions @UI => new UIActions(this);
 
-    // Menu Pause
-    private readonly InputActionMap m_MenuPause;
-    private IMenuPauseActions m_MenuPauseActionsCallbackInterface;
-    private readonly InputAction m_MenuPause_OpenClose;
-    public struct MenuPauseActions
+    // UserMenu
+    private readonly InputActionMap m_UserMenu;
+    private IUserMenuActions m_UserMenuActionsCallbackInterface;
+    private readonly InputAction m_UserMenu_OpenClose;
+    public struct UserMenuActions
     {
         private @UserActions m_Wrapper;
-        public MenuPauseActions(@UserActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @OpenClose => m_Wrapper.m_MenuPause_OpenClose;
-        public InputActionMap Get() { return m_Wrapper.m_MenuPause; }
+        public UserMenuActions(@UserActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @OpenClose => m_Wrapper.m_UserMenu_OpenClose;
+        public InputActionMap Get() { return m_Wrapper.m_UserMenu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MenuPauseActions set) { return set.Get(); }
-        public void SetCallbacks(IMenuPauseActions instance)
+        public static implicit operator InputActionMap(UserMenuActions set) { return set.Get(); }
+        public void SetCallbacks(IUserMenuActions instance)
         {
-            if (m_Wrapper.m_MenuPauseActionsCallbackInterface != null)
+            if (m_Wrapper.m_UserMenuActionsCallbackInterface != null)
             {
-                @OpenClose.started -= m_Wrapper.m_MenuPauseActionsCallbackInterface.OnOpenClose;
-                @OpenClose.performed -= m_Wrapper.m_MenuPauseActionsCallbackInterface.OnOpenClose;
-                @OpenClose.canceled -= m_Wrapper.m_MenuPauseActionsCallbackInterface.OnOpenClose;
+                @OpenClose.started -= m_Wrapper.m_UserMenuActionsCallbackInterface.OnOpenClose;
+                @OpenClose.performed -= m_Wrapper.m_UserMenuActionsCallbackInterface.OnOpenClose;
+                @OpenClose.canceled -= m_Wrapper.m_UserMenuActionsCallbackInterface.OnOpenClose;
             }
-            m_Wrapper.m_MenuPauseActionsCallbackInterface = instance;
+            m_Wrapper.m_UserMenuActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @OpenClose.started += instance.OnOpenClose;
@@ -921,7 +964,73 @@ public class @UserActions : IInputActionCollection, IDisposable
             }
         }
     }
-    public MenuPauseActions @MenuPause => new MenuPauseActions(this);
+    public UserMenuActions @UserMenu => new UserMenuActions(this);
+
+    // Conversation
+    private readonly InputActionMap m_Conversation;
+    private IConversationActions m_ConversationActionsCallbackInterface;
+    private readonly InputAction m_Conversation_NextLine;
+    public struct ConversationActions
+    {
+        private @UserActions m_Wrapper;
+        public ConversationActions(@UserActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @NextLine => m_Wrapper.m_Conversation_NextLine;
+        public InputActionMap Get() { return m_Wrapper.m_Conversation; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ConversationActions set) { return set.Get(); }
+        public void SetCallbacks(IConversationActions instance)
+        {
+            if (m_Wrapper.m_ConversationActionsCallbackInterface != null)
+            {
+                @NextLine.started -= m_Wrapper.m_ConversationActionsCallbackInterface.OnNextLine;
+                @NextLine.performed -= m_Wrapper.m_ConversationActionsCallbackInterface.OnNextLine;
+                @NextLine.canceled -= m_Wrapper.m_ConversationActionsCallbackInterface.OnNextLine;
+            }
+            m_Wrapper.m_ConversationActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @NextLine.started += instance.OnNextLine;
+                @NextLine.performed += instance.OnNextLine;
+                @NextLine.canceled += instance.OnNextLine;
+            }
+        }
+    }
+    public ConversationActions @Conversation => new ConversationActions(this);
+
+    // Elevator
+    private readonly InputActionMap m_Elevator;
+    private IElevatorActions m_ElevatorActionsCallbackInterface;
+    private readonly InputAction m_Elevator_Cancel;
+    public struct ElevatorActions
+    {
+        private @UserActions m_Wrapper;
+        public ElevatorActions(@UserActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Cancel => m_Wrapper.m_Elevator_Cancel;
+        public InputActionMap Get() { return m_Wrapper.m_Elevator; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ElevatorActions set) { return set.Get(); }
+        public void SetCallbacks(IElevatorActions instance)
+        {
+            if (m_Wrapper.m_ElevatorActionsCallbackInterface != null)
+            {
+                @Cancel.started -= m_Wrapper.m_ElevatorActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_ElevatorActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_ElevatorActionsCallbackInterface.OnCancel;
+            }
+            m_Wrapper.m_ElevatorActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
+            }
+        }
+    }
+    public ElevatorActions @Elevator => new ElevatorActions(this);
     private int m_KeyBoardandMouseSchemeIndex = -1;
     public InputControlScheme KeyBoardandMouseScheme
     {
@@ -949,7 +1058,6 @@ public class @UserActions : IInputActionCollection, IDisposable
     }
     public interface IUIActions
     {
-        void OnNextLine(InputAction.CallbackContext context);
         void OnNavigateUp(InputAction.CallbackContext context);
         void OnNavigateDown(InputAction.CallbackContext context);
         void OnNavigateLeft(InputAction.CallbackContext context);
@@ -958,8 +1066,16 @@ public class @UserActions : IInputActionCollection, IDisposable
         void OnPreviousTab(InputAction.CallbackContext context);
         void OnNextTab(InputAction.CallbackContext context);
     }
-    public interface IMenuPauseActions
+    public interface IUserMenuActions
     {
         void OnOpenClose(InputAction.CallbackContext context);
+    }
+    public interface IConversationActions
+    {
+        void OnNextLine(InputAction.CallbackContext context);
+    }
+    public interface IElevatorActions
+    {
+        void OnCancel(InputAction.CallbackContext context);
     }
 }

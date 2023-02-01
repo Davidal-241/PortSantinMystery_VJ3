@@ -33,43 +33,23 @@ public class MenuOptionsMovement : MonoBehaviour
         
         _logicV = FindObjectOfType<LogicVolumen>();
         _logicFullScreen = FindObjectOfType<LogicaFullScree>();
-        _controls = new UserActions();
+
+        EventManager._InputSet.AddListener(InputSet);
     }
 
-    private void OnEnable()
+    void InputSet(UserActions input)
     {
-        OpenClose = _controls.MenuPause.OpenClose;
-        OpenClose.Enable();
-        OpenClose.performed += UseMenu;
+        _controls = input;
 
-        _Use = _controls.UI.Submit;
-        _Use.Enable();
-        _Use.performed += UseButtons;
-
-        _Up = _controls.UI.NavigateUp;
-        _Up.Enable();
-        _Up.performed += ScrollUpMenuPause;
-
-        _Down = _controls.UI.NavigateDown;
-        _Down.Enable();
-        _Down.performed += ScrollDownMenuPause;
-
-        _Left = _controls.UI.NavigateLeft;
-        _Left.Enable();
-        _Left.performed += SliderVolumenLess;
-
-        _Right = _controls.UI.NavigateLeft;
-        _Right.Enable();
-        _Right.performed += SliderVolumenMore;
+        _controls.UserMenu.OpenClose.performed += UseMenu;
+        _controls.UI.Submit.performed += UseButtons;
+        _controls.UI.NavigateUp.performed += ScrollUpMenuPause;
+        _controls.UI.NavigateDown.performed += ScrollDownMenuPause;
+        _controls.UI.NavigateLeft.performed += SliderVolumenLess;
+        _controls.UI.NavigateRight.performed += SliderVolumenMore;
     }
-    private void OnDisable()
-    {
-        OpenClose.Disable();
-        _Down.Disable();
-        _Up.Disable();
-        _Right.Disable();
-        _Left.Disable();
-    }
+
+ 
 
     private void Start()
     {

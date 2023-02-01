@@ -178,14 +178,6 @@
             "id": "6c962096-761c-4801-aa7f-d6948b5e5bba",
             "actions": [
                 {
-                    "name": "NextLine",
-                    "type": "Button",
-                    "id": "67199a24-d82d-43bc-bc3c-9704b7a91d6e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "NavigateUp",
                     "type": "Button",
                     "id": "848289ea-8c4c-41b8-bd4e-150d9b37d213",
@@ -243,17 +235,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "d5a6f7c0-d576-4e31-bd81-4da5e6aeb6ef",
-                    "path": "<Keyboard>/e",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "KeyBoard and Mouse",
-                    "action": "NextLine",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "KeyBoard",
                     "id": "9f703a6b-b014-42e3-ab18-8feb496f6ba8",
@@ -339,17 +320,6 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Interactue",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3a2ed115-3835-49cd-8b74-6a0d1cd09258",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "NextLine",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -598,7 +568,7 @@
             ]
         },
         {
-            "name": "Menu Pause",
+            "name": "UserMenu",
             "id": "283f74c9-afb8-4043-949b-3396169f1f4e",
             "actions": [
                 {
@@ -630,6 +600,82 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Open/Close",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Conversation",
+            "id": "600f17ee-d507-487f-9cba-131aa805d43b",
+            "actions": [
+                {
+                    "name": "NextLine",
+                    "type": "Button",
+                    "id": "516bf608-e63d-48df-834d-8ddcf72c683c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "87972fb6-6552-47b5-904c-af2e20c78f5b",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "KeyBoard and Mouse",
+                    "action": "NextLine",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5b405c5f-3270-461b-a4ae-be90507eadc0",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "NextLine",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Elevator",
+            "id": "e8d03140-9218-49c8-a17d-f788afd52ff9",
+            "actions": [
+                {
+                    "name": "Cancel",
+                    "type": "Button",
+                    "id": "8af6dff0-026f-4536-823f-2756dfa52530",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9a913cc8-4e24-47ef-8c98-fc428f7bc4d6",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard and Mouse",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f3fc74af-3d19-4832-bce5-bf9f6e6e8120",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

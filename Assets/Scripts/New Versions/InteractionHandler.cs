@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InteractionHandler : MonoBehaviour
 {
@@ -8,15 +9,32 @@ public class InteractionHandler : MonoBehaviour
 
     [SerializeField] LayerMask _interactableLayer;
 
+    UserActions _controls;
+
     private void Awake()
     {
         //Invoca a la clase InteractionRequested//
-        EventManager._InteractionStart.AddListener(InteractionRequested);
+        
+        
+        EventManager._InputSet.AddListener(InputSet);
+        print(name + " awakes");
+
     }
 
-    void InteractionRequested()
+    void InputSet(UserActions input)
     {
+        _controls = input;
 
+        _controls.Player.Interactue.performed += InteractionRequested;
+
+        print(name);
+    }
+
+
+
+    void InteractionRequested(InputAction.CallbackContext context)
+    {
+        
         //Almacena todos los objectos que estan en _interactableLayer al chocar con una esfera generada77
         //mediante Physics en una lista//
         Collider[] _found = Physics.OverlapSphere(transform.position, _radius, _interactableLayer);
@@ -36,6 +54,8 @@ public class InteractionHandler : MonoBehaviour
             else
                 Debug.LogWarning("Object no doesn´t have implement IInteractable");
         }
+
+        print("interaction requested ends");
     }
 
     int GetClosestIndex(Collider[] _found)

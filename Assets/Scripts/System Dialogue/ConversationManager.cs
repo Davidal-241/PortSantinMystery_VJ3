@@ -8,15 +8,18 @@ public class ConversationManager : MonoBehaviour
 
     [SerializeField] GameObject _dialogueBox;
 
+    private void Awake()
+    {
+        _dialogueBox.SetActive(false);
+
+    }
     private void Start()
     {
-        _dialogueBox = GameObject.Find("DialogueBox");
 
 
         EventManager._ConversationStarts.AddListener(CheckTheConversation);
 
-        if (_dialogueBox != null)
-            _dialogueBox.SetActive(false);
+       
 
     }
 
@@ -67,8 +70,12 @@ public class ConversationManager : MonoBehaviour
 
     public void CheckTheConversation(Conversation _npcConversation)
     {
+        print(_conversation);
+        print(_dialogueBox);
+
         _conversation = _npcConversation;
         _dialogueBox.SetActive(true);
+        print("a");
         StartConversation();
     }
 }

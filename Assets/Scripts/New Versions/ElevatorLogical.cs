@@ -10,8 +10,6 @@ using UnityEngine.InputSystem;
 public class ElevatorLogical : MonoBehaviour, IInteractable
 {
     [SerializeField] int[] _indexScene;
-    [SerializeField] GameObject _elevatorUI;
-    bool _isElevatorUIActive = false;
 
     [SerializeField] GameObject _buttonsSelector;
 
@@ -20,54 +18,37 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
 
     private int _currentButtonsIndex;
 
-    public Conversation _cesarsCurrentDialogue;
+    Scene _currentScene;
+
     UserActions _controls;
-    InputAction _upScroll, _downScroll, _useButton;
+
+    bool _canUseTheButton = false;
 
     private void Awake()
     {
-        _elevatorUI = GameObject.Find(" ElevatorPanel");
-        _controls = new UserActions();
+        EventManager._InputSet.AddListener(InputSet);
+        EventManager._UseElevator.AddListener(UseElevator);
+
     }
 
-    private void OnEnable()
+    void InputSet(UserActions input)
     {
-        _upScroll = _controls.UI.NavigateUp;
-        _upScroll.Enable();
-        _upScroll.performed += ScrollUpByInterface;
+        _controls = input;
 
-        _downScroll = _controls.UI.NavigateDown;
-        _downScroll.Enable();
-        _downScroll.performed += ScrollDownByInterface;
-
-        _useButton = _controls.UI.Submit;
-        _useButton.Enable();
-        _useButton.performed += UseTheButton;
+        _controls.UI.Submit.performed += UseTheButton;
+        _controls.UI.NavigateUp.performed += ScrollUpByInterface;
+        _controls.UI.NavigateDown.performed += ScrollDownByInterface;
     }
-
-    private void OnDisable()
-    {
-        _upScroll.Disable();
-        _downScroll.Disable();
-        _useButton.Disable();
-    }
-
-    private void Start()
-    {
-       
-    _elevatorUI.SetActive(false);
-    }
+   
 
 
     public void Interact()
     {
-        CheckIfYouCanUseTheElevator();
+        EventManager._CheckConveElevator.Invoke();
     }
 
     private void UseElevator()
     {
-        Scene _currentScene;
-
         GlobalBools._isInReception = false;
         GlobalBools._isInFirstFloor = false;
         GlobalBools._isInBasement = false;
@@ -106,119 +87,54 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
             //    _buttons[2].SetActive(false);
             //    _currentButtonsIndex = 2;
             //}
+            UpdateSelectorPosition();
+
+
         }
 
-        UpdateSelectorPosition();
-
-
     }
-
 
     private void UpdateSelectorPosition()
     {
+
         _buttonsSelector.transform.parent = _buttons[_currentButtonsIndex].transform;
         _buttonsSelector.transform.localPosition = Vector3.zero;
-    }
 
-    private void UIElevator()
-    {
-        if (!_elevatorUI.activeSelf)
+        if(_currentButtonsIndex != _currentScene.buildIndex)
         {
-            _elevatorUI.SetActive(true);
-            _isElevatorUIActive = true;
+            _canUseTheButton = true;
         }
         else
         {
-            _elevatorUI.SetActive(false);
-            _isElevatorUIActive = false;
+            _canUseTheButton = false;
         }
+
+        //_canUseTheButton = _currentButtonsIndex != _currentScene.buildIndex;
     }
+
 
     private void ScrollUpByInterface(InputAction.CallbackContext context)
     {
-        if (_isElevatorUIActive)
-        {
             _currentButtonsIndex = (_currentButtonsIndex + 1 + _buttons.Length) % _buttons.Length;
             UpdateSelectorPosition();
-        }
     }
     private void ScrollDownByInterface(InputAction.CallbackContext context)
     {
-        if (_isElevatorUIActive)
-        {
             _currentButtonsIndex = (_currentButtonsIndex - 1 + _buttons.Length) % _buttons.Length;
             UpdateSelectorPosition();
-        }
     }
     private void UseTheButton(InputAction.CallbackContext context)
     {
-        if (_isElevatorUIActive)
+        if (_canUseTheButton)
         {
-
             ChangeScene();
-
         }
     }
 
-    private void CheckIfYouCanUseTheElevator()
-    {
-        if (ProgressCheck._areWeInTheSecondPart)
-        {
-            if (ProgressCheck._areWeInTheStage2)
-            {
-                if (!GlobalBools._hasAlreadyTalkedToJorge)
-                {
-                    _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_01");
-                    EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-                }
-                else
-                {
-                    UIElevator();
-                    UseElevator();
-
-                }
-
-            }
-
-            if (ProgressCheck._areWeInTheStage3)
-            {
-                if (!ProgressCheck._didYouLeaveTheSuitcase)
-                {
-                    _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_03");
-                    EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-                }
-                else
-                {
-                    UIElevator();
-                    UseElevator();
-                }
-            }
-
-            if (ProgressCheck._areWeInTheStage5)
-            {
-                if (GlobalBools._isInFirstFloor)
-                {
-                    if (!GlobalBools._hasAlreadyTalkedToLuna)
-                    {
-                        _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_05");
-                        EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-                    }
-                    else
-                    {
-                        UIElevator();
-                        UseElevator();
-                    }
-                }
-
-            }
-        }
-
-
-    }
 
     private void ChangeScene()
     {
-        SceneManager.LoadScene(_indexScene[_currentButtonsIndex]);
+        EventManager._ChangeScene.Invoke(_indexScene[_currentButtonsIndex]);
     }
 }
 

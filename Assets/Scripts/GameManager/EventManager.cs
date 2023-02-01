@@ -4,15 +4,23 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
+
 public static class EventManager 
 {
+    //Class
+    public class UserActionEvent : UnityEvent<UserActions> { };
+
+
+    //Events
+
+
+
+
     public static UnityEvent _OpenInventory = new UnityEvent();
 
     public static UnityEvent<InputAction.CallbackContext> _CloseInventory = new UnityEvent<InputAction.CallbackContext>();
 
     public static UnityEvent _OpenMenuPause = new UnityEvent();
-
-    public static UnityEvent _ChangeScene = new UnityEvent();
 
     public static UnityEvent _CesarDialoguesEvent = new UnityEvent();
 
@@ -31,6 +39,16 @@ public static class EventManager
 
     public static UnityEvent _InteractionStart = new UnityEvent();
     public static UnityEvent<Conversation> _ConversationStarts = new UnityEvent<Conversation>();
+
+
+
+    public static UnityEvent _CheckConveElevator = new UnityEvent();
+    public static UnityEvent _UseElevator = new UnityEvent();
+    public static UnityEvent<int> _ChangeScene = new UnityEvent<int>();
+
+
+
+    public static UserActionEvent _InputSet = new UserActionEvent();
 
 
 }

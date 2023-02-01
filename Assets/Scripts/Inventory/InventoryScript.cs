@@ -24,44 +24,21 @@ public class InventoryScript : MonoBehaviour
     
     [SerializeField] UserActions _controls;
  
-    private InputAction Inventory;
-    private InputAction NavegateInventoryQ;
-    private InputAction NavegateInventoryE;
+    
    
 
     private void Awake()
     {
-        _controls = new UserActions();
+        EventManager._InputSet.AddListener(InputSet);
 
     }
-
-
-    public void OnEnable()
+    void InputSet(UserActions input)
     {
+        _controls = input;
 
-      
-        Inventory = _controls.Player.Inventory;
-        Inventory.Enable();
-        Inventory.performed += OpenInventory;
-
-        NavegateInventoryQ = _controls.UI.PreviousTab;
-        NavegateInventoryQ.Enable();
-        NavegateInventoryQ.performed += PruebaQ;
-
-        NavegateInventoryE = _controls.UI.NextTab;
-        NavegateInventoryE.Enable();
-        NavegateInventoryE.performed += PruebaE;
-
-
-    }
-
-    public void OnDisable()
-    {
-        
-        Inventory.Disable();
-        NavegateInventoryQ.Disable();
-        NavegateInventoryE.Disable();
-       
+        _controls.Player.Inventory.performed += OpenInventory;
+        _controls.UI.NavigateLeft.performed += LeftMoveSuperioTab;
+        _controls.UI.NavigateRight.performed += RightMoveSuperioTab;
     }
     void Start()
     {
@@ -129,32 +106,8 @@ public class InventoryScript : MonoBehaviour
         }
 
     }
-    public void Browse() //Moverse por el inventario
-    {
-        
-        if (Input.GetKeyDown(KeyCode.E)) //Hacia la derecha
-        {
-            print("Pipo");
-            _tabOptions[_currentTabIndex].SetActive(false);
-            _currentTabIndex = (_currentTabIndex + 1) % _tab.Length;
-            _tabOptions[_currentTabIndex].SetActive(true);
-        }
 
-        if (Input.GetKeyDown(KeyCode.Q)) //Hacia la izquierda
-        {
-            _tabOptions[_currentTabIndex].SetActive(false);
-            _currentTabIndex = (_currentTabIndex - 1 + _tab.Length) % _tab.Length;
-            _tabOptions[_currentTabIndex].SetActive(true);
-        }
-
-        
-
-        _tabSelector.transform.position = _tab[_currentTabIndex].transform.position;
-
-        _tabOptions[_currentTabIndex].SetActive(true);
-    }
-
-    void PruebaQ(InputAction.CallbackContext context)
+    void LeftMoveSuperioTab(InputAction.CallbackContext context)
     {
         
         if (GlobalBools._isOpenInventory)
@@ -169,7 +122,7 @@ public class InventoryScript : MonoBehaviour
         }
     }
 
-    void PruebaE(InputAction.CallbackContext context)
+    void RightMoveSuperioTab(InputAction.CallbackContext context)
     {
          if (GlobalBools._isOpenInventory)
         {

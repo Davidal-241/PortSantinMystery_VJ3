@@ -8,6 +8,7 @@ public class JorgeDialogueManager : MonoBehaviour, IInteractable
 
    public void Interact()
     {
+        print(name);
         SearchDialogues();
     }
 
