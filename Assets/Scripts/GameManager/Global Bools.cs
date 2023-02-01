@@ -11,22 +11,9 @@ public static class GlobalBools
     public static bool _nextLineActive = false;
     public static bool _isDialoguesLastLine = false;
 
-    //NPCS
-        // Conocer a un npc
-    public static bool _hasAlreadyTalkedToLuna = false;
-    public static bool _hasAlreadyTalkedToCenturion = false;
-    public static bool _hasAlreadyTalkedToJorge = false;
-
-       //Hablando con el npc
+  
     public static bool _playerCanMove = false;
-    public static bool _lunaDoesntWantToTalk;
 
-       //Tienen mas conversación?
-    public static bool _isItJorgesMainDialogue = true;
-    public static bool _isItCenturionsMainDialogue = true;
-    public static bool _isItLunaMainDialogue = true;
-
-    //
 
     //Bool manejo inventario
     public static bool _isOpenInventory = false;

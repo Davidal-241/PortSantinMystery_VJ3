@@ -5,6 +5,10 @@ using UnityEngine;
 public class LunaDialogueManager : MonoBehaviour, IInteractable
 {
     public Conversation _lunasCurrentDialogue;
+    public static bool _hasAlreadyTalkedToLuna = false;
+    public static bool _lunaDoesntWantToTalk = false;
+
+    bool _isItLunaMainDialogue = true;
 
     public void Interact()
     {
@@ -13,16 +17,16 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
 
     private void SearchDialogues()
     {
-        GlobalBools._hasAlreadyTalkedToLuna = true;
+        _hasAlreadyTalkedToLuna = true;
 
         if (ProgressCheck._areWeInTheSecondPart)
         {
-            if (!GlobalBools._lunaDoesntWantToTalk)
+            if (!_lunaDoesntWantToTalk)
             {
 
                 if (ProgressCheck._areWeInTheStage5)
                 {
-                    if (GlobalBools._isItLunaMainDialogue)
+                    if (_isItLunaMainDialogue)
                     {
                         _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/N_Dialogues/Luna_N_Dialogue_01");
                     }
@@ -34,7 +38,7 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
 
                 if (ProgressCheck._areWeInTheStage6)
                 {
-                    GlobalBools._isItLunaMainDialogue = true;
+                    _isItLunaMainDialogue = true;
 
                     if (!ProgressCheck.canYouLeaveThehotel)
                     {

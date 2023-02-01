@@ -5,8 +5,10 @@ using UnityEngine;
 public class JorgeDialogueManager : MonoBehaviour, IInteractable
 {
    public Conversation _jorgesCurrentDialogue;
+   public static bool _hasAlreadyTalkedToJorge = false;
 
-   public void Interact()
+    bool _isItJorgesMainDialogue = true;
+    public void Interact()
     {
         print(name);
         SearchDialogues();
@@ -16,16 +18,16 @@ public class JorgeDialogueManager : MonoBehaviour, IInteractable
                
     private void SearchDialogues()
     {
-        GlobalBools._hasAlreadyTalkedToJorge = true;
+        _hasAlreadyTalkedToJorge = true;
 
         if (ProgressCheck._areWeInTheSecondPart)
         {
             if (ProgressCheck._areWeInTheStage2)
             {
-                if (GlobalBools._isItJorgesMainDialogue)
+                if (_isItJorgesMainDialogue)
                 {
                     _jorgesCurrentDialogue = Resources.Load<Conversation>("Jorge/N_Dialogues/Jorge_N_Dialogue_01");
-                    GlobalBools._isItJorgesMainDialogue = false;
+                    _isItJorgesMainDialogue = false;
                 }
                 else
                 {

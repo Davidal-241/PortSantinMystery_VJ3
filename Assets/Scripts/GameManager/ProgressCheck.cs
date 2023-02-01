@@ -40,7 +40,6 @@ public class ProgressCheck : MonoBehaviour
     public static bool _isLunaInTheScene = false;
     public static bool _spawnLuna = false;
 
-    public static bool _finishMainDialogueJorge = false;
 
     public string[] _sceneName;
 
@@ -93,7 +92,7 @@ public class ProgressCheck : MonoBehaviour
 
             if (_areWeInTheStage2)
             {
-                if (GlobalBools._hasAlreadyTalkedToJorge)
+                if (JorgeDialogueManager._hasAlreadyTalkedToJorge)
                 {
                     _canUseElevator = true;
                     _canUseElevatorToGoDown = false;
@@ -184,7 +183,7 @@ public class ProgressCheck : MonoBehaviour
                         _spawnLuna = false;
                     }
 
-                    if (!GlobalBools._hasAlreadyTalkedToLuna)
+                    if (!LunaDialogueManager._hasAlreadyTalkedToLuna)
                     {
                         if (_youTryUseElevator)
                         {
@@ -206,7 +205,7 @@ public class ProgressCheck : MonoBehaviour
                         }
                     }
 
-                    if (!GlobalBools._hasAlreadyTalkedToCenturion)
+                    if (!CenturionDialogueManager._hasAlreadyTalkedToCenturion)
                     {
                         if(_currentScene.name == _sceneName[1])
                         {
@@ -220,14 +219,14 @@ public class ProgressCheck : MonoBehaviour
 
                 if (_areWeInTheStage6)
                 {
-                    if (!GlobalBools._hasAlreadyTalkedToCenturion)
+                    if (!CenturionDialogueManager._hasAlreadyTalkedToCenturion)
                     {
                         if (_youTryUseElevator)
                         {
                             EventManager._CesarDialoguesEvent.Invoke();
                         }
                     }
-                    if (GlobalBools._hasAlreadyTalkedToCenturion)
+                    if (CenturionDialogueManager._hasAlreadyTalkedToCenturion)
                     {
                         _canUseElevator = true;
                     }

@@ -5,6 +5,9 @@ using UnityEngine;
 public class CenturionDialogueManager : MonoBehaviour, IInteractable
 {
     public Conversation _centurionsCurrentDialogue;
+    public static bool _hasAlreadyTalkedToCenturion = false;
+
+    bool _isItCenturionsMainDialogue = true;
 
     public void Interact()
     {
@@ -13,7 +16,7 @@ public class CenturionDialogueManager : MonoBehaviour, IInteractable
 
     private void SearchDialogues()
     {
-        GlobalBools._hasAlreadyTalkedToCenturion = true;
+       _hasAlreadyTalkedToCenturion = true;
 
 
 
@@ -21,10 +24,10 @@ public class CenturionDialogueManager : MonoBehaviour, IInteractable
         {
             if (ProgressCheck._areWeInTheStage6)
             {
-                if (GlobalBools._isItCenturionsMainDialogue)
+                if (_isItCenturionsMainDialogue)
                 {
                     _centurionsCurrentDialogue = Resources.Load<Conversation>("Centurion/N_Dialogues/Centurion_N_Dialogue_01");
-                    GlobalBools._isItCenturionsMainDialogue = false;
+                    _isItCenturionsMainDialogue = false;
 
                 }
                 else
