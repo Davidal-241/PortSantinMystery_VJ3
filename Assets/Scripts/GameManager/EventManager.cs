@@ -53,5 +53,9 @@ public static class EventManager
     public static UnityEvent ConvesationStarts = new UnityEvent();
     public static UnityEvent ConvesationEnds = new UnityEvent();
 
+    public static UnityEvent UIOn = new UnityEvent();
+    public static UnityEvent UIOff = new UnityEvent();
 
+    public static UnityEvent UserMenuOn = new UnityEvent();
+    public static UnityEvent UserMenuOff = new UnityEvent();
 }

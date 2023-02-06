@@ -26,8 +26,6 @@ public class ToInteract : MonoBehaviour
         _controls = input;
         //_controls.Player.Interactue.performed += StartInteract;
         _controls.Conversation.NextLine.performed += NextLineText;
-
-        print(_controls.Player.enabled);
     }
 
     //private void StartInteract(InputAction.CallbackContext context)

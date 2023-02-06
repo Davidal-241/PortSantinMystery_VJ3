@@ -35,9 +35,9 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
     {
         _controls = input;
 
-        _controls.UI.Submit.performed += UseTheButton;
-        _controls.UI.NavigateUp.performed += ScrollUpByInterface;
-        _controls.UI.NavigateDown.performed += ScrollDownByInterface;
+        _controls.Inventory.Submit.performed += UseTheButton;
+        _controls.Inventory.NavigateUp.performed += ScrollUpByInterface;
+        _controls.Inventory.NavigateDown.performed += ScrollDownByInterface;
     }
    
 

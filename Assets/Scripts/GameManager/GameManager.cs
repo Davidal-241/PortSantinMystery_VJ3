@@ -63,12 +63,11 @@ public class GameManager : MonoBehaviour
     public Conversation _cesarsCurrentDialogue;
 
     public static bool _isTalking = false; 
-    public static bool _isInventoryActive = false;
     public static bool _isMenuPauseActive = false;
     public static bool _isOpenInventory = false;
-    //public static bool _playerCanMove = false;
     public static bool _isDialoguesLastLine = false;
     public static bool _nextLineActive = true;
+    static int[] pastConversations = null;
 
     bool isElevatorUIActive = false;
 
@@ -88,13 +87,23 @@ public class GameManager : MonoBehaviour
         _controls.Enable();
 
         _controls.Player.Enable();
-        _controls.UI.Disable();
-        _controls.UserMenu.Disable();
+        _controls.Inventory.Disable();
+        _controls.OptionsMenu.Disable();
         _controls.Conversation.Disable();
-        _controls.Elevator.Disable();
 
         EventManager.ConvesationStarts.AddListener(ConversationStarts);
         EventManager.ConvesationEnds.AddListener(ConversationEnds);
+
+        EventManager.UserMenuOff.AddListener(CloseOptionsMenu);
+        EventManager.UserMenuOn.AddListener(OpenOptionsMenu);
+
+        EventManager.UIOff.AddListener(CloseInventory);
+        EventManager.UIOn.AddListener(OpenInventory);
+
+        print("a");
+        int[] v = { 0, 1, 3 };
+        string s = PastConversationsToString(v);
+        print(s);
     }
 
 
@@ -105,8 +114,8 @@ public class GameManager : MonoBehaviour
         _controls = new UserActions();
         _controls.Enable();
         _controls.Player.Enable();
-        _controls.UI.Disable();
-        _controls.UserMenu.Disable();
+        _controls.Inventory.Disable();
+        _controls.OptionsMenu.Disable();
         _controls.Conversation.Disable();
 
         EventManager._InputSet.Invoke(_controls);
@@ -250,11 +259,13 @@ public class GameManager : MonoBehaviour
             _elevatorUI.SetActive(true);
             isElevatorUIActive = true;
             EventManager._UseElevator.Invoke();
+            EventManager.UIOn.Invoke();
         }
         else
         {
             _elevatorUI.SetActive(false);
             isElevatorUIActive = false;
+            EventManager.UIOff.Invoke();
         }
     }
     #endregion
@@ -266,7 +277,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(_indexSceneUseButton);
     }
     #endregion
-
 
     #region"Introduction"
     private void Introduction()
@@ -371,7 +381,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-
+    #region"ConversationsInput"
     void ConversationStarts()
     {
         print("ConvesationStarts input map change");
@@ -388,6 +398,90 @@ public class GameManager : MonoBehaviour
         _controls.Conversation.Disable();
         _controls.Player.Enable();
     }
+    #endregion
+
+    #region"UI"
+    void OpenInventory()
+    {
+        _controls.Player.Disable();
+        _controls.Inventory.Enable();
+    }
+
+    void CloseInventory()
+    {
+        _controls.Player.Enable();
+        _controls.Inventory.Disable();
+    }
+    #endregion
+
+    #region"UserMenu"
+    void OpenOptionsMenu()
+    {
+        _controls.Player.Disable();
+        _controls.OptionsMenu.Enable();
+    }
+    void CloseOptionsMenu()
+    {
+        _controls.Player.Enable();
+        _controls.OptionsMenu.Disable();
+    }
+    #endregion
 
 
+    public static int[] PastConversations
+    {
+        get
+        {
+            if (pastConversations == null)
+            {
+                // tomar los valores del archivo de guardado o donde sea
+            }
+
+            return pastConversations;
+        }
+    }
+
+    void UpdateConversationLog(int index)
+    {
+        // añadir <index> a pastConversations
+        int[] tmp;
+        tmp = new int[pastConversations.Length];
+        for (int i = 0; i < pastConversations.Length; i++)
+            tmp[i] = pastConversations[i];
+
+        pastConversations = new int[pastConversations.Length + 1];
+        for (int i = 0; i < tmp.Length; i++)
+            pastConversations[i] = tmp[i];
+        pastConversations[pastConversations.Length - 1] = index;
+
+        // sobreescribir pastConversations del archivo de guardado, con la nueva información
+
+    }
+
+    string PastConversationsToString(int[] prueba)
+    {
+        string s = "";
+
+        for (int i = 0; i < prueba.Length; i++)
+        {
+            s += prueba[i];
+            if (i != prueba.Length - 1)
+                s += "-";
+        }
+
+        return s;
+    }
+
+    int[] PastConversationsToIntArray(string prueba)
+    {
+        int[] v;
+        //string[] stringIndexes = PlayerPrefs.GetString("PastConversations").Split('-');
+        string[] stringIndexes = prueba.Split('-');
+
+        v = new int[stringIndexes.Length];
+        for (int i = 0; i < stringIndexes.Length; i++)
+            v[i] = int.Parse(stringIndexes[i]);
+
+        return v;
+    }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class InventoryTab : MonoBehaviour
 {
     public GameObject[] _tabViews;
+    GameObject[] conversations;
+    int currentConversation = 0;
     private int _allTabViews;
 
     [SerializeField] private int _currentPagIndex;
@@ -20,6 +22,14 @@ public class InventoryTab : MonoBehaviour
             _tabViews[i] = gameObject.transform.GetChild(i).gameObject;
             _tabViews[i].SetActive(false);
         }
+
+        //conversations = new GameObject[GameManager.PastConversations.Length];
+        //for (int i = 0; i < GameManager.PastConversations.Length; i++)
+        //{
+        //    conversations[i] = Resources.Load<GameObject>("/Conversations/Conversation" + conversations[i]);
+        //    conversations[i].transform.SetParent(_tabViews[0].transform);
+        //    conversations[i].transform.localPosition = Vector3.zero;
+        //}
     }
     
     private void Update()

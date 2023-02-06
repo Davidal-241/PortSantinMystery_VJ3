@@ -32,14 +32,19 @@ public class InventoryScript : MonoBehaviour
         EventManager._InputSet.AddListener(InputSet);
 
     }
+
+
     void InputSet(UserActions input)
     {
         _controls = input;
 
         _controls.Player.Inventory.performed += OpenInventory;
-        _controls.UI.NavigateLeft.performed += LeftMoveSuperioTab;
-        _controls.UI.NavigateRight.performed += RightMoveSuperioTab;
+        _controls.Inventory.CloseInventory.performed += CloseInventory;
+        _controls.Inventory.NavigateLeft.performed += LeftMoveSuperioTab;
+        _controls.Inventory.NavigateRight.performed += RightMoveSuperioTab;
     }
+
+
     void Start()
     {
         _inventory.SetActive(false);
@@ -88,23 +93,22 @@ public class InventoryScript : MonoBehaviour
     }
     public void OpenInventory(InputAction.CallbackContext context)
     {
+        _inventory.SetActive(true);
+        _currentTabIndex = 0;
+        _tabOptions[_currentTabIndex].SetActive(true);
+        //GameManager._playerCanMove = false;
+        GameManager._isOpenInventory = true;
 
-        if (GameManager._isInventoryActive)
-        {
-            _inventory.SetActive(false);
-            _tabOptions[_currentTabIndex].SetActive(false);
-            //GameManager._playerCanMove = true;
-            GameManager._isOpenInventory = false;
-        }
-        else
-        {
-            _inventory.SetActive(true);
-            _currentTabIndex = 0;
-            _tabOptions[_currentTabIndex].SetActive(true);
-            //GameManager._playerCanMove = false;
-            GameManager._isOpenInventory = true;
-        }
+        EventManager.UIOn.Invoke();
+    }
 
+    public void CloseInventory(InputAction.CallbackContext context)
+    {
+        _inventory.SetActive(false);
+        _tabOptions[_currentTabIndex].SetActive(false);
+        //GameManager._playerCanMove = true;
+        GameManager._isOpenInventory = false;
+        EventManager.UIOff.Invoke();
     }
 
     void LeftMoveSuperioTab(InputAction.CallbackContext context)

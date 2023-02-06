@@ -25,37 +25,20 @@ public class PlayerMovement : MonoBehaviour
     //The rigidbody of the player
     Rigidbody myRB;
 
-   
-
-    //Detecte if more or less distance
-
-  
-    
 
 
     [SerializeField] UserActions _controls;
-    private InputAction move;
- 
 
+
+    void InputSet(UserActions input)
+    {
+        _controls = input;
+        //_controls.Player.Interactue.performed += StartInteract;
+    }
 
     private void Awake()
     {
-        _controls = new UserActions();
-    }
-
-    public void OnEnable()
-    {
-
-        move = _controls.Player.Movement;
-        move.Enable();
-
-
-    }
-
-    public void OnDisable()
-    {
-        move.Disable();
-       
+        EventManager._InputSet.AddListener(InputSet);
     }
 
     void Start()
@@ -75,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         // direction = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
         
         //direction = move.ReadValue<Vector2>();
-        direction = move.ReadValue<Vector2>();
+        direction = _controls.Player.Movement.ReadValue<Vector2>();
         //if (!GameManager._playerCanMove)
         {
 

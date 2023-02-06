@@ -41,12 +41,14 @@ public class MenuOptionsMovement : MonoBehaviour
     {
         _controls = input;
 
-        _controls.UserMenu.OpenClose.performed += UseMenu;
-        _controls.UI.Submit.performed += UseButtons;
-        _controls.UI.NavigateUp.performed += ScrollUpMenuPause;
-        _controls.UI.NavigateDown.performed += ScrollDownMenuPause;
-        _controls.UI.NavigateLeft.performed += SliderVolumenLess;
-        _controls.UI.NavigateRight.performed += SliderVolumenMore;
+        _controls.Player.Open.performed += OpenMenu;
+        _controls.OptionsMenu.Close.performed += CloseMenu;
+
+        _controls.OptionsMenu.Submit.performed += UseButtons;
+        _controls.OptionsMenu.NavigateUp.performed += ScrollUpMenuPause;
+        _controls.OptionsMenu.NavigateDown.performed += ScrollDownMenuPause;
+        _controls.OptionsMenu.NavigateLeft.performed += SliderVolumenLess;
+        _controls.OptionsMenu.NavigateRight.performed += SliderVolumenMore;
     }
 
  
@@ -76,12 +78,11 @@ public class MenuOptionsMovement : MonoBehaviour
 
 
 
-    private void UseMenu(InputAction.CallbackContext context)
+    private void OpenMenu(InputAction.CallbackContext context)
     {
         if (!GameManager._isMenuPauseActive && !GameManager._isTalking)
         {
             _viewManager.SetActive(true);
-            GameManager._isInventoryActive = false;
             GameManager._isMenuPauseActive = true;
 
             //GameManager._playerCanMove = true;
@@ -91,8 +92,15 @@ public class MenuOptionsMovement : MonoBehaviour
             _currentButtonIndex = 0;
             _menus[_currentMenuIndex].SetActive(true);
             UpdateSelectorPosition();
+
+            EventManager.UserMenuOn.Invoke();
         }
-        else if(GameManager._isMenuPauseActive && !GameManager._isTalking)
+       
+    }
+
+    private void CloseMenu(InputAction.CallbackContext context)
+    {
+      if (GameManager._isMenuPauseActive && !GameManager._isTalking)
         {
             _viewManager.SetActive(false);
             GameManager._isMenuPauseActive = false;
@@ -100,6 +108,7 @@ public class MenuOptionsMovement : MonoBehaviour
             //GameManager._playerCanMove = false;
 
             _menus[_currentMenuIndex].SetActive(false);
+            EventManager.UserMenuOff.Invoke();
 
         }
     }
