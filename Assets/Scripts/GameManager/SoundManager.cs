@@ -19,12 +19,12 @@ public class SoundManager : MonoBehaviour
 
     private void Update()
     {
-        if (_audioSource.isPlaying == false)
-        {
-            _currentClip = _clip._sounds[9];
-            //_audioSource.clip = _currentClip;
-            _audioSource.PlayOneShot(_currentClip);
-        }
+        //if (_audioSource.isPlaying == false)
+        //{
+        //    _currentClip = _clip._sounds[9];
+        //    _audioSource.clip = _currentClip;
+        //    _audioSource.Play();
+        //}
     }
 
     public void ElevatorSound()
