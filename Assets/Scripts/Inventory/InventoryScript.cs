@@ -76,7 +76,7 @@ public class InventoryScript : MonoBehaviour
 
     private void Update()
     {
-        if (GlobalBools._isMenuPauseActive)
+        if (GameManager._isMenuPauseActive)
         {
             _inventory.SetActive(false);
         }
@@ -89,20 +89,20 @@ public class InventoryScript : MonoBehaviour
     public void OpenInventory(InputAction.CallbackContext context)
     {
 
-        if (GlobalBools._isInventoryActive)
+        if (GameManager._isInventoryActive)
         {
             _inventory.SetActive(false);
             _tabOptions[_currentTabIndex].SetActive(false);
-            GlobalBools._playerCanMove = true;
-            GlobalBools._isOpenInventory = false;
+            GameManager._playerCanMove = true;
+            GameManager._isOpenInventory = false;
         }
         else
         {
             _inventory.SetActive(true);
             _currentTabIndex = 0;
             _tabOptions[_currentTabIndex].SetActive(true);
-            GlobalBools._playerCanMove = false;
-            GlobalBools._isOpenInventory = true;
+            GameManager._playerCanMove = false;
+            GameManager._isOpenInventory = true;
         }
 
     }
@@ -110,7 +110,7 @@ public class InventoryScript : MonoBehaviour
     void LeftMoveSuperioTab(InputAction.CallbackContext context)
     {
         
-        if (GlobalBools._isOpenInventory)
+        if (GameManager._isOpenInventory)
         {
 
             _tabOptions[_currentTabIndex].SetActive(false);
@@ -124,7 +124,7 @@ public class InventoryScript : MonoBehaviour
 
     void RightMoveSuperioTab(InputAction.CallbackContext context)
     {
-         if (GlobalBools._isOpenInventory)
+         if (GameManager._isOpenInventory)
         {
 
             _tabOptions[_currentTabIndex].SetActive(false);

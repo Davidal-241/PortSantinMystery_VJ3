@@ -56,7 +56,7 @@ public class LogicalDialogueSystem : MonoBehaviour
         instance.speakerName.text = "";
         instance.dialogue.text = "";
         instance.navButtonText.text = ">";
-        GlobalBools._playerCanMove = true;
+        GameManager._playerCanMove = true;
 
         //print("Call from " + new StackTrace().GetFrame(0).GetMethod().Name + ". start convo. " + instance.currentIndex);
         //instance.ReadNext();
@@ -156,7 +156,7 @@ public class LogicalDialogueSystem : MonoBehaviour
  
     public void EndDialogue()
     {
-        GlobalBools._playerCanMove = false;
+        GameManager._playerCanMove = false;
         _dialogueBox.SetActive(false);
         print("EndDialogue/ Is DialogueBox in False?: " + _dialogueBox.activeSelf);
 
@@ -165,7 +165,7 @@ public class LogicalDialogueSystem : MonoBehaviour
 
         speakerSprite1.sprite = null;
         speakerSprite2.sprite = null;
-        GlobalBools._isTalking = false;
+        GameManager._isTalking = false;
     }
 
     private IEnumerator TypeText(string text)

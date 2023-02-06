@@ -25,9 +25,9 @@ public class ConversationManager : MonoBehaviour
 
     public void StartConversation()
     {
-        GlobalBools._isDialoguesLastLine = false;
-        GlobalBools._nextLineActive = true;
-        GlobalBools._isTalking = true;
+        GameManager._isDialoguesLastLine = false;
+        GameManager._nextLineActive = true;
+        GameManager._isTalking = true;
         LogicalDialogueSystem.StartConversation(_conversation);
       
     }
