@@ -15,12 +15,7 @@ public class ConversationManager : MonoBehaviour
     }
     private void Start()
     {
-
-
         EventManager._ConversationStarts.AddListener(CheckTheConversation);
-
-       
-
     }
 
     public void StartConversation()
@@ -34,12 +29,9 @@ public class ConversationManager : MonoBehaviour
 
     public void CheckTheConversation(Conversation _npcConversation)
     {
-        print(_conversation);
-        print(_dialogueBox);
 
         _conversation = _npcConversation;
         _dialogueBox.SetActive(true);
-        print("a");
         StartConversation();
     }
 }

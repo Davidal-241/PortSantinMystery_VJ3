@@ -55,7 +55,7 @@ public class InteractionHandler : MonoBehaviour
                 Debug.LogWarning("Object no doesn´t have implement IInteractable");
         }
 
-        print("interaction requested ends");
+        print("InteractionRequested ends");
     }
 
     int GetClosestIndex(Collider[] _found)

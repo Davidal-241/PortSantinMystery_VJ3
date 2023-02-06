@@ -10,6 +10,8 @@ public class Conversation : ScriptableObject
 
     public DialogueLine GetLineByIndex(int index)
     {
+        //Debug.Log(allLines.Length + " lines for " + name + "'s conversation. Trying to get lien nº " + index);
+
         return allLines[index];
     }
 

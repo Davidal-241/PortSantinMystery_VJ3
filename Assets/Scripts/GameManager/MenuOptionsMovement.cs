@@ -84,7 +84,7 @@ public class MenuOptionsMovement : MonoBehaviour
             GameManager._isInventoryActive = false;
             GameManager._isMenuPauseActive = true;
 
-            GameManager._playerCanMove = true;
+            //GameManager._playerCanMove = true;
 
 
             _currentMenuIndex = 0;
@@ -97,7 +97,7 @@ public class MenuOptionsMovement : MonoBehaviour
             _viewManager.SetActive(false);
             GameManager._isMenuPauseActive = false;
 
-            GameManager._playerCanMove = false;
+            //GameManager._playerCanMove = false;
 
             _menus[_currentMenuIndex].SetActive(false);
 

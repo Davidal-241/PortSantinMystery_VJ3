@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
     public static bool _isInventoryActive = false;
     public static bool _isMenuPauseActive = false;
     public static bool _isOpenInventory = false;
-    public static bool _playerCanMove = true;
+    //public static bool _playerCanMove = false;
     public static bool _isDialoguesLastLine = false;
     public static bool _nextLineActive = true;
 
@@ -83,6 +83,18 @@ public class GameManager : MonoBehaviour
         _currenStoryParts = StoryParts.INTRODUCTION;
         _currentStagesStoryParts = StagesStoryParts.STAGE_1;
         _currentRequestCondition = RequestCondition.OUTSIDETHEHOTEL;
+
+        _controls = new UserActions();
+        _controls.Enable();
+
+        _controls.Player.Enable();
+        _controls.UI.Disable();
+        _controls.UserMenu.Disable();
+        _controls.Conversation.Disable();
+        _controls.Elevator.Disable();
+
+        EventManager.ConvesationStarts.AddListener(ConversationStarts);
+        EventManager.ConvesationEnds.AddListener(ConversationEnds);
     }
 
 
@@ -359,6 +371,23 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+
+    void ConversationStarts()
+    {
+        print("ConvesationStarts input map change");
+
+        _controls.Player.Interactue.Disable();
+        _controls.Player.Disable();
+        _controls.Conversation.Enable();
+    }
+
+    void ConversationEnds()
+    {
+        print("ConversationEnds input map change");
+
+        _controls.Conversation.Disable();
+        _controls.Player.Enable();
+    }
 
 
 }

@@ -15,6 +15,7 @@ public class ToInteract : MonoBehaviour
         EventManager._InputSet.AddListener(InputSet);
 
         logicalDialogueManager = FindObjectOfType<LogicalDialogueSystem>();
+        print(logicalDialogueManager);
     }
 
 
@@ -43,9 +44,8 @@ public class ToInteract : MonoBehaviour
 
     public void NextLineText(InputAction.CallbackContext context)
     {
-        if (GameManager._isTalking && !GameManager._isMenuPauseActive)
+        //if (GameManager._isTalking && !GameManager._isMenuPauseActive)
         {
-            print("Está entrando cuando no debe");
             logicalDialogueManager.ReadNext();
         }
     }

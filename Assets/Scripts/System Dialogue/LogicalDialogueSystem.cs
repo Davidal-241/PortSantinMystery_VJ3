@@ -13,7 +13,7 @@ public class LogicalDialogueSystem : MonoBehaviour
     public Image speakerSprite1;
     public Image speakerSprite2;
 
-    [SerializeField]private int currentIndex;
+    [SerializeField] private int currentIndex;
     private Conversation currentConvo;
     private static LogicalDialogueSystem instance;
     private Coroutine typingCoroutine;
@@ -43,7 +43,7 @@ public class LogicalDialogueSystem : MonoBehaviour
     private void Start()
     {
 
-        _dialogueBox = GameObject.Find("DialogueBox");
+        //_dialogueBox = GameObject.Find("DialogueBox");
      
     }
 
@@ -56,10 +56,12 @@ public class LogicalDialogueSystem : MonoBehaviour
         instance.speakerName.text = "";
         instance.dialogue.text = "";
         instance.navButtonText.text = ">";
-        GameManager._playerCanMove = true;
+        //GameManager._playerCanMove = true;
+
+        EventManager.ConvesationStarts.Invoke();
 
         //print("Call from " + new StackTrace().GetFrame(0).GetMethod().Name + ". start convo. " + instance.currentIndex);
-        //instance.ReadNext();
+        instance.ReadNext();
 
 
     }
@@ -70,7 +72,7 @@ public class LogicalDialogueSystem : MonoBehaviour
         print(currentIndex + " / " + currentConvo.GetLength());
 
         // End conversation
-        if (currentIndex == currentConvo.GetLength() && typingCoroutine == null)
+        if (currentIndex >= currentConvo.GetLength() && typingCoroutine == null)
         {
             print("end conversation on line " + currentIndex);
 
@@ -113,19 +115,20 @@ public class LogicalDialogueSystem : MonoBehaviour
         // Insta complete conversation line
         else
         {
-            print("insta complete line " + (currentIndex-1));
-            instance.StopCoroutine(typingCoroutine);
-            typingCoroutine = null;
-            dialogue.text += currentConvo.GetLineByIndex(currentIndex-1).dialogue.Substring(dialogueIndex);
+            instaCompleting = true;
+            //print("insta complete line " + (currentIndex-1));
+            //instance.StopCoroutine(typingCoroutine);
+            //typingCoroutine = null;
+            //dialogue.text += currentConvo.GetLineByIndex(currentIndex-1).dialogue.Substring(dialogueIndex);
 
-            // Remove all / characters
+            //// Remove all / characters
 
-            int slashIndex = dialogue.text.IndexOf('/');
-            while (slashIndex != -1)
-            {
-                dialogue.text = dialogue.text.Remove(slashIndex, 1);
-                slashIndex = dialogue.text.IndexOf('/');
-            }
+            //int slashIndex = dialogue.text.IndexOf('/');
+            //while (slashIndex != -1)
+            //{
+            //    dialogue.text = dialogue.text.Remove(slashIndex, 1);
+            //    slashIndex = dialogue.text.IndexOf('/');
+            //}
 
 
             //dialogue.text = dialogue.text.Trim(new char[] { '/' });
@@ -136,10 +139,13 @@ public class LogicalDialogueSystem : MonoBehaviour
 
 
         // Display the current conversartion line images
-        speakerSprite1.sprite = currentConvo.GetLineByIndex(currentIndex)._SpritePortrains1;
-        speakerSprite2.sprite = currentConvo.GetLineByIndex(currentIndex)._SpritePortrains2;
+        if (currentIndex < currentConvo.GetLength())
+        {
+            speakerSprite1.sprite = currentConvo.GetLineByIndex(currentIndex)._SpritePortrains1;
+            speakerSprite2.sprite = currentConvo.GetLineByIndex(currentIndex)._SpritePortrains2;
+        }
 
-        
+
     }
 
     void StartNewLine()
@@ -156,7 +162,7 @@ public class LogicalDialogueSystem : MonoBehaviour
  
     public void EndDialogue()
     {
-        GameManager._playerCanMove = false;
+        //GameManager._playerCanMove = false;
         _dialogueBox.SetActive(false);
         print("EndDialogue/ Is DialogueBox in False?: " + _dialogueBox.activeSelf);
 
@@ -166,10 +172,14 @@ public class LogicalDialogueSystem : MonoBehaviour
         speakerSprite1.sprite = null;
         speakerSprite2.sprite = null;
         GameManager._isTalking = false;
+
+        EventManager.ConvesationEnds.Invoke();
+
     }
 
     private IEnumerator TypeText(string text)
     {
+        print("printing line " + currentIndex);
 
         dialogue.text = "";
         bool complete = false;

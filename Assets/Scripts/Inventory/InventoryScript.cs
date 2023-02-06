@@ -93,7 +93,7 @@ public class InventoryScript : MonoBehaviour
         {
             _inventory.SetActive(false);
             _tabOptions[_currentTabIndex].SetActive(false);
-            GameManager._playerCanMove = true;
+            //GameManager._playerCanMove = true;
             GameManager._isOpenInventory = false;
         }
         else
@@ -101,7 +101,7 @@ public class InventoryScript : MonoBehaviour
             _inventory.SetActive(true);
             _currentTabIndex = 0;
             _tabOptions[_currentTabIndex].SetActive(true);
-            GameManager._playerCanMove = false;
+            //GameManager._playerCanMove = false;
             GameManager._isOpenInventory = true;
         }
 

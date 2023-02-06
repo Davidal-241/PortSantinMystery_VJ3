@@ -50,5 +50,8 @@ public static class EventManager
 
     public static UserActionEvent _InputSet = new UserActionEvent();
 
+    public static UnityEvent ConvesationStarts = new UnityEvent();
+    public static UnityEvent ConvesationEnds = new UnityEvent();
+
 
 }
