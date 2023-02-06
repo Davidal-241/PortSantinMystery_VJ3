@@ -19,10 +19,11 @@ public class SoundManager : MonoBehaviour
 
     private void Update()
     {
-        if (_isntPlayForUse)
+        if (_audioSource.isPlaying == false)
         {
-            _audioSource.clip = _currentClip;
-            _audioSource.Play();
+            _currentClip = _clip._sounds[9];
+            //_audioSource.clip = _currentClip;
+            _audioSource.PlayOneShot(_currentClip);
         }
     }
 
@@ -85,6 +86,13 @@ public class SoundManager : MonoBehaviour
     public void ButtonSound()
     {
         _currentClip = _clip._sounds[8];
+        _audioSource.clip = _currentClip;
+        _audioSource.Play();
+    }
+
+    public void RainSound()
+    {
+        _currentClip = _clip._sounds[9];
         _audioSource.clip = _currentClip;
         _audioSource.Play();
     }
