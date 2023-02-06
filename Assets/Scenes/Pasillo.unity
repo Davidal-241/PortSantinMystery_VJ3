@@ -803,7 +803,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 9d8b822152cd6514185ec111d5c973cf, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0073b51f3394e0c43a8395a1c10607fe, type: 2}
+      objectReference: {fileID: 2100000, guid: 53d8bb700a92bc84f86ff083ea7c7e2c, type: 2}
     - target: {fileID: 919132149155446097, guid: 9d8b822152cd6514185ec111d5c973cf, type: 3}
       propertyPath: m_Name
       value: Cuadro_04
