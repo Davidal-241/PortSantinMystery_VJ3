@@ -49,10 +49,6 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
 
     private void UseElevator()
     {
-        GlobalBools._isInReception = false;
-        GlobalBools._isInFirstFloor = false;
-        GlobalBools._isInBasement = false;
-
         for (int i = 0; i < _offImage.Length; i++)
         {
             _offImage[i].SetActive(false);
@@ -65,7 +61,6 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
         {
             if (_currentScene.buildIndex == _indexScene[0])
             {
-                GlobalBools._isInReception = true;
                 _offImage[0].SetActive(true);
                 _buttons[0].SetActive(false);
                 _currentButtonsIndex = 0;
@@ -74,7 +69,6 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
 
             if (_currentScene.buildIndex == _indexScene[1])
             {
-                GlobalBools._isInFirstFloor = true;
                 _offImage[1].SetActive(true);
                 _buttons[1].SetActive(false);
                 _currentButtonsIndex = 1;

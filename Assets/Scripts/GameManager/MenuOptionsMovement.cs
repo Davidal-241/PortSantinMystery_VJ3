@@ -78,13 +78,13 @@ public class MenuOptionsMovement : MonoBehaviour
 
     private void UseMenu(InputAction.CallbackContext context)
     {
-        if (!GlobalBools._isMenuPauseActive && !GlobalBools._isTalking)
+        if (!GameManager._isMenuPauseActive && !GameManager._isTalking)
         {
             _viewManager.SetActive(true);
-            GlobalBools._isInventoryActive = false;
-            GlobalBools._isMenuPauseActive = true;
+            GameManager._isInventoryActive = false;
+            GameManager._isMenuPauseActive = true;
 
-            GlobalBools._playerCanMove = true;
+            GameManager._playerCanMove = true;
 
 
             _currentMenuIndex = 0;
@@ -92,12 +92,12 @@ public class MenuOptionsMovement : MonoBehaviour
             _menus[_currentMenuIndex].SetActive(true);
             UpdateSelectorPosition();
         }
-        else if(GlobalBools._isMenuPauseActive && !GlobalBools._isTalking)
+        else if(GameManager._isMenuPauseActive && !GameManager._isTalking)
         {
             _viewManager.SetActive(false);
-            GlobalBools._isMenuPauseActive = false;
+            GameManager._isMenuPauseActive = false;
 
-            GlobalBools._playerCanMove = false;
+            GameManager._playerCanMove = false;
 
             _menus[_currentMenuIndex].SetActive(false);
 
@@ -107,7 +107,7 @@ public class MenuOptionsMovement : MonoBehaviour
     private void ScrollDownMenuPause(InputAction.CallbackContext context)
     {
 
-        if (GlobalBools._isMenuPauseActive)
+        if (GameManager._isMenuPauseActive)
         {
             if (!_canChangeSliderValue)
             {
@@ -120,7 +120,7 @@ public class MenuOptionsMovement : MonoBehaviour
     private void ScrollUpMenuPause(InputAction.CallbackContext context)
     {
 
-        if (GlobalBools._isMenuPauseActive)
+        if (GameManager._isMenuPauseActive)
         {
             if (!_canChangeSliderValue)
             {
@@ -213,7 +213,7 @@ public class MenuOptionsMovement : MonoBehaviour
 
     private void UpdateSelectorPosition()
     {
-        if (GlobalBools._isMenuPauseActive)
+        if (GameManager._isMenuPauseActive)
         {
 
         print(_currentMenuIndex + " " + _currentButtonIndex);

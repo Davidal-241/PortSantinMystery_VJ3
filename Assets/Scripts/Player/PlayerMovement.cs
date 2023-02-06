@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         
         //direction = move.ReadValue<Vector2>();
         direction = move.ReadValue<Vector2>();
-        if (!GlobalBools._playerCanMove)
+        if (!GameManager._playerCanMove)
         {
 
             if (direction.x > 0)
@@ -101,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!GlobalBools._playerCanMove)
+        if (!GameManager._playerCanMove)
         {
             //After selecting the move type we can test any of them thanks to this switch case 
             switch (moveType)
