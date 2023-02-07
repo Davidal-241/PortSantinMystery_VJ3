@@ -4247,5 +4247,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialogo_UI
       objectReference: {fileID: 0}
+    - target: {fileID: 1075096165617535559, guid: 93c2cc0dba7bbf64d94f040656fa0e8a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93c2cc0dba7bbf64d94f040656fa0e8a, type: 3}
