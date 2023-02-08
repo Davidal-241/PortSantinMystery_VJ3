@@ -34,6 +34,7 @@ public class SoundManager : MonoBehaviour
 
     public void ElevatorSound()
     {
+        _audioSource.pitch = 1;
         _currentClip = _clip._sounds[0];
         _audioSource.clip = _currentClip;
         _audioSource.Play();
@@ -41,6 +42,7 @@ public class SoundManager : MonoBehaviour
 
     public void PagSound()
     {
+        _audioSource.pitch = 1;
         _currentClip = _clip._sounds[1];
         _audioSource.clip = _currentClip;
         _audioSource.Play();
@@ -48,6 +50,7 @@ public class SoundManager : MonoBehaviour
 
     public void WritingSound()
     {
+        _audioSource.pitch = 1;
         _currentClip = _clip._sounds[2];
         _audioSource.clip = _currentClip;
         _audioSource.Play();
@@ -55,6 +58,7 @@ public class SoundManager : MonoBehaviour
 
     public void DoorSound()
     {
+        _audioSource.pitch = 1;
         _currentClip = _clip._sounds[3];
         _audioSource.clip = _currentClip;
         _audioSource.Play();
@@ -70,6 +74,7 @@ public class SoundManager : MonoBehaviour
 
     public void ThunderSound()
     {
+        _audioSource.pitch = 1;
         _currentClip = _clip._sounds[5];
         _audioSource.clip = _currentClip;
         _audioSource.Play();
@@ -77,7 +82,6 @@ public class SoundManager : MonoBehaviour
 
     public void TypeSound()
     {
-        print("bbb");
         _currentClip = _clip._sounds[Random.Range(6,8)];
         _audioSource.clip = _currentClip;
         _audioSource.Play();
@@ -93,6 +97,7 @@ public class SoundManager : MonoBehaviour
 
     public void ButtonSound()
     {
+        _audioSource.pitch = 1;
         _currentClip = _clip._sounds[8];
         _audioSource.clip = _currentClip;
         _audioSource.Play();
@@ -100,6 +105,7 @@ public class SoundManager : MonoBehaviour
 
     public void RainSound()
     {
+        _audioSource.pitch = 1;
         _currentClip = _clip._sounds[9];
         _audioSource.clip = _currentClip;
         _audioSource.Play();
