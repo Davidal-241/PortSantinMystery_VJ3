@@ -29,7 +29,7 @@ public class LogicalDialogueSystem : MonoBehaviour
 
     int dialogueIndex;
 
-    [SerializeField] private SoundManager _soundManager; //vincular Script
+    [SerializeField] private SoundManager _soundManager; 
 
     private void Awake()
     {
