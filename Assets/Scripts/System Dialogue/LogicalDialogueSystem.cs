@@ -29,6 +29,8 @@ public class LogicalDialogueSystem : MonoBehaviour
 
     int dialogueIndex;
 
+    [SerializeField] private SoundManager _soundManager; //vincular Script
+
     private void Awake()
     {
         if(instance == null)
@@ -42,9 +44,9 @@ public class LogicalDialogueSystem : MonoBehaviour
     }
     private void Start()
     {
-
+        _soundManager = FindObjectOfType<SoundManager>();
         //_dialogueBox = GameObject.Find("DialogueBox");
-     
+
     }
 
     public static void StartConversation(Conversation convo)
@@ -189,7 +191,10 @@ public class LogicalDialogueSystem : MonoBehaviour
         while (!complete)
         {
             if (text[dialogueIndex] != '/')
+            {
                 dialogue.text += text[dialogueIndex];
+                _soundManager.TypeSound();
+            }
             dialogueIndex++;
             
             yield return new WaitForSeconds(instaCompleting ? _instaCompleteTime : _betweenLettersWaitTime);

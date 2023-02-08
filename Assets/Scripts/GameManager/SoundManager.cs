@@ -10,11 +10,16 @@ public class SoundManager : MonoBehaviour
     [SerializeField] int _index;
     [SerializeField] bool _isntPlayForUse;
 
-    private void Start()
+
+    private float _minPitchSpeed, _maxPitchSpeed;
+
+    private void Awake()
     {
         //_currentClip = _clip._sounds[_index];
         _audioSource = GetComponent<AudioSource>();
-        ElevatorSound();
+        _minPitchSpeed = 0.5f;
+        _maxPitchSpeed = 1.5f;
+        //TypeSound();
     }
 
     private void Update()
@@ -60,6 +65,7 @@ public class SoundManager : MonoBehaviour
         _currentClip = _clip._sounds[4];
         _audioSource.clip = _currentClip;
         _audioSource.Play();
+        _audioSource.pitch = Random.Range(_minPitchSpeed, _maxPitchSpeed);
     }
 
     public void ThunderSound()
@@ -71,17 +77,19 @@ public class SoundManager : MonoBehaviour
 
     public void TypeSound()
     {
-        _currentClip = _clip._sounds[6];
+        print("bbb");
+        _currentClip = _clip._sounds[Random.Range(6,8)];
         _audioSource.clip = _currentClip;
         _audioSource.Play();
+        _audioSource.pitch = Random.Range(_minPitchSpeed, _maxPitchSpeed);
     }
 
-    public void TypingSound()
-    {
-        _currentClip = _clip._sounds[7];
-        _audioSource.clip = _currentClip;
-        _audioSource.Play();
-    }
+    //public void TypingSound()
+    //{
+    //    _currentClip = _clip._sounds[7];
+    //    _audioSource.clip = _currentClip;
+    //    _audioSource.Play();
+    //}
 
     public void ButtonSound()
     {

@@ -25,7 +25,7 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] UserActions _controls;
  
     
-   
+    private SoundManager _soundManager;
 
     private void Awake()
     {
@@ -59,7 +59,7 @@ public class InventoryScript : MonoBehaviour
 
         }
 
-
+        _soundManager = FindObjectOfType<SoundManager>();
         
 
         
@@ -122,7 +122,7 @@ public class InventoryScript : MonoBehaviour
             _tabOptions[_currentTabIndex].SetActive(true);
             _tabSelector.transform.position = _tab[_currentTabIndex].transform.position;
 
-
+            _soundManager.ButtonSound();
         }
     }
 
@@ -136,7 +136,7 @@ public class InventoryScript : MonoBehaviour
             _tabOptions[_currentTabIndex].SetActive(true);
 
             _tabSelector.transform.position = _tab[_currentTabIndex].transform.position;
-
+            _soundManager.ButtonSound();
         }
     }
 }

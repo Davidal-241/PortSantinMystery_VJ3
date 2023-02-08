@@ -337,6 +337,7 @@ GameObject:
   - component: {fileID: 704540038}
   - component: {fileID: 704540037}
   - component: {fileID: 704540036}
+  - component: {fileID: 704540039}
   m_Layer: 0
   m_Name: Soundmanager
   m_TagString: Untagged
@@ -469,6 +470,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &704540039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704540035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090497adc9411374fa6da1aebebd7b8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundManager: {fileID: 704540036}
 --- !u!1 &777872404 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1875003427358304443, guid: e0541eff2717ef4459bb7559c85cf9fa, type: 3}
@@ -844,6 +858,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InvetoryCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5728282603875713800, guid: e0541eff2717ef4459bb7559c85cf9fa, type: 3}
+      propertyPath: _soundManager
+      value: 
+      objectReference: {fileID: 704540036}
     - target: {fileID: 8289724081547311746, guid: e0541eff2717ef4459bb7559c85cf9fa, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
