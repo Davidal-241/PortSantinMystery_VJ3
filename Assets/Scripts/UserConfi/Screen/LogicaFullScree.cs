@@ -11,18 +11,11 @@ public class LogicaFullScree : MonoBehaviour
     void Start()
     {
         EventManager._FullScreen.AddListener(ActiveFullScreen);
-        if(Screen.fullScreen)
-        {
-            _toggle.isOn = true;
-        }
-        else
-        {
-            _toggle.isOn = false;
-        }
     }
 
-   public void ActiveFullScreen(bool screeFull)
+   public void ActiveFullScreen(bool fullScreen)
     {
-        Screen.fullScreen = screeFull;
+        Screen.fullScreen = fullScreen;
+        _toggle.isOn = fullScreen;
     }
 }

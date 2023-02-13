@@ -33,6 +33,7 @@ public class JorgeDialogueManager : MonoBehaviour, IInteractable
                 if (_isItJorgesMainDialogue)
                 {
                     _jorgesCurrentDialogue = Resources.Load<Conversation>("Jorge/N_Dialogues/Jorge_N_Dialogue_01");
+                    GameManager.UpdateConversationLog(1);
                     EventManager.NextRequest.Invoke();
                     _isItJorgesMainDialogue = false;
                 }

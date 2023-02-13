@@ -6,15 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/OutsideHotelScene.unity
-    guid: bf9198b122936754b976b8a39ed8d5dd
+    path: Assets/Scenes/MainMenu.unity
+    guid: 1a3ddb570564afc468150b42cf019884
   - enabled: 1
-    path: Assets/Scenes/Reception.unity
-    guid: 365b35495519fab49a18e104a075936f
+    path: Assets/Scenes/Exterior.unity
+    guid: 0898b763c5872f04d81909f9a3d6825e
   - enabled: 1
-    path: Assets/Scenes/FirstFloor.unity
-    guid: 7c7e58fc9917cdd4ba7fb9c3fcf14479
+    path: Assets/Scenes/Vestibulo.unity
+    guid: 06b74a0f1743ade4ab974bfefe5f576c
   - enabled: 1
-    path: Assets/Scenes/SecondFloor.unity
-    guid: 60f1bf36d7285744c9b7380a3a39af8c
+    path: Assets/Scenes/Pasillo.unity
+    guid: 24eb21b4578311d4ebcd058822806416
+  - enabled: 1
+    path: Assets/Scenes/Habitacion_Cesar.unity
+    guid: 9c5cac4cc8a725d43bbcdf6879f886f9
   m_configObjects: {}

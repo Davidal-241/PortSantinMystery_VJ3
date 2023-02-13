@@ -63,5 +63,7 @@ public static class EventManager
 
     public static UnityEvent NextRequest = new UnityEvent();
 
+    public static UnityEvent enterInSubTab = new UnityEvent();
+
     public static UnityEvent InteractueWithCenturionDoors = new UnityEvent();
 }

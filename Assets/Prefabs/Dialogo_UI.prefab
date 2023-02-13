@@ -1024,7 +1024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speakerName: {fileID: 1075096164735468159}
-  dialogue: {fileID: 0}
+  dialogue: {fileID: 1075096166341019517}
   speakerSprite1: {fileID: 1075096165740501317}
   speakerSprite2: {fileID: 1075096165846784211}
   currentIndex: 0

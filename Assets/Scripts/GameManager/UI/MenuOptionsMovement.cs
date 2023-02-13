@@ -171,16 +171,14 @@ public class MenuOptionsMovement : MonoBehaviour
             {
                 bool _isFull = _logicFullScreen._toggle.isOn;
 
-                if (!_logicFullScreen._toggle.isOn)
+                if (!_isFull)
                 {
                     _isFull = true;
-
                     EventManager._FullScreen.Invoke(_isFull);
                 }
                 else
                 {
                     _isFull = false;
-
                     EventManager._FullScreen.Invoke(_isFull);
                 }
             }
@@ -200,7 +198,6 @@ public class MenuOptionsMovement : MonoBehaviour
         if (_canChangeSliderValue)
         {
             float _value = _logicV._sliderValue;
-
             _value += 0.1f;
 
             EventManager._VolumenValue.Invoke(_value);
@@ -212,7 +209,6 @@ public class MenuOptionsMovement : MonoBehaviour
         if (_canChangeSliderValue)
         {
             float _value = _logicV._sliderValue;
-
             _value -= 0.1f;
 
             EventManager._VolumenValue.Invoke(_value);
@@ -225,7 +221,6 @@ public class MenuOptionsMovement : MonoBehaviour
         if (GameManager._isMenuPauseActive)
         {
 
-        print(_currentMenuIndex + " " + _currentButtonIndex);
 
         _menuSelector.transform.parent = _buttonsInMenu[_currentMenuIndex][_currentButtonIndex].transform;
         _menuSelector.transform.localPosition = Vector3.zero;

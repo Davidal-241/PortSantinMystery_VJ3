@@ -15,7 +15,6 @@ public class ToInteract : MonoBehaviour
         EventManager._InputSet.AddListener(InputSet);
 
         logicalDialogueManager = FindObjectOfType<LogicalDialogueSystem>();
-        print(logicalDialogueManager);
     }
 
 

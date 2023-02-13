@@ -208,14 +208,6 @@
             "id": "6c962096-761c-4801-aa7f-d6948b5e5bba",
             "actions": [
                 {
-                    "name": "NavigateUp",
-                    "type": "Button",
-                    "id": "848289ea-8c4c-41b8-bd4e-150d9b37d213",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "CloseInventory",
                     "type": "Button",
                     "id": "d7874d5d-df06-4f6d-b7ef-530e9b639d4d",
@@ -227,6 +219,14 @@
                     "name": "NavigateDown",
                     "type": "Button",
                     "id": "6d904d58-6736-4a7f-80e6-d17b5a6b7273",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "NavigateUp",
+                    "type": "Button",
+                    "id": "848289ea-8c4c-41b8-bd4e-150d9b37d213",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -273,72 +273,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "KeyBoard",
-                    "id": "9f703a6b-b014-42e3-ab18-8feb496f6ba8",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "NavigateUp",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "9ee2d83f-e87a-4ed8-b619-a9267d31f5fa",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard and Mouse",
-                    "action": "NavigateUp",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "KeyBoard",
-                    "id": "e0f2c211-d253-4db7-818f-2be5f1397f66",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "NavigateUp",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "5b5d7368-6d72-4e13-8011-58a20643120c",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyBoard and Mouse",
-                    "action": "NavigateUp",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Gamepad",
-                    "id": "018c752f-33d5-4af6-9c35-4c51202b0ad3",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "NavigateUp",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "4145ee7f-8969-4456-8e4d-1b42321b8001",
-                    "path": "<Gamepad>/rightStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "NavigateUp",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
                 {
                     "name": "",
                     "id": "bd0d09c6-184d-4a88-92ff-a6d15c0fd9d1",
@@ -624,6 +558,72 @@
                     "action": "CloseInventory",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "KeyBoard",
+                    "id": "9f703a6b-b014-42e3-ab18-8feb496f6ba8",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateUp",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "9ee2d83f-e87a-4ed8-b619-a9267d31f5fa",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard and Mouse",
+                    "action": "NavigateUp",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "KeyBoard",
+                    "id": "e0f2c211-d253-4db7-818f-2be5f1397f66",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateUp",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "5b5d7368-6d72-4e13-8011-58a20643120c",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard and Mouse",
+                    "action": "NavigateUp",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Gamepad",
+                    "id": "018c752f-33d5-4af6-9c35-4c51202b0ad3",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NavigateUp",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "4145ee7f-8969-4456-8e4d-1b42321b8001",
+                    "path": "<Gamepad>/rightStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "NavigateUp",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },

@@ -221,14 +221,6 @@ public class @UserActions : IInputActionCollection, IDisposable
             ""id"": ""6c962096-761c-4801-aa7f-d6948b5e5bba"",
             ""actions"": [
                 {
-                    ""name"": ""NavigateUp"",
-                    ""type"": ""Button"",
-                    ""id"": ""848289ea-8c4c-41b8-bd4e-150d9b37d213"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""CloseInventory"",
                     ""type"": ""Button"",
                     ""id"": ""d7874d5d-df06-4f6d-b7ef-530e9b639d4d"",
@@ -240,6 +232,14 @@ public class @UserActions : IInputActionCollection, IDisposable
                     ""name"": ""NavigateDown"",
                     ""type"": ""Button"",
                     ""id"": ""6d904d58-6736-4a7f-80e6-d17b5a6b7273"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""NavigateUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""848289ea-8c4c-41b8-bd4e-150d9b37d213"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -286,72 +286,6 @@ public class @UserActions : IInputActionCollection, IDisposable
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": ""KeyBoard"",
-                    ""id"": ""9f703a6b-b014-42e3-ab18-8feb496f6ba8"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""NavigateUp"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""9ee2d83f-e87a-4ed8-b619-a9267d31f5fa"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyBoard and Mouse"",
-                    ""action"": ""NavigateUp"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""KeyBoard"",
-                    ""id"": ""e0f2c211-d253-4db7-818f-2be5f1397f66"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""NavigateUp"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""5b5d7368-6d72-4e13-8011-58a20643120c"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyBoard and Mouse"",
-                    ""action"": ""NavigateUp"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Gamepad"",
-                    ""id"": ""018c752f-33d5-4af6-9c35-4c51202b0ad3"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""NavigateUp"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""4145ee7f-8969-4456-8e4d-1b42321b8001"",
-                    ""path"": ""<Gamepad>/rightStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""NavigateUp"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
                 {
                     ""name"": """",
                     ""id"": ""bd0d09c6-184d-4a88-92ff-a6d15c0fd9d1"",
@@ -637,6 +571,72 @@ public class @UserActions : IInputActionCollection, IDisposable
                     ""action"": ""CloseInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""KeyBoard"",
+                    ""id"": ""9f703a6b-b014-42e3-ab18-8feb496f6ba8"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NavigateUp"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""9ee2d83f-e87a-4ed8-b619-a9267d31f5fa"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard and Mouse"",
+                    ""action"": ""NavigateUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""KeyBoard"",
+                    ""id"": ""e0f2c211-d253-4db7-818f-2be5f1397f66"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NavigateUp"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""5b5d7368-6d72-4e13-8011-58a20643120c"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBoard and Mouse"",
+                    ""action"": ""NavigateUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Gamepad"",
+                    ""id"": ""018c752f-33d5-4af6-9c35-4c51202b0ad3"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NavigateUp"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""4145ee7f-8969-4456-8e4d-1b42321b8001"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""NavigateUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -1082,9 +1082,9 @@ public class @UserActions : IInputActionCollection, IDisposable
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         // Inventory
         m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
-        m_Inventory_NavigateUp = m_Inventory.FindAction("NavigateUp", throwIfNotFound: true);
         m_Inventory_CloseInventory = m_Inventory.FindAction("CloseInventory", throwIfNotFound: true);
         m_Inventory_NavigateDown = m_Inventory.FindAction("NavigateDown", throwIfNotFound: true);
+        m_Inventory_NavigateUp = m_Inventory.FindAction("NavigateUp", throwIfNotFound: true);
         m_Inventory_NavigateLeft = m_Inventory.FindAction("NavigateLeft", throwIfNotFound: true);
         m_Inventory_NavigateRight = m_Inventory.FindAction("NavigateRight", throwIfNotFound: true);
         m_Inventory_Submit = m_Inventory.FindAction("Submit", throwIfNotFound: true);
@@ -1215,9 +1215,9 @@ public class @UserActions : IInputActionCollection, IDisposable
     // Inventory
     private readonly InputActionMap m_Inventory;
     private IInventoryActions m_InventoryActionsCallbackInterface;
-    private readonly InputAction m_Inventory_NavigateUp;
     private readonly InputAction m_Inventory_CloseInventory;
     private readonly InputAction m_Inventory_NavigateDown;
+    private readonly InputAction m_Inventory_NavigateUp;
     private readonly InputAction m_Inventory_NavigateLeft;
     private readonly InputAction m_Inventory_NavigateRight;
     private readonly InputAction m_Inventory_Submit;
@@ -1227,9 +1227,9 @@ public class @UserActions : IInputActionCollection, IDisposable
     {
         private @UserActions m_Wrapper;
         public InventoryActions(@UserActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @NavigateUp => m_Wrapper.m_Inventory_NavigateUp;
         public InputAction @CloseInventory => m_Wrapper.m_Inventory_CloseInventory;
         public InputAction @NavigateDown => m_Wrapper.m_Inventory_NavigateDown;
+        public InputAction @NavigateUp => m_Wrapper.m_Inventory_NavigateUp;
         public InputAction @NavigateLeft => m_Wrapper.m_Inventory_NavigateLeft;
         public InputAction @NavigateRight => m_Wrapper.m_Inventory_NavigateRight;
         public InputAction @Submit => m_Wrapper.m_Inventory_Submit;
@@ -1244,15 +1244,15 @@ public class @UserActions : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_InventoryActionsCallbackInterface != null)
             {
-                @NavigateUp.started -= m_Wrapper.m_InventoryActionsCallbackInterface.OnNavigateUp;
-                @NavigateUp.performed -= m_Wrapper.m_InventoryActionsCallbackInterface.OnNavigateUp;
-                @NavigateUp.canceled -= m_Wrapper.m_InventoryActionsCallbackInterface.OnNavigateUp;
                 @CloseInventory.started -= m_Wrapper.m_InventoryActionsCallbackInterface.OnCloseInventory;
                 @CloseInventory.performed -= m_Wrapper.m_InventoryActionsCallbackInterface.OnCloseInventory;
                 @CloseInventory.canceled -= m_Wrapper.m_InventoryActionsCallbackInterface.OnCloseInventory;
                 @NavigateDown.started -= m_Wrapper.m_InventoryActionsCallbackInterface.OnNavigateDown;
                 @NavigateDown.performed -= m_Wrapper.m_InventoryActionsCallbackInterface.OnNavigateDown;
                 @NavigateDown.canceled -= m_Wrapper.m_InventoryActionsCallbackInterface.OnNavigateDown;
+                @NavigateUp.started -= m_Wrapper.m_InventoryActionsCallbackInterface.OnNavigateUp;
+                @NavigateUp.performed -= m_Wrapper.m_InventoryActionsCallbackInterface.OnNavigateUp;
+                @NavigateUp.canceled -= m_Wrapper.m_InventoryActionsCallbackInterface.OnNavigateUp;
                 @NavigateLeft.started -= m_Wrapper.m_InventoryActionsCallbackInterface.OnNavigateLeft;
                 @NavigateLeft.performed -= m_Wrapper.m_InventoryActionsCallbackInterface.OnNavigateLeft;
                 @NavigateLeft.canceled -= m_Wrapper.m_InventoryActionsCallbackInterface.OnNavigateLeft;
@@ -1272,15 +1272,15 @@ public class @UserActions : IInputActionCollection, IDisposable
             m_Wrapper.m_InventoryActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @NavigateUp.started += instance.OnNavigateUp;
-                @NavigateUp.performed += instance.OnNavigateUp;
-                @NavigateUp.canceled += instance.OnNavigateUp;
                 @CloseInventory.started += instance.OnCloseInventory;
                 @CloseInventory.performed += instance.OnCloseInventory;
                 @CloseInventory.canceled += instance.OnCloseInventory;
                 @NavigateDown.started += instance.OnNavigateDown;
                 @NavigateDown.performed += instance.OnNavigateDown;
                 @NavigateDown.canceled += instance.OnNavigateDown;
+                @NavigateUp.started += instance.OnNavigateUp;
+                @NavigateUp.performed += instance.OnNavigateUp;
+                @NavigateUp.canceled += instance.OnNavigateUp;
                 @NavigateLeft.started += instance.OnNavigateLeft;
                 @NavigateLeft.performed += instance.OnNavigateLeft;
                 @NavigateLeft.canceled += instance.OnNavigateLeft;
@@ -1434,9 +1434,9 @@ public class @UserActions : IInputActionCollection, IDisposable
     }
     public interface IInventoryActions
     {
-        void OnNavigateUp(InputAction.CallbackContext context);
         void OnCloseInventory(InputAction.CallbackContext context);
         void OnNavigateDown(InputAction.CallbackContext context);
+        void OnNavigateUp(InputAction.CallbackContext context);
         void OnNavigateLeft(InputAction.CallbackContext context);
         void OnNavigateRight(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);

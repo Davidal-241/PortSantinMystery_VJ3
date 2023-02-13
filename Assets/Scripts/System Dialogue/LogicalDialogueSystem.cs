@@ -70,6 +70,7 @@ public class LogicalDialogueSystem : MonoBehaviour
 
     public void ReadNext()
     {
+        print(currentConvo);
         print(currentIndex + " / " + currentConvo.GetLength());
 
         // End conversation

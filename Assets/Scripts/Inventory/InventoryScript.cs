@@ -21,16 +21,16 @@ public class InventoryScript : MonoBehaviour
 
     [SerializeField] private GameObject[] _tabOptions;
 
-    
-    [SerializeField] UserActions _controls;
- 
+
+    UserActions _controls;
+
+    bool blocksTab = false;
     
     private SoundManager _soundManager;
 
     private void Awake()
     {
         EventManager._InputSet.AddListener(InputSet);
-
     }
 
 
@@ -42,6 +42,8 @@ public class InventoryScript : MonoBehaviour
         _controls.Inventory.CloseInventory.performed += CloseInventory;
         _controls.Inventory.NavigateLeft.performed += LeftMoveSuperioTab;
         _controls.Inventory.NavigateRight.performed += RightMoveSuperioTab;
+        _controls.Inventory.NavigateUp.performed += BrowseTabs;
+        _controls.Inventory.NavigateDown.performed += BrowseItems;
     }
 
 
@@ -113,30 +115,46 @@ public class InventoryScript : MonoBehaviour
 
     void LeftMoveSuperioTab(InputAction.CallbackContext context)
     {
-        
-        if (GameManager._isOpenInventory)
+        if (!blocksTab)
         {
 
-            _tabOptions[_currentTabIndex].SetActive(false);
-            _currentTabIndex = (_currentTabIndex - 1 + _tab.Length) % _tab.Length;
-            _tabOptions[_currentTabIndex].SetActive(true);
-            _tabSelector.transform.position = _tab[_currentTabIndex].transform.position;
+            if (GameManager._isOpenInventory)
+            {
 
-            _soundManager.ButtonSound();
+                _tabOptions[_currentTabIndex].SetActive(false);
+                _currentTabIndex = (_currentTabIndex - 1 + _tab.Length) % _tab.Length;
+                _tabOptions[_currentTabIndex].SetActive(true);
+                _tabSelector.transform.position = _tab[_currentTabIndex].transform.position;
+
+            }
         }
     }
 
     void RightMoveSuperioTab(InputAction.CallbackContext context)
     {
-         if (GameManager._isOpenInventory)
+        if (!blocksTab)
         {
+            if (GameManager._isOpenInventory)
+            {
 
-            _tabOptions[_currentTabIndex].SetActive(false);
-            _currentTabIndex = (_currentTabIndex + 1) % _tab.Length;
-            _tabOptions[_currentTabIndex].SetActive(true);
+                _tabOptions[_currentTabIndex].SetActive(false);
+                _currentTabIndex = (_currentTabIndex + 1) % _tab.Length;
+                _tabOptions[_currentTabIndex].SetActive(true);
 
-            _tabSelector.transform.position = _tab[_currentTabIndex].transform.position;
-            _soundManager.ButtonSound();
+                _tabSelector.transform.position = _tab[_currentTabIndex].transform.position;
+            }
         }
+    }
+
+    void BrowseItems(InputAction.CallbackContext context)
+    {
+        blocksTab = true;
+        EventManager.enterInSubTab.Invoke();
+    }
+
+    void BrowseTabs(InputAction.CallbackContext context)
+    {
+        blocksTab = false;
+        EventManager.enterInSubTab.Invoke();
     }
 }

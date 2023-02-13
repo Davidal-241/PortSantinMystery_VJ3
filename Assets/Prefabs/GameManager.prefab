@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4931328153183301053}
   - component: {fileID: 3095159539469987076}
-  - component: {fileID: 645496}
-  - component: {fileID: 1690144865}
+  - component: {fileID: 428968613}
+  - component: {fileID: 428968614}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,10 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 844adb84b4d3aba4b9a95f0161b9b0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currenStoryParts: 0
+  _currentStagesStoryParts: 0
+  _currentRequestCondition: 0
+  _scenesWhereLunaAppears: []
   _cesarsCurrentDialogue: {fileID: 0}
+  sceneWithDoor: []
   _lunaPrefab: {fileID: 0}
   _LunaSpawnPoint: {fileID: 0}
---- !u!114 &645496
+--- !u!114 &428968613
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -62,7 +67,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sliderGeneral: {fileID: 0}
   _sliderValue: 0
---- !u!114 &1690144865
+--- !u!114 &428968614
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,11 +76,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7356275779321167284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e32565e4454a2cb48b618b18cf9eed27, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f826c30f90a31543996bc5ca43c0a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneName:
-  - Hall
-  - Room
-  - Pipo
-  - OutsideHotelScene
+  _toggle: {fileID: 0}

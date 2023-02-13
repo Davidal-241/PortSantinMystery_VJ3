@@ -30,6 +30,7 @@ public class LogicVolumen : MonoBehaviour
     {
 
         _sliderValue = value;
+        _sliderGeneral.value = value;
         PlayerPrefs.SetFloat("volumenGeneral", _sliderValue);
         AudioListener.volume = _sliderGeneral.value;
 

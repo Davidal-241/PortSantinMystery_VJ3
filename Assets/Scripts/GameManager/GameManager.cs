@@ -68,7 +68,15 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] string[] _scenesWhereLunaAppears;
 
+    private GameObject _player;
+    private GameObject _currentPosition;
+
     public Conversation _cesarsCurrentDialogue;
+
+    Scene _currentScene;
+    static string _previousSceneName = null;
+    [SerializeField] Transform comingFromElevatorTransform;
+    [SerializeField] Transform comingFromOutsideTransform;
 
     [SerializeField] string[] sceneWithDoor;
 
@@ -93,6 +101,8 @@ public class GameManager : MonoBehaviour
 
     static int[] pastConversations = null;
 
+    [SerializeField] bool shouldDeletePlayePrefs = false;
+
     #region"Luna´s References"
     [SerializeField] GameObject _lunaPrefab;
     [SerializeField] Transform _LunaSpawnPoint;
@@ -101,6 +111,12 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (shouldDeletePlayePrefs)
+            PlayerPrefs.SetString("PastConversations", "");
+
+        //UpdateConversationLog(0);
+        //UpdateConversationLog(2);
+
         _currenStoryParts = StoryParts.INTRODUCTION;
         _currentStagesStoryParts = StagesStoryParts.STAGE_1;
         _currentRequestCondition = RequestCondition.OUTSIDETHEHOTEL;
@@ -122,14 +138,58 @@ public class GameManager : MonoBehaviour
         EventManager.UIOff.AddListener(CloseInventory);
         EventManager.UIOn.AddListener(OpenInventory);
 
-        print("a");
-        int[] v = { 0, 1, 3 };
-        string s = PastConversationsToString(v);
-        print(s);
+        //int[] v = { 0, 1, 3, 0, 5 };
+        //pastConversations = v;
+
+
+
+        //string s = PastConversationsToString(v);
+
+
+        //int[] w = GameManager.GetConversations();
+        //for (int i = 0; i < w.Length; i++)
+        //{
+        //    print(w[i]);
+        //    pestaña.Add(RegisteredConversations[w[i]])
+        //}
     }
 
     private void Start()
     {
+        // Place player on a position based on the previously visited scene
+        if(string.Compare(_currentScene.name, "Reception") == 0)
+        {
+
+            if (
+                string.Compare(_previousSceneName, "Planta1") == 0
+                ||
+                string.Compare(_previousSceneName, "Planta2") == 0
+            )
+            {
+                _player.transform.position = comingFromElevatorTransform.position;
+
+                _player.transform.rotation = comingFromElevatorTransform.rotation;
+
+
+            }
+            else if (string.Compare(_previousSceneName, "Fuera") == 0)
+            {
+                _player.transform.position = comingFromOutsideTransform.position;
+
+                _player.transform.rotation = comingFromOutsideTransform.rotation;
+            }
+            else
+            {
+
+
+            }
+        }
+
+
+        _previousSceneName = SceneManager.GetActiveScene().name;
+
+        _currentScene = SceneManager.GetActiveScene();
+
         #region"Inputs"
         //Inputs//
         _controls = new UserActions();
@@ -602,18 +662,22 @@ public class GameManager : MonoBehaviour
     #region"Check the scene if use door"
     private void CheckTheScene(int indexSceneDoor)
     {
-        Scene _currentScene = SceneManager.GetActiveScene();
-
         if (_currentScene.name == sceneWithDoor[0])
         {
             if (_firtsTimeEntryInTheHotel)
             {
+
                 NextRequestCondition();
+
                 _firtsTimeEntryInTheHotel = false;
+
                 SceneManager.LoadScene(indexSceneDoor);
+                
+
             }
             else
             {
+
                 SceneManager.LoadScene(indexSceneDoor);
             }
 
@@ -624,7 +688,9 @@ public class GameManager : MonoBehaviour
             {
                 if (_tryExitTheReception)
                 {
+
                     NextRequestCondition();
+
                     _tryExitTheReception = false;
                     //Evento para luna
                 }
@@ -632,6 +698,7 @@ public class GameManager : MonoBehaviour
             
             if(_currentStagesStoryParts == StagesStoryParts.STAGE_8)
             {
+
                 SceneManager.LoadScene(indexSceneDoor);
 
             }
@@ -641,12 +708,15 @@ public class GameManager : MonoBehaviour
         {
             if (_firtsTimeEntryInTheRoom)
             {
+
                 NextRequestCondition();
                 _firtsTimeEntryInTheRoom = false;
                 SceneManager.LoadScene(indexSceneDoor);
             }
             else
             {
+
+
                 SceneManager.LoadScene(indexSceneDoor);
 
             }
@@ -656,6 +726,7 @@ public class GameManager : MonoBehaviour
         {
             if (_firtsTimeExitTheRoom)
             {
+
                 _firtsTimeExitTheRoom = false;
                 SceneManager.LoadScene(indexSceneDoor);
                 //Evento para luna aparezca
@@ -663,6 +734,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
+
                 SceneManager.LoadScene(indexSceneDoor);
             }
 
@@ -671,12 +743,14 @@ public class GameManager : MonoBehaviour
         {
             if (_firtsTimeEntryInTheCenturionsRoom)
             {
+
                 NextRequestCondition();
                 _firtsTimeEntryInTheCenturionsRoom = false;
                 SceneManager.LoadScene(indexSceneDoor);
             }
             else
             {
+
                 SceneManager.LoadScene(indexSceneDoor);
 
             }
@@ -691,54 +765,67 @@ public class GameManager : MonoBehaviour
         {
             if (pastConversations == null)
             {
-                // tomar los valores del archivo de guardado o donde sea
+                pastConversations = PastConversationsToIntArray(PlayerPrefs.GetString("PastConversations"));
             }
 
             return pastConversations;
         }
     }
 
-    void UpdateConversationLog(int index)
+    public static void UpdateConversationLog(int index)
     {
         // añadir <index> a pastConversations
         int[] tmp;
-        tmp = new int[pastConversations.Length];
-        for (int i = 0; i < pastConversations.Length; i++)
-            tmp[i] = pastConversations[i];
+        tmp = new int[PastConversations.Length];
+        for (int i = 0; i < PastConversations.Length; i++)
+            tmp[i] = PastConversations[i];
 
-        pastConversations = new int[pastConversations.Length + 1];
+        pastConversations = new int[PastConversations.Length + 1];
         for (int i = 0; i < tmp.Length; i++)
             pastConversations[i] = tmp[i];
         pastConversations[pastConversations.Length - 1] = index;
 
-        // sobreescribir pastConversations del archivo de guardado, con la nueva información
+        string encoded = PastConversationsToString(pastConversations);
 
+        // sobreescribir pastConversations del archivo de guardado, con la nueva información
+        PlayerPrefs.SetString("PastConversations", encoded);
     }
 
-    string PastConversationsToString(int[] prueba)
+    static string PastConversationsToString(int[] decoded)
     {
         string s = "";
 
-        for (int i = 0; i < prueba.Length; i++)
+        for (int i = 0; i < decoded.Length; i++)
         {
-            s += prueba[i];
-            if (i != prueba.Length - 1)
+            s += decoded[i];
+            if (i != decoded.Length - 1)
                 s += "-";
         }
 
         return s;
     }
 
-    int[] PastConversationsToIntArray(string prueba)
+    static int[] PastConversationsToIntArray(string encoded)
     {
         int[] v;
         //string[] stringIndexes = PlayerPrefs.GetString("PastConversations").Split('-');
-        string[] stringIndexes = prueba.Split('-');
+        string[] stringIndexes = encoded.Split('-');
+
+        // In case there still is no registered conversation
+        if (stringIndexes.Length == 1 && stringIndexes[0].Length == 0)
+        {
+            return new int[0];
+        }
 
         v = new int[stringIndexes.Length];
         for (int i = 0; i < stringIndexes.Length; i++)
             v[i] = int.Parse(stringIndexes[i]);
 
         return v;
+    }
+
+    public static int[] GetConversations()
+    {
+        return PastConversationsToIntArray(PlayerPrefs.GetString("PastConversations"));
     }
 }

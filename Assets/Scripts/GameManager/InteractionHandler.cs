@@ -17,7 +17,6 @@ public class InteractionHandler : MonoBehaviour
         
         
         EventManager._InputSet.AddListener(InputSet);
-        print(name + " awakes");
 
     }
 
@@ -27,7 +26,6 @@ public class InteractionHandler : MonoBehaviour
 
         _controls.Player.Interactue.performed += InteractionRequested;
 
-        print(name);
     }
 
 
