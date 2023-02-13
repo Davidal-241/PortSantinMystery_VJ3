@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hotel_Mat
+  m_Name: Farolas_Mat
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: _EMISSION _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 2
@@ -21,11 +21,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 3c41167bc12fc6c4fa34d16eceaa5331, type: 3}
+        m_Texture: {fileID: 2800000, guid: 172dd31281bad54469be9b044ccbc3c5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 6c6bf99404930e549865779f9d450913, type: 3}
+        m_Texture: {fileID: 2800000, guid: a2a783620971a0c43bbd04e400b09595, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -41,15 +41,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: a0acacd3042af184ba4f93106710d27a, type: 3}
+        m_Texture: {fileID: 2800000, guid: b0f1967e8e4046c4e85b25dc37b72507, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 3c41167bc12fc6c4fa34d16eceaa5331, type: 3}
+        m_Texture: {fileID: 2800000, guid: 172dd31281bad54469be9b044ccbc3c5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: a8d3ee3ff429ad643a506be9d7a1f0af, type: 3}
+        m_Texture: {fileID: 2800000, guid: 407acd6c7fe828b419dad32b29f5e174, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -106,10 +106,10 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 2.297397, g: 0.7884179, b: 0, a: 1}
+    - _EmissionColor: {r: 2.6390157, g: 1.1327851, b: 1.4409877, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &3735827835961694115
+--- !u!114 &6229179282987646019
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
