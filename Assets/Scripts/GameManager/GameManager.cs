@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     #region"Enums"
-    protected enum StoryParts
+    public enum StoryParts
     {
 
         INTRODUCTION,
@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    protected enum StagesStoryParts
+    public enum StagesStoryParts
     {
 
         STAGE_1,
@@ -24,18 +24,24 @@ public class GameManager : MonoBehaviour
         STAGE_3,
         STAGE_4,
         STAGE_5,
-        STAGE_6
+        STAGE_6,
+        STAGE_7,
+        STAGE_8
 
     }
 
-    protected enum RequestCondition
+    public enum RequestCondition
     {
         OUTSIDETHEHOTEL,
         INRECEPTION,
         SPOKEJORGE,
         OUTSIDETHEROOM,
         LETTHESUICASE,
-        SPOKELUNA
+        SPOKELUNA,
+        OUTSIDECENTURIONROOM,
+        SPOKECENTURION,
+        SPOKELUNAINRECEPTION,
+        READYTOGO   
 
     }
     #endregion
@@ -50,9 +56,9 @@ public class GameManager : MonoBehaviour
 
     #region"Game Flow References"
 
-    StoryParts _currenStoryParts;
-    StagesStoryParts _currentStagesStoryParts;
-    RequestCondition _currentRequestCondition;
+    public StoryParts _currenStoryParts;
+    public StagesStoryParts _currentStagesStoryParts;
+    public RequestCondition _currentRequestCondition;
 
     //Este int controla el Switch//
 
@@ -62,14 +68,27 @@ public class GameManager : MonoBehaviour
 
     public Conversation _cesarsCurrentDialogue;
 
+    [SerializeField] string[] sceneWithDoor;
+
+    bool isElevatorUIActive = false;
+
+    bool _firtsTimeEntryInTheHotel = true;
+    bool _tryExitTheReception = true;
+    bool _firtsTimeEntryInTheRoom = true;
+    bool _firtsTimeEntryInTheCenturionsRoom = true;
+    bool _firtsTimeExitCenturionsRoom = true;
+    bool _firtsTimeExitTheRoom = true;
+
+    #region"Statics"
     public static bool _isTalking = false; 
     public static bool _isMenuPauseActive = false;
     public static bool _isOpenInventory = false;
     public static bool _isDialoguesLastLine = false;
     public static bool _nextLineActive = true;
+    #endregion
+
     static int[] pastConversations = null;
 
-    bool isElevatorUIActive = false;
 
     #region"Luna´s References"
     [SerializeField] GameObject _lunaPrefab;
@@ -136,7 +155,10 @@ public class GameManager : MonoBehaviour
 
         EventManager._GoToMainMenu.AddListener(GoMenuPrincipalMain);
         EventManager._CheckConveElevator.AddListener(CheckIfYouCanUseTheElevator);
-        EventManager._ChangeScene.AddListener(ChangeScene);
+        EventManager._ChangeScene.AddListener(ElevatorChangeScene);
+        EventManager.SendIndex.AddListener(CheckTheScene);
+        EventManager.SpokeNPCRequest.AddListener(NextRequestCondition);
+
         #endregion
 
         #region"LunaSpawn"
@@ -198,6 +220,7 @@ public class GameManager : MonoBehaviour
     private void CheckIfYouCanUseTheElevator()
     {
         //Comprueba si Cesar puede usar el ascensor o debe decir un dialogo//
+        UIElevator();
 
         if (_currenStoryParts == StoryParts.FIRST_PART)
         {
@@ -270,8 +293,8 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region"ChangeScene"
-    private void ChangeScene(int _indexSceneUseButton)
+    #region"ChangeSceneElevator"
+    private void ElevatorChangeScene(int _indexSceneUseButton)
     {
         //Cambia la escena dependiendo de un Index//
         SceneManager.LoadScene(_indexSceneUseButton);
@@ -289,12 +312,7 @@ public class GameManager : MonoBehaviour
                 {
                     _currenStoryParts = StoryParts.FIRST_PART;
                     _currentStagesStoryParts = StagesStoryParts.STAGE_1;
-                    _currentRequestCondition = RequestCondition.SPOKEJORGE;
                     _switchIndex++;
-                }
-                else
-                {
-                    print("No has cumplido la condición: " + RequestCondition.INRECEPTION);
                 }
             }
         }
@@ -311,52 +329,72 @@ public class GameManager : MonoBehaviour
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_1)
             {
-                if (_currentRequestCondition == RequestCondition.OUTSIDETHEROOM)
+                if (_currentRequestCondition == RequestCondition.SPOKEJORGE)
                 {
-
+                    _currentStagesStoryParts = StagesStoryParts.STAGE_2;
+                    _currentRequestCondition = RequestCondition.OUTSIDETHEROOM;
                 }
 
             }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
             {
 
-                if (_currentRequestCondition == RequestCondition.LETTHESUICASE)
+                if (_currentRequestCondition == RequestCondition.OUTSIDETHEROOM)
                 {
-
+                    _currentStagesStoryParts = StagesStoryParts.STAGE_3;
                 }
 
             }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
             {
 
-                if (_currentRequestCondition == RequestCondition.SPOKELUNA)
+                if (_currentRequestCondition == RequestCondition.LETTHESUICASE)
                 {
-
+                    _currentStagesStoryParts = StagesStoryParts.STAGE_4;
                 }
 
             }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_4)
             {
-                if (_currentRequestCondition == RequestCondition.INRECEPTION)
+                if (_currentRequestCondition == RequestCondition.SPOKELUNA)
                 {
-
+                    _currentStagesStoryParts = StagesStoryParts.STAGE_5;
                 }
             }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
             {
 
-                if (_currentRequestCondition == RequestCondition.SPOKELUNA)
+                if (_currentRequestCondition == RequestCondition.OUTSIDECENTURIONROOM)
                 {
-
+                    _currentStagesStoryParts = StagesStoryParts.STAGE_6;
                 }
 
             }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
             {
 
-                if (_currentRequestCondition == RequestCondition.OUTSIDETHEHOTEL)
+                if (_currentRequestCondition == RequestCondition.SPOKECENTURION)
                 {
+                    _currentStagesStoryParts = StagesStoryParts.STAGE_7;
+                }
 
+            }
+            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_7)
+            {
+
+                if (_currentRequestCondition == RequestCondition.SPOKELUNAINRECEPTION)
+                {
+                    _currentStagesStoryParts = StagesStoryParts.STAGE_8;
+                }
+
+            }else if(_currentStagesStoryParts == StagesStoryParts.STAGE_8)
+            {
+
+                if(_currentRequestCondition == RequestCondition.READYTOGO)
+                {
+                    _currenStoryParts = StoryParts.SECOND_PART;
+                    _currentStagesStoryParts = StagesStoryParts.STAGE_1;
+                    _switchIndex++;
                 }
 
             }
@@ -427,6 +465,181 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    public void NextRequestCondition()
+    {
+        if (_currenStoryParts == StoryParts.INTRODUCTION)
+        {
+            if (_currentStagesStoryParts == StagesStoryParts.STAGE_1)
+            {
+                if (_currentRequestCondition == RequestCondition.OUTSIDETHEHOTEL)
+                {
+                    _currentRequestCondition = RequestCondition.INRECEPTION;
+                    GameFlow();
+                }
+            }
+        }
+
+        if (_currenStoryParts == StoryParts.FIRST_PART)
+        {
+            if (_currentStagesStoryParts == StagesStoryParts.STAGE_1)
+            {
+                if (_currentRequestCondition == RequestCondition.INRECEPTION)
+                {
+                    _currentRequestCondition = RequestCondition.SPOKEJORGE;
+                    GameFlow();
+                }
+            }
+
+            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
+            {
+                if (_currentRequestCondition == RequestCondition.OUTSIDETHEROOM)
+                {
+                    _currentRequestCondition = RequestCondition.LETTHESUICASE;
+                    GameFlow();
+                }
+            }
+
+            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
+            {
+                if (_currentRequestCondition == RequestCondition.LETTHESUICASE)
+                {
+                    _currentRequestCondition = RequestCondition.SPOKELUNA;
+                    GameFlow();
+                }
+            }
+
+            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_4)
+            {
+                if (_currentRequestCondition == RequestCondition.SPOKELUNA)
+                {
+                    _currentRequestCondition = RequestCondition.OUTSIDECENTURIONROOM;
+                    GameFlow();
+                }
+            }
+
+            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
+            {
+                if (_currentRequestCondition == RequestCondition.OUTSIDECENTURIONROOM)
+                {
+                    _currentRequestCondition = RequestCondition.SPOKECENTURION;
+                    GameFlow();
+                }
+            }
+            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
+            {
+                if (_currentRequestCondition == RequestCondition.SPOKECENTURION)
+                {
+                    _currentRequestCondition = RequestCondition.SPOKELUNAINRECEPTION;
+                    GameFlow();
+                }
+            } else if (_currentStagesStoryParts == StagesStoryParts.STAGE_7)
+            {
+                if (_currentRequestCondition == RequestCondition.SPOKELUNAINRECEPTION)
+                {
+                    _currentRequestCondition = RequestCondition.READYTOGO;
+                    GameFlow();
+                }
+            }
+
+        
+        }
+    }
+
+    private void CheckTheScene(int indexSceneDoor)
+    {
+        Scene _currentScene = SceneManager.GetActiveScene();
+
+        if (_currentScene.name == sceneWithDoor[0])
+        {
+            if (_firtsTimeEntryInTheHotel)
+            {
+                NextRequestCondition();
+                _firtsTimeEntryInTheHotel = false;
+                SceneManager.LoadScene(indexSceneDoor);
+            }
+            else
+            {
+                SceneManager.LoadScene(indexSceneDoor);
+            }
+
+        }
+        else if (_currentScene.name == sceneWithDoor[1])
+        {
+            if (_currentStagesStoryParts == StagesStoryParts.STAGE_7)
+            {
+                if (_tryExitTheReception)
+                {
+                    NextRequestCondition();
+                    _tryExitTheReception = false;
+                    //Evento para luna
+                }
+            }
+            
+            if(_currentStagesStoryParts == StagesStoryParts.STAGE_8)
+            {
+                SceneManager.LoadScene(indexSceneDoor);
+
+            }
+
+        }
+        else if (_currentScene.name == sceneWithDoor[2])
+        {
+            if (_firtsTimeEntryInTheRoom)
+            {
+                NextRequestCondition();
+                _firtsTimeEntryInTheRoom = false;
+                SceneManager.LoadScene(indexSceneDoor);
+            }
+            else
+            {
+                SceneManager.LoadScene(indexSceneDoor);
+
+            }
+
+        }
+        else if (_currentScene.name == sceneWithDoor[3])
+        {
+            if (_firtsTimeExitTheRoom)
+            {
+                _firtsTimeExitTheRoom = false;
+                SceneManager.LoadScene(indexSceneDoor);
+                //Evento para luna aparezca
+
+            }
+            else
+            {
+                SceneManager.LoadScene(indexSceneDoor);
+            }
+
+        }
+        else if (_currentScene.name == sceneWithDoor[4])
+        {
+            if (_firtsTimeEntryInTheCenturionsRoom)
+            {
+                NextRequestCondition();
+                _firtsTimeEntryInTheCenturionsRoom = false;
+                SceneManager.LoadScene(indexSceneDoor);
+            }
+            else
+            {
+                SceneManager.LoadScene(indexSceneDoor);
+
+            }
+        }
+        else if (_currentScene.name == sceneWithDoor[5])
+        {
+            if (_firtsTimeExitCenturionsRoom)
+            {
+                _firtsTimeExitCenturionsRoom = false;
+                SceneManager.LoadScene(indexSceneDoor);
+            }
+            else
+            {
+                SceneManager.LoadScene(indexSceneDoor);
+
+            }
+        }
+    }
 
     public static int[] PastConversations
     {

@@ -10,6 +10,12 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
 
     bool _isItLunaMainDialogue = true;
 
+    GameManager _gameManagerReference;
+    private void Awake()
+    {
+        _gameManagerReference = FindObjectOfType<GameManager>();
+    }
+
     public void Interact()
     {
         SearchDialogues();
@@ -19,33 +25,34 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
     {
         _hasAlreadyTalkedToLuna = true;
 
-        if (ProgressCheck._areWeInTheSecondPart)
+        if (_gameManagerReference._currenStoryParts == GameManager.StoryParts.FIRST_PART)
         {
             if (!_lunaDoesntWantToTalk)
             {
 
-                if (ProgressCheck._areWeInTheStage5)
+                if (_gameManagerReference._currentStagesStoryParts == GameManager.StagesStoryParts.STAGE_4)
                 {
                     if (_isItLunaMainDialogue)
                     {
+                        EventManager.SpokeNPCRequest.Invoke();
                         _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/N_Dialogues/Luna_N_Dialogue_01");
                     }
                     else
                     {
+                        _lunaDoesntWantToTalk = true;
                         _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/GF_Dialogues/Luna_GF_Dialogue_01");
                     }
                 }
+            }
 
-                if (ProgressCheck._areWeInTheStage6)
+            if (_gameManagerReference._currentStagesStoryParts == GameManager.StagesStoryParts.STAGE_7)
+            {
+                _isItLunaMainDialogue = true;
+
+                if (!ProgressCheck.canYouLeaveThehotel)
                 {
-                    _isItLunaMainDialogue = true;
-
-                    if (!ProgressCheck.canYouLeaveThehotel)
-                    {
-                        _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/N_Dialogues/Luna_N_Dialogue_02");
-                        ProgressCheck.canYouLeaveThehotel = true;
-                    }
-
+                    EventManager.SpokeNPCRequest.Invoke();
+                    _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/N_Dialogues/Luna_N_Dialogue_02");
                 }
 
             }

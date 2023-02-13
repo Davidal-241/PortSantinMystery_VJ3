@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4931328153183301053}
   - component: {fileID: 3095159539469987076}
   - component: {fileID: 645496}
-  - component: {fileID: 1690144864}
   - component: {fileID: 1690144865}
   m_Layer: 0
   m_Name: GameManager
@@ -46,6 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 844adb84b4d3aba4b9a95f0161b9b0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cesarsCurrentDialogue: {fileID: 0}
+  _lunaPrefab: {fileID: 0}
+  _LunaSpawnPoint: {fileID: 0}
 --- !u!114 &645496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,20 +62,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sliderGeneral: {fileID: 0}
   _sliderValue: 0
---- !u!114 &1690144864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7356275779321167284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e6224cd5a80a3241ba95250a9dfead4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lunaPrefab: {fileID: 0}
-  _LunaSpawnPoint: {fileID: 0}
 --- !u!114 &1690144865
 MonoBehaviour:
   m_ObjectHideFlags: 0

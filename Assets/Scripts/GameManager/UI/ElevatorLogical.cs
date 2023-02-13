@@ -7,14 +7,14 @@ using UnityEngine.InputSystem;
 
 
 
-public class ElevatorLogical : MonoBehaviour, IInteractable
+public class ElevatorLogical : MonoBehaviour
 {
     [SerializeField] int[] _indexScene;
 
     [SerializeField] GameObject _buttonsSelector;
 
     [SerializeField] GameObject[] _buttons;
-    [SerializeField] GameObject[] _offImage;
+
 
     private int _currentButtonsIndex;
 
@@ -39,21 +39,10 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
         _controls.Inventory.NavigateUp.performed += ScrollUpByInterface;
         _controls.Inventory.NavigateDown.performed += ScrollDownByInterface;
     }
-   
-
-
-    public void Interact()
-    {
-        EventManager._CheckConveElevator.Invoke();
-    }
 
     private void UseElevator()
     {
-        for (int i = 0; i < _offImage.Length; i++)
-        {
-            _offImage[i].SetActive(false);
-        }
-
+   
         ProgressCheck._youTryUseElevator = true;
         _currentScene = SceneManager.GetActiveScene();
 
@@ -61,26 +50,20 @@ public class ElevatorLogical : MonoBehaviour, IInteractable
         {
             if (_currentScene.buildIndex == _indexScene[0])
             {
-                _offImage[0].SetActive(true);
-                _buttons[0].SetActive(false);
                 _currentButtonsIndex = 0;
 
             }
 
             if (_currentScene.buildIndex == _indexScene[1])
             {
-                _offImage[1].SetActive(true);
-                _buttons[1].SetActive(false);
                 _currentButtonsIndex = 1;
             }
 
-            //if (_currentScene.buildIndex == _nameScene[2])
-            //{
-            //    GlobalBools._isInBasement = true;
-            //    _offImage[2].SetActive(true);
-            //    _buttons[2].SetActive(false);
-            //    _currentButtonsIndex = 2;
-            //}
+            if (_currentScene.buildIndex == _indexScene[2])
+            {
+                _currentButtonsIndex = 2;
+            }
+
             UpdateSelectorPosition();
 
 

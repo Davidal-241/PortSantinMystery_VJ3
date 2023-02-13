@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 public class LogicalDialogueSystem : MonoBehaviour
 {
-    public TextMeshProUGUI speakerName, dialogue, navButtonText;
+    public TextMeshProUGUI speakerName, dialogue;
     public Image speakerSprite1;
     public Image speakerSprite2;
 
@@ -44,7 +44,7 @@ public class LogicalDialogueSystem : MonoBehaviour
     }
     private void Start()
     {
-        _soundManager = FindObjectOfType<SoundManager>();
+        //_soundManager = FindObjectOfType<SoundManager>();
         //_dialogueBox = GameObject.Find("DialogueBox");
 
     }
@@ -57,7 +57,6 @@ public class LogicalDialogueSystem : MonoBehaviour
         instance.currentConvo = convo;
         instance.speakerName.text = "";
         instance.dialogue.text = "";
-        instance.navButtonText.text = ">";
         //GameManager._playerCanMove = true;
 
         EventManager.ConvesationStarts.Invoke();
@@ -193,7 +192,7 @@ public class LogicalDialogueSystem : MonoBehaviour
             if (text[dialogueIndex] != '/')
             {
                 dialogue.text += text[dialogueIndex];
-                _soundManager.TypeSound();
+                //_soundManager.TypeSound();
             }
             dialogueIndex++;
             

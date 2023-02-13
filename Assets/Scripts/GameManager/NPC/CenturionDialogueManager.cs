@@ -9,6 +9,12 @@ public class CenturionDialogueManager : MonoBehaviour, IInteractable
 
     bool _isItCenturionsMainDialogue = true;
 
+    GameManager _gameManagerReference;
+    private void Awake()
+    {
+        _gameManagerReference = FindObjectOfType<GameManager>();
+    }
+
     public void Interact()
     {
         SearchDialogues();
@@ -18,22 +24,23 @@ public class CenturionDialogueManager : MonoBehaviour, IInteractable
     {
        _hasAlreadyTalkedToCenturion = true;
 
-
-
-        if (ProgressCheck._areWeInTheSecondPart)
+        if (_gameManagerReference._currenStoryParts == GameManager.StoryParts.FIRST_PART)
         {
-            if (ProgressCheck._areWeInTheStage6)
+            if (_gameManagerReference._currentStagesStoryParts == GameManager.StagesStoryParts.STAGE_6)
             {
                 if (_isItCenturionsMainDialogue)
                 {
                     _centurionsCurrentDialogue = Resources.Load<Conversation>("Centurion/N_Dialogues/Centurion_N_Dialogue_01");
                     _isItCenturionsMainDialogue = false;
+                    EventManager.SpokeNPCRequest.Invoke();
 
                 }
-                else
-                {
-                    _centurionsCurrentDialogue = Resources.Load<Conversation>("Centurion/GF_Dialogues/Centurion_GF_Dialogue_01");
-                }
+              
+            }
+
+            if(!_isItCenturionsMainDialogue)
+            {
+                _centurionsCurrentDialogue = Resources.Load<Conversation>("Centurion/GF_Dialogues/Centurion_GF_Dialogue_01");
             }
         }
         EventManager._ConversationStarts.Invoke(_centurionsCurrentDialogue);

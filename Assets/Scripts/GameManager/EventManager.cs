@@ -58,4 +58,8 @@ public static class EventManager
 
     public static UnityEvent UserMenuOn = new UnityEvent();
     public static UnityEvent UserMenuOff = new UnityEvent();
+
+    public static UnityEvent<int> SendIndex = new UnityEvent<int>();
+
+    public static UnityEvent SpokeNPCRequest = new UnityEvent();
 }

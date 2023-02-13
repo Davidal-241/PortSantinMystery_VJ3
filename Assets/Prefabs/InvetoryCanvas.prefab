@@ -361,7 +361,6 @@ GameObject:
   - component: {fileID: 1875003426255696711}
   - component: {fileID: 1875003426255696712}
   - component: {fileID: 1875003426255696713}
-  - component: {fileID: 1875003426255696714}
   - component: {fileID: 5728282603875713800}
   m_Layer: 5
   m_Name: Controler
@@ -427,37 +426,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1875003426255696714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1875003426255696715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ef41ac281948e941bcf246db29ab09b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Panel: {fileID: 0}
-  Inventario: {fileID: 0}
-  Notas: {fileID: 0}
-  Fotos: {fileID: 0}
-  Controles: {fileID: 0}
-  KeyBottom: {fileID: 0}
-  GamePadBottom: {fileID: 0}
-  _reviewer: {fileID: 0}
-  _driver: {fileID: 0}
-  _jorge: {fileID: 0}
-  _luna: {fileID: 0}
-  _centurion: {fileID: 0}
-  _prayer: {fileID: 0}
-  _reviewerButton: {fileID: 0}
-  _driverButton: {fileID: 0}
-  _jorgeButton: {fileID: 0}
-  _lunaButton: {fileID: 0}
-  _centurionButton: {fileID: 0}
-  _prayerButton: {fileID: 0}
 --- !u!114 &5728282603875713800
 MonoBehaviour:
   m_ObjectHideFlags: 0
