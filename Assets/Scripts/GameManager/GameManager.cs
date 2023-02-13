@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         LETTHESUICASE,
         SPOKELUNA,
         OUTSIDECENTURIONROOM,
-        SPOKECENTURION,
+        INTERACTUEWITHCENTURIONDOOR,
         SPOKELUNAINRECEPTION,
         READYTOGO   
 
@@ -66,18 +66,22 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    [SerializeField] string[] _scenesWhereLunaAppears;
+
     public Conversation _cesarsCurrentDialogue;
 
     [SerializeField] string[] sceneWithDoor;
 
+    #region"Bools"
     bool isElevatorUIActive = false;
 
     bool _firtsTimeEntryInTheHotel = true;
     bool _tryExitTheReception = true;
     bool _firtsTimeEntryInTheRoom = true;
     bool _firtsTimeEntryInTheCenturionsRoom = true;
-    bool _firtsTimeExitCenturionsRoom = true;
     bool _firtsTimeExitTheRoom = true;
+    bool _hasAlreadyInteractueWithCenturionDoor = false;
+    #endregion
 
     #region"Statics"
     public static bool _isTalking = false; 
@@ -88,7 +92,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
     static int[] pastConversations = null;
-
 
     #region"Luna´s References"
     [SerializeField] GameObject _lunaPrefab;
@@ -125,7 +128,6 @@ public class GameManager : MonoBehaviour
         print(s);
     }
 
-
     private void Start()
     {
         #region"Inputs"
@@ -142,6 +144,8 @@ public class GameManager : MonoBehaviour
 
         GameFlow();
 
+        NewPositionInTheScene();
+
         #region"UI"
         //Interfaz de ascensor//
         _elevatorUI = GameObject.Find(" ElevatorPanel");
@@ -157,7 +161,8 @@ public class GameManager : MonoBehaviour
         EventManager._CheckConveElevator.AddListener(CheckIfYouCanUseTheElevator);
         EventManager._ChangeScene.AddListener(ElevatorChangeScene);
         EventManager.SendIndex.AddListener(CheckTheScene);
-        EventManager.SpokeNPCRequest.AddListener(NextRequestCondition);
+        EventManager.NextRequest.AddListener(NextRequestCondition);
+        EventManager.InteractueWithCenturionDoors.AddListener(CenturionDoorDialogues);
 
         #endregion
 
@@ -176,31 +181,38 @@ public class GameManager : MonoBehaviour
     #region"NewPositionLuna"
     public void NewPositionInTheScene()
     {
-        //Comprueba si luna existe en la escena//
-        if (_existLunaInTheScene != null)
+        Scene _currentScene = SceneManager.GetActiveScene();
+        for (int i = 0; i < _scenesWhereLunaAppears.Length; i++)
         {
-            //Si existe la borra//
-            Destroy(_existLunaInTheScene);
-        }
-
-        //Dependiendo de varias booleanas aparecera en una ubicación//
-        if (ProgressCheck._areWeOutsideTheWeRoom)
-        {
-            if (ProgressCheck._areWeInTheSecondPart)
+            if(_currentScene.name == _scenesWhereLunaAppears[i])
             {
-                if (ProgressCheck._areWeInTheStage5)
+                //Comprueba si luna existe en la escena//
+                if (_existLunaInTheScene != null)
                 {
-                    Instantiate(_lunaPrefab, _LunaSpawnPoint);
+                    //Si existe la borra//
+                    Destroy(_existLunaInTheScene);
                 }
-            }
-        }
-        else if (ProgressCheck._areWeInReception)
-        {
-            if (ProgressCheck._areWeInTheSecondPart)
-            {
-                if (ProgressCheck._areWeInTheStage6)
+
+                //Dependiendo de varias booleanas aparecera en una ubicación//
+                if (_currentRequestCondition == RequestCondition.SPOKELUNA)
                 {
-                    Instantiate(_lunaPrefab, _LunaSpawnPoint);
+                    if (_currenStoryParts == StoryParts.FIRST_PART)
+                    {
+                        if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
+                        {
+                            Instantiate(_lunaPrefab, _LunaSpawnPoint);
+                        }
+                    }
+                }
+                else if (_currentRequestCondition == RequestCondition.SPOKELUNAINRECEPTION)
+                {
+                    if (_currenStoryParts == StoryParts.FIRST_PART)
+                    {
+                        if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
+                        {
+                            Instantiate(_lunaPrefab, _LunaSpawnPoint);
+                        }
+                    }
                 }
             }
         }
@@ -269,6 +281,23 @@ public class GameManager : MonoBehaviour
 
             }
 
+            if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
+            {
+                if (_currentRequestCondition == RequestCondition.OUTSIDECENTURIONROOM)
+                {
+                    if (!_hasAlreadyInteractueWithCenturionDoor)
+                    {
+                        _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_07");
+                        EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
+                    }
+                    else
+                    {
+                        UIElevator();
+                    }
+                }
+
+            }
+
         }
     }
     #endregion
@@ -297,7 +326,20 @@ public class GameManager : MonoBehaviour
     private void ElevatorChangeScene(int _indexSceneUseButton)
     {
         //Cambia la escena dependiendo de un Index//
-        SceneManager.LoadScene(_indexSceneUseButton);
+        if (_currenStoryParts == StoryParts.FIRST_PART)
+        {
+            if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
+            {
+                if(_indexSceneUseButton == 2)
+                {
+                    _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_03");
+                }
+                else
+                {
+                    SceneManager.LoadScene(_indexSceneUseButton);
+                }
+            }
+        }
     }
     #endregion
 
@@ -373,7 +415,7 @@ public class GameManager : MonoBehaviour
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
             {
 
-                if (_currentRequestCondition == RequestCondition.SPOKECENTURION)
+                if (_currentRequestCondition == RequestCondition.INTERACTUEWITHCENTURIONDOOR)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_7;
                 }
@@ -465,6 +507,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region"NextRequest"
     public void NextRequestCondition()
     {
         if (_currenStoryParts == StoryParts.INTRODUCTION)
@@ -521,13 +564,13 @@ public class GameManager : MonoBehaviour
             {
                 if (_currentRequestCondition == RequestCondition.OUTSIDECENTURIONROOM)
                 {
-                    _currentRequestCondition = RequestCondition.SPOKECENTURION;
+                    _currentRequestCondition = RequestCondition.INTERACTUEWITHCENTURIONDOOR;
                     GameFlow();
                 }
             }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
             {
-                if (_currentRequestCondition == RequestCondition.SPOKECENTURION)
+                if (_currentRequestCondition == RequestCondition.INTERACTUEWITHCENTURIONDOOR)
                 {
                     _currentRequestCondition = RequestCondition.SPOKELUNAINRECEPTION;
                     GameFlow();
@@ -540,11 +583,23 @@ public class GameManager : MonoBehaviour
                     GameFlow();
                 }
             }
-
-        
         }
     }
 
+    #endregion
+
+    #region"CenturionDoorDialogues"
+
+    private void CenturionDoorDialogues()
+    {
+        _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_08");
+        EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
+        NextRequestCondition();
+    }
+
+    #endregion
+
+    #region"Check the scene if use door"
     private void CheckTheScene(int indexSceneDoor)
     {
         Scene _currentScene = SceneManager.GetActiveScene();
@@ -626,20 +681,9 @@ public class GameManager : MonoBehaviour
 
             }
         }
-        else if (_currentScene.name == sceneWithDoor[5])
-        {
-            if (_firtsTimeExitCenturionsRoom)
-            {
-                _firtsTimeExitCenturionsRoom = false;
-                SceneManager.LoadScene(indexSceneDoor);
-            }
-            else
-            {
-                SceneManager.LoadScene(indexSceneDoor);
-
-            }
-        }
     }
+
+    #endregion
 
     public static int[] PastConversations
     {

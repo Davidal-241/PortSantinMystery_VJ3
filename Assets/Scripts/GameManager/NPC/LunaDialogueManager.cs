@@ -34,7 +34,7 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
                 {
                     if (_isItLunaMainDialogue)
                     {
-                        EventManager.SpokeNPCRequest.Invoke();
+                        EventManager.NextRequest.Invoke();
                         _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/N_Dialogues/Luna_N_Dialogue_01");
                     }
                     else
@@ -49,9 +49,9 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
             {
                 _isItLunaMainDialogue = true;
 
-                if (!ProgressCheck.canYouLeaveThehotel)
+                if (_gameManagerReference._currentRequestCondition == GameManager.RequestCondition.SPOKELUNAINRECEPTION)
                 {
-                    EventManager.SpokeNPCRequest.Invoke();
+                    EventManager.NextRequest.Invoke();
                     _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/N_Dialogues/Luna_N_Dialogue_02");
                 }
 

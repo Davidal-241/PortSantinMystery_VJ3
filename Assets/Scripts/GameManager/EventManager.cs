@@ -61,5 +61,7 @@ public static class EventManager
 
     public static UnityEvent<int> SendIndex = new UnityEvent<int>();
 
-    public static UnityEvent SpokeNPCRequest = new UnityEvent();
+    public static UnityEvent NextRequest = new UnityEvent();
+
+    public static UnityEvent InteractueWithCenturionDoors = new UnityEvent();
 }

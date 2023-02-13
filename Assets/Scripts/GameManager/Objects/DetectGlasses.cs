@@ -13,16 +13,9 @@ public class DetectGlasses : MonoBehaviour, IInteractable
   
     private void GlassesInTheBed()
     {
-        if (ProgressCheck._areWeInTheSecondPart)
-        {
-            if (ProgressCheck._areWeInTheStage4)
-            {
-                if (ProgressCheck._didYouInteractWithTheGlasses)
-                {
-                    _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_04");
-                    EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-                }
-            }
-        }
+
+        _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_04");
+        EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
+
     }
 }

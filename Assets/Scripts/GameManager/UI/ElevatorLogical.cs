@@ -43,11 +43,9 @@ public class ElevatorLogical : MonoBehaviour
     private void UseElevator()
     {
    
-        ProgressCheck._youTryUseElevator = true;
         _currentScene = SceneManager.GetActiveScene();
 
-        if (ProgressCheck._canUseElevator)
-        {
+        
             if (_currentScene.buildIndex == _indexScene[0])
             {
                 _currentButtonsIndex = 0;
@@ -66,8 +64,6 @@ public class ElevatorLogical : MonoBehaviour
 
             UpdateSelectorPosition();
 
-
-        }
 
     }
 

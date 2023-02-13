@@ -11,7 +11,7 @@ public class DetectBed : MonoBehaviour,IInteractable
 
     private void LeaveTheBag()
     {
-        ProgressCheck._didYouLeaveTheSuitcase = true;
+        EventManager.NextRequest.Invoke();
     }
 
 }
