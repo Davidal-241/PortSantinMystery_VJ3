@@ -50,7 +50,7 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
             {
                 _isItLunaMainDialogue = true;
 
-                if (_gameManagerReference._currentRequestCondition == GameManager.RequestCondition.SPOKELUNAINRECEPTION)
+                if (_gameManagerReference._currentQuest == GameManager.RequestCondition.SPEAKWITHLUNAINRECEPTION)
                 {
                     EventManager.NextRequest.Invoke();
                     _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/N_Dialogues/Luna_N_Dialogue_02");

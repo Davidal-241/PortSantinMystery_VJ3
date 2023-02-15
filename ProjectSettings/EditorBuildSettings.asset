@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 1a3ddb570564afc468150b42cf019884
   - enabled: 1
+    path: Assets/Scenes/Introduccion.unity
+    guid: aea5b53be83281641a9d7ab19808c5ef
+  - enabled: 1
     path: Assets/Scenes/Exterior.unity
     guid: 0898b763c5872f04d81909f9a3d6825e
   - enabled: 1
@@ -20,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Habitacion_Cesar.unity
     guid: 9c5cac4cc8a725d43bbcdf6879f886f9
+  - enabled: 1
+    path: Assets/Scenes/Pasillo Centurion.unity
+    guid: eb07181b55109db4fb3aebf9d188a5b8
   m_configObjects: {}

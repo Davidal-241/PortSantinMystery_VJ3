@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4931328153183301053}
-  - component: {fileID: 3095159539469987076}
   - component: {fileID: 428968613}
   - component: {fileID: 428968614}
+  - component: {fileID: 3923858155878301752}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -33,26 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3095159539469987076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7356275779321167284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 844adb84b4d3aba4b9a95f0161b9b0b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currenStoryParts: 0
-  _currentStagesStoryParts: 0
-  _currentRequestCondition: 0
-  _scenesWhereLunaAppears: []
-  _cesarsCurrentDialogue: {fileID: 0}
-  sceneWithDoor: []
-  _lunaPrefab: {fileID: 0}
-  _LunaSpawnPoint: {fileID: 0}
 --- !u!114 &428968613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,3 +60,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toggle: {fileID: 0}
+--- !u!114 &3923858155878301752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7356275779321167284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c40359a4d40e641afbe0363c1d931e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currenStoryParts: 0
+  _currentStagesStoryParts: 0
+  _currentQuest: 0
+  _scenesWhereLunaAppears: []
+  _cesarsCurrentDialogue: {fileID: 0}
+  comingFromElevatorToReceptionTransform: {fileID: 0}
+  comingFromElevatorToHallTransform: {fileID: 0}
+  comingFromElevatorToCenturionHallTransform: {fileID: 0}
+  comingFromOutsideToReceptionTransform: {fileID: 0}
+  comingFromInsideToStreetTransform: {fileID: 0}
+  comingFromInsideCesarRoomTransform: {fileID: 0}
+  comingFromOutsideCesarRoomTransform: {fileID: 0}
+  sceneWithDoor: []
+  shouldDeletePlayePrefs: 0
+  _lunaPrefab: {fileID: 0}
+  _LunaSpawnPoint: {fileID: 0}

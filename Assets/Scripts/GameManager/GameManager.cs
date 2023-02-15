@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         SPOKELUNA,
         OUTSIDECENTURIONROOM,
         INTERACTUEWITHCENTURIONDOOR,
-        SPOKELUNAINRECEPTION,
+        SPEAKWITHLUNAINRECEPTION,
         READYTOGO   
 
     }
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
 
     public StoryParts _currenStoryParts;
     public StagesStoryParts _currentStagesStoryParts;
-    public RequestCondition _currentRequestCondition;
+    public RequestCondition _currentQuest;
 
     //Este int controla el Switch//
 
@@ -66,17 +66,13 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    [SerializeField] string[] _scenesWhereLunaAppears;
-
-    private GameObject _player;
-    private GameObject _currentPosition;
+    protected GameObject _player;
 
     public Conversation _cesarsCurrentDialogue;
 
     Scene _currentScene;
-    static string _previousSceneName = null;
-    [SerializeField] Transform comingFromElevatorTransform;
-    [SerializeField] Transform comingFromOutsideTransform;
+
+    protected static string _previousSceneName = null;
 
     [SerializeField] string[] sceneWithDoor;
 
@@ -103,11 +99,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] bool shouldDeletePlayePrefs = false;
 
-    #region"Luna´s References"
-    [SerializeField] GameObject _lunaPrefab;
-    [SerializeField] Transform _LunaSpawnPoint;
-    GameObject _existLunaInTheScene;
-    #endregion
 
     private void Awake()
     {
@@ -119,7 +110,7 @@ public class GameManager : MonoBehaviour
 
         _currenStoryParts = StoryParts.INTRODUCTION;
         _currentStagesStoryParts = StagesStoryParts.STAGE_1;
-        _currentRequestCondition = RequestCondition.OUTSIDETHEHOTEL;
+        _currentQuest = RequestCondition.OUTSIDETHEHOTEL;
 
         _controls = new UserActions();
         _controls.Enable();
@@ -152,40 +143,13 @@ public class GameManager : MonoBehaviour
         //    print(w[i]);
         //    pestaña.Add(RegisteredConversations[w[i]])
         //}
+
+        _player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private void Start()
+    protected virtual void Start()
     {
-        // Place player on a position based on the previously visited scene
-        if(string.Compare(_currentScene.name, "Reception") == 0)
-        {
-
-            if (
-                string.Compare(_previousSceneName, "Planta1") == 0
-                ||
-                string.Compare(_previousSceneName, "Planta2") == 0
-            )
-            {
-                _player.transform.position = comingFromElevatorTransform.position;
-
-                _player.transform.rotation = comingFromElevatorTransform.rotation;
-
-
-            }
-            else if (string.Compare(_previousSceneName, "Fuera") == 0)
-            {
-                _player.transform.position = comingFromOutsideTransform.position;
-
-                _player.transform.rotation = comingFromOutsideTransform.rotation;
-            }
-            else
-            {
-
-
-            }
-        }
-
-
+        
         _previousSceneName = SceneManager.GetActiveScene().name;
 
         _currentScene = SceneManager.GetActiveScene();
@@ -203,8 +167,6 @@ public class GameManager : MonoBehaviour
         #endregion
 
         GameFlow();
-
-        NewPositionInTheScene();
 
         #region"UI"
         //Interfaz de ascensor//
@@ -226,59 +188,7 @@ public class GameManager : MonoBehaviour
 
         #endregion
 
-        #region"LunaSpawn"
-        //Instanciado de luna en escena//
-        EventManager._LunaPositionEvent.AddListener(NewPositionInTheScene);
-
-        _existLunaInTheScene = GameObject.FindGameObjectWithTag("Luna");
-
-        NewPositionInTheScene();
-
-        #endregion
-
     }
-
-    #region"NewPositionLuna"
-    public void NewPositionInTheScene()
-    {
-        Scene _currentScene = SceneManager.GetActiveScene();
-        for (int i = 0; i < _scenesWhereLunaAppears.Length; i++)
-        {
-            if(_currentScene.name == _scenesWhereLunaAppears[i])
-            {
-                //Comprueba si luna existe en la escena//
-                if (_existLunaInTheScene != null)
-                {
-                    //Si existe la borra//
-                    Destroy(_existLunaInTheScene);
-                }
-
-                //Dependiendo de varias booleanas aparecera en una ubicación//
-                if (_currentRequestCondition == RequestCondition.SPOKELUNA)
-                {
-                    if (_currenStoryParts == StoryParts.FIRST_PART)
-                    {
-                        if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
-                        {
-                            Instantiate(_lunaPrefab, _LunaSpawnPoint);
-                        }
-                    }
-                }
-                else if (_currentRequestCondition == RequestCondition.SPOKELUNAINRECEPTION)
-                {
-                    if (_currenStoryParts == StoryParts.FIRST_PART)
-                    {
-                        if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
-                        {
-                            Instantiate(_lunaPrefab, _LunaSpawnPoint);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    #endregion
 
     #region"GoMenuPrincipal"
     public void GoMenuPrincipalMain()
@@ -313,7 +223,7 @@ public class GameManager : MonoBehaviour
 
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
             {
-                if (_currentRequestCondition != RequestCondition.LETTHESUICASE)
+                if (_currentQuest != RequestCondition.LETTHESUICASE)
                 {
                     _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_03");
                     EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
@@ -326,7 +236,7 @@ public class GameManager : MonoBehaviour
 
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
             {
-                if (_currentRequestCondition == RequestCondition.OUTSIDETHEROOM)
+                if (_currentQuest == RequestCondition.OUTSIDETHEROOM)
                 {
                     if (!LunaDialogueManager._hasAlreadyTalkedToLuna)
                     {
@@ -343,7 +253,7 @@ public class GameManager : MonoBehaviour
 
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
             {
-                if (_currentRequestCondition == RequestCondition.OUTSIDECENTURIONROOM)
+                if (_currentQuest == RequestCondition.OUTSIDECENTURIONROOM)
                 {
                     if (!_hasAlreadyInteractueWithCenturionDoor)
                     {
@@ -410,7 +320,7 @@ public class GameManager : MonoBehaviour
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_1)
             {
-                if (_currentRequestCondition == RequestCondition.INRECEPTION)
+                if (_currentQuest == RequestCondition.INRECEPTION)
                 {
                     _currenStoryParts = StoryParts.FIRST_PART;
                     _currentStagesStoryParts = StagesStoryParts.STAGE_1;
@@ -431,17 +341,17 @@ public class GameManager : MonoBehaviour
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_1)
             {
-                if (_currentRequestCondition == RequestCondition.SPOKEJORGE)
+                if (_currentQuest == RequestCondition.SPOKEJORGE)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_2;
-                    _currentRequestCondition = RequestCondition.OUTSIDETHEROOM;
+                    _currentQuest = RequestCondition.OUTSIDETHEROOM;
                 }
 
             }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
             {
 
-                if (_currentRequestCondition == RequestCondition.OUTSIDETHEROOM)
+                if (_currentQuest == RequestCondition.OUTSIDETHEROOM)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_3;
                 }
@@ -450,7 +360,7 @@ public class GameManager : MonoBehaviour
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
             {
 
-                if (_currentRequestCondition == RequestCondition.LETTHESUICASE)
+                if (_currentQuest == RequestCondition.LETTHESUICASE)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_4;
                 }
@@ -458,7 +368,7 @@ public class GameManager : MonoBehaviour
             }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_4)
             {
-                if (_currentRequestCondition == RequestCondition.SPOKELUNA)
+                if (_currentQuest == RequestCondition.SPOKELUNA)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_5;
                 }
@@ -466,7 +376,7 @@ public class GameManager : MonoBehaviour
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
             {
 
-                if (_currentRequestCondition == RequestCondition.OUTSIDECENTURIONROOM)
+                if (_currentQuest == RequestCondition.OUTSIDECENTURIONROOM)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_6;
                 }
@@ -475,7 +385,7 @@ public class GameManager : MonoBehaviour
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
             {
 
-                if (_currentRequestCondition == RequestCondition.INTERACTUEWITHCENTURIONDOOR)
+                if (_currentQuest == RequestCondition.INTERACTUEWITHCENTURIONDOOR)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_7;
                 }
@@ -484,7 +394,7 @@ public class GameManager : MonoBehaviour
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_7)
             {
 
-                if (_currentRequestCondition == RequestCondition.SPOKELUNAINRECEPTION)
+                if (_currentQuest == RequestCondition.SPEAKWITHLUNAINRECEPTION)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_8;
                 }
@@ -492,7 +402,7 @@ public class GameManager : MonoBehaviour
             }else if(_currentStagesStoryParts == StagesStoryParts.STAGE_8)
             {
 
-                if(_currentRequestCondition == RequestCondition.READYTOGO)
+                if(_currentQuest == RequestCondition.READYTOGO)
                 {
                     _currenStoryParts = StoryParts.SECOND_PART;
                     _currentStagesStoryParts = StagesStoryParts.STAGE_1;
@@ -574,9 +484,9 @@ public class GameManager : MonoBehaviour
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_1)
             {
-                if (_currentRequestCondition == RequestCondition.OUTSIDETHEHOTEL)
+                if (_currentQuest == RequestCondition.OUTSIDETHEHOTEL)
                 {
-                    _currentRequestCondition = RequestCondition.INRECEPTION;
+                    _currentQuest = RequestCondition.INRECEPTION;
                     GameFlow();
                 }
             }
@@ -586,60 +496,60 @@ public class GameManager : MonoBehaviour
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_1)
             {
-                if (_currentRequestCondition == RequestCondition.INRECEPTION)
+                if (_currentQuest == RequestCondition.INRECEPTION)
                 {
-                    _currentRequestCondition = RequestCondition.SPOKEJORGE;
+                    _currentQuest = RequestCondition.SPOKEJORGE;
                     GameFlow();
                 }
             }
 
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
             {
-                if (_currentRequestCondition == RequestCondition.OUTSIDETHEROOM)
+                if (_currentQuest == RequestCondition.OUTSIDETHEROOM)
                 {
-                    _currentRequestCondition = RequestCondition.LETTHESUICASE;
+                    _currentQuest = RequestCondition.LETTHESUICASE;
                     GameFlow();
                 }
             }
 
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
             {
-                if (_currentRequestCondition == RequestCondition.LETTHESUICASE)
+                if (_currentQuest == RequestCondition.LETTHESUICASE)
                 {
-                    _currentRequestCondition = RequestCondition.SPOKELUNA;
+                    _currentQuest = RequestCondition.SPOKELUNA;
                     GameFlow();
                 }
             }
 
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_4)
             {
-                if (_currentRequestCondition == RequestCondition.SPOKELUNA)
+                if (_currentQuest == RequestCondition.SPOKELUNA)
                 {
-                    _currentRequestCondition = RequestCondition.OUTSIDECENTURIONROOM;
+                    _currentQuest = RequestCondition.OUTSIDECENTURIONROOM;
                     GameFlow();
                 }
             }
 
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
             {
-                if (_currentRequestCondition == RequestCondition.OUTSIDECENTURIONROOM)
+                if (_currentQuest == RequestCondition.OUTSIDECENTURIONROOM)
                 {
-                    _currentRequestCondition = RequestCondition.INTERACTUEWITHCENTURIONDOOR;
+                    _currentQuest = RequestCondition.INTERACTUEWITHCENTURIONDOOR;
                     GameFlow();
                 }
             }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
             {
-                if (_currentRequestCondition == RequestCondition.INTERACTUEWITHCENTURIONDOOR)
+                if (_currentQuest == RequestCondition.INTERACTUEWITHCENTURIONDOOR)
                 {
-                    _currentRequestCondition = RequestCondition.SPOKELUNAINRECEPTION;
+                    _currentQuest = RequestCondition.SPEAKWITHLUNAINRECEPTION;
                     GameFlow();
                 }
             } else if (_currentStagesStoryParts == StagesStoryParts.STAGE_7)
             {
-                if (_currentRequestCondition == RequestCondition.SPOKELUNAINRECEPTION)
+                if (_currentQuest == RequestCondition.SPEAKWITHLUNAINRECEPTION)
                 {
-                    _currentRequestCondition = RequestCondition.READYTOGO;
+                    _currentQuest = RequestCondition.READYTOGO;
                     GameFlow();
                 }
             }
@@ -692,7 +602,6 @@ public class GameManager : MonoBehaviour
                     NextRequestCondition();
 
                     _tryExitTheReception = false;
-                    //Evento para luna
                 }
             }
             
@@ -738,22 +647,6 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(indexSceneDoor);
             }
 
-        }
-        else if (_currentScene.name == sceneWithDoor[4])
-        {
-            if (_firtsTimeEntryInTheCenturionsRoom)
-            {
-
-                NextRequestCondition();
-                _firtsTimeEntryInTheCenturionsRoom = false;
-                SceneManager.LoadScene(indexSceneDoor);
-            }
-            else
-            {
-
-                SceneManager.LoadScene(indexSceneDoor);
-
-            }
         }
     }
 
