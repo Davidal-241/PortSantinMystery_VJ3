@@ -7,6 +7,7 @@ public class SoundManager : MonoBehaviour
     AudioSource _audioSource;
     [SerializeField]PlayList _clip;
     AudioClip _currentClip;
+    
     [SerializeField] int _index;
     [SerializeField] bool _isntPlayForUse;
 
