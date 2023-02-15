@@ -6,22 +6,27 @@ using UnityEngine.SceneManagement;
 public class Finish_Introduction : MonoBehaviour
 {
     [SerializeField] private KeyCode _switchSceneKay;
-    [SerializeField] private Animator _animator;
+    private Animator _animator;
     private bool _startTransition;
 
+    private void Start()
+    {
+        _startTransition = false;
+        _animator = GetComponent<Animator>();
+    }
     void Update()
     {
         if(!_startTransition)
         {
             if (Input.GetKeyDown(_switchSceneKay))
             {
-                print("Holi");
+                _animator.SetTrigger("Start");
                 _startTransition = true;
             }
         }
     }
 
-    void SwitchScene()
+    public void SwitchScene()
     {
         SceneManager.LoadScene("Exterior");
     }
