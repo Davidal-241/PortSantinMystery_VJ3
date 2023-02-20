@@ -44,7 +44,7 @@ public static class EventManager
 
     public static UnityEvent _CheckConveElevator = new UnityEvent();
     public static UnityEvent _UseElevator = new UnityEvent();
-    public static UnityEvent<int> _ChangeScene = new UnityEvent<int>();
+    public static UnityEvent<string> _ChangeScene = new UnityEvent<string>();
 
 
 

@@ -25,12 +25,12 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
     {
         _hasAlreadyTalkedToLuna = true;
 
-        if (_gameManagerReference._currenStoryParts == GameManager.StoryParts.FIRST_PART)
+        if (GameManager._currenStoryParts == StoryParts.FIRST_PART)
         {
             if (!_lunaDoesntWantToTalk)
             {
 
-                if (_gameManagerReference._currentStagesStoryParts == GameManager.StagesStoryParts.STAGE_4)
+                if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_4)
                 {
                     if (_isItLunaMainDialogue)
                     {
@@ -46,11 +46,11 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
                 }
             }
 
-            if (_gameManagerReference._currentStagesStoryParts == GameManager.StagesStoryParts.STAGE_7)
+            if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_7)
             {
                 _isItLunaMainDialogue = true;
 
-                if (_gameManagerReference._currentQuest == GameManager.RequestCondition.SPEAKWITHLUNAINRECEPTION)
+                if (GameManager._currentQuest == RequestCondition.SPEAKWITHLUNAINRECEPTION)
                 {
                     EventManager.NextRequest.Invoke();
                     _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/N_Dialogues/Luna_N_Dialogue_02");

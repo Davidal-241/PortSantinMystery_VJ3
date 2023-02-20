@@ -24,9 +24,9 @@ public class CenturionDialogueManager : MonoBehaviour, IInteractable
     {
        _hasAlreadyTalkedToCenturion = true;
 
-        if (_gameManagerReference._currenStoryParts == GameManager.StoryParts.FIRST_PART)
+        if (GameManager._currenStoryParts == StoryParts.FIRST_PART)
         {
-            if (_gameManagerReference._currentStagesStoryParts == GameManager.StagesStoryParts.STAGE_6)
+            if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_6)
             {
                 if (_isItCenturionsMainDialogue)
                 {

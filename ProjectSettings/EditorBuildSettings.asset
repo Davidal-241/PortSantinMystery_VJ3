@@ -5,12 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/Introduccion.unity
-    guid: aea5b53be83281641a9d7ab19808c5ef
   - enabled: 1
     path: Assets/Scenes/Exterior.unity
     guid: 0898b763c5872f04d81909f9a3d6825e
@@ -26,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pasillo Centurion.unity
     guid: eb07181b55109db4fb3aebf9d188a5b8
+  - enabled: 1
+    path: Assets/Scenes/Introduccion.unity
+    guid: aea5b53be83281641a9d7ab19808c5ef
   m_configObjects: {}

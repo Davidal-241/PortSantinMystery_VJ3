@@ -4,61 +4,58 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
+#region"Enums"
+public enum StoryParts
+{
+
+    INTRODUCTION,
+    FIRST_PART,
+    SECOND_PART
+
+}
+
+public enum StagesStoryParts
+{
+
+    STAGE_1,
+    STAGE_2,
+    STAGE_3,
+    STAGE_4,
+    STAGE_5,
+    STAGE_6,
+    STAGE_7,
+    STAGE_8
+}
+
+public enum RequestCondition
+{
+    OUTSIDETHEHOTEL,
+    INRECEPTION,
+    SPOKEJORGE,
+    OUTSIDETHEROOM,
+    LEAVESUITCASE,
+    SPOKELUNA,
+    OUTSIDECENTURIONROOM,
+    INTERACTUEWITHCENTURIONDOOR,
+    SPEAKWITHLUNAINRECEPTION,
+    READYTOGO
+
+}
+#endregion
+
 public class GameManager : MonoBehaviour
 {
-    #region"Enums"
-    public enum StoryParts
-    {
 
-        INTRODUCTION,
-        FIRST_PART,
-        SECOND_PART
-
-    }
-
-    public enum StagesStoryParts
-    {
-
-        STAGE_1,
-        STAGE_2,
-        STAGE_3,
-        STAGE_4,
-        STAGE_5,
-        STAGE_6,
-        STAGE_7,
-        STAGE_8
-
-    }
-
-    public enum RequestCondition
-    {
-        OUTSIDETHEHOTEL,
-        INRECEPTION,
-        SPOKEJORGE,
-        OUTSIDETHEROOM,
-        LETTHESUICASE,
-        SPOKELUNA,
-        OUTSIDECENTURIONROOM,
-        INTERACTUEWITHCENTURIONDOOR,
-        SPEAKWITHLUNAINRECEPTION,
-        READYTOGO   
-
-    }
-    #endregion
 
     #region"References Inputs"
     UserActions _controls;
     #endregion
 
-    #region"Reference UI"
-    GameObject _elevatorUI;
-    #endregion
-
     #region"Game Flow References"
 
-    public StoryParts _currenStoryParts;
-    public StagesStoryParts _currentStagesStoryParts;
-    public RequestCondition _currentQuest;
+    public static StoryParts _currenStoryParts;
+    public static StagesStoryParts _currentStagesStoryParts;
+    public static RequestCondition _currentQuest;
 
     //Este int controla el Switch//
 
@@ -77,14 +74,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] string[] sceneWithDoor;
 
     #region"Bools"
-    bool isElevatorUIActive = false;
+    protected bool isElevatorUIActive = false;
 
     bool _firtsTimeEntryInTheHotel = true;
     bool _tryExitTheReception = true;
     bool _firtsTimeEntryInTheRoom = true;
     bool _firtsTimeEntryInTheCenturionsRoom = true;
     bool _firtsTimeExitTheRoom = true;
-    bool _hasAlreadyInteractueWithCenturionDoor = false;
+   protected bool _hasAlreadyInteractueWithCenturionDoor = false;
     #endregion
 
     #region"Statics"
@@ -108,9 +105,7 @@ public class GameManager : MonoBehaviour
         //UpdateConversationLog(0);
         //UpdateConversationLog(2);
 
-        _currenStoryParts = StoryParts.INTRODUCTION;
-        _currentStagesStoryParts = StagesStoryParts.STAGE_1;
-        _currentQuest = RequestCondition.OUTSIDETHEHOTEL;
+       
 
         _controls = new UserActions();
         _controls.Enable();
@@ -123,11 +118,15 @@ public class GameManager : MonoBehaviour
         EventManager.ConvesationStarts.AddListener(ConversationStarts);
         EventManager.ConvesationEnds.AddListener(ConversationEnds);
 
+        EventManager.NextRequest.AddListener(NextRequestCondition);
+
         EventManager.UserMenuOff.AddListener(CloseOptionsMenu);
         EventManager.UserMenuOn.AddListener(OpenOptionsMenu);
 
         EventManager.UIOff.AddListener(CloseInventory);
         EventManager.UIOn.AddListener(OpenInventory);
+
+        EventManager._ChangeScene.AddListener(ElevatorChangeScene);
 
         //int[] v = { 0, 1, 3, 0, 5 };
         //pastConversations = v;
@@ -166,22 +165,11 @@ public class GameManager : MonoBehaviour
         EventManager._InputSet.Invoke(_controls);
         #endregion
 
-        GameFlow();
-
-        #region"UI"
-        //Interfaz de ascensor//
-        _elevatorUI = GameObject.Find(" ElevatorPanel");
-
-        _elevatorUI.SetActive(false);
-
-        #endregion
 
         #region"EventsAddlistener"
         //Preparar escucha de los eventos//
 
         EventManager._GoToMainMenu.AddListener(GoMenuPrincipalMain);
-        EventManager._CheckConveElevator.AddListener(CheckIfYouCanUseTheElevator);
-        EventManager._ChangeScene.AddListener(ElevatorChangeScene);
         EventManager.SendIndex.AddListener(CheckTheScene);
         EventManager.NextRequest.AddListener(NextRequestCondition);
         EventManager.InteractueWithCenturionDoors.AddListener(CenturionDoorDialogues);
@@ -198,115 +186,22 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region"ElevatorLogical"
-    private void CheckIfYouCanUseTheElevator()
-    {
-        //Comprueba si Cesar puede usar el ascensor o debe decir un dialogo//
-        UIElevator();
-
-        if (_currenStoryParts == StoryParts.FIRST_PART)
-        {
-            if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
-            {
-                if (!JorgeDialogueManager._hasAlreadyTalkedToJorge)
-                {
-                    _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_01");
-                    print(_cesarsCurrentDialogue);
-                    EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-                }
-                else
-                {
-                    UIElevator();
-                }
-
-            }
-
-            if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
-            {
-                if (_currentQuest != RequestCondition.LETTHESUICASE)
-                {
-                    _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_03");
-                    EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-                }
-                else
-                {
-                    UIElevator();
-                }
-            }
-
-            if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
-            {
-                if (_currentQuest == RequestCondition.OUTSIDETHEROOM)
-                {
-                    if (!LunaDialogueManager._hasAlreadyTalkedToLuna)
-                    {
-                        _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_05");
-                        EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-                    }
-                    else
-                    {
-                        UIElevator();
-                    }
-                }
-
-            }
-
-            if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
-            {
-                if (_currentQuest == RequestCondition.OUTSIDECENTURIONROOM)
-                {
-                    if (!_hasAlreadyInteractueWithCenturionDoor)
-                    {
-                        _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_07");
-                        EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-                    }
-                    else
-                    {
-                        UIElevator();
-                    }
-                }
-
-            }
-
-        }
-    }
-    #endregion
-
-    #region"UIElevator"
-    private void UIElevator()
-    {
-        //Activa o Desactiva la interfaz del ascensor dependiendo de su estado//
-        if (!_elevatorUI.activeSelf)
-        {
-            _elevatorUI.SetActive(true);
-            isElevatorUIActive = true;
-            EventManager._UseElevator.Invoke();
-            EventManager.UIOn.Invoke();
-        }
-        else
-        {
-            _elevatorUI.SetActive(false);
-            isElevatorUIActive = false;
-            EventManager.UIOff.Invoke();
-        }
-    }
-    #endregion
 
     #region"ChangeSceneElevator"
-    private void ElevatorChangeScene(int _indexSceneUseButton)
+    private void ElevatorChangeScene(string _sceneName)
     {
         //Cambia la escena dependiendo de un Index//
         if (_currenStoryParts == StoryParts.FIRST_PART)
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
             {
-                if(_indexSceneUseButton == 2)
+                if(string.Compare(_sceneName, "Pasillo Centurion") == 0)
                 {
                     _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_03");
                 }
                 else
                 {
-                    SceneManager.LoadScene(_indexSceneUseButton);
+                    SceneManager.LoadScene(_sceneName);
                 }
             }
         }
@@ -336,6 +231,7 @@ public class GameManager : MonoBehaviour
     #region"FirstPart"
     private void FirstPart()
     {
+        print("GameManager:: " + GameManager._currenStoryParts + " " + GameManager._currentStagesStoryParts + " " + GameManager._currentQuest);
 
         if (_currenStoryParts == StoryParts.FIRST_PART)
         {
@@ -343,8 +239,9 @@ public class GameManager : MonoBehaviour
             {
                 if (_currentQuest == RequestCondition.SPOKEJORGE)
                 {
+                    print("Changing StagesStoryParts to Stage 2");
+
                     _currentStagesStoryParts = StagesStoryParts.STAGE_2;
-                    _currentQuest = RequestCondition.OUTSIDETHEROOM;
                 }
 
             }
@@ -360,7 +257,7 @@ public class GameManager : MonoBehaviour
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
             {
 
-                if (_currentQuest == RequestCondition.LETTHESUICASE)
+                if (_currentQuest == RequestCondition.LEAVESUITCASE)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_4;
                 }
@@ -393,7 +290,7 @@ public class GameManager : MonoBehaviour
             }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_7)
             {
-
+                
                 if (_currentQuest == RequestCondition.SPEAKWITHLUNAINRECEPTION)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_8;
@@ -410,6 +307,7 @@ public class GameManager : MonoBehaviour
                 }
 
             }
+        
         }
 
     }
@@ -421,11 +319,15 @@ public class GameManager : MonoBehaviour
         switch (_switchIndex)
         {
             case 0:
+                print("switch a 0");
                 Introduction();
                 break;
             case 1:
+                print("switch a 1");
+                FirstPart();
                 break;
             case 2:
+                print("switch a 2");
                 break;
         }
     }
@@ -487,17 +389,19 @@ public class GameManager : MonoBehaviour
                 if (_currentQuest == RequestCondition.OUTSIDETHEHOTEL)
                 {
                     _currentQuest = RequestCondition.INRECEPTION;
+                    print("Changing current quest to inreception");
                     GameFlow();
                 }
             }
         }
 
-        if (_currenStoryParts == StoryParts.FIRST_PART)
+        else if (_currenStoryParts == StoryParts.FIRST_PART)
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_1)
             {
                 if (_currentQuest == RequestCondition.INRECEPTION)
                 {
+                    print("Changing current quest to spokejorge");
                     _currentQuest = RequestCondition.SPOKEJORGE;
                     GameFlow();
                 }
@@ -507,14 +411,15 @@ public class GameManager : MonoBehaviour
             {
                 if (_currentQuest == RequestCondition.OUTSIDETHEROOM)
                 {
-                    _currentQuest = RequestCondition.LETTHESUICASE;
+                    print("Changing current quest to leavesuitcase");
+                    _currentQuest = RequestCondition.LEAVESUITCASE;
                     GameFlow();
                 }
             }
 
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
             {
-                if (_currentQuest == RequestCondition.LETTHESUICASE)
+                if (_currentQuest == RequestCondition.LEAVESUITCASE)
                 {
                     _currentQuest = RequestCondition.SPOKELUNA;
                     GameFlow();

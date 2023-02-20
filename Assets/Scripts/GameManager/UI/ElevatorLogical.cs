@@ -9,14 +9,14 @@ using UnityEngine.InputSystem;
 
 public class ElevatorLogical : MonoBehaviour
 {
-    [SerializeField] int[] _indexScene;
+    [SerializeField] string[] _sceneNames;
 
     [SerializeField] GameObject _buttonsSelector;
 
     [SerializeField] GameObject[] _buttons;
 
 
-    private int _currentButtonsIndex;
+    private int _currentButtonIndex;
 
     Scene _currentScene;
 
@@ -46,20 +46,20 @@ public class ElevatorLogical : MonoBehaviour
         _currentScene = SceneManager.GetActiveScene();
 
         
-            if (_currentScene.buildIndex == _indexScene[0])
+            if (_currentScene.name == _sceneNames[0])
             {
-                _currentButtonsIndex = 0;
+                _currentButtonIndex = 0;
 
             }
 
-            if (_currentScene.buildIndex == _indexScene[1])
+            if (_currentScene.name == _sceneNames[1])
             {
-                _currentButtonsIndex = 1;
+                _currentButtonIndex = 1;
             }
 
-            if (_currentScene.buildIndex == _indexScene[2])
+            if (_currentScene.name == _sceneNames[2])
             {
-                _currentButtonsIndex = 2;
+                _currentButtonIndex = 2;
             }
 
             UpdateSelectorPosition();
@@ -70,10 +70,11 @@ public class ElevatorLogical : MonoBehaviour
     private void UpdateSelectorPosition()
     {
 
-        _buttonsSelector.transform.parent = _buttons[_currentButtonsIndex].transform;
+        _buttonsSelector.transform.parent = _buttons[_currentButtonIndex].transform;
         _buttonsSelector.transform.localPosition = Vector3.zero;
 
-        if(_currentButtonsIndex != _currentScene.buildIndex)
+
+        if(string.Compare(_sceneNames[_currentButtonIndex], _currentScene.name) == 0)
         {
             _canUseTheButton = true;
         }
@@ -88,12 +89,12 @@ public class ElevatorLogical : MonoBehaviour
 
     private void ScrollUpByInterface(InputAction.CallbackContext context)
     {
-            _currentButtonsIndex = (_currentButtonsIndex + 1 + _buttons.Length) % _buttons.Length;
+            _currentButtonIndex = (_currentButtonIndex + 1 + _buttons.Length) % _buttons.Length;
             UpdateSelectorPosition();
     }
     private void ScrollDownByInterface(InputAction.CallbackContext context)
     {
-            _currentButtonsIndex = (_currentButtonsIndex - 1 + _buttons.Length) % _buttons.Length;
+            _currentButtonIndex = (_currentButtonIndex - 1 + _buttons.Length) % _buttons.Length;
             UpdateSelectorPosition();
     }
     private void UseTheButton(InputAction.CallbackContext context)
@@ -107,7 +108,7 @@ public class ElevatorLogical : MonoBehaviour
 
     private void ChangeScene()
     {
-        EventManager._ChangeScene.Invoke(_indexScene[_currentButtonsIndex]);
+        EventManager._ChangeScene.Invoke(_sceneNames[_currentButtonIndex]);
     }
 }
 

@@ -10,6 +10,9 @@ public class HallGameManager : GameManager
     [SerializeField] Transform comingFromElevatorToHallTransform;
     [SerializeField] Transform comingFromInsideCesarRoomTransform;
 
+    #region"Reference UI"
+    GameObject _elevatorUI;
+    #endregion
 
     protected override void Start()
     {
@@ -45,5 +48,110 @@ public class HallGameManager : GameManager
                 }
             }
         }
+        EventManager._CheckConveElevator.AddListener(CheckIfYouCanUseTheElevator);
+
+
+
+        #region"UI"
+        //Interfaz de ascensor//
+        _elevatorUI = GameObject.Find("ElevatorPanel");
+
+        _elevatorUI.SetActive(false);
+
+        #endregion
     }
+
+    #region"ElevatorLogical"
+    private void CheckIfYouCanUseTheElevator()
+    {
+        //Comprueba si Cesar puede usar el ascensor o debe decir un dialogo//
+        UIElevator();
+
+        if (_currenStoryParts == StoryParts.FIRST_PART)
+        {
+            if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
+            {
+                if (!JorgeDialogueManager._hasAlreadyTalkedToJorge)
+                {
+                    _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_01");
+                    print(_cesarsCurrentDialogue);
+                    EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
+                }
+                else
+                {
+                    UIElevator();
+                }
+
+            }
+
+            if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
+            {
+                if (_currentQuest != RequestCondition.LEAVESUITCASE)
+                {
+                    _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_03");
+                    EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
+                }
+                else
+                {
+                    UIElevator();
+                }
+            }
+
+            if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
+            {
+                if (_currentQuest == RequestCondition.OUTSIDETHEROOM)
+                {
+                    if (!LunaDialogueManager._hasAlreadyTalkedToLuna)
+                    {
+                        _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_05");
+                        EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
+                    }
+                    else
+                    {
+                        UIElevator();
+                    }
+                }
+
+            }
+
+            if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
+            {
+                if (_currentQuest == RequestCondition.OUTSIDECENTURIONROOM)
+                {
+                    if (!_hasAlreadyInteractueWithCenturionDoor)
+                    {
+                        _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_07");
+                        EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
+                    }
+                    else
+                    {
+                        UIElevator();
+                    }
+                }
+
+            }
+
+        }
+    }
+    #endregion
+
+    #region"UIElevator"
+    private void UIElevator()
+    {
+        //Activa o Desactiva la interfaz del ascensor dependiendo de su estado//
+        if (!_elevatorUI.activeSelf)
+        {
+            _elevatorUI.SetActive(true);
+            isElevatorUIActive = true;
+            EventManager._UseElevator.Invoke();
+            EventManager.UIOn.Invoke();
+        }
+        else
+        {
+            _elevatorUI.SetActive(false);
+            isElevatorUIActive = false;
+            EventManager.UIOff.Invoke();
+        }
+    }
+    #endregion
 }

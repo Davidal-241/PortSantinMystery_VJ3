@@ -81,4 +81,10 @@ public class InteractionHandler : MonoBehaviour
         }
         return _closestIndex;
     }
+
+
+    private void OnDestroy()
+    {
+        _controls.Player.Interactue.performed -= InteractionRequested;
+    }
 }
