@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pasillo Centurion.unity
     guid: eb07181b55109db4fb3aebf9d188a5b8
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 364679327023b54489b8252b1f1373fa
+  - enabled: 1
+    path: Assets/Scenes/Creditos.unity
+    guid: 34894c1a880667245906b34512bb20be
   m_configObjects: {}
