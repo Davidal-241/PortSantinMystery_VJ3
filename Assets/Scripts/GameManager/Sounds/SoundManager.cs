@@ -20,6 +20,7 @@ public class SoundManager : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _minPitchSpeed = 0.5f;
         _maxPitchSpeed = 1.5f;
+        
         //TypeSound();
     }
 

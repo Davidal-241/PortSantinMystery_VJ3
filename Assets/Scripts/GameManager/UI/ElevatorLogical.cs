@@ -101,6 +101,7 @@ public class ElevatorLogical : MonoBehaviour
     {
         if (_canUseTheButton)
         {
+            EventManager.ElevatorSound.Invoke();
             ChangeScene();
         }
     }

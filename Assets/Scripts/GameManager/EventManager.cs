@@ -66,4 +66,17 @@ public static class EventManager
     public static UnityEvent enterInSubTab = new UnityEvent();
 
     public static UnityEvent InteractueWithCenturionDoors = new UnityEvent();
+
+    //sounds
+
+    public static UnityEvent CharacterTyped = new UnityEvent();
+    public static UnityEvent ElevatorSound = new UnityEvent();
+    public static UnityEvent PagSound = new UnityEvent();
+    public static UnityEvent WritingSound = new UnityEvent();
+    public static UnityEvent DoorSound = new UnityEvent();
+    public static UnityEvent ThunderSound = new UnityEvent();
+    public static UnityEvent ButtonSound = new UnityEvent();
+    public static UnityEvent RainSound = new UnityEvent();
+    public static UnityEvent WalkingSound = new UnityEvent();
+    public static UnityEvent TypeSound = new UnityEvent();
 }
