@@ -16,7 +16,7 @@ public class JorgeDialogueManager : MonoBehaviour, IInteractable
     }
     public void Interact()
     {
-        print(name);
+        
         SearchDialogues();
     }
 
@@ -31,38 +31,37 @@ public class JorgeDialogueManager : MonoBehaviour, IInteractable
         {
             if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_1)
             {
-                if(GameManager._currentQuest == RequestCondition.INRECEPTION)
+                if(GameManager._currentQuest == FinishedQuest.INRECEPTION)
                 {
                     if (_isItJorgesMainDialogue)
                     {
+                        print("Is main dialogue");
                         _jorgesCurrentDialogue = Resources.Load<Conversation>("Jorge/N_Dialogues/Jorge_N_Dialogue_01");
                         GameManager.UpdateConversationLog(1);
-
                         EventManager.NextRequest.Invoke();
                         _isItJorgesMainDialogue = false;
                     }
-
-                    if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_2)
-                    {
-                        int _randomConversationIndex = Random.Range(0, 2);
-
-                        if (_randomConversationIndex == 0)
-                        {
-                            _jorgesCurrentDialogue = Resources.Load<Conversation>("Jorge/GF_Dialogues/Jorge_GF_Dialogue_01");
-
-                        }
-                        if (_randomConversationIndex == 1)
-                        {
-                            _jorgesCurrentDialogue = Resources.Load<Conversation>("Jorge/GF_Dialogues/Jorge_GF_Dialogue_02");
-
-                        }
-                    }
-
-                    if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_5)
-                    {
-                        _jorgesCurrentDialogue = Resources.Load<Conversation>("Jorge/GF_Dialogues/Jorge_GF_Dialogue_02");
-                    }
                 }
+            }
+            else if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_2)
+            {
+                int _randomConversationIndex = Random.Range(0, 2);
+
+                if (_randomConversationIndex == 0)
+                {
+                    _jorgesCurrentDialogue = Resources.Load<Conversation>("Jorge/GF_Dialogues/Jorge_GF_Dialogue_01");
+
+                }
+                else if (_randomConversationIndex == 1)
+                {
+                    _jorgesCurrentDialogue = Resources.Load<Conversation>("Jorge/GF_Dialogues/Jorge_GF_Dialogue_02");
+
+                }
+            }
+
+            else if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_5)
+            {
+                _jorgesCurrentDialogue = Resources.Load<Conversation>("Jorge/GF_Dialogues/Jorge_GF_Dialogue_02");
             }
         }
 

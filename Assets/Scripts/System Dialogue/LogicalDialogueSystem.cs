@@ -51,7 +51,6 @@ public class LogicalDialogueSystem : MonoBehaviour
 
     public static void StartConversation(Conversation convo)
     {
-        print("StartConversation");
 
         instance.currentIndex = 0;
         instance.currentConvo = convo;
@@ -70,13 +69,11 @@ public class LogicalDialogueSystem : MonoBehaviour
 
     public void ReadNext()
     {
-        print(currentConvo);
-        print(currentIndex + " / " + currentConvo.GetLength());
+        
 
         // End conversation
         if (currentIndex >= currentConvo.GetLength() && typingCoroutine == null)
         {
-            print("end conversation on line " + currentIndex);
 
             EndDialogue();
 
@@ -86,7 +83,6 @@ public class LogicalDialogueSystem : MonoBehaviour
         // Start conversation line
         else if (!_typingHasStarted)
         {
-            print("start conversation line " + currentIndex);
 
             if (typingCoroutine != null)
                 instance.StopCoroutine(typingCoroutine);
@@ -98,7 +94,6 @@ public class LogicalDialogueSystem : MonoBehaviour
         // End conversation line
         else if (typingCoroutine == null)
         {
-            print("end conversation line " + currentIndex);
 
             StartNewLine();
 
@@ -166,7 +161,6 @@ public class LogicalDialogueSystem : MonoBehaviour
     {
         //GameManager._playerCanMove = false;
         _dialogueBox.SetActive(false);
-        print("EndDialogue/ Is DialogueBox in False?: " + _dialogueBox.activeSelf);
 
         currentIndex = 0;
         _typingHasStarted = false;
@@ -181,7 +175,6 @@ public class LogicalDialogueSystem : MonoBehaviour
 
     private IEnumerator TypeText(string text)
     {
-        print("printing line " + currentIndex);
 
         dialogue.text = "";
         bool complete = false;

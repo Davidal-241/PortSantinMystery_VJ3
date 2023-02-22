@@ -64,7 +64,7 @@ public class CenturionCorridorGameManager : GameManager
 
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
             {
-                if (_currentQuest != RequestCondition.LEAVESUITCASE)
+                if (_currentQuest != FinishedQuest.LEAVESUITCASE)
                 {
                     _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_03");
                     EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
@@ -77,7 +77,7 @@ public class CenturionCorridorGameManager : GameManager
 
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
             {
-                if (_currentQuest == RequestCondition.OUTSIDETHEROOM)
+                if (_currentQuest == FinishedQuest.OUTSIDETHEROOM)
                 {
                     if (!LunaDialogueManager._hasAlreadyTalkedToLuna)
                     {
@@ -94,7 +94,7 @@ public class CenturionCorridorGameManager : GameManager
 
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
             {
-                if (_currentQuest == RequestCondition.OUTSIDECENTURIONROOM)
+                if (_currentQuest == FinishedQuest.OUTSIDECENTURIONROOM)
                 {
                     if (!_hasAlreadyInteractueWithCenturionDoor)
                     {

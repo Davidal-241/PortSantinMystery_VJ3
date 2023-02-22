@@ -27,7 +27,7 @@ public enum StagesStoryParts
     STAGE_8
 }
 
-public enum RequestCondition
+public enum FinishedQuest
 {
     OUTSIDETHEHOTEL,
     INRECEPTION,
@@ -55,11 +55,11 @@ public class GameManager : MonoBehaviour
 
     public static StoryParts _currenStoryParts;
     public static StagesStoryParts _currentStagesStoryParts;
-    public static RequestCondition _currentQuest;
+    public static FinishedQuest _currentQuest;
 
     //Este int controla el Switch//
 
-    int _switchIndex = 0;
+    static int _switchIndex = 0;
 
     #endregion
 
@@ -215,7 +215,7 @@ public class GameManager : MonoBehaviour
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_1)
             {
-                if (_currentQuest == RequestCondition.INRECEPTION)
+                if (_currentQuest == FinishedQuest.INRECEPTION)
                 {
                     _currenStoryParts = StoryParts.FIRST_PART;
                     _currentStagesStoryParts = StagesStoryParts.STAGE_1;
@@ -237,9 +237,8 @@ public class GameManager : MonoBehaviour
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_1)
             {
-                if (_currentQuest == RequestCondition.SPOKEJORGE)
+                if (_currentQuest == FinishedQuest.SPOKEJORGE)
                 {
-                    print("Changing StagesStoryParts to Stage 2");
 
                     _currentStagesStoryParts = StagesStoryParts.STAGE_2;
                 }
@@ -248,7 +247,7 @@ public class GameManager : MonoBehaviour
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
             {
 
-                if (_currentQuest == RequestCondition.OUTSIDETHEROOM)
+                if (_currentQuest == FinishedQuest.OUTSIDETHEROOM)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_3;
                 }
@@ -257,7 +256,7 @@ public class GameManager : MonoBehaviour
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
             {
 
-                if (_currentQuest == RequestCondition.LEAVESUITCASE)
+                if (_currentQuest == FinishedQuest.LEAVESUITCASE)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_4;
                 }
@@ -265,7 +264,7 @@ public class GameManager : MonoBehaviour
             }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_4)
             {
-                if (_currentQuest == RequestCondition.SPOKELUNA)
+                if (_currentQuest == FinishedQuest.SPOKELUNA)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_5;
                 }
@@ -273,7 +272,7 @@ public class GameManager : MonoBehaviour
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
             {
 
-                if (_currentQuest == RequestCondition.OUTSIDECENTURIONROOM)
+                if (_currentQuest == FinishedQuest.OUTSIDECENTURIONROOM)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_6;
                 }
@@ -282,7 +281,7 @@ public class GameManager : MonoBehaviour
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
             {
 
-                if (_currentQuest == RequestCondition.INTERACTUEWITHCENTURIONDOOR)
+                if (_currentQuest == FinishedQuest.INTERACTUEWITHCENTURIONDOOR)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_7;
                 }
@@ -291,7 +290,7 @@ public class GameManager : MonoBehaviour
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_7)
             {
                 
-                if (_currentQuest == RequestCondition.SPEAKWITHLUNAINRECEPTION)
+                if (_currentQuest == FinishedQuest.SPEAKWITHLUNAINRECEPTION)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_8;
                 }
@@ -299,7 +298,7 @@ public class GameManager : MonoBehaviour
             }else if(_currentStagesStoryParts == StagesStoryParts.STAGE_8)
             {
 
-                if(_currentQuest == RequestCondition.READYTOGO)
+                if(_currentQuest == FinishedQuest.READYTOGO)
                 {
                     _currenStoryParts = StoryParts.SECOND_PART;
                     _currentStagesStoryParts = StagesStoryParts.STAGE_1;
@@ -319,15 +318,15 @@ public class GameManager : MonoBehaviour
         switch (_switchIndex)
         {
             case 0:
-                print("switch a 0");
+               
                 Introduction();
                 break;
             case 1:
-                print("switch a 1");
+                
                 FirstPart();
                 break;
             case 2:
-                print("switch a 2");
+                
                 break;
         }
     }
@@ -336,7 +335,6 @@ public class GameManager : MonoBehaviour
     #region"ConversationsInput"
     void ConversationStarts()
     {
-        print("ConvesationStarts input map change");
 
         _controls.Player.Interactue.Disable();
         _controls.Player.Disable();
@@ -345,7 +343,6 @@ public class GameManager : MonoBehaviour
 
     void ConversationEnds()
     {
-        print("ConversationEnds input map change");
 
         _controls.Conversation.Disable();
         _controls.Player.Enable();
@@ -386,9 +383,9 @@ public class GameManager : MonoBehaviour
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_1)
             {
-                if (_currentQuest == RequestCondition.OUTSIDETHEHOTEL)
+                if (_currentQuest == FinishedQuest.OUTSIDETHEHOTEL)
                 {
-                    _currentQuest = RequestCondition.INRECEPTION;
+                    _currentQuest = FinishedQuest.INRECEPTION;
                     print("Changing current quest to inreception");
                     GameFlow();
                 }
@@ -399,62 +396,62 @@ public class GameManager : MonoBehaviour
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_1)
             {
-                if (_currentQuest == RequestCondition.INRECEPTION)
+                if (_currentQuest == FinishedQuest.INRECEPTION)
                 {
                     print("Changing current quest to spokejorge");
-                    _currentQuest = RequestCondition.SPOKEJORGE;
+                    _currentQuest = FinishedQuest.SPOKEJORGE;
                     GameFlow();
                 }
             }
 
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
             {
-                if (_currentQuest == RequestCondition.OUTSIDETHEROOM)
+                if (_currentQuest == FinishedQuest.OUTSIDETHEROOM)
                 {
                     print("Changing current quest to leavesuitcase");
-                    _currentQuest = RequestCondition.LEAVESUITCASE;
+                    _currentQuest = FinishedQuest.LEAVESUITCASE;
                     GameFlow();
                 }
             }
 
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
             {
-                if (_currentQuest == RequestCondition.LEAVESUITCASE)
+                if (_currentQuest == FinishedQuest.LEAVESUITCASE)
                 {
-                    _currentQuest = RequestCondition.SPOKELUNA;
+                    _currentQuest = FinishedQuest.SPOKELUNA;
                     GameFlow();
                 }
             }
 
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_4)
             {
-                if (_currentQuest == RequestCondition.SPOKELUNA)
+                if (_currentQuest == FinishedQuest.SPOKELUNA)
                 {
-                    _currentQuest = RequestCondition.OUTSIDECENTURIONROOM;
+                    _currentQuest = FinishedQuest.OUTSIDECENTURIONROOM;
                     GameFlow();
                 }
             }
 
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
             {
-                if (_currentQuest == RequestCondition.OUTSIDECENTURIONROOM)
+                if (_currentQuest == FinishedQuest.OUTSIDECENTURIONROOM)
                 {
-                    _currentQuest = RequestCondition.INTERACTUEWITHCENTURIONDOOR;
+                    _currentQuest = FinishedQuest.INTERACTUEWITHCENTURIONDOOR;
                     GameFlow();
                 }
             }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
             {
-                if (_currentQuest == RequestCondition.INTERACTUEWITHCENTURIONDOOR)
+                if (_currentQuest == FinishedQuest.INTERACTUEWITHCENTURIONDOOR)
                 {
-                    _currentQuest = RequestCondition.SPEAKWITHLUNAINRECEPTION;
+                    _currentQuest = FinishedQuest.SPEAKWITHLUNAINRECEPTION;
                     GameFlow();
                 }
             } else if (_currentStagesStoryParts == StagesStoryParts.STAGE_7)
             {
-                if (_currentQuest == RequestCondition.SPEAKWITHLUNAINRECEPTION)
+                if (_currentQuest == FinishedQuest.SPEAKWITHLUNAINRECEPTION)
                 {
-                    _currentQuest = RequestCondition.READYTOGO;
+                    _currentQuest = FinishedQuest.READYTOGO;
                     GameFlow();
                 }
             }
