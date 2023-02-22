@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HallGameManager : GameManager
+public class CorridorGameManager : GameManager
 {
     [SerializeField] GameObject _lunaPrefab;
     [SerializeField] Transform _LunaSpawnPoint;
