@@ -74,7 +74,7 @@ public class ElevatorLogical : MonoBehaviour
         _buttonsSelector.transform.localPosition = Vector3.zero;
 
 
-        if(string.Compare(_sceneNames[_currentButtonIndex], _currentScene.name) == 0)
+        if(string.Compare(_sceneNames[_currentButtonIndex], _currentScene.name) != 0)
         {
             _canUseTheButton = true;
         }

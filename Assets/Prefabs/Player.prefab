@@ -3487,7 +3487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveType: 1
-  WalkingSpeed: 10
+  WalkingSpeed: 6
   _ani: {fileID: 9000672324706807243}
 --- !u!136 &9000672324706807242
 CapsuleCollider:

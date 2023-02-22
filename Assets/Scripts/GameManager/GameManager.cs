@@ -195,6 +195,8 @@ public class GameManager : MonoBehaviour
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
             {
+                print(_sceneName);
+
                 if(string.Compare(_sceneName, "Pasillo Centurion") == 0)
                 {
                     _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_03");
@@ -203,6 +205,12 @@ public class GameManager : MonoBehaviour
                 {
                     SceneManager.LoadScene(_sceneName);
                 }
+            }
+            else
+            {
+                
+                    SceneManager.LoadScene(_sceneName);
+                
             }
         }
     }

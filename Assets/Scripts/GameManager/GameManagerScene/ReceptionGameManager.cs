@@ -79,7 +79,14 @@ public class ReceptionGameManager : GameManager
                     print(_cesarsCurrentDialogue);
                     EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
                 }
-                else
+
+            }
+
+            if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
+            {
+                print("_hasAlreadyTalkedToJorge: " + JorgeDialogueManager._hasAlreadyTalkedToJorge);
+
+                if (JorgeDialogueManager._hasAlreadyTalkedToJorge)
                 {
                     print("a");
                     UIElevator();
