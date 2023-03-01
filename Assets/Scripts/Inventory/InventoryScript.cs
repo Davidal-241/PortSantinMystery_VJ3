@@ -120,7 +120,7 @@ public class InventoryScript : MonoBehaviour
 
             if (GameManager._isOpenInventory)
             {
-
+                EventManager.PagSound.Invoke();
                 _tabOptions[_currentTabIndex].SetActive(false);
                 _currentTabIndex = (_currentTabIndex - 1 + _tab.Length) % _tab.Length;
                 _tabOptions[_currentTabIndex].SetActive(true);
@@ -136,7 +136,7 @@ public class InventoryScript : MonoBehaviour
         {
             if (GameManager._isOpenInventory)
             {
-
+                EventManager.PagSound.Invoke();
                 _tabOptions[_currentTabIndex].SetActive(false);
                 _currentTabIndex = (_currentTabIndex + 1) % _tab.Length;
                 _tabOptions[_currentTabIndex].SetActive(true);

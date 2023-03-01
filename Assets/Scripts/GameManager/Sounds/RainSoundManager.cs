@@ -11,7 +11,7 @@ public class RainSoundManager : MonoBehaviour
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
-        EventManager.ElevatorSound.AddListener(RainSound);
+        EventManager.RainSound.AddListener(RainSound);
     }
 
     public void RainSound()

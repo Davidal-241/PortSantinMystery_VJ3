@@ -97,7 +97,7 @@ public class InventoryTab : MonoBehaviour
 
             if ( _currentPagIndex > 0)
             {
-
+                EventManager.PagSound.Invoke();
                 _tabViews[_currentPagIndex].SetActive(false);
                 _currentPagIndex--;
                 _tabViews[_currentPagIndex].SetActive(true);
@@ -112,7 +112,7 @@ public class InventoryTab : MonoBehaviour
         {
             if (_currentPagIndex < _tabViews.Length - 1)
             {
-
+                EventManager.PagSound.Invoke();
                 _tabViews[_currentPagIndex].SetActive(false);
                 _currentPagIndex++;
                 _tabViews[_currentPagIndex].SetActive(true);

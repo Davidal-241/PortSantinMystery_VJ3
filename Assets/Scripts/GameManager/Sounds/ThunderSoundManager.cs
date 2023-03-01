@@ -11,7 +11,7 @@ public class ThunderSoundManager : MonoBehaviour
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
-        EventManager.ElevatorSound.AddListener(ThunderSound);
+        EventManager.ThunderSound.AddListener(ThunderSound);
     }
 
     public void ThunderSound()

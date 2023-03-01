@@ -11,11 +11,12 @@ public class DoorSoundManager : MonoBehaviour
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
-        EventManager.ElevatorSound.AddListener(DoorSound);
+        EventManager.DoorSound.AddListener(DoorSound);
     }
 
     public void DoorSound()
     {
+        print("door");
         _audioSource.pitch = 1;
         _currentClip = _clip._sounds[3];
         _audioSource.clip = _currentClip;

@@ -64,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (direction.x > 0)
             {
+                EventManager.WalkingSound.Invoke();
                 //if(direction.x > 0 && direction.x < 0.1)
                 transform.rotation = Quaternion.Euler(0, 90, 0);
                 _ani.SetBool("Walking", true);
@@ -71,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
             else if (direction.x < 0)
             {
 
+                EventManager.WalkingSound.Invoke();
                 transform.rotation = Quaternion.Euler(0, -90, 0);
                 _ani.SetBool("Walking", true);
             }

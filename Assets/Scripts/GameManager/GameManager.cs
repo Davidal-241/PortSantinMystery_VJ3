@@ -226,8 +226,8 @@ public class GameManager : MonoBehaviour
                         _firtsTimeInTheOutsideCesarRoom = false;
                         NextRequestCondition();
                     }
+                    EventManager.ElevatorSound.Invoke();
                     SceneManager.LoadScene(_sceneName);
-
                 }
             }
             else
@@ -529,13 +529,13 @@ public class GameManager : MonoBehaviour
 
                 _firtsTimeEntryInTheHotel = false;
 
+                EventManager.DoorSound.Invoke();
                 SceneManager.LoadScene(indexSceneDoor);
-                
 
             }
             else
             {
-
+                EventManager.DoorSound.Invoke();
                 SceneManager.LoadScene(indexSceneDoor);
             }
 
@@ -555,7 +555,7 @@ public class GameManager : MonoBehaviour
             
             if(_currentStagesStoryParts == StagesStoryParts.STAGE_8)
             {
-
+                EventManager.DoorSound.Invoke();
                 SceneManager.LoadScene(indexSceneDoor);
 
             }
@@ -568,12 +568,13 @@ public class GameManager : MonoBehaviour
                 print("In The >CesarRoom");
                 NextRequestCondition();
                 _firtsTimeEntryInTheRoom = false;
+                EventManager.DoorSound.Invoke();
                 SceneManager.LoadScene(indexSceneDoor);
             }
             else
             {
 
-
+                EventManager.DoorSound.Invoke();
                 SceneManager.LoadScene(indexSceneDoor);
 
             }
@@ -585,13 +586,14 @@ public class GameManager : MonoBehaviour
             {
 
                 _firtsTimeExitTheRoom = false;
+                EventManager.DoorSound.Invoke();
                 SceneManager.LoadScene(indexSceneDoor);
                 //Evento para luna aparezca
 
             }
             else
             {
-
+                EventManager.DoorSound.Invoke();
                 SceneManager.LoadScene(indexSceneDoor);
             }
 
@@ -615,6 +617,7 @@ public class GameManager : MonoBehaviour
 
     public static void UpdateConversationLog(int index)
     {
+        EventManager.WritingSound.Invoke();
         // añadir <index> a pastConversations
         int[] tmp;
         tmp = new int[PastConversations.Length];

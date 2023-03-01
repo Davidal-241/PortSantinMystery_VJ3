@@ -11,7 +11,7 @@ public class WritingSoundManager : MonoBehaviour
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
-        EventManager.ElevatorSound.AddListener(WritingSound);
+        EventManager.WritingSound.AddListener(WritingSound);
     }
 
     public void WritingSound()

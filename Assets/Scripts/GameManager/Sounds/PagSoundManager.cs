@@ -11,7 +11,7 @@ public class PagSoundManager : MonoBehaviour
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
-        EventManager.ElevatorSound.AddListener(PagSound);
+        EventManager.PagSound.AddListener(PagSound);
     }
 
     public void PagSound()

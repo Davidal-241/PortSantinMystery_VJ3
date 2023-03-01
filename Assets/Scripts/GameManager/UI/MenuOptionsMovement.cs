@@ -150,12 +150,14 @@ public class MenuOptionsMovement : MonoBehaviour
                 _currentMenuIndex = 1;
                 _menus[_currentMenuIndex].SetActive(true);
                 _currentButtonIndex = 0;
+                EventManager.ButtonSound.Invoke();
                 UpdateSelectorPosition();
             }
 
             else if(_buttonsInMenu[_currentMenuIndex][_currentButtonIndex] == _buttonsInMenu[0][1])
             {
                 EventManager._GoToMainMenu.Invoke();
+                EventManager.ButtonSound.Invoke();
             }
         } 
 
@@ -164,6 +166,7 @@ public class MenuOptionsMovement : MonoBehaviour
             if (_buttonsInMenu[_currentMenuIndex][_currentButtonIndex] == _buttonsInMenu[1][0])
             {
                 _canChangeSliderValue = !_canChangeSliderValue;
+                EventManager.ButtonSound.Invoke();
             }
            
 
@@ -175,11 +178,13 @@ public class MenuOptionsMovement : MonoBehaviour
                 {
                     _isFull = true;
                     EventManager._FullScreen.Invoke(_isFull);
+                    EventManager.ButtonSound.Invoke();
                 }
                 else
                 {
                     _isFull = false;
                     EventManager._FullScreen.Invoke(_isFull);
+                    EventManager.ButtonSound.Invoke();
                 }
             }
             else if (_buttonsInMenu[_currentMenuIndex][_currentButtonIndex] == _buttonsInMenu[1][2])
@@ -188,6 +193,7 @@ public class MenuOptionsMovement : MonoBehaviour
                 _currentMenuIndex = 0;
                 _menus[_currentMenuIndex].SetActive(true);
                 _currentButtonIndex = 0;
+                EventManager.ButtonSound.Invoke();
                 UpdateSelectorPosition();
             }
         }

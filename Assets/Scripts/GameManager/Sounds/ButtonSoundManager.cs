@@ -11,7 +11,7 @@ public class ButtonSoundManager : MonoBehaviour
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
-        EventManager.ElevatorSound.AddListener(ButtonSound);
+        EventManager.ButtonSound.AddListener(ButtonSound);
     }
 
     public void ButtonSound()

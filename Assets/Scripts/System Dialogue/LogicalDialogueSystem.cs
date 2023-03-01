@@ -186,7 +186,7 @@ public class LogicalDialogueSystem : MonoBehaviour
             if (text[dialogueIndex] != '/')
             {
                 dialogue.text += text[dialogueIndex];
-                //_soundManager.TypeSound();
+                EventManager.TypeSound.Invoke();
             }
             dialogueIndex++;
             

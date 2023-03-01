@@ -15,7 +15,7 @@ public class TypeSoundManager : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _minPitchSpeed = 0.5f;
         _maxPitchSpeed = 1.5f;
-        EventManager.ElevatorSound.AddListener(TypeSound);
+        EventManager.TypeSound.AddListener(TypeSound);
     }
 
     public void TypeSound()

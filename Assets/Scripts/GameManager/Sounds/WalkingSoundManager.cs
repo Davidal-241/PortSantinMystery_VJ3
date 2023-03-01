@@ -15,7 +15,7 @@ public class WalkingSoundManager : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _minPitchSpeed = 0.5f;
         _maxPitchSpeed = 1.5f;
-        EventManager.ElevatorSound.AddListener(WalkingSound);
+        EventManager.WalkingSound.AddListener(WalkingSound);
     }
 
     public void WalkingSound()
