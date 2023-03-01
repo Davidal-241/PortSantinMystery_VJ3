@@ -45,6 +45,9 @@ public class JorgeDialogueManager : MonoBehaviour, IInteractable
             }
             else if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_2)
             {
+                if(GameManager._currentQuest == FinishedQuest.SPOKEJORGE)
+                {
+
                 int _randomConversationIndex = Random.Range(0, 2);
 
                 if (_randomConversationIndex == 0)
@@ -57,9 +60,10 @@ public class JorgeDialogueManager : MonoBehaviour, IInteractable
                     _jorgesCurrentDialogue = Resources.Load<Conversation>("Jorge/GF_Dialogues/Jorge_GF_Dialogue_02");
 
                 }
+                }
             }
 
-            else if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_5)
+            else if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_3)
             {
                 _jorgesCurrentDialogue = Resources.Load<Conversation>("Jorge/GF_Dialogues/Jorge_GF_Dialogue_02");
             }
