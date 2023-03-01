@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class DoorLogical : MonoBehaviour, IInteractable
 {
-    [SerializeField] int _NextSceneIndex;
+    [SerializeField] string _NextSceneIndex;
 
     public void Interact()
     {

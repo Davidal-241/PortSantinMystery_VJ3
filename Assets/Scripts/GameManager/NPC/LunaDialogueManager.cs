@@ -30,7 +30,7 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
             if (!_lunaDoesntWantToTalk)
             {
 
-                if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_4)
+                if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_5)
                 {
                     if (_isItLunaMainDialogue)
                     {
@@ -46,7 +46,7 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
                 }
             }
 
-            if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_7)
+            if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_8)
             {
                 _isItLunaMainDialogue = true;
 

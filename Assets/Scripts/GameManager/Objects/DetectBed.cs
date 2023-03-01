@@ -4,6 +4,29 @@ using UnityEngine;
 
 public class DetectBed : MonoBehaviour,IInteractable
 {
+   [SerializeField] GameObject _cesarMaleta;
+    [SerializeField] GameObject _cesarSinMaleta;
+    [SerializeField] GameObject _suitcaseInRoom;
+    static bool _isSuitcaseInTheRoom = false;
+
+    private void Awake()
+    {
+        _cesarMaleta = GameObject.Find("Cesar");
+        _cesarSinMaleta = GameObject.Find("Cesar_NoMaleta");
+        _suitcaseInRoom = GameObject.Find("Maleta");
+    }
+
+    private void Start()
+    {
+
+        if (!_isSuitcaseInTheRoom)
+        {
+            _suitcaseInRoom.SetActive(false);
+            _cesarSinMaleta.SetActive(false);
+        }
+    }
+
+
     public void Interact()
     {
         LeaveTheBag();
@@ -11,6 +34,11 @@ public class DetectBed : MonoBehaviour,IInteractable
 
     private void LeaveTheBag()
     {
+        _isSuitcaseInTheRoom = true;
+        _cesarMaleta.SetActive(false);
+        _cesarSinMaleta.SetActive(true);
+        _suitcaseInRoom.SetActive(true);
+
         EventManager.NextRequest.Invoke();
     }
 

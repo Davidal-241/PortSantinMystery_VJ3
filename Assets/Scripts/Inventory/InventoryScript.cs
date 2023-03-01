@@ -148,13 +148,21 @@ public class InventoryScript : MonoBehaviour
 
     void BrowseItems(InputAction.CallbackContext context)
     {
-        blocksTab = true;
+        if (GameManager._isOpenInventory)
+        {
+
+            blocksTab = true;
         EventManager.enterInSubTab.Invoke();
+        }
     }
 
     void BrowseTabs(InputAction.CallbackContext context)
     {
-        blocksTab = false;
+        if (GameManager._isOpenInventory)
+        {
+
+            blocksTab = false;
         EventManager.enterInSubTab.Invoke();
+        }
     }
 }

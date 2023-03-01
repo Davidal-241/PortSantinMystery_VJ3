@@ -24,7 +24,8 @@ public enum StagesStoryParts
     STAGE_5,
     STAGE_6,
     STAGE_7,
-    STAGE_8
+    STAGE_8,
+    STAGE_9
 }
 
 public enum FinishedQuest
@@ -81,7 +82,10 @@ public class GameManager : MonoBehaviour
     bool _firtsTimeEntryInTheRoom = true;
     bool _firtsTimeEntryInTheCenturionsRoom = true;
     bool _firtsTimeExitTheRoom = true;
-   protected bool _hasAlreadyInteractueWithCenturionDoor = false;
+    bool _firtsTimeInTheOutsideCesarRoom = true;
+    protected bool _hasAlreadyInteractueWithCenturionDoor = false;
+
+   static bool _isHandFree = false;
     #endregion
 
     #region"Statics"
@@ -96,6 +100,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] bool shouldDeletePlayePrefs = false;
 
+    GameObject _cesarMaleta;
+    GameObject _cesarSinMaleta;
 
     private void Awake()
     {
@@ -144,6 +150,9 @@ public class GameManager : MonoBehaviour
         //}
 
         _player = GameObject.FindGameObjectWithTag("Player");
+        _cesarMaleta = GameObject.Find("Cesar");
+        _cesarSinMaleta = GameObject.Find("Cesar_NoMaleta");
+
     }
 
     protected virtual void Start()
@@ -176,6 +185,17 @@ public class GameManager : MonoBehaviour
 
         #endregion
 
+
+        if (_isHandFree)
+        {
+            _cesarMaleta.SetActive(false);
+            _cesarSinMaleta.SetActive(true);
+        }
+        else
+        {
+            _cesarMaleta.SetActive(true);
+            _cesarSinMaleta.SetActive(false);
+        }
     }
 
     #region"GoMenuPrincipal"
@@ -195,15 +215,18 @@ public class GameManager : MonoBehaviour
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
             {
-                print(_sceneName);
-
                 if(string.Compare(_sceneName, "Pasillo Centurion") == 0)
                 {
                     _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_03");
                 }
                 else
                 {
+                    if (_firtsTimeInTheOutsideCesarRoom)
+                    {
+                        NextRequestCondition();
+                    }
                     SceneManager.LoadScene(_sceneName);
+
                 }
             }
             else
@@ -245,7 +268,7 @@ public class GameManager : MonoBehaviour
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_1)
             {
-                if (_currentQuest == FinishedQuest.SPOKEJORGE)
+                if (_currentQuest == FinishedQuest.INRECEPTION)
                 {
 
                     _currentStagesStoryParts = StagesStoryParts.STAGE_2;
@@ -255,7 +278,7 @@ public class GameManager : MonoBehaviour
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
             {
 
-                if (_currentQuest == FinishedQuest.OUTSIDETHEROOM)
+                if (_currentQuest == FinishedQuest.SPOKEJORGE)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_3;
                 }
@@ -264,23 +287,26 @@ public class GameManager : MonoBehaviour
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
             {
 
-                if (_currentQuest == FinishedQuest.LEAVESUITCASE)
+                if (_currentQuest == FinishedQuest.OUTSIDETHEROOM)
                 {
+                    
                     _currentStagesStoryParts = StagesStoryParts.STAGE_4;
                 }
 
             }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_4)
             {
-                if (_currentQuest == FinishedQuest.SPOKELUNA)
+                if (_currentQuest == FinishedQuest.LEAVESUITCASE)
                 {
+                    _isHandFree = true;
                     _currentStagesStoryParts = StagesStoryParts.STAGE_5;
+
                 }
             }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
             {
 
-                if (_currentQuest == FinishedQuest.OUTSIDECENTURIONROOM)
+                if (_currentQuest == FinishedQuest.SPOKELUNA)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_6;
                 }
@@ -289,7 +315,7 @@ public class GameManager : MonoBehaviour
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
             {
 
-                if (_currentQuest == FinishedQuest.INTERACTUEWITHCENTURIONDOOR)
+                if (_currentQuest == FinishedQuest.OUTSIDECENTURIONROOM)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_7;
                 }
@@ -298,7 +324,7 @@ public class GameManager : MonoBehaviour
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_7)
             {
                 
-                if (_currentQuest == FinishedQuest.SPEAKWITHLUNAINRECEPTION)
+                if (_currentQuest == FinishedQuest.INTERACTUEWITHCENTURIONDOOR)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_8;
                 }
@@ -306,7 +332,19 @@ public class GameManager : MonoBehaviour
             }else if(_currentStagesStoryParts == StagesStoryParts.STAGE_8)
             {
 
-                if(_currentQuest == FinishedQuest.READYTOGO)
+                if(_currentQuest == FinishedQuest.SPEAKWITHLUNAINRECEPTION)
+                {
+                    _currentStagesStoryParts = StagesStoryParts.STAGE_9;
+                    _currenStoryParts = StoryParts.SECOND_PART;
+                    _currentStagesStoryParts = StagesStoryParts.STAGE_1;
+                    _switchIndex++;
+                }
+
+            }
+            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_9)
+            {
+
+                if (_currentQuest == FinishedQuest.READYTOGO)
                 {
                     _currenStoryParts = StoryParts.SECOND_PART;
                     _currentStagesStoryParts = StagesStoryParts.STAGE_1;
@@ -314,7 +352,7 @@ public class GameManager : MonoBehaviour
                 }
 
             }
-        
+
         }
 
     }
@@ -414,6 +452,16 @@ public class GameManager : MonoBehaviour
 
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
             {
+                if (_currentQuest == FinishedQuest.SPOKEJORGE)
+                {
+                    print("Changing current quest to leavesuitcase");
+                    _currentQuest = FinishedQuest.OUTSIDETHEROOM;
+                    _firtsTimeInTheOutsideCesarRoom = false;
+                    GameFlow();
+                }
+            }
+            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
+            {
                 if (_currentQuest == FinishedQuest.OUTSIDETHEROOM)
                 {
                     print("Changing current quest to leavesuitcase");
@@ -422,7 +470,7 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
+            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_4)
             {
                 if (_currentQuest == FinishedQuest.LEAVESUITCASE)
                 {
@@ -431,7 +479,7 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_4)
+            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
             {
                 if (_currentQuest == FinishedQuest.SPOKELUNA)
                 {
@@ -440,7 +488,7 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
+            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
             {
                 if (_currentQuest == FinishedQuest.OUTSIDECENTURIONROOM)
                 {
@@ -448,14 +496,14 @@ public class GameManager : MonoBehaviour
                     GameFlow();
                 }
             }
-            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
+            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_7)
             {
                 if (_currentQuest == FinishedQuest.INTERACTUEWITHCENTURIONDOOR)
                 {
                     _currentQuest = FinishedQuest.SPEAKWITHLUNAINRECEPTION;
                     GameFlow();
                 }
-            } else if (_currentStagesStoryParts == StagesStoryParts.STAGE_7)
+            } else if (_currentStagesStoryParts == StagesStoryParts.STAGE_8)
             {
                 if (_currentQuest == FinishedQuest.SPEAKWITHLUNAINRECEPTION)
                 {
@@ -480,7 +528,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region"Check the scene if use door"
-    private void CheckTheScene(int indexSceneDoor)
+    private void CheckTheScene(string indexSceneDoor)
     {
         if (_currentScene.name == sceneWithDoor[0])
         {
@@ -504,7 +552,7 @@ public class GameManager : MonoBehaviour
         }
         else if (_currentScene.name == sceneWithDoor[1])
         {
-            if (_currentStagesStoryParts == StagesStoryParts.STAGE_7)
+            if (_currentStagesStoryParts == StagesStoryParts.STAGE_8)
             {
                 if (_tryExitTheReception)
                 {
@@ -515,7 +563,7 @@ public class GameManager : MonoBehaviour
                 }
             }
             
-            if(_currentStagesStoryParts == StagesStoryParts.STAGE_8)
+            if(_currentStagesStoryParts == StagesStoryParts.STAGE_9)
             {
 
                 SceneManager.LoadScene(indexSceneDoor);
@@ -527,7 +575,7 @@ public class GameManager : MonoBehaviour
         {
             if (_firtsTimeEntryInTheRoom)
             {
-
+                print("In The >CesarRoom");
                 NextRequestCondition();
                 _firtsTimeEntryInTheRoom = false;
                 SceneManager.LoadScene(indexSceneDoor);
