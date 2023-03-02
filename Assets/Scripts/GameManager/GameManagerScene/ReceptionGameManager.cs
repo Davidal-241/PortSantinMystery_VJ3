@@ -39,7 +39,6 @@ public class ReceptionGameManager : GameManager
 
         base.Start();
 
-        print("NextRequestCondition: " + _currenStoryParts + " - " + _currentStagesStoryParts + " - " + _currentQuest);
 
         if (_currentQuest == FinishedQuest.SPEAKWITHLUNAINRECEPTION)
         {

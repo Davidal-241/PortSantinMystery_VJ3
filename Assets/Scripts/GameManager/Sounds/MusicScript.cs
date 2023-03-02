@@ -5,18 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class MusicScript : MonoBehaviour
 {
-    private GameObject musicPrefab;
+    //private GameObject musicPrefab;
+
+    public static MusicScript instance = null;
 
     void Start()
     {
-        musicPrefab = this.gameObject;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
-
-    
-    void Update()
-    {
-        DontDestroyOnLoad(musicPrefab);
-    }
-
-    
 }
