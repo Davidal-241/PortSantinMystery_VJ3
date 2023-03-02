@@ -43,7 +43,7 @@ public class CenturionCorridorGameManager : GameManager
     private void CheckIfYouCanUseTheElevator()
     {
         //Comprueba si Cesar puede usar el ascensor o debe decir un dialogo//
-        UIElevator();
+        //UIElevator();
 
         if (_currenStoryParts == StoryParts.FIRST_PART)
         {
@@ -63,6 +63,10 @@ public class CenturionCorridorGameManager : GameManager
                     }
                 }
 
+            }
+            else
+            {
+                UIElevator();
             }
 
         }

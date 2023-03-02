@@ -38,14 +38,16 @@ public class CorridorGameManager : GameManager
 
         base.Start();
 
-       
-            if (_currenStoryParts == StoryParts.FIRST_PART)
+        print("NextRequestCondition: " + _currenStoryParts + " - " + _currentStagesStoryParts + " - " + _currentQuest);
+
+        if (_currenStoryParts == StoryParts.FIRST_PART)
+        {
+            if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
             {
-                if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
-                {
-                    Instantiate(_lunaPrefab, _LunaSpawnPoint.position, _LunaSpawnPoint.rotation);
-                }
+            print("Instantiate Luna");
+                Instantiate(_lunaPrefab, _LunaSpawnPoint.position, _LunaSpawnPoint.rotation);
             }
+        }
         
         EventManager._CheckConveElevator.AddListener(CheckIfYouCanUseTheElevator);
 
@@ -96,6 +98,10 @@ public class CorridorGameManager : GameManager
                 {
                     UIElevator();
                 }
+            }
+            else
+            {
+                UIElevator();
             }
 
         }

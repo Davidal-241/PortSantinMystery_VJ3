@@ -6,7 +6,7 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
 {
     public Conversation _lunasCurrentDialogue;
     public static bool _hasAlreadyTalkedToLuna = false;
-    public static bool _lunaDoesntWantToTalk = true;
+    public static bool _lunaDoesntWantToTalk = false;
 
     bool _isItLunaMainDialogue = true;
 
@@ -14,6 +14,7 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
     private void Awake()
     {
         _gameManagerReference = FindObjectOfType<GameManager>();
+        EventManager.LunaInReceptionTalk.AddListener(SearchDialogues);
     }
 
     public void Interact()
@@ -27,46 +28,54 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
 
         if (GameManager._currenStoryParts == StoryParts.FIRST_PART)
         {
-            if (_lunaDoesntWantToTalk)
-            {
+            print(_lunaDoesntWantToTalk);
 
-                if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_5)
+            if (!_lunaDoesntWantToTalk)
+            {
+                if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_6)
                 {
                     if (_isItLunaMainDialogue)
                     {
+                        print("main diag");
                         EventManager.NextRequest.Invoke();
-                        _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/N_Dialogues/Luna_N_Dialogue_01"); 
+                        _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/N_Dialogues/Luna_N_Dialogue_01");
+                        EventManager._ConversationStarts.Invoke(_lunasCurrentDialogue);
                         _isItLunaMainDialogue = false;
                         GameManager.UpdateConversationLog(2);
                     }
                     else
                     {
+                        print("alt diag");
                         _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/GF_Dialogues/Luna_GF_Dialogue_01");
+                        EventManager._ConversationStarts.Invoke(_lunasCurrentDialogue);
                         LunaNoTalkMore();
                     }
                 }
             }
 
-            if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_8)
+            else if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_8)
             {
                 _isItLunaMainDialogue = true;
 
                 if (GameManager._currentQuest == FinishedQuest.SPEAKWITHLUNAINRECEPTION)
                 {
-                    EventManager.NextRequest.Invoke();
+                    print("luna n 2");
                     _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/N_Dialogues/Luna_N_Dialogue_02");
+                    EventManager._ConversationStarts.Invoke(_lunasCurrentDialogue);
                     GameManager.UpdateConversationLog(3);
+                    EventManager.NextRequest.Invoke();
                 }
 
             }
         }
-        EventManager._ConversationStarts.Invoke(_lunasCurrentDialogue);
+        
 
     }
 
     private void LunaNoTalkMore()
     {
-        _lunaDoesntWantToTalk = false;
+        _lunaDoesntWantToTalk = true;
+        print("luna ya no quiere hablar");
     }
 
 }

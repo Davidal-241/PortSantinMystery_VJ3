@@ -17794,7 +17794,7 @@ MonoBehaviour:
   - Exterior
   - Vestibulo
   - Pasillo
-  - Habitaci0n_Cesar
+  - Habitacion_Cesar
   shouldDeletePlayePrefs: 0
   comingFromInsideToStreetTransform: {fileID: 1880374366}
 --- !u!4 &1868323641
