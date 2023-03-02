@@ -3,58 +3,74 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] GameObject _viewManager;
+    [SerializeField] GameObject mainMenu;
+    [SerializeField] Button mainMenuDefaultButton;
 
+    [SerializeField] GameObject optionsMenu;
+    [SerializeField] Selectable optionsMenuDefaultButton;
 
+    /*
     [SerializeField] GameObject[] _menus;
     [SerializeField] GameObject[][] _buttonsInMenu;
     [SerializeField] GameObject _menuSelector;
     [SerializeField] GameObject _allSlot;
+    */
 
     LogicVolumen _logicV;
-    LogicaFullScree _logicFullScreen;
 
-    int _currentButtonIndex;
-    [SerializeField] int _currentMenuIndex;
+    //LogicaFullScree _logicFullScreen;
+
+    //[SerializeField] int _currentButtonIndex;
+    //[SerializeField] int _currentMenuIndex;
 
     private int _menuCount;
 
-    [SerializeField] UserActions _controls;
+    //[SerializeField] UserActions _controls;
 
     bool _canChangeSliderValue = false;
     private void Awake()
     {
 
-        _logicV = FindObjectOfType<LogicVolumen>();
-        _logicFullScreen = FindObjectOfType<LogicaFullScree>();
+        //_logicV = FindObjectOfType<LogicVolumen>();
+        //_logicFullScreen = FindObjectOfType<LogicaFullScree>();
 
-        EventManager._InputSet.AddListener(InputSet);
+        //EventManager._InputSet.AddListener(InputSet);
     }
 
+    
     private void Start()
     {
-        _menuCount = _allSlot.transform.childCount;
+        optionsMenu.SetActive(false);
 
-        _menus = new GameObject[_menuCount];
-        _buttonsInMenu = new GameObject[_menuCount][];
+        //_menuCount = _allSlot.transform.childCount;
 
-        for (int i = 0; i < _menuCount; i++)
-        {
-            _menus[i] = _allSlot.transform.GetChild(i).gameObject;
+        //_menus = new GameObject[_menuCount];
+        //_buttonsInMenu = new GameObject[_menuCount][];
 
-            _buttonsInMenu[i] = new GameObject[_menus[i].transform.childCount];
-            for (int j = 0; j < _menus[i].transform.childCount; j++)
-                _buttonsInMenu[i][j] = _menus[i].transform.GetChild(j).gameObject;
+        //for (int i = 0; i < _menuCount; i++)
+        //{
+        //    _menus[i] = _allSlot.transform.GetChild(i).gameObject;
 
-            _menus[i].SetActive(false);
-        }
+        //    _buttonsInMenu[i] = new GameObject[_menus[i].transform.childCount];
+        //    for (int j = 0; j < _menus[i].transform.childCount; j++)
+        //    {
 
-        _viewManager.SetActive(false);
+        //        _buttonsInMenu[i][j] = _menus[i].transform.GetChild(j).gameObject;
+        //        _buttonsInMenu[i][j].SetActive(false);
+        //    }
+            
+        //}
+
+        //for (int i = 0; i < _menuCount; i++)
+        //    print(_buttonsInMenu[i].Length);
+        //UpdateSelectorPosition();
     }
-
+    
+    /*
     void InputSet(UserActions input)
     {
         _controls = input;
@@ -68,25 +84,24 @@ public class MenuManager : MonoBehaviour
 
     private void ScrollDownMenuPause(InputAction.CallbackContext context)
     {
-        if (GameManager._isMenuPauseActive)
+        print("down");
+        if (!_canChangeSliderValue)
         {
-            if (!_canChangeSliderValue)
-            {
-                _currentButtonIndex = (_currentButtonIndex + 1 + _buttonsInMenu[_currentMenuIndex].Length) % _buttonsInMenu[_currentMenuIndex].Length;
-                UpdateSelectorPosition();
-            }
+            _currentButtonIndex = (_currentButtonIndex + 1 + _buttonsInMenu[_currentMenuIndex].Length) % _buttonsInMenu[_currentMenuIndex].Length;
+            UpdateSelectorPosition();
         }
+        
     }
     private void ScrollUpMenuPause(InputAction.CallbackContext context)
     {
-        if (GameManager._isMenuPauseActive)
+        print("up");
+
+        if (!_canChangeSliderValue)
         {
-            if (!_canChangeSliderValue)
-            {
-                _currentButtonIndex = (_currentButtonIndex - 1 + _buttonsInMenu[_currentMenuIndex].Length) % _buttonsInMenu[_currentMenuIndex].Length;
-                UpdateSelectorPosition();
-            }
+            _currentButtonIndex = (_currentButtonIndex - 1 + _buttonsInMenu[_currentMenuIndex].Length) % _buttonsInMenu[_currentMenuIndex].Length;
+            UpdateSelectorPosition();
         }
+        
     }
     private void UseButtons(InputAction.CallbackContext context)
     {
@@ -101,39 +116,39 @@ public class MenuManager : MonoBehaviour
         //Opciones
         else if (_menus[_currentMenuIndex] == _menus[1])
         {
-            if (_buttonsInMenu[_currentMenuIndex][_currentButtonIndex] == _buttonsInMenu[1][0])
-            {
-                _canChangeSliderValue = !_canChangeSliderValue;
-                EventManager.ButtonSound.Invoke();
-            }
+            //if (_buttonsInMenu[_currentMenuIndex][_currentButtonIndex] == _buttonsInMenu[1][0])
+            //{
+            //    _canChangeSliderValue = !_canChangeSliderValue;
+            //    EventManager.ButtonSound.Invoke();
+            //}
 
 
-            else if (_buttonsInMenu[_currentMenuIndex][_currentButtonIndex] == _buttonsInMenu[1][1])
-            {
-                bool _isFull = _logicFullScreen._toggle.isOn;
+            //else if (_buttonsInMenu[_currentMenuIndex][_currentButtonIndex] == _buttonsInMenu[1][1])
+            //{
+            //    bool _isFull = _logicFullScreen._toggle.isOn;
 
-                if (!_isFull)
-                {
-                    _isFull = true;
-                    EventManager._FullScreen.Invoke(_isFull);
-                    EventManager.ButtonSound.Invoke();
-                }
-                else
-                {
-                    _isFull = false;
-                    EventManager._FullScreen.Invoke(_isFull);
-                    EventManager.ButtonSound.Invoke();
-                }
-            }
-            else if (_buttonsInMenu[_currentMenuIndex][_currentButtonIndex] == _buttonsInMenu[1][2])
-            {
-                _menus[_currentMenuIndex].SetActive(false);
-                _currentMenuIndex = 0;
-                _menus[_currentMenuIndex].SetActive(true);
-                _currentButtonIndex = 0;
-                EventManager.ButtonSound.Invoke();
-                UpdateSelectorPosition();
-            }
+            //    if (!_isFull)
+            //    {
+            //        _isFull = true;
+            //        EventManager._FullScreen.Invoke(_isFull);
+            //        EventManager.ButtonSound.Invoke();
+            //    }
+            //    else
+            //    {
+            //        _isFull = false;
+            //        EventManager._FullScreen.Invoke(_isFull);
+            //        EventManager.ButtonSound.Invoke();
+            //    }
+            //}
+            //else if (_buttonsInMenu[_currentMenuIndex][_currentButtonIndex] == _buttonsInMenu[1][2])
+            //{
+            //    _menus[_currentMenuIndex].SetActive(false);
+            //    _currentMenuIndex = 0;
+            //    _menus[_currentMenuIndex].SetActive(true);
+            //    _currentButtonIndex = 0;
+            //    EventManager.ButtonSound.Invoke();
+            //    UpdateSelectorPosition();
+            //}
         }
         //Creditos
         else if (_menus[_currentMenuIndex] == _menus[2])
@@ -146,22 +161,24 @@ public class MenuManager : MonoBehaviour
         //Salir
         else if (_menus[_currentMenuIndex] == _menus[2])
         {
-            if (_buttonsInMenu[_currentMenuIndex][_currentButtonIndex] == _buttonsInMenu[0][0])
-            {
-                _menus[_currentMenuIndex].SetActive(false);
-                _currentMenuIndex = 1;
-                _menus[_currentMenuIndex].SetActive(true);
-                _currentButtonIndex = 0;
-                EventManager.ButtonSound.Invoke();
-                UpdateSelectorPosition();
-            }
+            //if (_buttonsInMenu[_currentMenuIndex][_currentButtonIndex] == _buttonsInMenu[0][0])
+            //{
+            //    _menus[_currentMenuIndex].SetActive(false);
+            //    _currentMenuIndex = 1;
+            //    _menus[_currentMenuIndex].SetActive(true);
+            //    _currentButtonIndex = 0;
+            //    EventManager.ButtonSound.Invoke();
+            //    UpdateSelectorPosition();
+            //}
 
-            else if (_buttonsInMenu[_currentMenuIndex][_currentButtonIndex] == _buttonsInMenu[0][1])
-            {
-                Application.Quit();
-            }
+            //else if (_buttonsInMenu[_currentMenuIndex][_currentButtonIndex] == _buttonsInMenu[0][1])
+            //{
+            //    Application.Quit();
+            //}
         }
     }
+    */
+
     private void SliderVolumenMore(InputAction.CallbackContext context)
     {
         if (_canChangeSliderValue)
@@ -184,10 +201,48 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    /*
     private void UpdateSelectorPosition()
     {
-            _menuSelector.transform.parent = _buttonsInMenu[_currentMenuIndex][_currentButtonIndex].transform;
-            _menuSelector.transform.localPosition = Vector3.zero;
+        _buttonsInMenu[_currentMenuIndex][_currentButtonIndex].SetActive(true);
+        _menuSelector.transform.parent = _buttonsInMenu[_currentMenuIndex][_currentButtonIndex].transform;
+        _menuSelector.transform.localPosition = Vector3.zero;
+    }
+    
+    */
+
+
+    public void Play()
+    {
+        EventManager.ButtonSound.Invoke();
+        SceneManager.LoadScene("Introduccion");
     }
 
+    public void Opciones()
+    {
+        EventManager.ButtonSound.Invoke();
+        mainMenu.SetActive(false);
+        optionsMenu.SetActive(true);
+        optionsMenuDefaultButton.Select();
+    }
+
+    public void ExitOptions()
+    {
+        EventManager.ButtonSound.Invoke();
+        optionsMenu.SetActive(false);
+        mainMenu.SetActive(true);
+        mainMenuDefaultButton.Select();
+    }
+
+    public void Creditos()
+    {
+        EventManager.ButtonSound.Invoke();
+        SceneManager.LoadScene("Creditos");
+    }
+
+    public void QuitGame()
+    {
+        EventManager.ButtonSound.Invoke();
+        Application.Quit();
+    }
 }
