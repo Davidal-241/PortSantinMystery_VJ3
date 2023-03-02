@@ -32,6 +32,7 @@ public class CenturionDialogueManager : MonoBehaviour, IInteractable
                 {
                     _centurionsCurrentDialogue = Resources.Load<Conversation>("Centurion/N_Dialogues/Centurion_N_Dialogue_01");
                     _isItCenturionsMainDialogue = false;
+                    Debug.Log("This: " + 6);
                     EventManager.NextRequest.Invoke();
 
                 }

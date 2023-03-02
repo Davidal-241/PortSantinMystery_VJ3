@@ -55,6 +55,8 @@ public class ReceptionGameManager : GameManager
         }
 
         EventManager._CheckConveElevator.AddListener(CheckIfYouCanUseTheElevator);
+        EventManager.CloseUIEle.AddListener(UIElevator);
+
 
 
         #region"UI"

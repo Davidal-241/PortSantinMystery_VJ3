@@ -43,12 +43,13 @@ public class CorridorGameManager : GameManager
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
             {
-            print("Instantiate Luna");
+                print("Instantiate Luna");
                 Instantiate(_lunaPrefab, _LunaSpawnPoint.position, _LunaSpawnPoint.rotation);
             }
         }
         
         EventManager._CheckConveElevator.AddListener(CheckIfYouCanUseTheElevator);
+        EventManager.CloseUIEle.AddListener(UIElevator);
 
 
 
@@ -73,6 +74,7 @@ public class CorridorGameManager : GameManager
                 {
                     _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_03");
                     EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
+
                 }
                 else
                 {

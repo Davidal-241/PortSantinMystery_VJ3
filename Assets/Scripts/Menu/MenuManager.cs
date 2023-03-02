@@ -254,20 +254,8 @@ public class MenuManager : MonoBehaviour
 
        _fadeInAni.SetTrigger("StartFadeIn");
         EventManager.ButtonSound.Invoke();
-
-       AsyncOperation async = SceneManager.LoadSceneAsync("Introduccion");
-
-        async.allowSceneActivation = false;
-
-
-        while (async.progress < 0.9f) ;
-
-        yield return new WaitForSeconds(0.2f);
-
-        async.allowSceneActivation = true;
-
-
-        yield return null;
+        yield return new WaitForSeconds(1f);
+        EventManager.Load.Invoke("Introduccion");
 
     }
 

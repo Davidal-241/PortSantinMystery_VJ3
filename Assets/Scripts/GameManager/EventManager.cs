@@ -47,6 +47,9 @@ public static class EventManager
     public static UnityEvent<string> _ChangeScene = new UnityEvent<string>();
 
 
+    public static UnityEvent<string> Load = new UnityEvent<string>();
+
+
 
     public static UserActionEvent _InputSet = new UserActionEvent();
 
@@ -68,6 +71,8 @@ public static class EventManager
     public static UnityEvent InteractueWithCenturionDoors = new UnityEvent();
 
     public static UnityEvent LunaInReceptionTalk = new UnityEvent();
+
+    public static UnityEvent CloseUIEle = new UnityEvent();
 
 
     //sounds

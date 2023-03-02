@@ -43,6 +43,7 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
                         EventManager._ConversationStarts.Invoke(_lunasCurrentDialogue);
                         _isItLunaMainDialogue = false;
                         GameManager.UpdateConversationLog(2);
+                        Debug.Log("This: " + 8);
                         EventManager.NextRequest.Invoke();
                     }
                     else
@@ -63,6 +64,7 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
                 _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/N_Dialogues/Luna_N_Dialogue_02");
                 EventManager._ConversationStarts.Invoke(_lunasCurrentDialogue);
                 GameManager.UpdateConversationLog(3);
+                Debug.Log("This: " + 9);
                 EventManager.NextRequest.Invoke();
 
 

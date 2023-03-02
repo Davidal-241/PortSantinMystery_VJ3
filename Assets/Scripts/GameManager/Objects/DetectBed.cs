@@ -45,6 +45,7 @@ public class DetectBed : MonoBehaviour,IInteractable
 
         GameManager._isntHandFree = false;
 
+        Debug.Log("This: " + 10);
         EventManager.NextRequest.Invoke();
     }
 

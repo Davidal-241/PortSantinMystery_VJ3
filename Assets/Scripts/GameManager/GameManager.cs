@@ -189,7 +189,6 @@ public class GameManager : MonoBehaviour
 
         EventManager._GoToMainMenu.AddListener(GoMenuPrincipalMain);
         EventManager.SendIndex.AddListener(CheckTheScene);
-        EventManager.NextRequest.AddListener(NextRequestCondition);
         EventManager.InteractueWithCenturionDoors.AddListener(CenturionDoorDialogues);
 
         #endregion
@@ -228,13 +227,14 @@ public class GameManager : MonoBehaviour
                 {
                     _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_03");
                     EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-
+                    EventManager.CloseUIEle.Invoke();
                 }
                 else if(_currentQuest == FinishedQuest.SPOKEJORGE)
                 {
                     if (_firtsTimeInTheOutsideCesarRoom)
                     {
                         _firtsTimeInTheOutsideCesarRoom = false;
+                        Debug.Log("This: " + 1);
                         NextRequestCondition();
                         StartCoroutine(ElevatorFadeInCorutine(_sceneName));
                     }
@@ -248,6 +248,7 @@ public class GameManager : MonoBehaviour
                     if (_firtsTimeInTheOutsideCenturionRoom)
                     {
                         _firtsTimeInTheOutsideCenturionRoom = false;
+                        Debug.Log("This: " + 2);
                         NextRequestCondition();
                         StartCoroutine(ElevatorFadeInCorutine(_sceneName));
                     }
@@ -452,8 +453,7 @@ public class GameManager : MonoBehaviour
     #region"NextRequest"
     public void NextRequestCondition()
     {
-        print("NextRequestCondition: " + _currenStoryParts + " - " + _currentStagesStoryParts + " - " + _currentQuest + " - " + _currentScene);
-
+       
         if (_currenStoryParts == StoryParts.INTRODUCTION)
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_1)
@@ -585,7 +585,8 @@ public class GameManager : MonoBehaviour
                 print("EEEE");
                 _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_08");
                 EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-                NextRequestCondition();
+                    Debug.Log("This: " + 3);
+                    NextRequestCondition();
                 }
             }
         }
@@ -602,7 +603,7 @@ public class GameManager : MonoBehaviour
         {
             if (_firtsTimeEntryInTheHotel)
             {
-
+                Debug.Log("This: " + 4);
                 NextRequestCondition();
 
                 _firtsTimeEntryInTheHotel = false;
@@ -651,6 +652,8 @@ public class GameManager : MonoBehaviour
                 if (_firtsTimeEntryInTheRoom)
                 {
                     _firtsTimeEntryInTheRoom = false;
+                    Debug.Log("This: " + 5);
+
                     NextRequestCondition();
 
                     StartCoroutine(DoorFadeInCorutine(indexSceneDoor));
@@ -694,16 +697,11 @@ public class GameManager : MonoBehaviour
         _fadeInAni.SetTrigger("StartFadeIn");
         EventManager.ElevatorSound.Invoke();
 
-        AsyncOperation async = SceneManager.LoadSceneAsync(indexSceneElevator);
-        async.allowSceneActivation = false;
+        yield return new WaitForSeconds(1f);
 
-        while (async.progress >= 0.9f) ;
+        EventManager.Load.Invoke(indexSceneElevator);
 
-        yield return new WaitForSeconds(0.2f);
 
-        async.allowSceneActivation = true;
-
-        yield return null;
 
     }
     IEnumerator DoorFadeInCorutine(string indexSceneDoor)
@@ -711,16 +709,10 @@ public class GameManager : MonoBehaviour
         _fadeInAni.SetTrigger("StartFadeIn");
         EventManager.DoorSound.Invoke();
 
-        AsyncOperation async = SceneManager.LoadSceneAsync(indexSceneDoor);
-        async.allowSceneActivation = false;
+        yield return new WaitForSeconds(1f);
 
-        while (async.progress >= 0.9f);
+        EventManager.Load.Invoke(indexSceneDoor);
 
-        yield return new WaitForSeconds(0.2f);
-
-        async.allowSceneActivation = true;
-
-        yield return null;
 
     }
 

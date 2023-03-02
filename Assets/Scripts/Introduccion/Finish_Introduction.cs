@@ -28,6 +28,6 @@ public class Finish_Introduction : MonoBehaviour
 
     public void SwitchScene()
     {
-        SceneManager.LoadScene("Exterior");
+        EventManager.Load.Invoke("Exterior");
     }
 }
