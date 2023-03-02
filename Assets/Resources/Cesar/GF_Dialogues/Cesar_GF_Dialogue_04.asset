@@ -15,11 +15,9 @@ MonoBehaviour:
   allLines:
   - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: c7433c9db7f97a24c8c3b229baf20e81, type: 3}
-    _SpritePortrains2: {fileID: 0}
-    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    _SpritePortrains2: {fileID: 21300000, guid: 32f28d7523e57ab478fd35446ba53f34, type: 3}
     dialogue: "Se ha dejado aqu\xED sus gafas, qu\xE9 raro."
   - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: 2c0b3478886d0e94fbcb4a4445adab28, type: 3}
-    _SpritePortrains2: {fileID: 0}
-    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    _SpritePortrains2: {fileID: 21300000, guid: 32f28d7523e57ab478fd35446ba53f34, type: 3}
     dialogue: "Ir\xE9 a hablar con Centuri\xF3n."

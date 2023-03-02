@@ -358,9 +358,7 @@ public class GameManager : MonoBehaviour
                 if(_currentQuest == FinishedQuest.READYTOGO)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_9;
-                    _currenStoryParts = StoryParts.SECOND_PART;
-                    _currentStagesStoryParts = StagesStoryParts.STAGE_1;
-                    _switchIndex++;
+                    
                 }
 
             }
@@ -565,10 +563,17 @@ public class GameManager : MonoBehaviour
     #region"CenturionDoorDialogues"
 
     private void CenturionDoorDialogues()
-    {
-        _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_08");
+    {if(_currenStoryParts == StoryParts.FIRST_PART)
+        {
+
+        if (_currentStagesStoryParts == StagesStoryParts.STAGE_7)
+        {
+
+            _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_08");
         EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
         NextRequestCondition();
+        }
+        }
     }
 
     #endregion
@@ -576,7 +581,7 @@ public class GameManager : MonoBehaviour
     #region"Check the scene if use door"
     private void CheckTheScene(string indexSceneDoor)
     {
-        print("CheckTheScene: " + _currenStoryParts + " - " + _currentStagesStoryParts + " - " + _currentQuest + " - " + _firtsTimeEntryInTheRoom + " - " + _currentScene.name);
+        //print("CheckTheScene: " + _currenStoryParts + " - " + _currentStagesStoryParts + " - " + _currentQuest + " - " + _firtsTimeEntryInTheRoom + " - " + _currentScene.name);
 
         if (_currentScene.name == sceneWithDoor[0])
         {

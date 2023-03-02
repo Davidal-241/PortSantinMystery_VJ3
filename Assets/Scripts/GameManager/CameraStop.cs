@@ -8,6 +8,7 @@ public class CameraStop : MonoBehaviour
     [SerializeField] Camera _main;
     bool _islocked = false;
 
+
     private void Start()
     {
         _main = Camera.main;

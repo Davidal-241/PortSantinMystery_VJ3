@@ -24,6 +24,8 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
 
     private void SearchDialogues()
     {
+        print("Luna::SearchDialogues: " + GameManager._currenStoryParts + " - " + GameManager._currentStagesStoryParts + " - " + GameManager._currentQuest);
+
         _hasAlreadyTalkedToLuna = true;
 
         if (GameManager._currenStoryParts == StoryParts.FIRST_PART)
@@ -37,11 +39,11 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
                     if (_isItLunaMainDialogue)
                     {
                         print("main diag");
-                        EventManager.NextRequest.Invoke();
                         _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/N_Dialogues/Luna_N_Dialogue_01");
                         EventManager._ConversationStarts.Invoke(_lunasCurrentDialogue);
                         _isItLunaMainDialogue = false;
                         GameManager.UpdateConversationLog(2);
+                        EventManager.NextRequest.Invoke();
                     }
                     else
                     {

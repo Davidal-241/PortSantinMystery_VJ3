@@ -15,6 +15,5 @@ MonoBehaviour:
   allLines:
   - speaker: {fileID: 11400000, guid: 6e5e821b91951fa45a9440dcbe9b53fe, type: 2}
     _SpritePortrains1: {fileID: 21300000, guid: 8074d14ec6ac1d441bd956ef3efc3c2b, type: 3}
-    _SpritePortrains2: {fileID: 0}
-    UItextBox: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    _SpritePortrains2: {fileID: 21300000, guid: 32f28d7523e57ab478fd35446ba53f34, type: 3}
     dialogue: Tengo que dejar la maleta primero.
