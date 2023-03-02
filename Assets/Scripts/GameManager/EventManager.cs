@@ -67,6 +67,9 @@ public static class EventManager
 
     public static UnityEvent InteractueWithCenturionDoors = new UnityEvent();
 
+    public static UnityEvent LunaInReceptionTalk = new UnityEvent();
+
+
     //sounds
 
     public static UnityEvent CharacterTyped = new UnityEvent();
@@ -79,4 +82,5 @@ public static class EventManager
     public static UnityEvent RainSound = new UnityEvent();
     public static UnityEvent WalkingSound = new UnityEvent();
     public static UnityEvent TypeSound = new UnityEvent();
+    public static UnityEvent PickUpSound = new UnityEvent();
 }

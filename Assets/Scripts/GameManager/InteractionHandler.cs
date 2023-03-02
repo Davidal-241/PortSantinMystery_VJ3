@@ -47,6 +47,7 @@ public class InteractionHandler : MonoBehaviour
 
             if (_found[_closestEntityIndex].TryGetComponent(out IInteractable interactable))
             {
+                print("Interacting with " + _found[_closestEntityIndex].name);
                 interactable.Interact();
             }
             else

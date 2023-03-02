@@ -255,6 +255,11 @@ public class GameManager : MonoBehaviour
 
                 }
             }
+            else
+            {
+                EventManager.ElevatorSound.Invoke();
+                SceneManager.LoadScene(_sceneName);
+            }
         }
     }
     #endregion
@@ -320,11 +325,13 @@ public class GameManager : MonoBehaviour
             }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
             {
-
-                if (_currentQuest == FinishedQuest.OUTSIDECENTURIONROOM)
-                {
-                    _currentStagesStoryParts = StagesStoryParts.STAGE_6;
-                }
+                
+                    if (_currentQuest == FinishedQuest.OUTSIDECENTURIONROOM)
+                    {
+                        print("poniendo la 6");
+                        _currentStagesStoryParts = StagesStoryParts.STAGE_6;
+                    }
+                
 
             }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
@@ -350,11 +357,19 @@ public class GameManager : MonoBehaviour
 
                 if(_currentQuest == FinishedQuest.READYTOGO)
                 {
-                    
+                    _currentStagesStoryParts = StagesStoryParts.STAGE_9;
                     _currenStoryParts = StoryParts.SECOND_PART;
                     _currentStagesStoryParts = StagesStoryParts.STAGE_1;
                     _switchIndex++;
                 }
+
+            }
+            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_9)
+            {
+
+
+                SceneManager.LoadScene("Creditos");
+                
 
             }
 
@@ -430,6 +445,8 @@ public class GameManager : MonoBehaviour
     #region"NextRequest"
     public void NextRequestCondition()
     {
+        print("NextRequestCondition: " + _currenStoryParts + " - " + _currentStagesStoryParts + " - " + _currentQuest + " - " + _currentScene);
+
         if (_currenStoryParts == StoryParts.INTRODUCTION)
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_1)
@@ -501,7 +518,6 @@ public class GameManager : MonoBehaviour
 
                     if (_currentQuest == FinishedQuest.SPOKELUNA)
                     {
-                        Debug.Log("Bad result");
                         _currentQuest = FinishedQuest.OUTSIDECENTURIONROOM;
                         GameFlow();
 
@@ -512,17 +528,19 @@ public class GameManager : MonoBehaviour
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
             {
                 print("S6, OutSideCenturion");
-                if (_currentQuest == FinishedQuest.OUTSIDECENTURIONROOM)
+
+                if (!_firtsTimeInTheOutsideCenturionRoom)
                 {
-                    if (!_firtsTimeInTheOutsideCenturionRoom)
+                    if (_currentQuest == FinishedQuest.OUTSIDECENTURIONROOM)
                     {
                         _currentQuest = FinishedQuest.INTERACTUEWITHCENTURIONDOOR;
                         GameFlow();
+
+
                     }
-                    
                 }
             } 
-            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_8)
+            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_7)
             {
                 if (_currentQuest == FinishedQuest.INTERACTUEWITHCENTURIONDOOR)
                 {
@@ -534,6 +552,7 @@ public class GameManager : MonoBehaviour
             {
                 if (_currentQuest == FinishedQuest.SPEAKWITHLUNAINRECEPTION)
                 {
+
                     _currentQuest = FinishedQuest.READYTOGO;
                     GameFlow();
                 }
@@ -557,6 +576,8 @@ public class GameManager : MonoBehaviour
     #region"Check the scene if use door"
     private void CheckTheScene(string indexSceneDoor)
     {
+        print("CheckTheScene: " + _currenStoryParts + " - " + _currentStagesStoryParts + " - " + _currentQuest + " - " + _firtsTimeEntryInTheRoom + " - " + _currentScene.name);
+
         if (_currentScene.name == sceneWithDoor[0])
         {
             if (_firtsTimeEntryInTheHotel)
@@ -587,15 +608,14 @@ public class GameManager : MonoBehaviour
                     if (_tryExitTheReception)
                     {
 
-                        NextRequestCondition();
+                        EventManager.LunaInReceptionTalk.Invoke();
 
                         _tryExitTheReception = false;
                     }
                 }
-                else if (_currentStagesStoryParts == StagesStoryParts.STAGE_8)
+                else if (_currentStagesStoryParts == StagesStoryParts.STAGE_9)
                 {
-                    EventManager.DoorSound.Invoke();
-                    SceneManager.LoadScene(indexSceneDoor);
+                    GameFlow();
 
                 }
                 else if (_currentStagesStoryParts == StagesStoryParts.STAGE_1 || _currentStagesStoryParts == StagesStoryParts.STAGE_2)
@@ -623,34 +643,34 @@ public class GameManager : MonoBehaviour
                     EventManager.DoorSound.Invoke();
                     SceneManager.LoadScene(indexSceneDoor);
                 }
-
             }
-            else if (_currentScene.name == sceneWithDoor[3])
+        }
+        else if (_currentScene.name == sceneWithDoor[3])
+        {
+            print("escena huena");
+
+            if (_currenStoryParts == StoryParts.FIRST_PART)
             {
-                if (_currenStoryParts == StoryParts.FIRST_PART)
+                print("WTF");
+                if (_firtsTimeExitTheRoom)
                 {
-                    print("WTF");
-                    if (_firtsTimeExitTheRoom)
-                    {
-                        _firtsTimeExitTheRoom = false;
-                        NextRequestCondition();
+                    _firtsTimeExitTheRoom = false;
+                    NextRequestCondition();
 
-                        EventManager.DoorSound.Invoke();
-                        SceneManager.LoadScene(indexSceneDoor);
+                    EventManager.DoorSound.Invoke();
+                    SceneManager.LoadScene(indexSceneDoor);
 
-                        _isntHandFree = false;
+                    _isntHandFree = false;
 
-                        _cesarMaleta.SetActive(false);
-                        _cesarSinMaleta.SetActive(true);
-                    }
-                    else
-                    {
-                        EventManager.DoorSound.Invoke();
-                        SceneManager.LoadScene(indexSceneDoor);
-                    }
-                    //Evento para luna aparezca
+                    _cesarMaleta.SetActive(false);
+                    _cesarSinMaleta.SetActive(true);
                 }
-
+                else
+                {
+                    EventManager.DoorSound.Invoke();
+                    SceneManager.LoadScene(indexSceneDoor);
+                }
+                //Evento para luna aparezca
             }
         }
     }
