@@ -215,7 +215,7 @@ public class MenuManager : MonoBehaviour
     public void Play()
     {
         EventManager.ButtonSound.Invoke();
-        SceneManager.LoadScene("Exterior");
+        SceneManager.LoadScene("Introduccion");
     }
 
     public void Opciones()
