@@ -440,13 +440,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330392268}
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 7.26, y: 0, z: 0.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 22
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &354103512
 GameObject:
   m_ObjectHideFlags: 0
@@ -3117,7 +3117,7 @@ MonoBehaviour:
   - Pasillo
   - Habitacion_Cesar
   shouldDeletePlayePrefs: 0
-  _lunaPrefab: {fileID: 689571375923009443, guid: fc636f1a033e9dc4cb5ab82393c45147, type: 3}
+  _lunaPrefab: {fileID: 970158611974895163, guid: 2208c24cd7e43f14b956b62c78890ba5, type: 3}
   _LunaSpawnPoint: {fileID: 357539676}
   comingFromElevatorToHallTransform: {fileID: 311236423}
   comingFromInsideCesarRoomTransform: {fileID: 330392269}
@@ -3821,8 +3821,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.47, y: 3, z: 4.02}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 5.905041, y: 3, z: 4.02}
+  m_Center: {x: 0.78247905, y: 0, z: 0}
 --- !u!114 &1606920875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3972,8 +3972,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.4, y: 2.98, z: 4.72}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 6.138651, y: 2.98, z: 4.72}
+  m_Center: {x: -1.1306744, y: 0, z: 0}
 --- !u!114 &1831919434
 MonoBehaviour:
   m_ObjectHideFlags: 0

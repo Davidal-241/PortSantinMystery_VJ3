@@ -20,7 +20,7 @@ public class CorridorGameManager : GameManager
         {
             _player.transform.position = comingFromInsideCesarRoomTransform.position;
 
-            _player.transform.rotation = comingFromInsideCesarRoomTransform.rotation;
+            _player.transform.rotation =  Quaternion.Euler(0, 90, 0);
         }
         else if (string.Compare(_previousSceneName, "Pasillo Centurion") == 0)
         {
