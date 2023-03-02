@@ -37,7 +37,7 @@ public class JorgeDialogueManager : MonoBehaviour, IInteractable
                         _jorgesCurrentDialogue = Resources.Load<Conversation>("Jorge/N_Dialogues/Jorge_N_Dialogue_01");
                         GameManager.UpdateConversationLog(1);
                         EventManager.NextRequest.Invoke();
-                        _isItJorgesMainDialogue = false;
+                        _isItJorgesMainDialogue = false; EventManager._ConversationStarts.Invoke(_jorgesCurrentDialogue);
                     }
                 }
             }
@@ -51,22 +51,22 @@ public class JorgeDialogueManager : MonoBehaviour, IInteractable
                 if (_randomConversationIndex == 0)
                 {
                     _jorgesCurrentDialogue = Resources.Load<Conversation>("Jorge/GF_Dialogues/Jorge_GF_Dialogue_01");
-
-                }
+                        EventManager._ConversationStarts.Invoke(_jorgesCurrentDialogue);
+                    }
                 else if (_randomConversationIndex == 1)
                 {
                     _jorgesCurrentDialogue = Resources.Load<Conversation>("Jorge/GF_Dialogues/Jorge_GF_Dialogue_02");
-
-                }
+                        EventManager._ConversationStarts.Invoke(_jorgesCurrentDialogue);
+                    }
                 }
             }
 
             else if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_3)
             {
                 _jorgesCurrentDialogue = Resources.Load<Conversation>("Jorge/GF_Dialogues/Jorge_GF_Dialogue_02");
+        EventManager._ConversationStarts.Invoke(_jorgesCurrentDialogue);
             }
         }
 
-        EventManager._ConversationStarts.Invoke(_jorgesCurrentDialogue);
     }
 }

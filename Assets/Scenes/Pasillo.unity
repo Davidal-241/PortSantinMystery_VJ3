@@ -3139,7 +3139,7 @@ MonoBehaviour:
   - Pasillo
   - Habitacion_Cesar
   shouldDeletePlayePrefs: 0
-  _lunaPrefab: {fileID: 970158611974895163, guid: 2208c24cd7e43f14b956b62c78890ba5, type: 3}
+  _lunaPrefab: {fileID: 2850632698069736820, guid: f294b91f88cb2574b9951ebdb0f65bc9, type: 3}
   _LunaSpawnPoint: {fileID: 357539676}
   comingFromElevatorToHallTransform: {fileID: 311236423}
   comingFromInsideCesarRoomTransform: {fileID: 330392269}
