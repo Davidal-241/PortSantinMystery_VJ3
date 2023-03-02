@@ -253,6 +253,9 @@ public class GameManager : MonoBehaviour
                 {
                     SceneManager.LoadScene(_sceneName);
 
+                }else if(string.Compare(_sceneName, "Pasillo") == 0)
+                {
+                    SceneManager.LoadScene(_sceneName);
                 }
             }
             else
@@ -564,16 +567,17 @@ public class GameManager : MonoBehaviour
     #region"CenturionDoorDialogues"
 
     private void CenturionDoorDialogues()
-    {if(_currenStoryParts == StoryParts.FIRST_PART)
+    {
+        if (_currenStoryParts == StoryParts.FIRST_PART)
         {
 
-        if (_currentStagesStoryParts == StagesStoryParts.STAGE_7)
-        {
-
-            _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_08");
-        EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-        NextRequestCondition();
-        }
+            if (_currentStagesStoryParts == StagesStoryParts.STAGE_7)
+            {
+                print("EEEE");
+                _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_08");
+                EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
+                NextRequestCondition();
+            }
         }
     }
 
@@ -653,11 +657,9 @@ public class GameManager : MonoBehaviour
         }
         else if (_currentScene.name == sceneWithDoor[3])
         {
-            print("escena huena");
 
             if (_currenStoryParts == StoryParts.FIRST_PART)
             {
-                print("WTF");
                 if (_firtsTimeExitTheRoom)
                 {
                     _firtsTimeExitTheRoom = false;
