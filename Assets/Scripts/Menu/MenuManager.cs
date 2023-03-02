@@ -34,6 +34,27 @@ public class MenuManager : MonoBehaviour
         EventManager._InputSet.AddListener(InputSet);
     }
 
+    private void Start()
+    {
+        _menuCount = _allSlot.transform.childCount;
+
+        _menus = new GameObject[_menuCount];
+        _buttonsInMenu = new GameObject[_menuCount][];
+
+        for (int i = 0; i < _menuCount; i++)
+        {
+            _menus[i] = _allSlot.transform.GetChild(i).gameObject;
+
+            _buttonsInMenu[i] = new GameObject[_menus[i].transform.childCount];
+            for (int j = 0; j < _menus[i].transform.childCount; j++)
+                _buttonsInMenu[i][j] = _menus[i].transform.GetChild(j).gameObject;
+
+            _menus[i].SetActive(false);
+        }
+
+        _viewManager.SetActive(false);
+    }
+
     void InputSet(UserActions input)
     {
         _controls = input;
@@ -47,7 +68,6 @@ public class MenuManager : MonoBehaviour
 
     private void ScrollDownMenuPause(InputAction.CallbackContext context)
     {
-
         if (GameManager._isMenuPauseActive)
         {
             if (!_canChangeSliderValue)
@@ -56,32 +76,29 @@ public class MenuManager : MonoBehaviour
                 UpdateSelectorPosition();
             }
         }
-
     }
     private void ScrollUpMenuPause(InputAction.CallbackContext context)
     {
-
         if (GameManager._isMenuPauseActive)
         {
             if (!_canChangeSliderValue)
             {
-
                 _currentButtonIndex = (_currentButtonIndex - 1 + _buttonsInMenu[_currentMenuIndex].Length) % _buttonsInMenu[_currentMenuIndex].Length;
                 UpdateSelectorPosition();
             }
-
         }
     }
     private void UseButtons(InputAction.CallbackContext context)
     {
+        //Jugar
         if (_menus[_currentMenuIndex] == _menus[0])
         {
             if (_buttonsInMenu[_currentMenuIndex][_currentButtonIndex] == _buttonsInMenu[0][0])
             {
-              //Iniciar juego
+                SceneManager.LoadScene("Exterior"); //Iniciar juego
             }
         }
-
+        //Opciones
         else if (_menus[_currentMenuIndex] == _menus[1])
         {
             if (_buttonsInMenu[_currentMenuIndex][_currentButtonIndex] == _buttonsInMenu[1][0])
@@ -118,6 +135,32 @@ public class MenuManager : MonoBehaviour
                 UpdateSelectorPosition();
             }
         }
+        //Creditos
+        else if (_menus[_currentMenuIndex] == _menus[2])
+        {
+            if (_buttonsInMenu[_currentMenuIndex][_currentButtonIndex] == _buttonsInMenu[0][0])
+            {
+                SceneManager.LoadScene("Creditos"); //Iniciar juego
+            }
+        }
+        //Salir
+        else if (_menus[_currentMenuIndex] == _menus[2])
+        {
+            if (_buttonsInMenu[_currentMenuIndex][_currentButtonIndex] == _buttonsInMenu[0][0])
+            {
+                _menus[_currentMenuIndex].SetActive(false);
+                _currentMenuIndex = 1;
+                _menus[_currentMenuIndex].SetActive(true);
+                _currentButtonIndex = 0;
+                EventManager.ButtonSound.Invoke();
+                UpdateSelectorPosition();
+            }
+
+            else if (_buttonsInMenu[_currentMenuIndex][_currentButtonIndex] == _buttonsInMenu[0][1])
+            {
+                Application.Quit();
+            }
+        }
     }
     private void SliderVolumenMore(InputAction.CallbackContext context)
     {
@@ -143,11 +186,8 @@ public class MenuManager : MonoBehaviour
 
     private void UpdateSelectorPosition()
     {
-
-
             _menuSelector.transform.parent = _buttonsInMenu[_currentMenuIndex][_currentButtonIndex].transform;
             _menuSelector.transform.localPosition = Vector3.zero;
-        
     }
 
 }
