@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     bool _firtsTimeEntryInTheHotel = true;
     bool _tryExitTheReception = true;
-    bool _firtsTimeEntryInTheRoom = true;
+    static bool _firtsTimeEntryInTheRoom = true;
     bool _firtsTimeEntryInTheCenturionsRoom = true;
     bool _firtsTimeExitTheRoom = true;
     bool _firtsTimeInTheOutsideCesarRoom = true;
@@ -579,10 +579,14 @@ public class GameManager : MonoBehaviour
 
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_7)
             {
+                if (!_hasAlreadyInteractueWithCenturionDoor)
+                {
+
                 print("EEEE");
                 _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_08");
                 EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
                 NextRequestCondition();
+                }
             }
         }
     }
@@ -688,31 +692,36 @@ public class GameManager : MonoBehaviour
     IEnumerator ElevatorFadeInCorutine(string indexSceneElevator)
     {
         _fadeInAni.SetTrigger("StartFadeIn");
+        EventManager.ElevatorSound.Invoke();
 
         AsyncOperation async = SceneManager.LoadSceneAsync(indexSceneElevator);
-       
-        yield return new WaitForSeconds(0.5f);
+        async.allowSceneActivation = false;
 
-        while (!async.isDone)
-        {
+        while (async.progress >= 0.9f) ;
 
-            EventManager.ElevatorSound.Invoke();
-            yield return null;
-        }
+        yield return new WaitForSeconds(0.2f);
+
+        async.allowSceneActivation = true;
+
+        yield return null;
+
     }
     IEnumerator DoorFadeInCorutine(string indexSceneDoor)
     {
         _fadeInAni.SetTrigger("StartFadeIn");
+        EventManager.DoorSound.Invoke();
+
         AsyncOperation async = SceneManager.LoadSceneAsync(indexSceneDoor);
+        async.allowSceneActivation = false;
 
-        yield return new WaitForSeconds(0.5f);
+        while (async.progress >= 0.9f);
 
-        while (!async.isDone)
-        {
+        yield return new WaitForSeconds(0.2f);
 
-            EventManager.DoorSound.Invoke();
-            yield return null;
-        }
+        async.allowSceneActivation = true;
+
+        yield return null;
+
     }
 
     #region "Log"

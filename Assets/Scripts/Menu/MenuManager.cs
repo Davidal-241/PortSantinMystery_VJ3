@@ -252,16 +252,23 @@ public class MenuManager : MonoBehaviour
     IEnumerator  WaitForFadeIn()
     {
 
-        _fadeInAni.SetTrigger("StartFadeIn");
+       _fadeInAni.SetTrigger("StartFadeIn");
+        EventManager.ButtonSound.Invoke();
+
        AsyncOperation async = SceneManager.LoadSceneAsync("Introduccion");
 
-        yield return new WaitForSeconds(0.5f);
-        while (!async.isDone)
-        {
+        async.allowSceneActivation = false;
 
-            EventManager.ButtonSound.Invoke();
-            yield return null;
-        }
+
+        while (async.progress < 0.9f) ;
+
+        yield return new WaitForSeconds(0.2f);
+
+        async.allowSceneActivation = true;
+
+
+        yield return null;
+
     }
 
     
