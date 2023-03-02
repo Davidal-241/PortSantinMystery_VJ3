@@ -371,6 +371,8 @@ public class GameManager : MonoBehaviour
 
                 SceneManager.LoadScene("Creditos");
                 Destroy(MusicScript.instance);
+                GameObject _musicsongObject = GameObject.Find("MusicSound");
+                Destroy(_musicsongObject);
 
             }
 

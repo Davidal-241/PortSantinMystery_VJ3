@@ -43,7 +43,8 @@ public class ElevatorLogical : MonoBehaviour
 
     private void UseElevator()
     {
-   
+
+        _controls.Player.Disable();
         _currentScene = SceneManager.GetActiveScene();
 
         

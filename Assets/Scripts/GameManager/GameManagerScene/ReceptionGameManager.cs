@@ -119,7 +119,7 @@ public class ReceptionGameManager : GameManager
     #region"UIElevator"
     private void UIElevator()
     {
-
+        
         //Activa o Desactiva la interfaz del ascensor dependiendo de su estado//
         if (!_elevatorUI.activeSelf)
         {
