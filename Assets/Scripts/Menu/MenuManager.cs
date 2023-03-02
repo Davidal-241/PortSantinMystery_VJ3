@@ -214,11 +214,13 @@ public class MenuManager : MonoBehaviour
 
     public void Play()
     {
+        EventManager.ButtonSound.Invoke();
         SceneManager.LoadScene("Exterior");
     }
 
     public void Opciones()
     {
+        EventManager.ButtonSound.Invoke();
         mainMenu.SetActive(false);
         optionsMenu.SetActive(true);
         optionsMenuDefaultButton.Select();
@@ -226,6 +228,7 @@ public class MenuManager : MonoBehaviour
 
     public void ExitOptions()
     {
+        EventManager.ButtonSound.Invoke();
         optionsMenu.SetActive(false);
         mainMenu.SetActive(true);
         mainMenuDefaultButton.Select();
@@ -233,11 +236,13 @@ public class MenuManager : MonoBehaviour
 
     public void Creditos()
     {
+        EventManager.ButtonSound.Invoke();
         SceneManager.LoadScene("Creditos");
     }
 
     public void QuitGame()
     {
+        EventManager.ButtonSound.Invoke();
         Application.Quit();
     }
 }
