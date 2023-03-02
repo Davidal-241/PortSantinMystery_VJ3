@@ -105,6 +105,8 @@ public class GameManager : MonoBehaviour
     GameObject _cesarMaleta;
     GameObject _cesarSinMaleta;
 
+    [SerializeField] Animator _fadeInAni;
+
     private void Awake()
     {
         if (shouldDeletePlayePrefs)
@@ -122,6 +124,9 @@ public class GameManager : MonoBehaviour
         _controls.Inventory.Disable();
         _controls.OptionsMenu.Disable();
         _controls.Conversation.Disable();
+
+
+        _fadeInAni = GameObject.Find("FadeIn").GetComponent<Animator>();
 
         EventManager.ConvesationStarts.AddListener(ConversationStarts);
         EventManager.ConvesationEnds.AddListener(ConversationEnds);
@@ -231,8 +236,7 @@ public class GameManager : MonoBehaviour
                     {
                         _firtsTimeInTheOutsideCesarRoom = false;
                         NextRequestCondition();
-                        EventManager.ElevatorSound.Invoke();
-                        SceneManager.LoadScene(_sceneName);
+                        StartCoroutine(ElevatorFadeInCorutine(_sceneName));
                     }
                 }
             }
@@ -245,23 +249,23 @@ public class GameManager : MonoBehaviour
                     {
                         _firtsTimeInTheOutsideCenturionRoom = false;
                         NextRequestCondition();
-                        SceneManager.LoadScene(_sceneName);
+                        StartCoroutine(ElevatorFadeInCorutine(_sceneName));
                     }
 
                 }
                 else if (string.Compare(_sceneName, "Vestibulo") == 0)
                 {
-                    SceneManager.LoadScene(_sceneName);
+                    StartCoroutine(ElevatorFadeInCorutine(_sceneName));
 
-                }else if(string.Compare(_sceneName, "Pasillo") == 0)
+                }
+                else if(string.Compare(_sceneName, "Pasillo") == 0)
                 {
-                    SceneManager.LoadScene(_sceneName);
+                    StartCoroutine(ElevatorFadeInCorutine(_sceneName));
                 }
             }
             else
             {
-                EventManager.ElevatorSound.Invoke();
-                SceneManager.LoadScene(_sceneName);
+                StartCoroutine(ElevatorFadeInCorutine(_sceneName));
             }
         }
     }
@@ -599,14 +603,12 @@ public class GameManager : MonoBehaviour
 
                 _firtsTimeEntryInTheHotel = false;
 
-                EventManager.DoorSound.Invoke();
-                SceneManager.LoadScene(indexSceneDoor);
+                StartCoroutine(DoorFadeInCorutine(indexSceneDoor));
 
             }
             else
             {
-                EventManager.DoorSound.Invoke();
-                SceneManager.LoadScene(indexSceneDoor);
+                StartCoroutine(DoorFadeInCorutine(indexSceneDoor));
             }
 
         }
@@ -647,13 +649,11 @@ public class GameManager : MonoBehaviour
                     _firtsTimeEntryInTheRoom = false;
                     NextRequestCondition();
 
-                    EventManager.DoorSound.Invoke();
-                    SceneManager.LoadScene(indexSceneDoor);
+                    StartCoroutine(DoorFadeInCorutine(indexSceneDoor));
                 }
                 else
                 {
-                    EventManager.DoorSound.Invoke();
-                    SceneManager.LoadScene(indexSceneDoor);
+                    StartCoroutine(DoorFadeInCorutine(indexSceneDoor));
                 }
             }
         }
@@ -667,8 +667,7 @@ public class GameManager : MonoBehaviour
                     _firtsTimeExitTheRoom = false;
                     //NextRequestCondition();
 
-                    EventManager.DoorSound.Invoke();
-                    SceneManager.LoadScene(indexSceneDoor);
+                    StartCoroutine(DoorFadeInCorutine(indexSceneDoor));
 
                     _isntHandFree = false;
 
@@ -677,8 +676,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    EventManager.DoorSound.Invoke();
-                    SceneManager.LoadScene(indexSceneDoor);
+                    StartCoroutine(DoorFadeInCorutine(indexSceneDoor));
                 }
                 //Evento para luna aparezca
             }
@@ -687,6 +685,28 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    IEnumerator ElevatorFadeInCorutine(string indexSceneElevator)
+    {
+        _fadeInAni.SetTrigger("StartFadeIn");
+        yield return new WaitForSeconds(0.5f);
+
+        EventManager.ElevatorSound.Invoke();
+        SceneManager.LoadScene(indexSceneElevator);
+
+        yield return null;
+    }
+    IEnumerator DoorFadeInCorutine(string indexSceneDoor)
+    {
+        _fadeInAni.SetTrigger("StartFadeIn");
+        yield return new WaitForSeconds(0.5f);
+
+        EventManager.DoorSound.Invoke();
+        SceneManager.LoadScene(indexSceneDoor);
+
+        yield return null;
+    }
+
+    #region "Log"
     public static int[] PastConversations
     {
         get
@@ -757,4 +777,5 @@ public class GameManager : MonoBehaviour
     {
         return PastConversationsToIntArray(PlayerPrefs.GetString("PastConversations"));
     }
+    #endregion
 }
