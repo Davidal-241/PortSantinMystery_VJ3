@@ -7,7 +7,7 @@ public class MusicScript : MonoBehaviour
 {
     //private GameObject musicPrefab;
 
-    static MusicScript instance = null;
+    public static MusicScript instance = null;
 
     void Start()
     {

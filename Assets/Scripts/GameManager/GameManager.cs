@@ -370,7 +370,7 @@ public class GameManager : MonoBehaviour
 
 
                 SceneManager.LoadScene("Creditos");
-                
+                Destroy(MusicScript.instance);
 
             }
 
