@@ -41,8 +41,7 @@ public class MenuOptionsMovement : MonoBehaviour
     {
         _controls = input;
 
-        _controls.Player.Open.performed += OpenMenu;
-        _controls.OptionsMenu.Close.performed += CloseMenu;
+        
 
         _controls.OptionsMenu.Submit.performed += UseButtons;
         _controls.OptionsMenu.NavigateUp.performed += ScrollUpMenuPause;
@@ -72,43 +71,6 @@ public class MenuOptionsMovement : MonoBehaviour
         }
 
         _viewManager.SetActive(false);
-    }
-
-
-
-    private void OpenMenu(InputAction.CallbackContext context)
-    {
-        if (!GameManager._isMenuPauseActive && !GameManager._isTalking)
-        {
-            _viewManager.SetActive(true);
-            GameManager._isMenuPauseActive = true;
-
-            //GameManager._playerCanMove = true;
-
-
-            _currentMenuIndex = 0;
-            _currentButtonIndex = 0;
-            _menus[_currentMenuIndex].SetActive(true);
-            UpdateSelectorPosition();
-
-            EventManager.UserMenuOn.Invoke();
-        }
-       
-    }
-
-    private void CloseMenu(InputAction.CallbackContext context)
-    {
-      if (GameManager._isMenuPauseActive && !GameManager._isTalking)
-        {
-            _viewManager.SetActive(false);
-            GameManager._isMenuPauseActive = false;
-
-            //GameManager._playerCanMove = false;
-
-            _menus[_currentMenuIndex].SetActive(false);
-            EventManager.UserMenuOff.Invoke();
-
-        }
     }
 
     private void ScrollDownMenuPause(InputAction.CallbackContext context)
