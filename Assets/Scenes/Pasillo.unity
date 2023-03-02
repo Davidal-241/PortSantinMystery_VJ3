@@ -563,13 +563,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 357539675}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.37, y: -0.39471745, z: 2.74}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: -3.3968954, y: 1.037, z: 1.9386035}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 24
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &369169448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1867,6 +1867,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &804867234 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3834794654522600231, guid: b15b3e102621f8b489db1c7afa243937, type: 3}
+  m_PrefabInstance: {fileID: 1551793715}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &824774434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2951,6 +2962,8 @@ GameObject:
   - component: {fileID: 1436110243}
   - component: {fileID: 1436110246}
   - component: {fileID: 1436110245}
+  - component: {fileID: 1436110248}
+  - component: {fileID: 1436110247}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2977,7 +2990,7 @@ MonoBehaviour:
   - Pasillo
   - Habitacion_Cesar
   shouldDeletePlayePrefs: 0
-  _lunaPrefab: {fileID: 919132149155446097, guid: 415ea9e5c2ace2043bf07e85f8acaa16, type: 3}
+  _lunaPrefab: {fileID: 689571375923009443, guid: fc636f1a033e9dc4cb5ab82393c45147, type: 3}
   _LunaSpawnPoint: {fileID: 357539676}
   comingFromElevatorToHallTransform: {fileID: 311236423}
   comingFromInsideCesarRoomTransform: {fileID: 330392269}
@@ -3104,6 +3117,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1436110247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436110242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b1352ac903e69943a2317de83dfd7e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sliderGeneral: {fileID: 804867234}
+  _sliderValue: 0
+--- !u!114 &1436110248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436110242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f826c30f90a31543996bc5ca43c0a66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _toggle: {fileID: 2066069995}
 --- !u!1001 &1494854876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3967,6 +4007,10 @@ PrefabInstance:
       propertyPath: _dialogueBox
       value: 
       objectReference: {fileID: 1986491563}
+    - target: {fileID: 9000672324706807287, guid: 94ca3a8e0588dd34e8ced49d8ba5323f, type: 3}
+      propertyPath: _radius
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94ca3a8e0588dd34e8ced49d8ba5323f, type: 3}
 --- !u!1001 &1860813744
@@ -4546,6 +4590,17 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2066069995 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3834794653942943169, guid: b15b3e102621f8b489db1c7afa243937, type: 3}
+  m_PrefabInstance: {fileID: 1551793715}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2108900996
 GameObject:
   m_ObjectHideFlags: 0

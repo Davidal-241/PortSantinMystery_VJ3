@@ -38,16 +38,15 @@ public class CorridorGameManager : GameManager
 
         base.Start();
 
-        if (_currentQuest == FinishedQuest.SPOKELUNA)
-        {
+       
             if (_currenStoryParts == StoryParts.FIRST_PART)
             {
                 if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
                 {
-                    Instantiate(_lunaPrefab, _LunaSpawnPoint);
+                    Instantiate(_lunaPrefab, _LunaSpawnPoint.position, _LunaSpawnPoint.rotation);
                 }
             }
-        }
+        
         EventManager._CheckConveElevator.AddListener(CheckIfYouCanUseTheElevator);
 
 
@@ -64,29 +63,11 @@ public class CorridorGameManager : GameManager
     #region"ElevatorLogical"
     private void CheckIfYouCanUseTheElevator()
     {
-        //Comprueba si Cesar puede usar el ascensor o debe decir un dialogo//
-        UIElevator();
-
         if (_currenStoryParts == StoryParts.FIRST_PART)
         {
-            if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
-            {
-                if (!JorgeDialogueManager._hasAlreadyTalkedToJorge)
-                {
-                    _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_01");
-                    print(_cesarsCurrentDialogue);
-                    EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-                }
-                else
-                {
-                    UIElevator();
-                }
-
-            }
-
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
             {
-                if (_currentQuest != FinishedQuest.LEAVESUITCASE)
+                if (_currentQuest == FinishedQuest.OUTSIDETHEROOM)
                 {
                     _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_03");
                     EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
@@ -96,39 +77,25 @@ public class CorridorGameManager : GameManager
                     UIElevator();
                 }
             }
-
-            if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
+            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
             {
-                if (_currentQuest == FinishedQuest.OUTSIDETHEROOM)
+                if (_currentQuest == FinishedQuest.SPOKELUNA)
                 {
                     if (!LunaDialogueManager._hasAlreadyTalkedToLuna)
                     {
                         _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_05");
                         EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
                     }
-                    else
-                    {
-                        UIElevator();
-                    }
+
                 }
 
             }
-
-            if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
+            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
             {
                 if (_currentQuest == FinishedQuest.OUTSIDECENTURIONROOM)
                 {
-                    if (!_hasAlreadyInteractueWithCenturionDoor)
-                    {
-                        _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_07");
-                        EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-                    }
-                    else
-                    {
-                        UIElevator();
-                    }
+                    UIElevator();
                 }
-
             }
 
         }

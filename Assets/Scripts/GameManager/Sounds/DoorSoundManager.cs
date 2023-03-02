@@ -16,7 +16,6 @@ public class DoorSoundManager : MonoBehaviour
 
     public void DoorSound()
     {
-        print("door");
         _audioSource.pitch = 1;
         _currentClip = _clip._sounds[3];
         _audioSource.clip = _currentClip;

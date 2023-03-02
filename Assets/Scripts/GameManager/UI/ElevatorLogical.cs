@@ -29,6 +29,7 @@ public class ElevatorLogical : MonoBehaviour
         EventManager._InputSet.AddListener(InputSet);
         EventManager._UseElevator.AddListener(UseElevator);
 
+
     }
 
     void InputSet(UserActions input)
@@ -110,6 +111,7 @@ public class ElevatorLogical : MonoBehaviour
     private void ChangeScene()
     {
         EventManager._ChangeScene.Invoke(_sceneNames[_currentButtonIndex]);
+        _controls.Inventory.Disable();
     }
 }
 

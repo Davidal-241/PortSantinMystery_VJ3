@@ -39,6 +39,8 @@ public class DetectBed : MonoBehaviour,IInteractable
         _cesarSinMaleta.SetActive(true);
         _suitcaseInRoom.SetActive(true);
 
+        GameManager._isntHandFree = false;
+
         EventManager.NextRequest.Invoke();
     }
 

@@ -71,7 +71,6 @@ public class ReceptionGameManager : GameManager
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_1)
             {
-                print("_hasAlreadyTalkedToJorge: " + JorgeDialogueManager._hasAlreadyTalkedToJorge);
 
                 if (!JorgeDialogueManager._hasAlreadyTalkedToJorge)
                 {
@@ -82,19 +81,17 @@ public class ReceptionGameManager : GameManager
 
             }
 
-            if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
+           else if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
             {
-                print("_hasAlreadyTalkedToJorge: " + JorgeDialogueManager._hasAlreadyTalkedToJorge);
 
                 if (JorgeDialogueManager._hasAlreadyTalkedToJorge)
                 {
-                    print("a");
                     UIElevator();
                 }
 
             }
 
-            if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
+            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
             {
                 if (_currentQuest != FinishedQuest.LEAVESUITCASE)
                 {
@@ -107,43 +104,6 @@ public class ReceptionGameManager : GameManager
                     UIElevator();
                 }
             }
-
-            if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
-            {
-                if (_currentQuest == FinishedQuest.OUTSIDETHEROOM)
-                {
-                    if (!LunaDialogueManager._hasAlreadyTalkedToLuna)
-                    {
-                        _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_05");
-                        EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-                    }
-                    else
-                    {
-                        print("c");
-                        UIElevator();
-                    }
-                }
-
-            }
-
-            if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
-            {
-                if (_currentQuest == FinishedQuest.OUTSIDECENTURIONROOM)
-                {
-                    if (!_hasAlreadyInteractueWithCenturionDoor)
-                    {
-                        _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_07");
-                        EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-                    }
-                    else
-                    {
-                        print("d");
-                        UIElevator();
-                    }
-                }
-
-            }
-
         }
     }
     #endregion
@@ -151,8 +111,6 @@ public class ReceptionGameManager : GameManager
     #region"UIElevator"
     private void UIElevator()
     {
-        print("___");
-
 
         //Activa o Desactiva la interfaz del ascensor dependiendo de su estado//
         if (!_elevatorUI.activeSelf)

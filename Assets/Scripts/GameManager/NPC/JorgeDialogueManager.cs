@@ -25,7 +25,6 @@ public class JorgeDialogueManager : MonoBehaviour, IInteractable
     private void SearchDialogues()
     {
         _hasAlreadyTalkedToJorge = true;
-        print("JorgeDialogueManager:: " + GameManager._currenStoryParts + " " + GameManager._currentStagesStoryParts + " " + GameManager._currentQuest) ;
 
         if (GameManager._currenStoryParts == StoryParts.FIRST_PART)
         {
@@ -35,7 +34,6 @@ public class JorgeDialogueManager : MonoBehaviour, IInteractable
                 {
                     if (_isItJorgesMainDialogue)
                     {
-                        print("Is main dialogue");
                         _jorgesCurrentDialogue = Resources.Load<Conversation>("Jorge/N_Dialogues/Jorge_N_Dialogue_01");
                         GameManager.UpdateConversationLog(1);
                         EventManager.NextRequest.Invoke();

@@ -47,50 +47,6 @@ public class CenturionCorridorGameManager : GameManager
 
         if (_currenStoryParts == StoryParts.FIRST_PART)
         {
-            if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
-            {
-                if (!JorgeDialogueManager._hasAlreadyTalkedToJorge)
-                {
-                    _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_01");
-                    print(_cesarsCurrentDialogue);
-                    EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-                }
-                else
-                {
-                    UIElevator();
-                }
-
-            }
-
-            if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
-            {
-                if (_currentQuest != FinishedQuest.LEAVESUITCASE)
-                {
-                    _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_03");
-                    EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-                }
-                else
-                {
-                    UIElevator();
-                }
-            }
-
-            if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
-            {
-                if (_currentQuest == FinishedQuest.OUTSIDETHEROOM)
-                {
-                    if (!LunaDialogueManager._hasAlreadyTalkedToLuna)
-                    {
-                        _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_05");
-                        EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
-                    }
-                    else
-                    {
-                        UIElevator();
-                    }
-                }
-
-            }
 
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
             {

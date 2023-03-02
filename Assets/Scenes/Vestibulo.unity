@@ -1538,6 +1538,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1748662514}
     - target: {fileID: 3923858155878301752, guid: cf3057d381fc74c428855ef705fed7e6, type: 3}
+      propertyPath: _lunaPrefab
+      value: 
+      objectReference: {fileID: 689571375923009443, guid: fc636f1a033e9dc4cb5ab82393c45147, type: 3}
+    - target: {fileID: 3923858155878301752, guid: cf3057d381fc74c428855ef705fed7e6, type: 3}
       propertyPath: _LunaSpawnPoint
       value: 
       objectReference: {fileID: 749185433}

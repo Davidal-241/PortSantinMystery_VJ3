@@ -83,9 +83,11 @@ public class GameManager : MonoBehaviour
     bool _firtsTimeEntryInTheCenturionsRoom = true;
     bool _firtsTimeExitTheRoom = true;
     bool _firtsTimeInTheOutsideCesarRoom = true;
+    bool _firtsTimeInTheOutsideCenturionRoom = true;
     protected bool _hasAlreadyInteractueWithCenturionDoor = false;
 
-   static bool _isHandFree = false;
+    public static bool _isntHandFree = true;
+
     #endregion
 
     #region"Statics"
@@ -153,6 +155,8 @@ public class GameManager : MonoBehaviour
         _cesarMaleta = GameObject.Find("Cesar");
         _cesarSinMaleta = GameObject.Find("Cesar_NoMaleta");
 
+       
+
     }
 
     protected virtual void Start()
@@ -185,9 +189,9 @@ public class GameManager : MonoBehaviour
 
         #endregion
 
-
-        if (_isHandFree)
+        if (!_isntHandFree)
         {
+            
             _cesarMaleta.SetActive(false);
             _cesarSinMaleta.SetActive(true);
         }
@@ -202,7 +206,7 @@ public class GameManager : MonoBehaviour
     public void GoMenuPrincipalMain()
     {
         //Nos devuelve al menu principal//
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainMenu");
     }
     #endregion
 
@@ -210,7 +214,7 @@ public class GameManager : MonoBehaviour
     #region"ChangeSceneElevator"
     private void ElevatorChangeScene(string _sceneName)
     {
-        //Cambia la escena dependiendo de un Index//
+        //Cambia la escena dependiendo de un String//
         if (_currenStoryParts == StoryParts.FIRST_PART)
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
@@ -218,23 +222,38 @@ public class GameManager : MonoBehaviour
                 if(string.Compare(_sceneName, "Pasillo Centurion") == 0)
                 {
                     _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_03");
+                    EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
+
                 }
-                else
+                else if(_currentQuest == FinishedQuest.SPOKEJORGE)
                 {
                     if (_firtsTimeInTheOutsideCesarRoom)
                     {
                         _firtsTimeInTheOutsideCesarRoom = false;
                         NextRequestCondition();
+                        EventManager.ElevatorSound.Invoke();
+                        SceneManager.LoadScene(_sceneName);
                     }
-                    EventManager.ElevatorSound.Invoke();
-                    SceneManager.LoadScene(_sceneName);
                 }
             }
-            else
+            else if(_currentStagesStoryParts == StagesStoryParts.STAGE_6)
             {
-                
+
+                if (string.Compare(_sceneName, "Pasillo Centurion") == 0)
+                {
+                    if (_firtsTimeInTheOutsideCenturionRoom)
+                    {
+                        _firtsTimeInTheOutsideCenturionRoom = false;
+                        NextRequestCondition();
+                        SceneManager.LoadScene(_sceneName);
+                    }
+
+                }
+                else if (string.Compare(_sceneName, "Vestibulo") == 0)
+                {
                     SceneManager.LoadScene(_sceneName);
-                
+
+                }
             }
         }
     }
@@ -263,7 +282,6 @@ public class GameManager : MonoBehaviour
     #region"FirstPart"
     private void FirstPart()
     {
-        print("GameManager:: " + GameManager._currenStoryParts + " " + GameManager._currentStagesStoryParts + " " + GameManager._currentQuest);
 
         if (_currenStoryParts == StoryParts.FIRST_PART)
         {
@@ -277,7 +295,6 @@ public class GameManager : MonoBehaviour
             }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
             {
-
                 if (_currentQuest == FinishedQuest.OUTSIDETHEROOM)
                 {
                     _currentStagesStoryParts = StagesStoryParts.STAGE_3;
@@ -298,9 +315,7 @@ public class GameManager : MonoBehaviour
             {
                 if (_currentQuest == FinishedQuest.SPOKELUNA)
                 {
-                    _isHandFree = true;
                     _currentStagesStoryParts = StagesStoryParts.STAGE_5;
-
                 }
             }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
@@ -329,7 +344,8 @@ public class GameManager : MonoBehaviour
                     _currentStagesStoryParts = StagesStoryParts.STAGE_8;
                 }
 
-            }else if(_currentStagesStoryParts == StagesStoryParts.STAGE_8)
+            }
+            else if(_currentStagesStoryParts == StagesStoryParts.STAGE_8)
             {
 
                 if(_currentQuest == FinishedQuest.READYTOGO)
@@ -421,7 +437,6 @@ public class GameManager : MonoBehaviour
                 if (_currentQuest == FinishedQuest.OUTSIDETHEHOTEL)
                 {
                     _currentQuest = FinishedQuest.INRECEPTION;
-                    print("Changing current quest to inreception");
                     GameFlow();
                 }
             }
@@ -433,19 +448,18 @@ public class GameManager : MonoBehaviour
             {
                 if (_currentQuest == FinishedQuest.INRECEPTION)
                 {
-                    print("HableConJorge");
+                    //Hablo con Jorge
                     _currentQuest = FinishedQuest.SPOKEJORGE;
                     GameFlow();
                 }
             }
+
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_2)
             {
                 if (_currentQuest == FinishedQuest.SPOKEJORGE)
                 {
                     if (!_firtsTimeInTheOutsideCesarRoom)
                     {
-
-                        print("EstoyEnElPasillo");
                         _currentQuest = FinishedQuest.OUTSIDETHEROOM;
                         GameFlow();
                     }
@@ -456,8 +470,14 @@ public class GameManager : MonoBehaviour
             {
                 if (_currentQuest == FinishedQuest.OUTSIDETHEROOM)
                 {
-                    _currentQuest = FinishedQuest.LEAVESUITCASE;
-                    GameFlow();
+                    if (!_firtsTimeEntryInTheRoom)
+                    {
+
+                        _currentQuest = FinishedQuest.LEAVESUITCASE;
+                    
+                        GameFlow();
+                    }
+
                 }
             }
 
@@ -465,27 +485,44 @@ public class GameManager : MonoBehaviour
             {
                 if (_currentQuest == FinishedQuest.LEAVESUITCASE)
                 {
-                    _currentQuest = FinishedQuest.SPOKELUNA;
+                     _currentQuest = FinishedQuest.SPOKELUNA;
+
+                    
+                    Debug.Log("Good result");
+
                     GameFlow();
+                   
+                }
+            }
+            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
+            {
+                if (!_firtsTimeExitTheRoom)
+                {
+
+                    if (_currentQuest == FinishedQuest.SPOKELUNA)
+                    {
+                        Debug.Log("Bad result");
+                        _currentQuest = FinishedQuest.OUTSIDECENTURIONROOM;
+                        GameFlow();
+
+                    }
                 }
             }
 
-            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
-            {
-                if (_currentQuest == FinishedQuest.SPOKELUNA)
-                {
-                    _currentQuest = FinishedQuest.OUTSIDECENTURIONROOM;
-                    GameFlow();
-                }
-            }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
             {
+                print("S6, OutSideCenturion");
                 if (_currentQuest == FinishedQuest.OUTSIDECENTURIONROOM)
                 {
-                    _currentQuest = FinishedQuest.INTERACTUEWITHCENTURIONDOOR;
-                    GameFlow();
+                    if (!_firtsTimeInTheOutsideCenturionRoom)
+                    {
+                        _currentQuest = FinishedQuest.INTERACTUEWITHCENTURIONDOOR;
+                        GameFlow();
+                    }
+                    
                 }
-            } else if (_currentStagesStoryParts == StagesStoryParts.STAGE_8)
+            } 
+            else if (_currentStagesStoryParts == StagesStoryParts.STAGE_8)
             {
                 if (_currentQuest == FinishedQuest.INTERACTUEWITHCENTURIONDOOR)
                 {
@@ -542,61 +579,79 @@ public class GameManager : MonoBehaviour
         }
         else if (_currentScene.name == sceneWithDoor[1])
         {
-            if (_currentStagesStoryParts == StagesStoryParts.STAGE_8)
+            if (_currenStoryParts == StoryParts.FIRST_PART)
             {
-                if (_tryExitTheReception)
+
+                if (_currentStagesStoryParts == StagesStoryParts.STAGE_8)
                 {
+                    if (_tryExitTheReception)
+                    {
 
-                    NextRequestCondition();
+                        NextRequestCondition();
 
-                    _tryExitTheReception = false;
+                        _tryExitTheReception = false;
+                    }
                 }
-            }
-            
-            if(_currentStagesStoryParts == StagesStoryParts.STAGE_8)
-            {
-                EventManager.DoorSound.Invoke();
-                SceneManager.LoadScene(indexSceneDoor);
+                else if (_currentStagesStoryParts == StagesStoryParts.STAGE_8)
+                {
+                    EventManager.DoorSound.Invoke();
+                    SceneManager.LoadScene(indexSceneDoor);
 
+                }
+                else if (_currentStagesStoryParts == StagesStoryParts.STAGE_1 || _currentStagesStoryParts == StagesStoryParts.STAGE_2)
+                {
+                    print("Cant Open");
+                }
             }
 
         }
         else if (_currentScene.name == sceneWithDoor[2])
         {
-            if (_firtsTimeEntryInTheRoom)
-            {
-                print("In The >CesarRoom");
-                NextRequestCondition();
-                _firtsTimeEntryInTheRoom = false;
-                EventManager.DoorSound.Invoke();
-                SceneManager.LoadScene(indexSceneDoor);
-            }
-            else
+            if (_currenStoryParts == StoryParts.FIRST_PART)
             {
 
-                EventManager.DoorSound.Invoke();
-                SceneManager.LoadScene(indexSceneDoor);
+                if (_firtsTimeEntryInTheRoom)
+                {
+                    _firtsTimeEntryInTheRoom = false;
+                    NextRequestCondition();
+
+                    EventManager.DoorSound.Invoke();
+                    SceneManager.LoadScene(indexSceneDoor);
+                }
+                else
+                {
+                    EventManager.DoorSound.Invoke();
+                    SceneManager.LoadScene(indexSceneDoor);
+                }
 
             }
-
-        }
-        else if (_currentScene.name == sceneWithDoor[3])
-        {
-            if (_firtsTimeExitTheRoom)
+            else if (_currentScene.name == sceneWithDoor[3])
             {
+                if (_currenStoryParts == StoryParts.FIRST_PART)
+                {
+                    print("WTF");
+                    if (_firtsTimeExitTheRoom)
+                    {
+                        _firtsTimeExitTheRoom = false;
+                        NextRequestCondition();
 
-                _firtsTimeExitTheRoom = false;
-                EventManager.DoorSound.Invoke();
-                SceneManager.LoadScene(indexSceneDoor);
-                //Evento para luna aparezca
+                        EventManager.DoorSound.Invoke();
+                        SceneManager.LoadScene(indexSceneDoor);
+
+                        _isntHandFree = false;
+
+                        _cesarMaleta.SetActive(false);
+                        _cesarSinMaleta.SetActive(true);
+                    }
+                    else
+                    {
+                        EventManager.DoorSound.Invoke();
+                        SceneManager.LoadScene(indexSceneDoor);
+                    }
+                    //Evento para luna aparezca
+                }
 
             }
-            else
-            {
-                EventManager.DoorSound.Invoke();
-                SceneManager.LoadScene(indexSceneDoor);
-            }
-
         }
     }
 
