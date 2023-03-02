@@ -13,7 +13,7 @@ public class DetectGlasses : MonoBehaviour, IInteractable
   
     private void GlassesInTheBed()
     {
-
+        EventManager.PickUpSound.Invoke();
         _cesarsCurrentDialogue = Resources.Load<Conversation>("Cesar/GF_Dialogues/Cesar_GF_Dialogue_04");
         EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
 

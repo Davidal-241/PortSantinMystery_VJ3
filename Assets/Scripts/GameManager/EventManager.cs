@@ -82,4 +82,5 @@ public static class EventManager
     public static UnityEvent RainSound = new UnityEvent();
     public static UnityEvent WalkingSound = new UnityEvent();
     public static UnityEvent TypeSound = new UnityEvent();
+    public static UnityEvent PickUpSound = new UnityEvent();
 }
