@@ -511,7 +511,8 @@ public class GameManager : MonoBehaviour
             }
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
             {
-                if (!_firtsTimeExitTheRoom)
+
+                if (LunaDialogueManager._hasAlreadyTalkedToLuna)
                 {
 
                     if (_currentQuest == FinishedQuest.SPOKELUNA)
@@ -521,11 +522,11 @@ public class GameManager : MonoBehaviour
 
                     }
                 }
+               
             }
 
             else if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
             {
-                print("S6, OutSideCenturion");
 
                 if (!_firtsTimeInTheOutsideCenturionRoom)
                 {

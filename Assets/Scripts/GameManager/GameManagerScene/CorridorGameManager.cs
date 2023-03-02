@@ -38,7 +38,6 @@ public class CorridorGameManager : GameManager
 
         base.Start();
 
-        print("NextRequestCondition: " + _currenStoryParts + " - " + _currentStagesStoryParts + " - " + _currentQuest);
 
         if (_currenStoryParts == StoryParts.FIRST_PART)
         {
@@ -65,6 +64,7 @@ public class CorridorGameManager : GameManager
     #region"ElevatorLogical"
     private void CheckIfYouCanUseTheElevator()
     {
+        print("NextRequestCondition: " + _currenStoryParts + " - " + _currentStagesStoryParts + " - " + _currentQuest);
         if (_currenStoryParts == StoryParts.FIRST_PART)
         {
             if (_currentStagesStoryParts == StagesStoryParts.STAGE_3)
@@ -89,6 +89,10 @@ public class CorridorGameManager : GameManager
                         EventManager._ConversationStarts.Invoke(_cesarsCurrentDialogue);
                     }
 
+                }
+                else
+                {
+                    UIElevator();
                 }
 
             }

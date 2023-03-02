@@ -30,15 +30,15 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
 
         if (GameManager._currenStoryParts == StoryParts.FIRST_PART)
         {
-            print(_lunaDoesntWantToTalk);
 
-            if (!_lunaDoesntWantToTalk)
+
+            if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_5)
             {
-                if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_5)
+                if (!_lunaDoesntWantToTalk)
                 {
+
                     if (_isItLunaMainDialogue)
                     {
-                        print("main diag");
                         _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/N_Dialogues/Luna_N_Dialogue_01");
                         EventManager._ConversationStarts.Invoke(_lunasCurrentDialogue);
                         _isItLunaMainDialogue = false;
@@ -47,7 +47,6 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
                     }
                     else
                     {
-                        print("alt diag");
                         _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/GF_Dialogues/Luna_GF_Dialogue_01");
                         EventManager._ConversationStarts.Invoke(_lunasCurrentDialogue);
                         LunaNoTalkMore();
@@ -55,18 +54,17 @@ public class LunaDialogueManager : MonoBehaviour, IInteractable
                 }
             }
 
+
             else if (GameManager._currentStagesStoryParts == StagesStoryParts.STAGE_8)
             {
-                _isItLunaMainDialogue = true;
 
-                if (GameManager._currentQuest == FinishedQuest.SPEAKWITHLUNAINRECEPTION)
-                {
-                    print("luna n 2");
-                    _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/N_Dialogues/Luna_N_Dialogue_02");
-                    EventManager._ConversationStarts.Invoke(_lunasCurrentDialogue);
-                    GameManager.UpdateConversationLog(3);
-                    EventManager.NextRequest.Invoke();
-                }
+
+                print("luna n 2");
+                _lunasCurrentDialogue = Resources.Load<Conversation>("Luna/N_Dialogues/Luna_N_Dialogue_02");
+                EventManager._ConversationStarts.Invoke(_lunasCurrentDialogue);
+                GameManager.UpdateConversationLog(3);
+                EventManager.NextRequest.Invoke();
+
 
             }
         }
