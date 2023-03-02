@@ -42,7 +42,7 @@ public class CorridorGameManager : GameManager
 
         if (_currenStoryParts == StoryParts.FIRST_PART)
         {
-            if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
+            if (_currentStagesStoryParts == StagesStoryParts.STAGE_5)
             {
             print("Instantiate Luna");
                 Instantiate(_lunaPrefab, _LunaSpawnPoint.position, _LunaSpawnPoint.rotation);

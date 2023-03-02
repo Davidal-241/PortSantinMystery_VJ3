@@ -660,7 +660,7 @@ public class GameManager : MonoBehaviour
                 if (_firtsTimeExitTheRoom)
                 {
                     _firtsTimeExitTheRoom = false;
-                    NextRequestCondition();
+                    //NextRequestCondition();
 
                     EventManager.DoorSound.Invoke();
                     SceneManager.LoadScene(indexSceneDoor);
