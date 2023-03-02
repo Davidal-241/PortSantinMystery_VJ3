@@ -5,6 +5,7 @@ using UnityEngine;
 public class ReceptionGameManager : GameManager
 {
     [SerializeField] GameObject _lunaPrefab;
+    [SerializeField] GameObject _lunaInScene;
     [SerializeField] Transform _LunaSpawnPoint;
     [SerializeField] Transform comingFromElevatorTransform;
     [SerializeField] Transform comingFromOutsideTransform;
@@ -38,14 +39,18 @@ public class ReceptionGameManager : GameManager
 
         base.Start();
 
+        print("NextRequestCondition: " + _currenStoryParts + " - " + _currentStagesStoryParts + " - " + _currentQuest);
+
         if (_currentQuest == FinishedQuest.SPEAKWITHLUNAINRECEPTION)
         {
             if (_currenStoryParts == StoryParts.FIRST_PART)
             {
-                if (_currentStagesStoryParts == StagesStoryParts.STAGE_6)
+                if (_currentStagesStoryParts == StagesStoryParts.STAGE_8)
                 {
 
-                    Instantiate(_lunaPrefab, _LunaSpawnPoint);
+                    GameObject LunaInsta = Instantiate(_lunaPrefab, _LunaSpawnPoint);
+                    _lunaInScene = LunaInsta;
+                    _lunaInScene.GetComponent<BoxCollider>().enabled = false;
                 }
             }
         }
@@ -103,6 +108,10 @@ public class ReceptionGameManager : GameManager
                     print("b");
                     UIElevator();
                 }
+            }
+            else
+            {
+                UIElevator();
             }
         }
     }
