@@ -688,22 +688,31 @@ public class GameManager : MonoBehaviour
     IEnumerator ElevatorFadeInCorutine(string indexSceneElevator)
     {
         _fadeInAni.SetTrigger("StartFadeIn");
+
+        AsyncOperation async = SceneManager.LoadSceneAsync(indexSceneElevator);
+       
         yield return new WaitForSeconds(0.5f);
 
-        EventManager.ElevatorSound.Invoke();
-        SceneManager.LoadScene(indexSceneElevator);
+        while (!async.isDone)
+        {
 
-        yield return null;
+            EventManager.ElevatorSound.Invoke();
+            yield return null;
+        }
     }
     IEnumerator DoorFadeInCorutine(string indexSceneDoor)
     {
         _fadeInAni.SetTrigger("StartFadeIn");
+        AsyncOperation async = SceneManager.LoadSceneAsync(indexSceneDoor);
+
         yield return new WaitForSeconds(0.5f);
 
-        EventManager.DoorSound.Invoke();
-        SceneManager.LoadScene(indexSceneDoor);
+        while (!async.isDone)
+        {
 
-        yield return null;
+            EventManager.DoorSound.Invoke();
+            yield return null;
+        }
     }
 
     #region "Log"
