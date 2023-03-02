@@ -71,8 +71,6 @@ public class MenuOptionsMovement : MonoBehaviour
             _menus[i].SetActive(false);
         }
 
-        
-      
         _viewManager.SetActive(false);
     }
 
