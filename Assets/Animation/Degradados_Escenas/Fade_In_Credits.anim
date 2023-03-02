@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fade_In
+  m_Name: Fade_In_Credits
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -115,7 +115,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.65
-    functionName: SwitchScene
+    functionName: ExitCredits
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
