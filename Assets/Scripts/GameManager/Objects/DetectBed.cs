@@ -29,7 +29,11 @@ public class DetectBed : MonoBehaviour,IInteractable
 
     public void Interact()
     {
-        LeaveTheBag();
+        if (!_isSuitcaseInTheRoom)
+        {
+
+            LeaveTheBag();
+        }
     }
 
     private void LeaveTheBag()
