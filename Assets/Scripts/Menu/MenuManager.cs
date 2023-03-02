@@ -13,6 +13,10 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject optionsMenu;
     [SerializeField] Selectable optionsMenuDefaultButton;
 
+    [SerializeField] Animator _fadeInAni;
+    bool _startGame = false;
+
+
     /*
     [SerializeField] GameObject[] _menus;
     [SerializeField] GameObject[][] _buttonsInMenu;
@@ -214,8 +218,7 @@ public class MenuManager : MonoBehaviour
 
     public void Play()
     {
-        EventManager.ButtonSound.Invoke();
-        SceneManager.LoadScene("Introduccion");
+        StartCoroutine(WaitForFadeIn());
     }
 
     public void Opciones()
@@ -245,4 +248,18 @@ public class MenuManager : MonoBehaviour
         EventManager.ButtonSound.Invoke();
         Application.Quit();
     }
+
+    IEnumerator  WaitForFadeIn()
+    {
+
+        _fadeInAni.SetTrigger("StartFadeIn");
+
+        yield return new WaitForSeconds(0.5f);
+
+            EventManager.ButtonSound.Invoke();
+        SceneManager.LoadScene("Introduccion");
+        yield return null;
+    }
+
+    
 }
