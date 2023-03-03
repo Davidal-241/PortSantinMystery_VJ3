@@ -14,10 +14,13 @@ public class ToInteract : MonoBehaviour
 
         EventManager._InputSet.AddListener(InputSet);
 
-        logicalDialogueManager = FindObjectOfType<LogicalDialogueSystem>();
     }
 
+    private void Start()
+    {
+        logicalDialogueManager = FindObjectOfType<LogicalDialogueSystem>();
 
+    }
 
 
     void InputSet(UserActions input)
@@ -42,8 +45,13 @@ public class ToInteract : MonoBehaviour
     public void NextLineText(InputAction.CallbackContext context)
     {
         //if (GameManager._isTalking && !GameManager._isMenuPauseActive)
+        if (logicalDialogueManager == null)
         {
-            logicalDialogueManager.ReadNext();
+            logicalDialogueManager = FindObjectOfType<LogicalDialogueSystem>();
+
         }
+
+        logicalDialogueManager.ReadNext();
+
     }
 }
